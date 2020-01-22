@@ -3,17 +3,29 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		2967C2F39E399953A4883E61 /* Pods_DecorYou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DCBAF85DD003295D6685158 /* Pods_DecorYou.framework */; };
 		647A7CAC23D83376005D1946 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647A7CAB23D83376005D1946 /* AppDelegate.swift */; };
-		647A7CB023D83376005D1946 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647A7CAF23D83376005D1946 /* ViewController.swift */; };
+		647A7CB023D83376005D1946 /* STTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647A7CAF23D83376005D1946 /* STTabBarViewController.swift */; };
 		647A7CB323D83376005D1946 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 647A7CB123D83376005D1946 /* Main.storyboard */; };
 		647A7CB523D83377005D1946 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 647A7CB423D83377005D1946 /* Assets.xcassets */; };
 		647A7CB823D83377005D1946 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 647A7CB623D83377005D1946 /* LaunchScreen.storyboard */; };
 		647A7CC023D833D4005D1946 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 647A7CBF23D833D4005D1946 /* GoogleService-Info.plist */; };
+		647A7CC223D83718005D1946 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647A7CC123D83718005D1946 /* ArticleViewController.swift */; };
+		647A7CC423D83B7F005D1946 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 647A7CC323D83B7F005D1946 /* Profile.storyboard */; };
+		647A7CC623D83B92005D1946 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 647A7CC523D83B92005D1946 /* Chat.storyboard */; };
+		647A7CC823D83BA0005D1946 /* Craftsmen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 647A7CC723D83BA0005D1946 /* Craftsmen.storyboard */; };
+		647A7CCA23D83BB0005D1946 /* Article.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 647A7CC923D83BB0005D1946 /* Article.storyboard */; };
+		647A7CCC23D83BCE005D1946 /* UIStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647A7CCB23D83BCE005D1946 /* UIStoryboard+Extension.swift */; };
+		647A7CCE23D83C61005D1946 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647A7CCD23D83C61005D1946 /* UIImage+Extension.swift */; };
+		647A7CD123D83DCA005D1946 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 647A7CD023D83DCA005D1946 /* Auth.storyboard */; };
+		647A7CD323D83E33005D1946 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647A7CD223D83E33005D1946 /* AuthViewController.swift */; };
+		647A7CD523D83E49005D1946 /* CraftsmenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647A7CD423D83E49005D1946 /* CraftsmenViewController.swift */; };
+		647A7CD723D83E55005D1946 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647A7CD623D83E55005D1946 /* ChatViewController.swift */; };
+		647A7CD923D83E5E005D1946 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647A7CD823D83E5E005D1946 /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,12 +34,24 @@
 		2DCBAF85DD003295D6685158 /* Pods_DecorYou.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DecorYou.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		647A7CA823D83376005D1946 /* DecorYou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DecorYou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		647A7CAB23D83376005D1946 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		647A7CAF23D83376005D1946 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		647A7CAF23D83376005D1946 /* STTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STTabBarViewController.swift; sourceTree = "<group>"; };
 		647A7CB223D83376005D1946 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		647A7CB423D83377005D1946 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		647A7CB723D83377005D1946 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		647A7CB923D83377005D1946 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		647A7CBF23D833D4005D1946 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		647A7CC123D83718005D1946 /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
+		647A7CC323D83B7F005D1946 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		647A7CC523D83B92005D1946 /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
+		647A7CC723D83BA0005D1946 /* Craftsmen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Craftsmen.storyboard; sourceTree = "<group>"; };
+		647A7CC923D83BB0005D1946 /* Article.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Article.storyboard; sourceTree = "<group>"; };
+		647A7CCB23D83BCE005D1946 /* UIStoryboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extension.swift"; sourceTree = "<group>"; };
+		647A7CCD23D83C61005D1946 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		647A7CD023D83DCA005D1946 /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
+		647A7CD223D83E33005D1946 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		647A7CD423D83E49005D1946 /* CraftsmenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CraftsmenViewController.swift; sourceTree = "<group>"; };
+		647A7CD623D83E55005D1946 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		647A7CD823D83E5E005D1946 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +80,6 @@
 				1F3011E028BC5AE10C835F5E /* Pods-DecorYou.debug.xcconfig */,
 				16811DD988D5917B85CF4132 /* Pods-DecorYou.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -82,7 +105,18 @@
 			isa = PBXGroup;
 			children = (
 				647A7CAB23D83376005D1946 /* AppDelegate.swift */,
-				647A7CAF23D83376005D1946 /* ViewController.swift */,
+				647A7CAF23D83376005D1946 /* STTabBarViewController.swift */,
+				647A7CCF23D83C7C005D1946 /* Extension */,
+				647A7CD023D83DCA005D1946 /* Auth.storyboard */,
+				647A7CC923D83BB0005D1946 /* Article.storyboard */,
+				647A7CC723D83BA0005D1946 /* Craftsmen.storyboard */,
+				647A7CC523D83B92005D1946 /* Chat.storyboard */,
+				647A7CC323D83B7F005D1946 /* Profile.storyboard */,
+				647A7CC123D83718005D1946 /* ArticleViewController.swift */,
+				647A7CD423D83E49005D1946 /* CraftsmenViewController.swift */,
+				647A7CD623D83E55005D1946 /* ChatViewController.swift */,
+				647A7CD823D83E5E005D1946 /* ProfileViewController.swift */,
+				647A7CD223D83E33005D1946 /* AuthViewController.swift */,
 				647A7CB123D83376005D1946 /* Main.storyboard */,
 				647A7CB423D83377005D1946 /* Assets.xcassets */,
 				647A7CB623D83377005D1946 /* LaunchScreen.storyboard */,
@@ -90,6 +124,15 @@
 				647A7CBF23D833D4005D1946 /* GoogleService-Info.plist */,
 			);
 			path = DecorYou;
+			sourceTree = "<group>";
+		};
+		647A7CCF23D83C7C005D1946 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				647A7CCD23D83C61005D1946 /* UIImage+Extension.swift */,
+				647A7CCB23D83BCE005D1946 /* UIStoryboard+Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,8 +195,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				647A7CD123D83DCA005D1946 /* Auth.storyboard in Resources */,
+				647A7CC623D83B92005D1946 /* Chat.storyboard in Resources */,
 				647A7CB823D83377005D1946 /* LaunchScreen.storyboard in Resources */,
 				647A7CC023D833D4005D1946 /* GoogleService-Info.plist in Resources */,
+				647A7CC423D83B7F005D1946 /* Profile.storyboard in Resources */,
+				647A7CC823D83BA0005D1946 /* Craftsmen.storyboard in Resources */,
+				647A7CCA23D83BB0005D1946 /* Article.storyboard in Resources */,
 				647A7CB523D83377005D1946 /* Assets.xcassets in Resources */,
 				647A7CB323D83376005D1946 /* Main.storyboard in Resources */,
 			);
@@ -208,7 +256,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				647A7CB023D83376005D1946 /* ViewController.swift in Sources */,
+				647A7CB023D83376005D1946 /* STTabBarViewController.swift in Sources */,
+				647A7CD523D83E49005D1946 /* CraftsmenViewController.swift in Sources */,
+				647A7CD723D83E55005D1946 /* ChatViewController.swift in Sources */,
+				647A7CC223D83718005D1946 /* ArticleViewController.swift in Sources */,
+				647A7CCE23D83C61005D1946 /* UIImage+Extension.swift in Sources */,
+				647A7CCC23D83BCE005D1946 /* UIStoryboard+Extension.swift in Sources */,
+				647A7CD923D83E5E005D1946 /* ProfileViewController.swift in Sources */,
+				647A7CD323D83E33005D1946 /* AuthViewController.swift in Sources */,
 				647A7CAC23D83376005D1946 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
