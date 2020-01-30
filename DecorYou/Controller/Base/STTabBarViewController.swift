@@ -55,22 +55,22 @@ private enum Tab {
         case .craftsmen:
             return UITabBarItem(
                 title: nil,
-                image: UIImage.asset(.Icons_36px_Catalog_Normal),
-                selectedImage: UIImage.asset(.Icons_36px_Catalog_Selected)
+                image: UIImage.asset(.Icons_36px_Home_Normal),
+                selectedImage: UIImage.asset(.Icons_36px_Home_Selected)
             )
             
         case .chat:
             return UITabBarItem(
                 title: nil,
-                image: UIImage.asset(.Icons_36px_Cart_Normal),
-                selectedImage: UIImage.asset(.Icons_36px_Cart_Selected)
+                image: UIImage.asset(.Icons_36px_Home_Normal),
+                selectedImage: UIImage.asset(.Icons_36px_Home_Selected)
             )
             
         case .profile:
             return UITabBarItem(
                 title: nil,
-                image: UIImage.asset(.Icons_36px_Cart_Normal),
-                selectedImage: UIImage.asset(.Icons_36px_Cart_Selected)
+                image: UIImage.asset(.Icons_36px_Home_Normal),
+                selectedImage: UIImage.asset(.Icons_36px_Home_Selected)
             )
             
         }

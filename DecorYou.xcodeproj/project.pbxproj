@@ -28,6 +28,9 @@
 		647A7CD923D83E5E005D1946 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647A7CD823D83E5E005D1946 /* ProfileViewController.swift */; };
 		64FA429323DD3B9D0065DCEF /* STNoUnderlineNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA429223DD3B9D0065DCEF /* STNoUnderlineNavigationController.swift */; };
 		64FA429523DD3BD60065DCEF /* STBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA429423DD3BD60065DCEF /* STBaseViewController.swift */; };
+		64FA429A23E341440065DCEF /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA429823E341440065DCEF /* ArticleTableViewCell.swift */; };
+		64FA429B23E341440065DCEF /* ArticleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FA429923E341440065DCEF /* ArticleTableViewCell.xib */; };
+		64FA429D23E347060065DCEF /* KingFisherWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA429C23E347060065DCEF /* KingFisherWrapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +59,9 @@
 		647A7CD823D83E5E005D1946 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		64FA429223DD3B9D0065DCEF /* STNoUnderlineNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STNoUnderlineNavigationController.swift; sourceTree = "<group>"; };
 		64FA429423DD3BD60065DCEF /* STBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STBaseViewController.swift; sourceTree = "<group>"; };
+		64FA429823E341440065DCEF /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
+		64FA429923E341440065DCEF /* ArticleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleTableViewCell.xib; sourceTree = "<group>"; };
+		64FA429C23E347060065DCEF /* KingFisherWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingFisherWrapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +131,7 @@
 			children = (
 				647A7CCD23D83C61005D1946 /* UIImage+Extension.swift */,
 				647A7CCB23D83BCE005D1946 /* UIStoryboard+Extension.swift */,
+				64FA429C23E347060065DCEF /* KingFisherWrapper.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -147,7 +154,7 @@
 			children = (
 				647A7CB123D83376005D1946 /* Main.storyboard */,
 				647A7CD023D83DCA005D1946 /* Auth.storyboard */,
-				647A7CC923D83BB0005D1946 /* Article.storyboard */,
+				64FA429E23E349510065DCEF /* Article */,
 				647A7CC723D83BA0005D1946 /* Craftsmen.storyboard */,
 				647A7CC523D83B92005D1946 /* Chat.storyboard */,
 				647A7CC323D83B7F005D1946 /* Profile.storyboard */,
@@ -163,6 +170,16 @@
 				64FA429423DD3BD60065DCEF /* STBaseViewController.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		64FA429E23E349510065DCEF /* Article */ = {
+			isa = PBXGroup;
+			children = (
+				647A7CC923D83BB0005D1946 /* Article.storyboard */,
+				64FA429823E341440065DCEF /* ArticleTableViewCell.swift */,
+				64FA429923E341440065DCEF /* ArticleTableViewCell.xib */,
+			);
+			path = Article;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,6 +242,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64FA429B23E341440065DCEF /* ArticleTableViewCell.xib in Resources */,
 				647A7CD123D83DCA005D1946 /* Auth.storyboard in Resources */,
 				647A7CC623D83B92005D1946 /* Chat.storyboard in Resources */,
 				647A7CB823D83377005D1946 /* LaunchScreen.storyboard in Resources */,
@@ -290,9 +308,11 @@
 				647A7CD523D83E49005D1946 /* CraftsmenViewController.swift in Sources */,
 				647A7CD723D83E55005D1946 /* ChatViewController.swift in Sources */,
 				647A7CC223D83718005D1946 /* ArticleViewController.swift in Sources */,
+				64FA429A23E341440065DCEF /* ArticleTableViewCell.swift in Sources */,
 				647A7CCE23D83C61005D1946 /* UIImage+Extension.swift in Sources */,
 				647A7CCC23D83BCE005D1946 /* UIStoryboard+Extension.swift in Sources */,
 				64FA429323DD3B9D0065DCEF /* STNoUnderlineNavigationController.swift in Sources */,
+				64FA429D23E347060065DCEF /* KingFisherWrapper.swift in Sources */,
 				647A7CD923D83E5E005D1946 /* ProfileViewController.swift in Sources */,
 				64FA429523DD3BD60065DCEF /* STBaseViewController.swift in Sources */,
 				647A7CD323D83E33005D1946 /* AuthViewController.swift in Sources */,

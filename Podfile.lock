@@ -60,6 +60,9 @@ PODS:
   - GoogleUtilities/UserDefaults (6.4.0):
     - GoogleUtilities/Logger
   - IQKeyboardManagerSwift (6.5.5)
+  - Kingfisher (5.11.0):
+    - Kingfisher/Core (= 5.11.0)
+  - Kingfisher/Core (5.11.0)
   - nanopb (0.3.9011):
     - nanopb/decode (= 0.3.9011)
     - nanopb/encode (= 0.3.9011)
@@ -69,6 +72,7 @@ PODS:
 DEPENDENCIES:
   - Firebase/Analytics
   - IQKeyboardManagerSwift
+  - Kingfisher (~> 5.0)
 
 SPEC REPOS:
   trunk:
@@ -83,6 +87,7 @@ SPEC REPOS:
     - GoogleDataTransportCCTSupport
     - GoogleUtilities
     - IQKeyboardManagerSwift
+    - Kingfisher
     - nanopb
 
 SPEC CHECKSUMS:
@@ -97,8 +102,9 @@ SPEC CHECKSUMS:
   GoogleDataTransportCCTSupport: 202d7cdf9c4a7d81a2bb7f7e7e1ba6faa421b1f2
   GoogleUtilities: 29bd0d8f850efbd28cff6d99e8b7da1f8d236bcf
   IQKeyboardManagerSwift: 0fb93310284665245591f50f7a5e38de615960b7
+  Kingfisher: 4569606189149e19c7d9439f47e885d0679b7a90
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
 
-PODFILE CHECKSUM: 14def0f38a5bb43ac9d666c112cdabfe9b3b8714
+PODFILE CHECKSUM: 8f4f1fe6f2cd5a4a032b914547d30e03368148f9
 
 COCOAPODS: 1.8.4
