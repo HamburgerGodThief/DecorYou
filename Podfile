@@ -7,4 +7,5 @@ target 'DecorYou' do
 
   # Pods for DecorYou
   pod 'Firebase/Analytics'
+  pod 'IQKeyboardManagerSwift'
 end
