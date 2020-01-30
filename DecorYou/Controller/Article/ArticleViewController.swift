@@ -12,6 +12,7 @@ import UIKit
 class ArticleViewController: UIViewController {
     
     @IBOutlet weak var articleTableView: UITableView!
+    @IBOutlet weak var newPostBtn: UIButton!
     
     func searchBar() {
         let searchBar = UISearchBar()
@@ -24,6 +25,12 @@ class ArticleViewController: UIViewController {
         navigationController?.navigationBar.backgroundColor = UIColor.brown
     }
     
+    func setNewPost() {
+        newPostBtn.setImage(UIImage.asset(.Icons_24px_DropDown), for: .normal)
+        newPostBtn.backgroundColor = UIColor.brown
+        newPostBtn.layer.cornerRadius = newPostBtn.frame.size.width / 2
+    }
+    
     @objc func changeLayout() {
         
     }
@@ -32,12 +39,23 @@ class ArticleViewController: UIViewController {
         
     }
     
+    @IBAction func createNewPost(_ sender: Any) {
+        
+        guard let newPostViewController = storyboard?.instantiateViewController(withIdentifier: "NewPostViewController") as? NewPostViewController else { return }
+
+        navigationController?.pushViewController(newPostViewController, animated: true)
+        tabBarController?.tabBar.isHidden = true
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         articleTableView.delegate = self
         articleTableView.dataSource = self
         articleTableView.register(ArticleTableViewCell.self, forCellReuseIdentifier: String(describing: ArticleTableViewCell.self))
+        articleTableView.separatorStyle = .singleLine
         searchBar()
+        setNewPost()
     }
 }
 
