@@ -17,7 +17,7 @@ class ArticleTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        authorImgView.layer.cornerRadius = self.authorImgView.frame.size.width / 2
+        authorImgView.layer.cornerRadius = authorImgView.frame.size.width / 2
         // Initialization code
     }
 
@@ -28,7 +28,7 @@ class ArticleTableViewCell: UITableViewCell {
     }
     
     func fillData(authorImgView: String, titleLabel: String, nameTimeLabel: String, contentLabel: String) {
-        self.authorImgView.loadImage(authorImgView)
+//        self.authorImgView.loadImage(authorImgView)
         self.titleLabel.text = titleLabel
         self.nameTimeLabel.text = nameTimeLabel
         self.contentLabel.text = contentLabel

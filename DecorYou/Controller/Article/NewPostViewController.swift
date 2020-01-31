@@ -47,7 +47,7 @@ class NewPostViewController: UIViewController {
         setNavigationBar()
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(NewPostTableViewCell.self, forCellReuseIdentifier: String(describing: NewPostTableViewCell.self))
+        tableView.lk_registerCellWithNib(identifier: String(describing: NewPostTableViewCell.self), bundle: nil)
     }
     
 }

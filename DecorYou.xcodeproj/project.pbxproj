@@ -33,6 +33,10 @@
 		64FA42A223E35F2D0065DCEF /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA42A123E35F2D0065DCEF /* NewPostViewController.swift */; };
 		64FA42A623E382DF0065DCEF /* NewPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA42A423E382DF0065DCEF /* NewPostTableViewCell.swift */; };
 		64FA42A723E382DF0065DCEF /* NewPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FA42A523E382DF0065DCEF /* NewPostTableViewCell.xib */; };
+		64FA42AA23E393280065DCEF /* CraftsmenCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA42A823E393280065DCEF /* CraftsmenCollectionViewCell.swift */; };
+		64FA42AB23E393280065DCEF /* CraftsmenCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FA42A923E393280065DCEF /* CraftsmenCollectionViewCell.xib */; };
+		64FA42AE23E3A7990065DCEF /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA42AD23E3A7990065DCEF /* UICollectionView+Extension.swift */; };
+		64FA42B023E3A7C80065DCEF /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA42AF23E3A7C80065DCEF /* UITableView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +70,10 @@
 		64FA42A123E35F2D0065DCEF /* NewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
 		64FA42A423E382DF0065DCEF /* NewPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostTableViewCell.swift; sourceTree = "<group>"; };
 		64FA42A523E382DF0065DCEF /* NewPostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewPostTableViewCell.xib; sourceTree = "<group>"; };
+		64FA42A823E393280065DCEF /* CraftsmenCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CraftsmenCollectionViewCell.swift; sourceTree = "<group>"; };
+		64FA42A923E393280065DCEF /* CraftsmenCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CraftsmenCollectionViewCell.xib; sourceTree = "<group>"; };
+		64FA42AD23E3A7990065DCEF /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
+		64FA42AF23E3A7C80065DCEF /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +144,8 @@
 				647A7CCD23D83C61005D1946 /* UIImage+Extension.swift */,
 				647A7CCB23D83BCE005D1946 /* UIStoryboard+Extension.swift */,
 				64FA429C23E347060065DCEF /* KingFisherWrapper.swift */,
+				64FA42AD23E3A7990065DCEF /* UICollectionView+Extension.swift */,
+				64FA42AF23E3A7C80065DCEF /* UITableView+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -159,7 +169,7 @@
 				647A7CB123D83376005D1946 /* Main.storyboard */,
 				647A7CD023D83DCA005D1946 /* Auth.storyboard */,
 				64FA429E23E349510065DCEF /* Article */,
-				647A7CC723D83BA0005D1946 /* Craftsmen.storyboard */,
+				64FA42AC23E3932E0065DCEF /* Craftsmen */,
 				647A7CC523D83B92005D1946 /* Chat.storyboard */,
 				647A7CC323D83B7F005D1946 /* Profile.storyboard */,
 			);
@@ -194,6 +204,16 @@
 				64FA42A123E35F2D0065DCEF /* NewPostViewController.swift */,
 			);
 			path = Article;
+			sourceTree = "<group>";
+		};
+		64FA42AC23E3932E0065DCEF /* Craftsmen */ = {
+			isa = PBXGroup;
+			children = (
+				647A7CC723D83BA0005D1946 /* Craftsmen.storyboard */,
+				64FA42A823E393280065DCEF /* CraftsmenCollectionViewCell.swift */,
+				64FA42A923E393280065DCEF /* CraftsmenCollectionViewCell.xib */,
+			);
+			path = Craftsmen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,6 +286,7 @@
 				647A7CCA23D83BB0005D1946 /* Article.storyboard in Resources */,
 				64FA42A723E382DF0065DCEF /* NewPostTableViewCell.xib in Resources */,
 				647A7CB523D83377005D1946 /* Assets.xcassets in Resources */,
+				64FA42AB23E393280065DCEF /* CraftsmenCollectionViewCell.xib in Resources */,
 				647A7CB323D83376005D1946 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -325,8 +346,11 @@
 				64FA42A223E35F2D0065DCEF /* NewPostViewController.swift in Sources */,
 				64FA42A623E382DF0065DCEF /* NewPostTableViewCell.swift in Sources */,
 				647A7CC223D83718005D1946 /* ArticleViewController.swift in Sources */,
+				64FA42B023E3A7C80065DCEF /* UITableView+Extension.swift in Sources */,
+				64FA42AE23E3A7990065DCEF /* UICollectionView+Extension.swift in Sources */,
 				64FA429A23E341440065DCEF /* ArticleTableViewCell.swift in Sources */,
 				647A7CCE23D83C61005D1946 /* UIImage+Extension.swift in Sources */,
+				64FA42AA23E393280065DCEF /* CraftsmenCollectionViewCell.swift in Sources */,
 				647A7CCC23D83BCE005D1946 /* UIStoryboard+Extension.swift in Sources */,
 				64FA429D23E347060065DCEF /* KingFisherWrapper.swift in Sources */,
 				647A7CD923D83E5E005D1946 /* ProfileViewController.swift in Sources */,

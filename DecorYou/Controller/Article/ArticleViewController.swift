@@ -52,8 +52,7 @@ class ArticleViewController: UIViewController {
         super.viewDidLoad()
         articleTableView.delegate = self
         articleTableView.dataSource = self
-        articleTableView.register(ArticleTableViewCell.self, forCellReuseIdentifier: String(describing: ArticleTableViewCell.self))
-        articleTableView.separatorStyle = .singleLine
+        articleTableView.lk_registerCellWithNib(identifier: String(describing: ArticleTableViewCell.self), bundle: nil)
         searchBar()
         setNewPost()
     }
