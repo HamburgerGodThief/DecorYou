@@ -23,7 +23,7 @@ class CraftsmenCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        logoImg.layer.cornerRadius = logoImg.frame.size.width / 4
+        logoImg.layer.cornerRadius = logoImg.frame.size.width / 2
         // Initialization code
     }
 

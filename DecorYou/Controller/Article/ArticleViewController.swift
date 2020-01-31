@@ -40,8 +40,8 @@ class ArticleViewController: UIViewController {
     }
     
     @IBAction func createNewPost(_ sender: Any) {
-        
-        guard let newPostViewController = storyboard?.instantiateViewController(withIdentifier: "NewPostViewController") as? NewPostViewController else { return }
+        let storyboard = UIStoryboard(name: "Article", bundle: nil)
+        guard let newPostViewController = storyboard.instantiateViewController(withIdentifier: "NewPostViewController") as? NewPostViewController else { return }
 
         navigationController?.pushViewController(newPostViewController, animated: true)
         tabBarController?.tabBar.isHidden = true

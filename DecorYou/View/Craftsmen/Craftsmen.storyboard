@@ -56,6 +56,21 @@
             </objects>
             <point key="canvasLocation" x="1057.9710144927537" y="67.633928571428569"/>
         </scene>
+        <!--Resume View Controller-->
+        <scene sceneID="RHo-Aa-JuL">
+            <objects>
+                <viewController storyboardIdentifier="ResumeViewController" id="LVR-DT-Hub" customClass="ResumeViewController" customModule="DecorYou" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lLV-fl-EJn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="jDQ-jJ-yNo"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DGQ-89-qMk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1741" y="65"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="7M4-Uc-KvE">
             <objects>
