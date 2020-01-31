@@ -27,10 +27,10 @@ class ArticleTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func fillData(authorImgView: String, titleLabel: String, nameTimeLabel: String, contentLabel: String) {
+//    func fillData(authorImgView: String, titleLabel: String, nameTimeLabel: String, contentLabel: String) {
 //        self.authorImgView.loadImage(authorImgView)
-        self.titleLabel.text = titleLabel
-        self.nameTimeLabel.text = nameTimeLabel
-        self.contentLabel.text = contentLabel
-    }
+//        self.titleLabel.text = titleLabel
+//        self.nameTimeLabel.text = nameTimeLabel
+//        self.contentLabel.text = contentLabel
+//    }
 }
