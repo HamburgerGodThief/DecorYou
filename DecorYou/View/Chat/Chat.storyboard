@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Wgj-A7-Pqg">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Chat View Controller-->
+        <scene sceneID="2py-j8-j1H">
+            <objects>
+                <viewController storyboardIdentifier="Chat" useStoryboardIdentifierAsRestorationIdentifier="YES" id="a77-dx-ZXz" customClass="ChatViewController" customModule="DecorYou" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WcW-qV-BD6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XO1-JI-u9Y">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="XO1-JI-u9Y" firstAttribute="leading" secondItem="bBl-c1-8nz" secondAttribute="leading" id="6xP-I6-zlS"/>
+                            <constraint firstItem="bBl-c1-8nz" firstAttribute="trailing" secondItem="XO1-JI-u9Y" secondAttribute="trailing" id="RKx-jD-7Ll"/>
+                            <constraint firstItem="bBl-c1-8nz" firstAttribute="bottom" secondItem="XO1-JI-u9Y" secondAttribute="bottom" id="dlN-kg-1in"/>
+                            <constraint firstItem="XO1-JI-u9Y" firstAttribute="top" secondItem="bBl-c1-8nz" secondAttribute="top" id="jdP-g9-Vhi"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bBl-c1-8nz"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="6En-bC-Sc7"/>
+                    <connections>
+                        <outlet property="chatListTableView" destination="XO1-JI-u9Y" id="Dsa-Uy-jWL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="soa-Mc-UPe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="947.82608695652186" y="111.83035714285714"/>
+        </scene>
+        <!--Chat Room View Controller-->
+        <scene sceneID="in9-6R-Tma">
+            <objects>
+                <viewController storyboardIdentifier="ChatRoomViewController" id="mxL-3G-fEI" customClass="ChatRoomViewController" customModule="DecorYou" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oRP-ub-eKp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="7l4-fc-GOm"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3QC-oy-EcH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1696" y="113"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="9G7-hR-Oj3">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Wgj-A7-Pqg" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sIv-Jh-cff">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="a77-dx-ZXz" kind="relationship" relationship="rootViewController" id="Vvx-6M-q9O"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9GH-Rq-uaG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="37.681159420289859" y="111.83035714285714"/>
+        </scene>
+    </scenes>
+</document>
