@@ -72,6 +72,7 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
         let storyboard = UIStoryboard(name: "Chat", bundle: nil)
         guard let charRoomViewController = storyboard.instantiateViewController(withIdentifier: "ChatRoomViewController") as? ChatRoomViewController else { return }
         navigationController?.pushViewController(charRoomViewController, animated: true)
+        charRoomViewController.tabBarController?.tabBar.isHidden = true
     }
     
 }
