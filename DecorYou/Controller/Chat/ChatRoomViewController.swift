@@ -11,13 +11,15 @@ import UIKit
 class ChatRoomViewController: UIViewController {
     
     @IBOutlet weak var chatRoomTableView: UITableView!
-    let bottomView = ChatRoomBottomView()
     
     func setTableView() {
         chatRoomTableView.delegate = self
         chatRoomTableView.dataSource = self
         chatRoomTableView.lk_registerCellWithNib(identifier: String(describing: ChatRoomTableViewCell.self), bundle: nil)
+        chatRoomTableView.lk_registerCellWithNib(identifier: String(describing: ChatRoomSelfTableViewCell.self), bundle: nil)
         chatRoomTableView.separatorStyle = .none
+        chatRoomTableView.rowHeight = UITableView.automaticDimension
+        chatRoomTableView.estimatedRowHeight = 150
     }
     
     func setNavigationBar() {
@@ -32,6 +34,8 @@ class ChatRoomViewController: UIViewController {
     }
     
     func setBottomView() {
+        let bottomView = UINib(nibName: "ChatRoomBottomView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! ChatRoomBottomView
+        
         view.addSubview(bottomView)
         bottomView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -39,10 +43,9 @@ class ChatRoomViewController: UIViewController {
             bottomView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             bottomView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             bottomView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-            bottomView.heightAnchor.constraint(equalToConstant: 30)
+            bottomView.heightAnchor.constraint(equalToConstant: 80)
         ])
         
-//        bottomView.layoutIfNeeded()
     }
     
     @objc func backToRoomList() {
@@ -54,17 +57,25 @@ class ChatRoomViewController: UIViewController {
         setTableView()
         setNavigationBar()
         setBottomView()
+        
     }
 }
 
 extension ChatRoomViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == 2 {
+            guard let selfCell = tableView.dequeueReusableCell(withIdentifier: String(describing: ChatRoomSelfTableViewCell.self), for: indexPath) as? ChatRoomSelfTableViewCell else { return UITableViewCell() }
+            selfCell.messageLabel.text = "Test是在哈囉，loveloveyouyouloveyouLove<3<3<3<3 ^_^ >_^"
+            return selfCell
+        }
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ChatRoomTableViewCell.self), for: indexPath) as? ChatRoomTableViewCell else { return UITableViewCell() }
+        cell.messageLabel.text = "Test是在哈囉，loveloveyouyouloveyouLove<3<3<3<3 ^_^ >_^"
         
         return cell
     }

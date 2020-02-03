@@ -7,26 +7,26 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChatRoomBottomView" customModule="DecorYou" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ChatRoomBottomView" customModule="DecorYou" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="363" height="49"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oAx-hS-HCS">
-                    <rect key="frame" x="10" y="9.5" width="46" height="30"/>
+                    <rect key="frame" x="10" y="14" width="46" height="30"/>
                     <state key="normal" title="Button"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="viD-AT-s5f">
-                    <rect key="frame" x="66" y="9.5" width="46" height="30"/>
+                    <rect key="frame" x="66" y="14" width="46" height="30"/>
                     <state key="normal" title="Button"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DZ4-sQ-MY7">
-                    <rect key="frame" x="307" y="9.5" width="46" height="30"/>
+                    <rect key="frame" x="307" y="14" width="46" height="30"/>
                     <state key="normal" title="Button"/>
                 </button>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JAI-Eo-3xz">
-                    <rect key="frame" x="122" y="9.5" width="175" height="30"/>
+                    <rect key="frame" x="122" y="10" width="175" height="30"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="9Al-U0-Ygp"/>
@@ -37,20 +37,26 @@
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
             </subviews>
-            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="viD-AT-s5f" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="0dB-co-Det"/>
+                <constraint firstItem="oAx-hS-HCS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="14" id="1dF-zU-vaz"/>
                 <constraint firstItem="viD-AT-s5f" firstAttribute="leading" secondItem="oAx-hS-HCS" secondAttribute="trailing" constant="10" id="3Ri-bN-i6W"/>
+                <constraint firstItem="JAI-Eo-3xz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="6Wv-S2-QWg"/>
+                <constraint firstItem="viD-AT-s5f" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="14" id="RfH-Lk-Ak4"/>
                 <constraint firstItem="DZ4-sQ-MY7" firstAttribute="leading" secondItem="JAI-Eo-3xz" secondAttribute="trailing" constant="10" id="U2O-Nc-ixn"/>
-                <constraint firstItem="JAI-Eo-3xz" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="VHV-Pk-gG3"/>
-                <constraint firstItem="DZ4-sQ-MY7" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Xa1-aa-JJo"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="DZ4-sQ-MY7" secondAttribute="trailing" constant="10" id="YET-xc-Bxw"/>
                 <constraint firstItem="JAI-Eo-3xz" firstAttribute="leading" secondItem="viD-AT-s5f" secondAttribute="trailing" constant="10" id="dGe-Xy-mSZ"/>
-                <constraint firstItem="oAx-hS-HCS" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="njn-kM-3Jx"/>
+                <constraint firstItem="DZ4-sQ-MY7" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="14" id="eI3-jk-UPS"/>
                 <constraint firstItem="oAx-hS-HCS" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="wIr-VR-nfU"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="albumBtn" destination="viD-AT-s5f" id="pcX-cX-0Qg"/>
+                <outlet property="cameraBtn" destination="oAx-hS-HCS" id="F2A-Is-jB7"/>
+                <outlet property="messageTextView" destination="JAI-Eo-3xz" id="NBw-w5-5Xt"/>
+                <outlet property="sendBtn" destination="DZ4-sQ-MY7" id="m02-fG-cpI"/>
+            </connections>
             <point key="canvasLocation" x="410.86956521739131" y="152.34375"/>
         </view>
     </objects>

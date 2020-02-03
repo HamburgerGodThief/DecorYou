@@ -52,6 +52,8 @@
 		64FC819A23E7EE2D0027DDEE /* ChatRoomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FC819823E7EE2D0027DDEE /* ChatRoomTableViewCell.xib */; };
 		64FC819E23E7FC190027DDEE /* ChatRoomBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FC819D23E7FC190027DDEE /* ChatRoomBottomView.xib */; };
 		64FC81A023E7FC9A0027DDEE /* ChatRoomBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC819F23E7FC9A0027DDEE /* ChatRoomBottomView.swift */; };
+		64FE4EC023E8091800A5D3EC /* ChatRoomSelfTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FE4EBE23E8091800A5D3EC /* ChatRoomSelfTableViewCell.swift */; };
+		64FE4EC123E8091800A5D3EC /* ChatRoomSelfTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FE4EBF23E8091800A5D3EC /* ChatRoomSelfTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,6 +106,8 @@
 		64FC819823E7EE2D0027DDEE /* ChatRoomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatRoomTableViewCell.xib; sourceTree = "<group>"; };
 		64FC819D23E7FC190027DDEE /* ChatRoomBottomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatRoomBottomView.xib; sourceTree = "<group>"; };
 		64FC819F23E7FC9A0027DDEE /* ChatRoomBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomBottomView.swift; sourceTree = "<group>"; };
+		64FE4EBE23E8091800A5D3EC /* ChatRoomSelfTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomSelfTableViewCell.swift; sourceTree = "<group>"; };
+		64FE4EBF23E8091800A5D3EC /* ChatRoomSelfTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatRoomSelfTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,6 +276,8 @@
 				64FC819223E7E4D70027DDEE /* ChatListTableViewCell.xib */,
 				64FC819723E7EE2D0027DDEE /* ChatRoomTableViewCell.swift */,
 				64FC819823E7EE2D0027DDEE /* ChatRoomTableViewCell.xib */,
+				64FE4EBE23E8091800A5D3EC /* ChatRoomSelfTableViewCell.swift */,
+				64FE4EBF23E8091800A5D3EC /* ChatRoomSelfTableViewCell.xib */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -357,6 +363,7 @@
 				64FA42B723E7B3800065DCEF /* ResumeCollectionViewCell.xib in Resources */,
 				64FC819423E7E4D70027DDEE /* ChatListTableViewCell.xib in Resources */,
 				647A7CCA23D83BB0005D1946 /* Article.storyboard in Resources */,
+				64FE4EC123E8091800A5D3EC /* ChatRoomSelfTableViewCell.xib in Resources */,
 				64FA42A723E382DF0065DCEF /* NewPostTableViewCell.xib in Resources */,
 				647A7CB523D83377005D1946 /* Assets.xcassets in Resources */,
 				64FC819E23E7FC190027DDEE /* ChatRoomBottomView.xib in Resources */,
@@ -423,6 +430,7 @@
 				64FA42A223E35F2D0065DCEF /* NewPostViewController.swift in Sources */,
 				64FA42A623E382DF0065DCEF /* NewPostTableViewCell.swift in Sources */,
 				64FA42B623E7B3800065DCEF /* ResumeCollectionViewCell.swift in Sources */,
+				64FE4EC023E8091800A5D3EC /* ChatRoomSelfTableViewCell.swift in Sources */,
 				64FC819323E7E4D70027DDEE /* ChatListTableViewCell.swift in Sources */,
 				647A7CC223D83718005D1946 /* ArticleViewController.swift in Sources */,
 				64FA42B023E3A7C80065DCEF /* UITableView+Extension.swift in Sources */,

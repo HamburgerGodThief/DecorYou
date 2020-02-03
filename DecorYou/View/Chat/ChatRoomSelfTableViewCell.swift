@@ -1,5 +1,5 @@
 //
-//  ChatRoomTableViewCell.swift
+//  ChatRoomSelfTableViewCell.swift
 //  DecorYou
 //
 //  Created by Hamburger on 2020/2/3.
@@ -8,18 +8,15 @@
 
 import UIKit
 
-class ChatRoomTableViewCell: UITableViewCell {
+class ChatRoomSelfTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var logoImg: UIImageView!
     @IBOutlet weak var messageLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        logoImg.layer.cornerRadius = logoImg.frame.width / 2
     }
-    
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
