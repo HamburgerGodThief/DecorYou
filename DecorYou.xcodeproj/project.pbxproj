@@ -38,6 +38,9 @@
 		64FA42AE23E3A7990065DCEF /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA42AD23E3A7990065DCEF /* UICollectionView+Extension.swift */; };
 		64FA42B023E3A7C80065DCEF /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA42AF23E3A7C80065DCEF /* UITableView+Extension.swift */; };
 		64FA42B323E3C5CD0065DCEF /* ResumeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA42B223E3C5CD0065DCEF /* ResumeViewController.swift */; };
+		64FA42B623E7B3800065DCEF /* ResumeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA42B423E7B3800065DCEF /* ResumeCollectionViewCell.swift */; };
+		64FA42B723E7B3800065DCEF /* ResumeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FA42B523E7B3800065DCEF /* ResumeCollectionViewCell.xib */; };
+		64FA42B923E7B74E0065DCEF /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA42B823E7B74E0065DCEF /* PortfolioViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +79,9 @@
 		64FA42AD23E3A7990065DCEF /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		64FA42AF23E3A7C80065DCEF /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		64FA42B223E3C5CD0065DCEF /* ResumeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeViewController.swift; sourceTree = "<group>"; };
+		64FA42B423E7B3800065DCEF /* ResumeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeCollectionViewCell.swift; sourceTree = "<group>"; };
+		64FA42B523E7B3800065DCEF /* ResumeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResumeCollectionViewCell.xib; sourceTree = "<group>"; };
+		64FA42B823E7B74E0065DCEF /* PortfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +220,8 @@
 				647A7CC723D83BA0005D1946 /* Craftsmen.storyboard */,
 				64FA42A823E393280065DCEF /* CraftsmenCollectionViewCell.swift */,
 				64FA42A923E393280065DCEF /* CraftsmenCollectionViewCell.xib */,
+				64FA42B423E7B3800065DCEF /* ResumeCollectionViewCell.swift */,
+				64FA42B523E7B3800065DCEF /* ResumeCollectionViewCell.xib */,
 			);
 			path = Craftsmen;
 			sourceTree = "<group>";
@@ -223,6 +231,7 @@
 			children = (
 				647A7CD423D83E49005D1946 /* CraftsmenViewController.swift */,
 				64FA42B223E3C5CD0065DCEF /* ResumeViewController.swift */,
+				64FA42B823E7B74E0065DCEF /* PortfolioViewController.swift */,
 			);
 			path = Craftsmen;
 			sourceTree = "<group>";
@@ -294,6 +303,7 @@
 				647A7CC023D833D4005D1946 /* GoogleService-Info.plist in Resources */,
 				647A7CC423D83B7F005D1946 /* Profile.storyboard in Resources */,
 				647A7CC823D83BA0005D1946 /* Craftsmen.storyboard in Resources */,
+				64FA42B723E7B3800065DCEF /* ResumeCollectionViewCell.xib in Resources */,
 				647A7CCA23D83BB0005D1946 /* Article.storyboard in Resources */,
 				64FA42A723E382DF0065DCEF /* NewPostTableViewCell.xib in Resources */,
 				647A7CB523D83377005D1946 /* Assets.xcassets in Resources */,
@@ -352,10 +362,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				647A7CB023D83376005D1946 /* STTabBarViewController.swift in Sources */,
+				64FA42B923E7B74E0065DCEF /* PortfolioViewController.swift in Sources */,
 				647A7CD523D83E49005D1946 /* CraftsmenViewController.swift in Sources */,
 				647A7CD723D83E55005D1946 /* ChatViewController.swift in Sources */,
 				64FA42A223E35F2D0065DCEF /* NewPostViewController.swift in Sources */,
 				64FA42A623E382DF0065DCEF /* NewPostTableViewCell.swift in Sources */,
+				64FA42B623E7B3800065DCEF /* ResumeCollectionViewCell.swift in Sources */,
 				647A7CC223D83718005D1946 /* ArticleViewController.swift in Sources */,
 				64FA42B023E3A7C80065DCEF /* UITableView+Extension.swift in Sources */,
 				64FA42AE23E3A7990065DCEF /* UICollectionView+Extension.swift in Sources */,
