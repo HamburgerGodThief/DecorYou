@@ -41,6 +41,13 @@
 		64FA42B623E7B3800065DCEF /* ResumeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA42B423E7B3800065DCEF /* ResumeCollectionViewCell.swift */; };
 		64FA42B723E7B3800065DCEF /* ResumeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FA42B523E7B3800065DCEF /* ResumeCollectionViewCell.xib */; };
 		64FA42B923E7B74E0065DCEF /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA42B823E7B74E0065DCEF /* PortfolioViewController.swift */; };
+		64FC818923E7BF3F0027DDEE /* PortfolioCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC818723E7BF3F0027DDEE /* PortfolioCollectionViewCell.swift */; };
+		64FC818A23E7BF3F0027DDEE /* PortfolioCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FC818823E7BF3F0027DDEE /* PortfolioCollectionViewCell.xib */; };
+		64FC818D23E7C26E0027DDEE /* PortfolioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC818B23E7C26E0027DDEE /* PortfolioTableViewCell.swift */; };
+		64FC818E23E7C26E0027DDEE /* PortfolioTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FC818C23E7C26E0027DDEE /* PortfolioTableViewCell.xib */; };
+		64FC819323E7E4D70027DDEE /* ChatListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC819123E7E4D70027DDEE /* ChatListTableViewCell.swift */; };
+		64FC819423E7E4D70027DDEE /* ChatListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FC819223E7E4D70027DDEE /* ChatListTableViewCell.xib */; };
+		64FC819623E7E9D70027DDEE /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC819523E7E9D70027DDEE /* ChatRoomViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +89,13 @@
 		64FA42B423E7B3800065DCEF /* ResumeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeCollectionViewCell.swift; sourceTree = "<group>"; };
 		64FA42B523E7B3800065DCEF /* ResumeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResumeCollectionViewCell.xib; sourceTree = "<group>"; };
 		64FA42B823E7B74E0065DCEF /* PortfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
+		64FC818723E7BF3F0027DDEE /* PortfolioCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioCollectionViewCell.swift; sourceTree = "<group>"; };
+		64FC818823E7BF3F0027DDEE /* PortfolioCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PortfolioCollectionViewCell.xib; sourceTree = "<group>"; };
+		64FC818B23E7C26E0027DDEE /* PortfolioTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioTableViewCell.swift; sourceTree = "<group>"; };
+		64FC818C23E7C26E0027DDEE /* PortfolioTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PortfolioTableViewCell.xib; sourceTree = "<group>"; };
+		64FC819123E7E4D70027DDEE /* ChatListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListTableViewCell.swift; sourceTree = "<group>"; };
+		64FC819223E7E4D70027DDEE /* ChatListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatListTableViewCell.xib; sourceTree = "<group>"; };
+		64FC819523E7E9D70027DDEE /* ChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,7 +178,7 @@
 				64FA429123DD3B850065DCEF /* Base */,
 				64FA42A323E381090065DCEF /* Article */,
 				64FA42B123E3C5B10065DCEF /* Craftsmen */,
-				647A7CD623D83E55005D1946 /* ChatViewController.swift */,
+				64FC819023E7DB6E0027DDEE /* Chat */,
 				647A7CD823D83E5E005D1946 /* ProfileViewController.swift */,
 				647A7CD223D83E33005D1946 /* AuthViewController.swift */,
 			);
@@ -178,7 +192,7 @@
 				647A7CD023D83DCA005D1946 /* Auth.storyboard */,
 				64FA429E23E349510065DCEF /* Article */,
 				64FA42AC23E3932E0065DCEF /* Craftsmen */,
-				647A7CC523D83B92005D1946 /* Chat.storyboard */,
+				64FC818F23E7CF230027DDEE /* Chat */,
 				647A7CC323D83B7F005D1946 /* Profile.storyboard */,
 			);
 			path = View;
@@ -218,6 +232,10 @@
 			isa = PBXGroup;
 			children = (
 				647A7CC723D83BA0005D1946 /* Craftsmen.storyboard */,
+				64FC818B23E7C26E0027DDEE /* PortfolioTableViewCell.swift */,
+				64FC818C23E7C26E0027DDEE /* PortfolioTableViewCell.xib */,
+				64FC818723E7BF3F0027DDEE /* PortfolioCollectionViewCell.swift */,
+				64FC818823E7BF3F0027DDEE /* PortfolioCollectionViewCell.xib */,
 				64FA42A823E393280065DCEF /* CraftsmenCollectionViewCell.swift */,
 				64FA42A923E393280065DCEF /* CraftsmenCollectionViewCell.xib */,
 				64FA42B423E7B3800065DCEF /* ResumeCollectionViewCell.swift */,
@@ -234,6 +252,25 @@
 				64FA42B823E7B74E0065DCEF /* PortfolioViewController.swift */,
 			);
 			path = Craftsmen;
+			sourceTree = "<group>";
+		};
+		64FC818F23E7CF230027DDEE /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				647A7CC523D83B92005D1946 /* Chat.storyboard */,
+				64FC819123E7E4D70027DDEE /* ChatListTableViewCell.swift */,
+				64FC819223E7E4D70027DDEE /* ChatListTableViewCell.xib */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		64FC819023E7DB6E0027DDEE /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				647A7CD623D83E55005D1946 /* ChatViewController.swift */,
+				64FC819523E7E9D70027DDEE /* ChatRoomViewController.swift */,
+			);
+			path = Chat;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -301,14 +338,17 @@
 				647A7CC623D83B92005D1946 /* Chat.storyboard in Resources */,
 				647A7CB823D83377005D1946 /* LaunchScreen.storyboard in Resources */,
 				647A7CC023D833D4005D1946 /* GoogleService-Info.plist in Resources */,
+				64FC818A23E7BF3F0027DDEE /* PortfolioCollectionViewCell.xib in Resources */,
 				647A7CC423D83B7F005D1946 /* Profile.storyboard in Resources */,
 				647A7CC823D83BA0005D1946 /* Craftsmen.storyboard in Resources */,
 				64FA42B723E7B3800065DCEF /* ResumeCollectionViewCell.xib in Resources */,
+				64FC819423E7E4D70027DDEE /* ChatListTableViewCell.xib in Resources */,
 				647A7CCA23D83BB0005D1946 /* Article.storyboard in Resources */,
 				64FA42A723E382DF0065DCEF /* NewPostTableViewCell.xib in Resources */,
 				647A7CB523D83377005D1946 /* Assets.xcassets in Resources */,
 				64FA42AB23E393280065DCEF /* CraftsmenCollectionViewCell.xib in Resources */,
 				647A7CB323D83376005D1946 /* Main.storyboard in Resources */,
+				64FC818E23E7C26E0027DDEE /* PortfolioTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,9 +408,12 @@
 				64FA42A223E35F2D0065DCEF /* NewPostViewController.swift in Sources */,
 				64FA42A623E382DF0065DCEF /* NewPostTableViewCell.swift in Sources */,
 				64FA42B623E7B3800065DCEF /* ResumeCollectionViewCell.swift in Sources */,
+				64FC819323E7E4D70027DDEE /* ChatListTableViewCell.swift in Sources */,
 				647A7CC223D83718005D1946 /* ArticleViewController.swift in Sources */,
 				64FA42B023E3A7C80065DCEF /* UITableView+Extension.swift in Sources */,
 				64FA42AE23E3A7990065DCEF /* UICollectionView+Extension.swift in Sources */,
+				64FC819623E7E9D70027DDEE /* ChatRoomViewController.swift in Sources */,
+				64FC818D23E7C26E0027DDEE /* PortfolioTableViewCell.swift in Sources */,
 				64FA429A23E341440065DCEF /* ArticleTableViewCell.swift in Sources */,
 				64FA42B323E3C5CD0065DCEF /* ResumeViewController.swift in Sources */,
 				647A7CCE23D83C61005D1946 /* UIImage+Extension.swift in Sources */,
@@ -378,6 +421,7 @@
 				647A7CCC23D83BCE005D1946 /* UIStoryboard+Extension.swift in Sources */,
 				64FA429D23E347060065DCEF /* KingFisherWrapper.swift in Sources */,
 				647A7CD923D83E5E005D1946 /* ProfileViewController.swift in Sources */,
+				64FC818923E7BF3F0027DDEE /* PortfolioCollectionViewCell.swift in Sources */,
 				64FA429523DD3BD60065DCEF /* STBaseViewController.swift in Sources */,
 				647A7CD323D83E33005D1946 /* AuthViewController.swift in Sources */,
 				647A7CAC23D83376005D1946 /* AppDelegate.swift in Sources */,

@@ -10,16 +10,22 @@ import UIKit
 
 class ResumeViewController: UIViewController {
     
-    @IBOutlet weak var portfolioCollectionView: UICollectionView!
+    @IBOutlet weak var resumeCollectionView: UICollectionView!
     @IBOutlet weak var logoImg: UIImageView!
     @IBOutlet weak var serviceLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var styleLabel: UILabel!
+    @IBOutlet weak var chatBtn: UIButton!
     let itemSpace: CGFloat = 3
     let columnCount: CGFloat = 3
     
+    @IBAction func startConversation(_ sender: Any) {
+        guard let chatViewController = UIStoryboard.chat.instantiateInitialViewController() as? ChatViewController else { return }
+        navigationController?.pushViewController(chatViewController, animated: true)
+    }
+    
     func setNavigationBar() {
-        navigationItem.title = "業者履歷"
+        navigationItem.title = "業者履歷(要改成業者名字)"
         let btn = UIButton()
         btn.setTitle("Back", for: .normal)
         btn.setImage(UIImage.asset(.Icons_24px_Back02), for: .normal)
@@ -36,10 +42,11 @@ class ResumeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        logoImg.layer.cornerRadius = logoImg.frame.size.width / 2
         setNavigationBar()
-        portfolioCollectionView.dataSource = self
-        portfolioCollectionView.delegate = self
-        portfolioCollectionView.lk_registerCellWithNib(identifier: String(describing: ResumeCollectionViewCell.self), bundle: nil)
+        resumeCollectionView.dataSource = self
+        resumeCollectionView.delegate = self
+        resumeCollectionView.lk_registerCellWithNib(identifier: String(describing: ResumeCollectionViewCell.self), bundle: nil)
     }
     
 }
@@ -47,7 +54,7 @@ class ResumeViewController: UIViewController {
 extension ResumeViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 12
+        return 22
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -56,7 +63,7 @@ extension ResumeViewController: UICollectionViewDataSource, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = CGFloat(floor((portfolioCollectionView.bounds.width - itemSpace * (columnCount-1)) / columnCount))
+        let width = CGFloat(floor((resumeCollectionView.bounds.width - itemSpace * (columnCount-1)) / columnCount))
         let height = width
         return CGSize(width: width, height: height)
     }
