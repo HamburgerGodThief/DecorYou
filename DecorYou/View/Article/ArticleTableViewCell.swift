@@ -15,10 +15,13 @@ class ArticleTableViewCell: UITableViewCell {
     @IBOutlet weak var nameTimeLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     
+//    var onOutletsBinded: () -> Void = { }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         authorImgView.layer.cornerRadius = authorImgView.frame.size.width / 2
         // Initialization code
+//        onOutletsBinded()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -27,10 +30,15 @@ class ArticleTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-//    func fillData(authorImgView: String, titleLabel: String, nameTimeLabel: String, contentLabel: String) {
-//        self.authorImgView.loadImage(authorImgView)
-//        self.titleLabel.text = titleLabel
-//        self.nameTimeLabel.text = nameTimeLabel
-//        self.contentLabel.text = contentLabel
-//    }
+    func fillData(authorImgView: String, titleLabel: String, nameTimeLabel: String, contentLabel: String) {
+        
+//        onOutletsBinded = { [weak self] in
+//
+//            self?.authorImgView.loadImage(authorImgView)
+//            self?.titleLabel.text = titleLabel
+//            self?.nameTimeLabel.text = nameTimeLabel
+//            self?.contentLabel.text = contentLabel
+//
+//        }
+    }
 }

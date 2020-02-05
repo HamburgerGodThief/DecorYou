@@ -109,20 +109,14 @@ class STTabBarViewController: UITabBarController, UITabBarControllerDelegate {
         let userToken = UserDefaults.standard.value(forKey: "UserToken")
         
         guard userToken != nil else {
-            //        guard KeyChainManager.shared.token != nil else {
-            
-            let storyboard = UIStoryboard(name: "Auth", bundle: nil)
-            if let loginVC = storyboard.instantiateViewController(identifier: "Auth") as? AuthViewController {
-                loginVC.modalPresentationStyle = .overFullScreen
-                present(loginVC, animated: false, completion: nil)
+
+            if let authVC = UIStoryboard.auth.instantiateInitialViewController() {
+
+                authVC.modalPresentationStyle = .overCurrentContext
                 
-                if let authVC = UIStoryboard.auth.instantiateInitialViewController() {
-                    
-                    authVC.modalPresentationStyle = .overCurrentContext
-                    
-                    present(authVC, animated: false, completion: nil)
-                }
+                present(authVC, animated: false, completion: nil)
             }
+            
             return false
         }
         

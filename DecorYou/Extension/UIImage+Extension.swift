@@ -45,6 +45,9 @@ enum ImageAsset: String {
     
     //Filter Icon
     case Icons_24px_Filter
+    
+    case Icons_24px_Favorite
+    case Icons_24px_reply
 }
 
 // swiftlint:enable identifier_name

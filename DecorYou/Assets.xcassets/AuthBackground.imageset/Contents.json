@@ -2,25 +2,22 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Icons_24px_Back02.png",
+      "filename" : "AuthBackground-2.jpeg",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Icons_24px_Back02@2x.png",
+      "filename" : "AuthBackground-1.jpeg",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Icons_24px_Back02@3x.png",
+      "filename" : "AuthBackground.jpeg",
       "scale" : "3x"
     }
   ],
   "info" : {
     "version" : 1,
     "author" : "xcode"
-  },
-  "properties" : {
-    "template-rendering-intent" : "template"
   }
 }

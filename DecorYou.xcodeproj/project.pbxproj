@@ -54,6 +54,24 @@
 		64FC81A023E7FC9A0027DDEE /* ChatRoomBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC819F23E7FC9A0027DDEE /* ChatRoomBottomView.swift */; };
 		64FE4EC023E8091800A5D3EC /* ChatRoomSelfTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FE4EBE23E8091800A5D3EC /* ChatRoomSelfTableViewCell.swift */; };
 		64FE4EC123E8091800A5D3EC /* ChatRoomSelfTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FE4EBF23E8091800A5D3EC /* ChatRoomSelfTableViewCell.xib */; };
+		64FE4EC423E824CD00A5D3EC /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FE4EC323E824CD00A5D3EC /* SignUpViewController.swift */; };
+		64FE4EC623E824D900A5D3EC /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FE4EC523E824D900A5D3EC /* LogInViewController.swift */; };
+		64FE4EC823E83E9400A5D3EC /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FE4EC723E83E9400A5D3EC /* UITextField+Extension.swift */; };
+		64FE4ECB23E918EA00A5D3EC /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FE4EC923E918EA00A5D3EC /* ProfileTableViewCell.swift */; };
+		64FE4ECC23E918EA00A5D3EC /* ProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FE4ECA23E918EA00A5D3EC /* ProfileTableViewCell.xib */; };
+		64FE4ED023E95CB200A5D3EC /* RoundCorner+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FE4ECF23E95CB200A5D3EC /* RoundCorner+Shadow.swift */; };
+		64FE4ED223E9838B00A5D3EC /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FE4ED123E9838B00A5D3EC /* InfoViewController.swift */; };
+		64FE4ED423E983B200A5D3EC /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FE4ED323E983B200A5D3EC /* FavoriteViewController.swift */; };
+		64FE4ED623E983D500A5D3EC /* YourPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FE4ED523E983D500A5D3EC /* YourPostViewController.swift */; };
+		64FE4ED923E9875E00A5D3EC /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FE4ED723E9875E00A5D3EC /* InfoTableViewCell.swift */; };
+		64FE4EDA23E9875E00A5D3EC /* InfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FE4ED823E9875E00A5D3EC /* InfoTableViewCell.xib */; };
+		64FE4EDD23EA4A5900A5D3EC /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FE4EDB23EA4A5900A5D3EC /* FavoriteTableViewCell.swift */; };
+		64FE4EDE23EA4A5900A5D3EC /* FavoriteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FE4EDC23EA4A5900A5D3EC /* FavoriteTableViewCell.xib */; };
+		64FE4EE123EA55CB00A5D3EC /* YourPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FE4EDF23EA55CB00A5D3EC /* YourPostTableViewCell.swift */; };
+		64FE4EE223EA55CB00A5D3EC /* YourPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FE4EE023EA55CB00A5D3EC /* YourPostTableViewCell.xib */; };
+		64FE4EE523EA643300A5D3EC /* YourPostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FE4EE323EA643300A5D3EC /* YourPostCollectionViewCell.swift */; };
+		64FE4EE623EA643300A5D3EC /* YourPostCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FE4EE423EA643300A5D3EC /* YourPostCollectionViewCell.xib */; };
+		64FE4EEA23EA72B900A5D3EC /* CraftsmenResumeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FE4EE923EA72B900A5D3EC /* CraftsmenResumeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -108,6 +126,24 @@
 		64FC819F23E7FC9A0027DDEE /* ChatRoomBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomBottomView.swift; sourceTree = "<group>"; };
 		64FE4EBE23E8091800A5D3EC /* ChatRoomSelfTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomSelfTableViewCell.swift; sourceTree = "<group>"; };
 		64FE4EBF23E8091800A5D3EC /* ChatRoomSelfTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatRoomSelfTableViewCell.xib; sourceTree = "<group>"; };
+		64FE4EC323E824CD00A5D3EC /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		64FE4EC523E824D900A5D3EC /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		64FE4EC723E83E9400A5D3EC /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		64FE4EC923E918EA00A5D3EC /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
+		64FE4ECA23E918EA00A5D3EC /* ProfileTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileTableViewCell.xib; sourceTree = "<group>"; };
+		64FE4ECF23E95CB200A5D3EC /* RoundCorner+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoundCorner+Shadow.swift"; sourceTree = "<group>"; };
+		64FE4ED123E9838B00A5D3EC /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		64FE4ED323E983B200A5D3EC /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		64FE4ED523E983D500A5D3EC /* YourPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourPostViewController.swift; sourceTree = "<group>"; };
+		64FE4ED723E9875E00A5D3EC /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
+		64FE4ED823E9875E00A5D3EC /* InfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoTableViewCell.xib; sourceTree = "<group>"; };
+		64FE4EDB23EA4A5900A5D3EC /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
+		64FE4EDC23EA4A5900A5D3EC /* FavoriteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteTableViewCell.xib; sourceTree = "<group>"; };
+		64FE4EDF23EA55CB00A5D3EC /* YourPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourPostTableViewCell.swift; sourceTree = "<group>"; };
+		64FE4EE023EA55CB00A5D3EC /* YourPostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YourPostTableViewCell.xib; sourceTree = "<group>"; };
+		64FE4EE323EA643300A5D3EC /* YourPostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourPostCollectionViewCell.swift; sourceTree = "<group>"; };
+		64FE4EE423EA643300A5D3EC /* YourPostCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YourPostCollectionViewCell.xib; sourceTree = "<group>"; };
+		64FE4EE923EA72B900A5D3EC /* CraftsmenResumeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CraftsmenResumeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,7 +215,9 @@
 				647A7CCB23D83BCE005D1946 /* UIStoryboard+Extension.swift */,
 				64FA429C23E347060065DCEF /* KingFisherWrapper.swift */,
 				64FA42AD23E3A7990065DCEF /* UICollectionView+Extension.swift */,
+				64FE4EC723E83E9400A5D3EC /* UITextField+Extension.swift */,
 				64FA42AF23E3A7C80065DCEF /* UITableView+Extension.swift */,
+				64FE4ECF23E95CB200A5D3EC /* RoundCorner+Shadow.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -191,8 +229,8 @@
 				64FA42A323E381090065DCEF /* Article */,
 				64FA42B123E3C5B10065DCEF /* Craftsmen */,
 				64FC819023E7DB6E0027DDEE /* Chat */,
-				647A7CD823D83E5E005D1946 /* ProfileViewController.swift */,
-				647A7CD223D83E33005D1946 /* AuthViewController.swift */,
+				64FE4ECE23E951F800A5D3EC /* Profile */,
+				64FE4EC223E824AD00A5D3EC /* Auth */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -205,7 +243,7 @@
 				64FA429E23E349510065DCEF /* Article */,
 				64FA42AC23E3932E0065DCEF /* Craftsmen */,
 				64FC818F23E7CF230027DDEE /* Chat */,
-				647A7CC323D83B7F005D1946 /* Profile.storyboard */,
+				64FE4ECD23E918EE00A5D3EC /* Profile */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -291,6 +329,46 @@
 			path = Chat;
 			sourceTree = "<group>";
 		};
+		64FE4EC223E824AD00A5D3EC /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				647A7CD223D83E33005D1946 /* AuthViewController.swift */,
+				64FE4EC323E824CD00A5D3EC /* SignUpViewController.swift */,
+				64FE4EC523E824D900A5D3EC /* LogInViewController.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		64FE4ECD23E918EE00A5D3EC /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				647A7CC323D83B7F005D1946 /* Profile.storyboard */,
+				64FE4EC923E918EA00A5D3EC /* ProfileTableViewCell.swift */,
+				64FE4ECA23E918EA00A5D3EC /* ProfileTableViewCell.xib */,
+				64FE4ED723E9875E00A5D3EC /* InfoTableViewCell.swift */,
+				64FE4ED823E9875E00A5D3EC /* InfoTableViewCell.xib */,
+				64FE4EDB23EA4A5900A5D3EC /* FavoriteTableViewCell.swift */,
+				64FE4EDC23EA4A5900A5D3EC /* FavoriteTableViewCell.xib */,
+				64FE4EDF23EA55CB00A5D3EC /* YourPostTableViewCell.swift */,
+				64FE4EE023EA55CB00A5D3EC /* YourPostTableViewCell.xib */,
+				64FE4EE323EA643300A5D3EC /* YourPostCollectionViewCell.swift */,
+				64FE4EE423EA643300A5D3EC /* YourPostCollectionViewCell.xib */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		64FE4ECE23E951F800A5D3EC /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				647A7CD823D83E5E005D1946 /* ProfileViewController.swift */,
+				64FE4EE923EA72B900A5D3EC /* CraftsmenResumeViewController.swift */,
+				64FE4ED123E9838B00A5D3EC /* InfoViewController.swift */,
+				64FE4ED323E983B200A5D3EC /* FavoriteViewController.swift */,
+				64FE4ED523E983D500A5D3EC /* YourPostViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -360,12 +438,17 @@
 				64FC818A23E7BF3F0027DDEE /* PortfolioCollectionViewCell.xib in Resources */,
 				647A7CC423D83B7F005D1946 /* Profile.storyboard in Resources */,
 				647A7CC823D83BA0005D1946 /* Craftsmen.storyboard in Resources */,
+				64FE4ECC23E918EA00A5D3EC /* ProfileTableViewCell.xib in Resources */,
 				64FA42B723E7B3800065DCEF /* ResumeCollectionViewCell.xib in Resources */,
+				64FE4EE223EA55CB00A5D3EC /* YourPostTableViewCell.xib in Resources */,
 				64FC819423E7E4D70027DDEE /* ChatListTableViewCell.xib in Resources */,
 				647A7CCA23D83BB0005D1946 /* Article.storyboard in Resources */,
 				64FE4EC123E8091800A5D3EC /* ChatRoomSelfTableViewCell.xib in Resources */,
 				64FA42A723E382DF0065DCEF /* NewPostTableViewCell.xib in Resources */,
 				647A7CB523D83377005D1946 /* Assets.xcassets in Resources */,
+				64FE4EDA23E9875E00A5D3EC /* InfoTableViewCell.xib in Resources */,
+				64FE4EDE23EA4A5900A5D3EC /* FavoriteTableViewCell.xib in Resources */,
+				64FE4EE623EA643300A5D3EC /* YourPostCollectionViewCell.xib in Resources */,
 				64FC819E23E7FC190027DDEE /* ChatRoomBottomView.xib in Resources */,
 				64FA42AB23E393280065DCEF /* CraftsmenCollectionViewCell.xib in Resources */,
 				647A7CB323D83376005D1946 /* Main.storyboard in Resources */,
@@ -423,8 +506,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				647A7CB023D83376005D1946 /* STTabBarViewController.swift in Sources */,
+				64FE4ED223E9838B00A5D3EC /* InfoViewController.swift in Sources */,
 				64FA42B923E7B74E0065DCEF /* PortfolioViewController.swift in Sources */,
 				647A7CD523D83E49005D1946 /* CraftsmenViewController.swift in Sources */,
+				64FE4ECB23E918EA00A5D3EC /* ProfileTableViewCell.swift in Sources */,
 				647A7CD723D83E55005D1946 /* ChatViewController.swift in Sources */,
 				64FC81A023E7FC9A0027DDEE /* ChatRoomBottomView.swift in Sources */,
 				64FA42A223E35F2D0065DCEF /* NewPostViewController.swift in Sources */,
@@ -432,22 +517,33 @@
 				64FA42B623E7B3800065DCEF /* ResumeCollectionViewCell.swift in Sources */,
 				64FE4EC023E8091800A5D3EC /* ChatRoomSelfTableViewCell.swift in Sources */,
 				64FC819323E7E4D70027DDEE /* ChatListTableViewCell.swift in Sources */,
+				64FE4ED423E983B200A5D3EC /* FavoriteViewController.swift in Sources */,
 				647A7CC223D83718005D1946 /* ArticleViewController.swift in Sources */,
 				64FA42B023E3A7C80065DCEF /* UITableView+Extension.swift in Sources */,
 				64FA42AE23E3A7990065DCEF /* UICollectionView+Extension.swift in Sources */,
+				64FE4EEA23EA72B900A5D3EC /* CraftsmenResumeViewController.swift in Sources */,
+				64FE4ED623E983D500A5D3EC /* YourPostViewController.swift in Sources */,
 				64FC819623E7E9D70027DDEE /* ChatRoomViewController.swift in Sources */,
+				64FE4EDD23EA4A5900A5D3EC /* FavoriteTableViewCell.swift in Sources */,
 				64FC818D23E7C26E0027DDEE /* PortfolioTableViewCell.swift in Sources */,
+				64FE4EC823E83E9400A5D3EC /* UITextField+Extension.swift in Sources */,
 				64FC819923E7EE2D0027DDEE /* ChatRoomTableViewCell.swift in Sources */,
+				64FE4ED923E9875E00A5D3EC /* InfoTableViewCell.swift in Sources */,
 				64FA429A23E341440065DCEF /* ArticleTableViewCell.swift in Sources */,
 				64FA42B323E3C5CD0065DCEF /* ResumeViewController.swift in Sources */,
+				64FE4EE523EA643300A5D3EC /* YourPostCollectionViewCell.swift in Sources */,
 				647A7CCE23D83C61005D1946 /* UIImage+Extension.swift in Sources */,
 				64FA42AA23E393280065DCEF /* CraftsmenCollectionViewCell.swift in Sources */,
+				64FE4EC623E824D900A5D3EC /* LogInViewController.swift in Sources */,
 				647A7CCC23D83BCE005D1946 /* UIStoryboard+Extension.swift in Sources */,
 				64FA429D23E347060065DCEF /* KingFisherWrapper.swift in Sources */,
+				64FE4EC423E824CD00A5D3EC /* SignUpViewController.swift in Sources */,
 				647A7CD923D83E5E005D1946 /* ProfileViewController.swift in Sources */,
+				64FE4ED023E95CB200A5D3EC /* RoundCorner+Shadow.swift in Sources */,
 				64FC818923E7BF3F0027DDEE /* PortfolioCollectionViewCell.swift in Sources */,
 				64FA429523DD3BD60065DCEF /* STBaseViewController.swift in Sources */,
 				647A7CD323D83E33005D1946 /* AuthViewController.swift in Sources */,
+				64FE4EE123EA55CB00A5D3EC /* YourPostTableViewCell.swift in Sources */,
 				647A7CAC23D83376005D1946 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
