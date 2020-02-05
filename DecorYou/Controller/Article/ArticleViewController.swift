@@ -61,7 +61,7 @@ class ArticleViewController: UIViewController {
 extension ArticleViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 8
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -69,5 +69,11 @@ extension ArticleViewController: UITableViewDelegate, UITableViewDataSource {
 //        cell.fillData(authorImgView: "https://www.impericon.com/en/iron-man-iron-man-mousepad.html", titleLabel: "這是標題", nameTimeLabel: "姓名 | 時間", contentLabel: "asalsa;kdjfl;aksdjfal;skdjfal;skdjfals;dkfjal;skdvmladksfnwlkjeroieqwj;flkamdva,.smvafl;kjdfl;awkeufoia;wfjadl;skfmclsd,v.madvnmalkedfjeiufgypwqioerutp034u98520345l234km.,/amdv,.asdjvlkasdjvakldfj3iour09341uirjeq;lwkfjmladsmvc.a/ds,vmj;akejfg302u50928349r[okmlemva/d.s,mva/s,.dfjal;kdsjfoiweuqporiuqpweorfje;lwkdm/d.s,vm/.,dsamcvakl;dfja;kwldfje0iur23904820[39r")
         return cell
     }
-
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Article", bundle: nil)
+        guard let readPostViewController = storyboard.instantiateViewController(withIdentifier: "ReadPostViewController") as? ReadPostViewController else { return }
+        navigationController?.pushViewController(readPostViewController, animated: true)
+        tabBarController?.tabBar.isHidden = true
+    }
 }

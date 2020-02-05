@@ -10,6 +10,7 @@ import UIKit
 
 class ArticleTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var backView: UIView!
     @IBOutlet weak var authorImgView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var nameTimeLabel: UILabel!
@@ -19,6 +20,7 @@ class ArticleTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        backView.layer.cornerRadius = 20
         authorImgView.layer.cornerRadius = authorImgView.frame.size.width / 2
         // Initialization code
 //        onOutletsBinded()

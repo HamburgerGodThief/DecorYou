@@ -12,6 +12,7 @@ class InfoViewController: UIViewController {
     
     @IBOutlet weak var infoTableView: UITableView!
     let titleArray = ["User Name", "Email", "Gender", "Birth"]
+    
     func setTableView() {
         infoTableView.delegate = self
         infoTableView.dataSource = self

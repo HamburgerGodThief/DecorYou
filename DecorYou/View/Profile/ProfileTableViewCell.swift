@@ -22,14 +22,16 @@ class ProfileTableViewCell: UITableViewCell {
         super.layoutMarginsDidChange()
         layoutMargins = UIEdgeInsets(top: topInset, left: leftInset, bottom: bottomInset, right: rightInset)
     }
+    
     override func setNeedsLayout() {
         super.setNeedsLayout()
         layoutMargins = UIEdgeInsets(top: topInset, left: leftInset, bottom: bottomInset, right: rightInset)
-
     }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        iconImg.tintColor = .lightGray
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

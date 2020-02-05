@@ -48,6 +48,10 @@ enum ImageAsset: String {
     
     case Icons_24px_Favorite
     case Icons_24px_reply
+    case Icons_24px_More
+    case Icons_24px_Floor
+    case Icons_24px_Refresh
+    case Icons_24px_Back03
 }
 
 // swiftlint:enable identifier_name
