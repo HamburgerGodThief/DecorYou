@@ -21,6 +21,7 @@
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d8U-xu-8yG">
                                 <rect key="frame" x="338" y="786" width="60" height="60"/>
+                                <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="d8U-xu-8yG" secondAttribute="height" multiplier="1:1" id="9eA-QO-4Lu"/>
                                     <constraint firstAttribute="width" constant="60" id="eYo-QZ-ROk"/>

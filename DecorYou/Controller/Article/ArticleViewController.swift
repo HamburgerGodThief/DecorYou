@@ -25,6 +25,12 @@ class ArticleViewController: UIViewController {
         navigationController?.navigationBar.backgroundColor = UIColor.brown
     }
     
+    func setTableView() {
+        articleTableView.delegate = self
+        articleTableView.dataSource = self
+        articleTableView.lk_registerCellWithNib(identifier: String(describing: ArticleTableViewCell.self), bundle: nil)
+    }
+    
     func setNewPost() {
         newPostBtn.setImage(UIImage.asset(.Icons_24px_NewPost), for: .normal)
         newPostBtn.tintColor = .white
@@ -51,15 +57,17 @@ class ArticleViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        articleTableView.delegate = self
-        articleTableView.dataSource = self
-        articleTableView.lk_registerCellWithNib(identifier: String(describing: ArticleTableViewCell.self), bundle: nil)
+        setTableView()
         searchBar()
         setNewPost()
     }
 }
 
 extension ArticleViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 250
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 8

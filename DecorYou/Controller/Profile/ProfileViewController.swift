@@ -18,6 +18,7 @@ class ProfileViewController: UIViewController {
     let functionLabelText = ["個人資訊", "收藏文章", "你的文章", "登出"]
     let withIdentifier = ["InfoViewController", "FavoriteViewController", "YourPostViewController"]
     
+    
     func setNavigationBar() {
         navigationItem.title = "個人頁面"
     }

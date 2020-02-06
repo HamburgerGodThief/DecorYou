@@ -199,6 +199,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		6406276923EBDC3200086434 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				647A7CD023D83DCA005D1946 /* Auth.storyboard */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		647A7C9F23D83376005D1946 = {
 			isa = PBXGroup;
 			children = (
@@ -264,7 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				647A7CB123D83376005D1946 /* Main.storyboard */,
-				647A7CD023D83DCA005D1946 /* Auth.storyboard */,
+				6406276923EBDC3200086434 /* Auth */,
 				64FA429E23E349510065DCEF /* Article */,
 				64FA42AC23E3932E0065DCEF /* Craftsmen */,
 				64FC818F23E7CF230027DDEE /* Chat */,
@@ -413,6 +421,7 @@
 				647A7CA523D83376005D1946 /* Frameworks */,
 				647A7CA623D83376005D1946 /* Resources */,
 				8F45C7CA5CC3F96C50562D4B /* [CP] Embed Pods Frameworks */,
+				4345A4AE1E86C4BBB0B237F2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -493,6 +502,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		4345A4AE1E86C4BBB0B237F2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DecorYou/Pods-DecorYou-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DecorYou/Pods-DecorYou-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DecorYou/Pods-DecorYou-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		8C906B328BE8B7848B35CA53 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

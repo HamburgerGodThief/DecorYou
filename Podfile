@@ -6,7 +6,8 @@ target 'DecorYou' do
   use_frameworks!
 
   # Pods for DecorYou
-  pod 'Firebase/Analytics'
+  pod 'Firebase/Auth'
+  pod 'GoogleSignIn'
   pod 'IQKeyboardManagerSwift'
   pod 'Kingfisher', '~> 5.0'
 end
