@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,7 +16,6 @@
 		6406276423EAA21D00086434 /* ReadPostBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6406276323EAA21D00086434 /* ReadPostBottomView.xib */; };
 		6406276623EAAD1200086434 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6406276523EAAD1200086434 /* MoreViewController.swift */; };
 		6406276823EAB4B200086434 /* ReplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6406276723EAB4B200086434 /* ReplyViewController.swift */; };
-		6406276C23EBF3E900086434 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 6406276B23EBF3E900086434 /* FacebookLogin */; };
 		647A7CAC23D83376005D1946 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647A7CAB23D83376005D1946 /* AppDelegate.swift */; };
 		647A7CB023D83376005D1946 /* STTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647A7CAF23D83376005D1946 /* STTabBarViewController.swift */; };
 		647A7CB323D83376005D1946 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 647A7CB123D83376005D1946 /* Main.storyboard */; };
@@ -170,7 +169,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6406276C23EBF3E900086434 /* FacebookLogin in Frameworks */,
 				2967C2F39E399953A4883E61 /* Pods_DecorYou.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -426,16 +424,12 @@
 				647A7CA523D83376005D1946 /* Frameworks */,
 				647A7CA623D83376005D1946 /* Resources */,
 				8F45C7CA5CC3F96C50562D4B /* [CP] Embed Pods Frameworks */,
-				4345A4AE1E86C4BBB0B237F2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = DecorYou;
-			packageProductDependencies = (
-				6406276B23EBF3E900086434 /* FacebookLogin */,
-			);
 			productName = DecorYou;
 			productReference = 647A7CA823D83376005D1946 /* DecorYou.app */;
 			productType = "com.apple.product-type.application";
@@ -464,9 +458,6 @@
 				Base,
 			);
 			mainGroup = 647A7C9F23D83376005D1946;
-			packageReferences = (
-				6406276A23EBF3E900086434 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
-			);
 			productRefGroup = 647A7CA923D83376005D1946 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -513,23 +504,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4345A4AE1E86C4BBB0B237F2 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DecorYou/Pods-DecorYou-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DecorYou/Pods-DecorYou-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DecorYou/Pods-DecorYou-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		8C906B328BE8B7848B35CA53 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -820,25 +794,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		6406276A23EBF3E900086434 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		6406276B23EBF3E900086434 /* FacebookLogin */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6406276A23EBF3E900086434 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
-			productName = FacebookLogin;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 647A7CA023D83376005D1946 /* Project object */;
 }

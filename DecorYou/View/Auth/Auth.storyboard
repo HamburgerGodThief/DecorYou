@@ -69,22 +69,6 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zTZ-r6-OmI">
-                                <rect key="frame" x="184" y="642" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="googleSignIn:" destination="YYd-NZ-cmx" eventType="touchUpInside" id="n13-7E-CiY"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7tJ-Zg-Nx0">
-                                <rect key="frame" x="184" y="698" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="fbSignIn:" destination="YYd-NZ-cmx" eventType="touchUpInside" id="xed-yb-AHb"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -108,9 +92,7 @@
                     <navigationItem key="navigationItem" id="dy7-2f-YUD"/>
                     <connections>
                         <outlet property="backgroundImg" destination="uIX-Yy-47f" id="RXP-P7-LgJ"/>
-                        <outlet property="fbSignInBtn" destination="7tJ-Zg-Nx0" id="TlW-Wz-dbI"/>
                         <outlet property="logInBtn" destination="7mM-iw-Fdz" id="Zyy-td-CIg"/>
-                        <outlet property="signInBtn" destination="zTZ-r6-OmI" id="TMi-RH-Rdy"/>
                         <outlet property="signUpBtn" destination="7bF-u0-PFI" id="nCM-dZ-dYk"/>
                     </connections>
                 </viewController>
@@ -242,8 +224,8 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.25" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AuthBackground" translatesAutoresizingMaskIntoConstraints="NO" id="o3K-zh-Him">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Piv-qh-XcN">
-                                <rect key="frame" x="72" y="254" width="119" height="34"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Piv-qh-XcN">
+                                <rect key="frame" x="72" y="254" width="63.5" height="34"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="24"/>
                                 <color key="textColor" red="0.63921568630000003" green="0.59607843140000005" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
@@ -310,9 +292,9 @@
                         <viewLayoutGuide key="safeArea" id="hRu-Jd-a4B"/>
                     </view>
                     <connections>
+                        <outlet property="emailTextField" destination="g2n-B7-avb" id="Ajd-mb-zZM"/>
                         <outlet property="logInBtn" destination="0Zv-p1-FFj" id="Idq-Rf-S4B"/>
                         <outlet property="passwordTextField" destination="e1M-je-9cR" id="UKD-LC-Gx0"/>
-                        <outlet property="userNameTextField" destination="g2n-B7-avb" id="CUU-1m-vGs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4q6-tz-PVF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

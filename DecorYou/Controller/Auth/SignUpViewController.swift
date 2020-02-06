@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SignUpViewController: UIViewController, UITextFieldDelegate {
     
@@ -16,10 +17,40 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var signUpBtn: UIButton!
     
     @IBAction func signUp(_ sender: Any) {
-        guard let tabVC = self.presentingViewController as? STTabBarViewController else { return }
-        tabVC.selectedIndex = 3
-        presentingViewController?.dismiss(animated: true, completion: nil)
-        
+        guard let email = emailTextField.text, let password = passwordTextField.text, let name = userNameTextField.text else {
+            
+            let alertController = UIAlertController(title: "Error", message: "Name/email/password can't be empty", preferredStyle: .alert)
+            
+            let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alertController.addAction(defaultAction)
+            
+            present(alertController, animated: true, completion: nil)
+            return
+        }
+        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+            if error == nil {
+                print("成功")
+                
+                Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
+                    guard let strongSelf = self else { return }
+                    let user = Auth.auth().currentUser
+                    guard let uid = user?.uid else { return }
+                    UserDefaults.standard.set(uid, forKey: "UserToken")
+                    UserManager.shared.addUserData(name: name, uid: uid, email: email, lovePost: [], selfPost: [])
+                    UserManager.shared.fetchCurrentUser(uid: uid)
+                    guard let tabVC = strongSelf.presentingViewController as? STTabBarViewController else { return }
+                    tabVC.selectedIndex = 3
+                    strongSelf.presentingViewController?.dismiss(animated: true, completion: nil)
+                }
+            } else {
+                let alertController = UIAlertController(title: "Error", message: "This email already signed up.", preferredStyle: .alert)
+                
+                let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alertController.addAction(defaultAction)
+                
+                self.present(alertController, animated: true, completion: nil)
+            }
+        }
     }
     
     func setting() {

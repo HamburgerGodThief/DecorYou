@@ -7,7 +7,8 @@ target 'DecorYou' do
 
   # Pods for DecorYou
   pod 'Firebase/Auth'
-  pod 'GoogleSignIn'
+  pod 'Firebase/Firestore'
+  pod 'FirebaseFirestoreSwift'
   pod 'IQKeyboardManagerSwift'
   pod 'Kingfisher', '~> 5.0'
 end

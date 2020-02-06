@@ -14,10 +14,11 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var logoImg: UIImageView!
     @IBOutlet weak var profileTableView: UITableView!
     @IBOutlet weak var shadowView: RoundCornerAndShadow!
+    @IBOutlet weak var postLabel: UILabel!
+    @IBOutlet weak var lovePost: UILabel!
     
     let functionLabelText = ["個人資訊", "收藏文章", "你的文章", "登出"]
     let withIdentifier = ["InfoViewController", "FavoriteViewController", "YourPostViewController"]
-    
     
     func setNavigationBar() {
         navigationItem.title = "個人頁面"
@@ -32,11 +33,19 @@ class ProfileViewController: UIViewController {
         shadowView.layoutTableView(profileTableView, radius: 10, color: .black, offset: CGSize(width: 10, height: 10), opacity: 0.8, cornerRadius: 60)
     }
     
+    func getUserInfo() {
+        guard let uid = UserDefaults.standard.string(forKey: "UserToken") else { return }
+        UserManager.shared.fetchCurrentUser(uid: uid)
+        postLabel.text = "\(UserManager.shared.selfPost.count)"
+        lovePost.text = "\(UserManager.shared.lovePost.count)"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
         setTableView()
         logoImg.layer.cornerRadius = logoImg.frame.width / 2
+        getUserInfo()
     }
 }
 
@@ -71,12 +80,10 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             navigationController?.pushViewController(yourPostViewController, animated: true)
         } else if indexPath.row == 3 {
             UserDefaults.standard.set(nil, forKey: "UserToken")
-            
             let storyboard = UIStoryboard(name: "Profile", bundle: nil)
             guard let craftsmenResumeViewController = storyboard.instantiateViewController(withIdentifier: "CraftsmenResumeViewController") as? CraftsmenResumeViewController else { return }
             navigationController?.pushViewController(craftsmenResumeViewController, animated: true)
             tabBarController?.tabBar.isHidden = true
         }
-        
     }
 }

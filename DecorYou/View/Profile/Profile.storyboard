@@ -94,6 +94,8 @@
                     <navigationItem key="navigationItem" id="Vz8-iQ-WlQ"/>
                     <connections>
                         <outlet property="logoImg" destination="v8C-1m-DmA" id="Yos-iB-XoG"/>
+                        <outlet property="lovePost" destination="bfd-l4-XgK" id="CeK-ha-m57"/>
+                        <outlet property="postLabel" destination="CA8-FX-tjo" id="stq-5T-to6"/>
                         <outlet property="profileTableView" destination="DZc-2W-S2b" id="kkZ-lY-514"/>
                         <outlet property="shadowView" destination="RBT-15-qa4" id="nVC-4e-mDw"/>
                     </connections>
