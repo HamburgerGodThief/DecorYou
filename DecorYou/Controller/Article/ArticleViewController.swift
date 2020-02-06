@@ -26,7 +26,8 @@ class ArticleViewController: UIViewController {
     }
     
     func setNewPost() {
-        newPostBtn.setImage(UIImage.asset(.Icons_24px_DropDown), for: .normal)
+        newPostBtn.setImage(UIImage.asset(.Icons_24px_NewPost), for: .normal)
+        newPostBtn.tintColor = .white
         newPostBtn.backgroundColor = UIColor.brown
         newPostBtn.layer.cornerRadius = newPostBtn.frame.size.width / 2
     }

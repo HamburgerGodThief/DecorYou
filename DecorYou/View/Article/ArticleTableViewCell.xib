@@ -29,25 +29,25 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MHWI 非洲弓箭手的配裝分享" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVl-VA-mcg">
                                 <rect key="frame" x="60" y="12" width="471" height="28"/>
-                                <color key="backgroundColor" red="0.75686274509999996" green="0.63137254899999995" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="地獄倒霉鬼 | 2020-02-05 13:35" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TVx-yI-EBt">
                                 <rect key="frame" x="60" y="40" width="471" height="14"/>
-                                <color key="backgroundColor" red="0.23137254900000001" green="0.34901960780000002" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="10"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" red="0.66666666666666663" green="0.66666668653488159" blue="0.66666668653488159" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VBD-aO-DKY">
                                 <rect key="frame" x="12" y="60" width="519" height="251"/>
-                                <color key="backgroundColor" red="0.37647058820000001" green="0.1176470588" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="251" id="rjh-L8-1gY"/>
                                 </constraints>
-                                <mutableString key="text">版上的各位獵人大哥好，這裡是 手殘菜雞弓箭獵人
+                                <string key="text">版上的各位獵人大哥好，這裡是 手殘菜雞弓箭獵人
 玩弓箭有將近快2000場，全14種武器也只有玩弓箭的獵人
 也四處在各狩獵場上雷人無數的弓箭獵人
 此篇的心得，個人的主觀意識會很重
@@ -58,7 +58,7 @@
 都是平常走在路上低下頭都可以撿到的珠，像是
 達人II，劇情會給一顆 (我也就只用一顆)
 體術II，好刷
-屬性珠II，自從機率上調後，刷到會吼：把 「痛擊．體__珠」給我啊</mutableString>
+屬性珠II，自從機率上調後，刷到會吼：把 「痛擊．體__珠」給我啊</string>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

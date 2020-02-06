@@ -240,8 +240,8 @@
 				647A7CCB23D83BCE005D1946 /* UIStoryboard+Extension.swift */,
 				64FA429C23E347060065DCEF /* KingFisherWrapper.swift */,
 				64FA42AD23E3A7990065DCEF /* UICollectionView+Extension.swift */,
-				64FE4EC723E83E9400A5D3EC /* UITextField+Extension.swift */,
 				64FA42AF23E3A7C80065DCEF /* UITableView+Extension.swift */,
+				64FE4EC723E83E9400A5D3EC /* UITextField+Extension.swift */,
 				64FE4ECF23E95CB200A5D3EC /* RoundCorner+Shadow.swift */,
 			);
 			path = Extension;

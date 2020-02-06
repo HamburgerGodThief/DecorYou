@@ -13,6 +13,15 @@ enum ImageAsset: String {
     // Profile tab - Tab
     
     // swiftlint:disable identifier_name
+    case Icons_36px_NewsFeed_Normal
+    case Icons_36px_NewsFeed_Selected
+    case Icons_36px_Tool_Normal
+    case Icons_36px_Tool_Selected
+    case Icons_36px_Chat_Normal
+    case Icons_36px_Chat_Selected
+    case Icons_36px_Account_Normal
+    case Icons_36px_Account_Selected
+    
     case Icons_36px_Home_Normal
     case Icons_36px_Home_Selected
     case Icons_36px_Profile_Normal
@@ -52,6 +61,13 @@ enum ImageAsset: String {
     case Icons_24px_Floor
     case Icons_24px_Refresh
     case Icons_24px_Back03
+    case Icons_24px_Location
+    case Icons_24px_Album
+    case Icons_24px_Photos
+    case Icons_24px_HomeSize
+    case Icons_24px_Craftsmen
+    case Icons_24px_DecorateStyle
+    case Icons_24px_NewPost
 }
 
 // swiftlint:enable identifier_name

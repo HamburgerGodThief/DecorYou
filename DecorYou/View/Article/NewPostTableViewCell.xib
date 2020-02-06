@@ -18,24 +18,27 @@
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kPI-aC-ook">
                         <rect key="frame" x="16" y="16" width="54" height="54"/>
+                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="kPI-aC-ook" secondAttribute="height" multiplier="1:1" id="vcQ-DO-3i2"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ewg-Gh-szx">
-                        <rect key="frame" x="86" y="32.5" width="243" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ewg-Gh-szx">
+                        <rect key="frame" x="86" y="16" width="243" height="54"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="ewg-Gh-szx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="167-zs-3Sr"/>
                     <constraint firstItem="ewg-Gh-szx" firstAttribute="leading" secondItem="kPI-aC-ook" secondAttribute="trailing" constant="16" id="2Rq-lv-f1k"/>
                     <constraint firstItem="ewg-Gh-szx" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="HW7-wh-xHM"/>
                     <constraint firstAttribute="trailing" secondItem="ewg-Gh-szx" secondAttribute="trailing" constant="16" id="ROA-IO-ZrQ"/>
+                    <constraint firstAttribute="bottom" secondItem="ewg-Gh-szx" secondAttribute="bottom" constant="16" id="TLO-ng-o3v"/>
                     <constraint firstItem="kPI-aC-ook" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Uxd-dw-XHq"/>
-                    <constraint firstItem="kPI-aC-ook" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="axx-3h-gfO"/>
-                    <constraint firstAttribute="bottom" secondItem="kPI-aC-ook" secondAttribute="bottom" constant="16" id="gVM-Q2-AFt"/>
+                    <constraint firstItem="kPI-aC-ook" firstAttribute="top" secondItem="ewg-Gh-szx" secondAttribute="top" id="axx-3h-gfO"/>
+                    <constraint firstItem="kPI-aC-ook" firstAttribute="bottom" secondItem="ewg-Gh-szx" secondAttribute="bottom" id="gVM-Q2-AFt"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

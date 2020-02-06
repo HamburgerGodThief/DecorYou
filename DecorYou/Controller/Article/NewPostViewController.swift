@@ -16,20 +16,18 @@ class NewPostViewController: UIViewController {
     @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var contentTextView: UITextView!
     let option = ["插入相片", "裝潢風格", "房屋地區", "房屋坪數", "合作業者"]
-    let icon = [UIImage.asset(.Icons_36px_Home_Normal),
-                UIImage.asset(.Icons_36px_Home_Normal),
-                UIImage.asset(.Icons_36px_Home_Normal),
-                UIImage.asset(.Icons_36px_Home_Normal),
-                UIImage.asset(.Icons_36px_Home_Normal)]
+    let icon = [UIImage.asset(.Icons_24px_Album),
+                UIImage.asset(.Icons_24px_DecorateStyle),
+                UIImage.asset(.Icons_24px_Location),
+                UIImage.asset(.Icons_24px_HomeSize),
+                UIImage.asset(.Icons_24px_Craftsmen)]
     
     func setNavigationBar() {
-        
         navigationItem.title = "發表文章"
         let rightBtn = UIBarButtonItem(title: "送出", style: .plain, target: self, action: #selector(createPost))
         let leftBtn = UIBarButtonItem(title: "取消", style: .plain, target: self, action: #selector(cancelPost))
         navigationItem.rightBarButtonItem = rightBtn
         navigationItem.leftBarButtonItem = leftBtn
-        
     }
     
     @objc func createPost() {
@@ -42,12 +40,25 @@ class NewPostViewController: UIViewController {
         tabBarController?.tabBar.isHidden = false
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setNavigationBar()
+    func setIBOutlet() {
+        authorImgView.layer.cornerRadius = authorImgView.frame.size.width / 2
+        titleTextField.borderStyle = .none
+        
+        tableView.layer.cornerRadius = 20
+        tableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        tableView.layer.borderColor = UIColor.lightGray.cgColor
+        tableView.layer.borderWidth = 1
         tableView.delegate = self
         tableView.dataSource = self
         tableView.lk_registerCellWithNib(identifier: String(describing: NewPostTableViewCell.self), bundle: nil)
+        tableView.bounces = false
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setNavigationBar()
+        setIBOutlet()
+        
     }
     
 }

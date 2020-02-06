@@ -48,29 +48,29 @@ private enum Tab {
         case .article:
             return UITabBarItem(
                 title: nil,
-                image: UIImage.asset(.Icons_36px_Home_Normal),
-                selectedImage: UIImage.asset(.Icons_36px_Home_Selected)
+                image: UIImage.asset(.Icons_36px_NewsFeed_Normal),
+                selectedImage: UIImage.asset(.Icons_36px_NewsFeed_Selected)
             )
             
         case .craftsmen:
             return UITabBarItem(
                 title: nil,
-                image: UIImage.asset(.Icons_36px_Home_Normal),
-                selectedImage: UIImage.asset(.Icons_36px_Home_Selected)
+                image: UIImage.asset(.Icons_36px_Tool_Normal),
+                selectedImage: UIImage.asset(.Icons_36px_Tool_Selected)
             )
             
         case .chat:
             return UITabBarItem(
                 title: nil,
-                image: UIImage.asset(.Icons_36px_Home_Normal),
-                selectedImage: UIImage.asset(.Icons_36px_Home_Selected)
+                image: UIImage.asset(.Icons_36px_Chat_Normal),
+                selectedImage: UIImage.asset(.Icons_36px_Chat_Selected)
             )
             
         case .profile:
             return UITabBarItem(
                 title: nil,
-                image: UIImage.asset(.Icons_36px_Home_Normal),
-                selectedImage: UIImage.asset(.Icons_36px_Home_Selected)
+                image: UIImage.asset(.Icons_36px_Account_Normal),
+                selectedImage: UIImage.asset(.Icons_36px_Account_Selected)
             )
             
         }
