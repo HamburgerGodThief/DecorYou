@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,7 @@
 		6406276423EAA21D00086434 /* ReadPostBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6406276323EAA21D00086434 /* ReadPostBottomView.xib */; };
 		6406276623EAAD1200086434 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6406276523EAAD1200086434 /* MoreViewController.swift */; };
 		6406276823EAB4B200086434 /* ReplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6406276723EAB4B200086434 /* ReplyViewController.swift */; };
+		6406276C23EBF3E900086434 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 6406276B23EBF3E900086434 /* FacebookLogin */; };
 		647A7CAC23D83376005D1946 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647A7CAB23D83376005D1946 /* AppDelegate.swift */; };
 		647A7CB023D83376005D1946 /* STTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647A7CAF23D83376005D1946 /* STTabBarViewController.swift */; };
 		647A7CB323D83376005D1946 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 647A7CB123D83376005D1946 /* Main.storyboard */; };
@@ -49,6 +50,7 @@
 		64FA42B623E7B3800065DCEF /* ResumeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA42B423E7B3800065DCEF /* ResumeCollectionViewCell.swift */; };
 		64FA42B723E7B3800065DCEF /* ResumeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FA42B523E7B3800065DCEF /* ResumeCollectionViewCell.xib */; };
 		64FA42B923E7B74E0065DCEF /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA42B823E7B74E0065DCEF /* PortfolioViewController.swift */; };
+		64FAB11F23EC001A0073235C /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FAB11E23EC001A0073235C /* UserManager.swift */; };
 		64FC818923E7BF3F0027DDEE /* PortfolioCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC818723E7BF3F0027DDEE /* PortfolioCollectionViewCell.swift */; };
 		64FC818A23E7BF3F0027DDEE /* PortfolioCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FC818823E7BF3F0027DDEE /* PortfolioCollectionViewCell.xib */; };
 		64FC818D23E7C26E0027DDEE /* PortfolioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC818B23E7C26E0027DDEE /* PortfolioTableViewCell.swift */; };
@@ -129,6 +131,7 @@
 		64FA42B423E7B3800065DCEF /* ResumeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeCollectionViewCell.swift; sourceTree = "<group>"; };
 		64FA42B523E7B3800065DCEF /* ResumeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResumeCollectionViewCell.xib; sourceTree = "<group>"; };
 		64FA42B823E7B74E0065DCEF /* PortfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
+		64FAB11E23EC001A0073235C /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		64FC818723E7BF3F0027DDEE /* PortfolioCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioCollectionViewCell.swift; sourceTree = "<group>"; };
 		64FC818823E7BF3F0027DDEE /* PortfolioCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PortfolioCollectionViewCell.xib; sourceTree = "<group>"; };
 		64FC818B23E7C26E0027DDEE /* PortfolioTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioTableViewCell.swift; sourceTree = "<group>"; };
@@ -167,6 +170,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6406276C23EBF3E900086434 /* FacebookLogin in Frameworks */,
 				2967C2F39E399953A4883E61 /* Pods_DecorYou.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -195,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				6406275823EA91EC00086434 /* ArticleAnimationTransition.swift */,
+				64FAB11E23EC001A0073235C /* UserManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -428,6 +433,9 @@
 			dependencies = (
 			);
 			name = DecorYou;
+			packageProductDependencies = (
+				6406276B23EBF3E900086434 /* FacebookLogin */,
+			);
 			productName = DecorYou;
 			productReference = 647A7CA823D83376005D1946 /* DecorYou.app */;
 			productType = "com.apple.product-type.application";
@@ -456,6 +464,9 @@
 				Base,
 			);
 			mainGroup = 647A7C9F23D83376005D1946;
+			packageReferences = (
+				6406276A23EBF3E900086434 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+			);
 			productRefGroup = 647A7CA923D83376005D1946 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -611,6 +622,7 @@
 				647A7CD323D83E33005D1946 /* AuthViewController.swift in Sources */,
 				64FE4EE123EA55CB00A5D3EC /* YourPostTableViewCell.swift in Sources */,
 				647A7CAC23D83376005D1946 /* AppDelegate.swift in Sources */,
+				64FAB11F23EC001A0073235C /* UserManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -808,6 +820,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6406276A23EBF3E900086434 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6406276B23EBF3E900086434 /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6406276A23EBF3E900086434 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookLogin;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 647A7CA023D83376005D1946 /* Project object */;
 }

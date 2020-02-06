@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import Firebase
 import GoogleSignIn
+import FacebookLogin
 
 class AuthViewController: UIViewController {
     
@@ -17,10 +18,36 @@ class AuthViewController: UIViewController {
     @IBOutlet weak var signUpBtn: UIButton!
     @IBOutlet weak var logInBtn: UIButton!
     @IBOutlet weak var signInBtn: GIDSignInButton!
+    @IBOutlet weak var fbSignInBtn: FBLoginButton!
     var userToken: String?
     
     @IBAction func googleSignIn(_ sender: Any) {
         GIDSignIn.sharedInstance().signIn()
+    }
+    
+    @IBAction func fbSignIn(_ sender: Any) {
+        
+        let manager = LoginManager()
+        manager.logIn(permissions: [.publicProfile], viewController: self) { (result) in
+            if case LoginResult.success(granted: _, declined: _, token: _) = result {
+                print("login ok")
+                let credential =  FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)
+                Auth.auth().signIn(with: credential) { [weak self] (result, error) in
+                    guard let self = self else { return }
+                    guard error == nil else {
+                        print(error!.localizedDescription)
+                        return
+                    }
+                    guard let currentToken = AccessToken.current else { return }
+                    UserDefaults.standard.set(currentToken.tokenString, forKey: "UserToken")
+                    guard let tabVC = self.presentingViewController as? STTabBarViewController else { return }
+                    tabVC.selectedIndex = 3
+                    self.presentingViewController?.dismiss(animated: true, completion: nil)
+                }
+            } else {
+                print("login fail")
+            }
+        }
     }
     
     @IBAction func signUp(_ sender: Any) {

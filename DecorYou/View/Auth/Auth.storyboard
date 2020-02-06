@@ -77,6 +77,14 @@
                                     <action selector="googleSignIn:" destination="YYd-NZ-cmx" eventType="touchUpInside" id="n13-7E-CiY"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7tJ-Zg-Nx0">
+                                <rect key="frame" x="184" y="698" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="fbSignIn:" destination="YYd-NZ-cmx" eventType="touchUpInside" id="xed-yb-AHb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -100,6 +108,7 @@
                     <navigationItem key="navigationItem" id="dy7-2f-YUD"/>
                     <connections>
                         <outlet property="backgroundImg" destination="uIX-Yy-47f" id="RXP-P7-LgJ"/>
+                        <outlet property="fbSignInBtn" destination="7tJ-Zg-Nx0" id="TlW-Wz-dbI"/>
                         <outlet property="logInBtn" destination="7mM-iw-Fdz" id="Zyy-td-CIg"/>
                         <outlet property="signInBtn" destination="zTZ-r6-OmI" id="TMi-RH-Rdy"/>
                         <outlet property="signUpBtn" destination="7bF-u0-PFI" id="nCM-dZ-dYk"/>

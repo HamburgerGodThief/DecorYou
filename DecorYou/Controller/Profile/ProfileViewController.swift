@@ -70,6 +70,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             guard let yourPostViewController = storyboard.instantiateViewController(withIdentifier: "YourPostViewController") as? YourPostViewController else { return }
             navigationController?.pushViewController(yourPostViewController, animated: true)
         } else if indexPath.row == 3 {
+            UserDefaults.standard.set(nil, forKey: "UserToken")
+            
             let storyboard = UIStoryboard(name: "Profile", bundle: nil)
             guard let craftsmenResumeViewController = storyboard.instantiateViewController(withIdentifier: "CraftsmenResumeViewController") as? CraftsmenResumeViewController else { return }
             navigationController?.pushViewController(craftsmenResumeViewController, animated: true)
