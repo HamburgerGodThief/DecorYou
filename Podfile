@@ -9,6 +9,9 @@ target 'DecorYou' do
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift'
+  pod 'Firebase/Storage'
+  pod 'Firebase/Database'
   pod 'IQKeyboardManagerSwift'
   pod 'Kingfisher', '~> 5.0'
+  pod 'JGProgressHUD'
 end

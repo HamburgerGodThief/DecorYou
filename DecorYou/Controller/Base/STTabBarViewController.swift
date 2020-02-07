@@ -82,7 +82,7 @@ class STTabBarViewController: UITabBarController, UITabBarControllerDelegate {
     
     private let tabs: [Tab] = [.article, .craftsmen, .chat, .profile]
     
-    var trolleyTabBarItem: UITabBarItem!
+    var chatTabBarItem: UITabBarItem!
     
     var orderObserver: NSKeyValueObservation!
     
@@ -91,9 +91,9 @@ class STTabBarViewController: UITabBarController, UITabBarControllerDelegate {
         
         viewControllers = tabs.map({ $0.controller() })
         
-        //trolleyTabBarItem = viewControllers?[2].tabBarItem
+        chatTabBarItem = viewControllers?[2].tabBarItem
         
-        //trolleyTabBarItem.badgeColor = .brown
+        chatTabBarItem.badgeColor = .brown
         
         delegate = self
     }

@@ -32,7 +32,18 @@ class LogInViewController: UIViewController {
                 let user = Auth.auth().currentUser
                 guard let uid = user?.uid else { return }
                 UserDefaults.standard.set(uid, forKey: "UserToken")
-                UserManager.shared.fetchCurrentUser(uid: uid)
+                UserManager.shared.fetchCurrentUser(uid: uid, completion: { result in
+                    switch result {
+                        
+                    case .success( _):
+                        
+                        print("Success")
+                        
+                    case .failure(let error):
+                        
+                        print(error)
+                    }
+                })
                 guard let tabVC = strongSelf.presentingViewController as? STTabBarViewController else { return }
                 tabVC.selectedIndex = 3
                 strongSelf.presentingViewController?.dismiss(animated: true, completion: nil)

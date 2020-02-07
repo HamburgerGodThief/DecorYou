@@ -41,6 +41,7 @@ extension InfoViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: InfoTableViewCell.self), for: indexPath) as? InfoTableViewCell else { return UITableViewCell() }
         cell.titleLabel.text = titleArray[indexPath.row]
+        
         return cell
     }
     

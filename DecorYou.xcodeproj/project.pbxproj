@@ -50,6 +50,8 @@
 		64FA42B723E7B3800065DCEF /* ResumeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FA42B523E7B3800065DCEF /* ResumeCollectionViewCell.xib */; };
 		64FA42B923E7B74E0065DCEF /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA42B823E7B74E0065DCEF /* PortfolioViewController.swift */; };
 		64FAB11F23EC001A0073235C /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FAB11E23EC001A0073235C /* UserManager.swift */; };
+		64FAB12323ED36130073235C /* JGProgressWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FAB12223ED36130073235C /* JGProgressWrapper.swift */; };
+		64FAB12523ED49F70073235C /* ArticleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FAB12423ED49F70073235C /* ArticleManager.swift */; };
 		64FC818923E7BF3F0027DDEE /* PortfolioCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC818723E7BF3F0027DDEE /* PortfolioCollectionViewCell.swift */; };
 		64FC818A23E7BF3F0027DDEE /* PortfolioCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FC818823E7BF3F0027DDEE /* PortfolioCollectionViewCell.xib */; };
 		64FC818D23E7C26E0027DDEE /* PortfolioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC818B23E7C26E0027DDEE /* PortfolioTableViewCell.swift */; };
@@ -131,6 +133,8 @@
 		64FA42B523E7B3800065DCEF /* ResumeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResumeCollectionViewCell.xib; sourceTree = "<group>"; };
 		64FA42B823E7B74E0065DCEF /* PortfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
 		64FAB11E23EC001A0073235C /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		64FAB12223ED36130073235C /* JGProgressWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGProgressWrapper.swift; sourceTree = "<group>"; };
+		64FAB12423ED49F70073235C /* ArticleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleManager.swift; sourceTree = "<group>"; };
 		64FC818723E7BF3F0027DDEE /* PortfolioCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioCollectionViewCell.swift; sourceTree = "<group>"; };
 		64FC818823E7BF3F0027DDEE /* PortfolioCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PortfolioCollectionViewCell.xib; sourceTree = "<group>"; };
 		64FC818B23E7C26E0027DDEE /* PortfolioTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioTableViewCell.swift; sourceTree = "<group>"; };
@@ -198,6 +202,7 @@
 			children = (
 				6406275823EA91EC00086434 /* ArticleAnimationTransition.swift */,
 				64FAB11E23EC001A0073235C /* UserManager.swift */,
+				64FAB12423ED49F70073235C /* ArticleManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -249,11 +254,12 @@
 			children = (
 				647A7CCD23D83C61005D1946 /* UIImage+Extension.swift */,
 				647A7CCB23D83BCE005D1946 /* UIStoryboard+Extension.swift */,
-				64FA429C23E347060065DCEF /* KingFisherWrapper.swift */,
 				64FA42AD23E3A7990065DCEF /* UICollectionView+Extension.swift */,
 				64FA42AF23E3A7C80065DCEF /* UITableView+Extension.swift */,
 				64FE4EC723E83E9400A5D3EC /* UITextField+Extension.swift */,
 				64FE4ECF23E95CB200A5D3EC /* RoundCorner+Shadow.swift */,
+				64FA429C23E347060065DCEF /* KingFisherWrapper.swift */,
+				64FAB12223ED36130073235C /* JGProgressWrapper.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -564,6 +570,7 @@
 				64FA42B623E7B3800065DCEF /* ResumeCollectionViewCell.swift in Sources */,
 				6406275C23EA936700086434 /* ReadPostViewController.swift in Sources */,
 				64FE4EC023E8091800A5D3EC /* ChatRoomSelfTableViewCell.swift in Sources */,
+				64FAB12523ED49F70073235C /* ArticleManager.swift in Sources */,
 				64FC819323E7E4D70027DDEE /* ChatListTableViewCell.swift in Sources */,
 				64FE4ED423E983B200A5D3EC /* FavoriteViewController.swift in Sources */,
 				647A7CC223D83718005D1946 /* ArticleViewController.swift in Sources */,
@@ -575,6 +582,7 @@
 				64FE4ED623E983D500A5D3EC /* YourPostViewController.swift in Sources */,
 				64FC819623E7E9D70027DDEE /* ChatRoomViewController.swift in Sources */,
 				64FE4EDD23EA4A5900A5D3EC /* FavoriteTableViewCell.swift in Sources */,
+				64FAB12323ED36130073235C /* JGProgressWrapper.swift in Sources */,
 				64FC818D23E7C26E0027DDEE /* PortfolioTableViewCell.swift in Sources */,
 				64FE4EC823E83E9400A5D3EC /* UITextField+Extension.swift in Sources */,
 				64FC819923E7EE2D0027DDEE /* ChatRoomTableViewCell.swift in Sources */,

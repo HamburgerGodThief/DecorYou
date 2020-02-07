@@ -68,6 +68,7 @@ enum ImageAsset: String {
     case Icons_24px_Craftsmen
     case Icons_24px_DecorateStyle
     case Icons_24px_NewPost
+    case Icons_24px_Camera
 }
 
 // swiftlint:enable identifier_name

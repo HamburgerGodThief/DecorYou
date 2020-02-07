@@ -15,6 +15,7 @@ class NewPostViewController: UIViewController {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var contentTextView: UITextView!
+    var currentUser: User?
     let option = ["插入相片", "裝潢風格", "房屋地區", "房屋坪數", "合作業者"]
     let icon = [UIImage.asset(.Icons_24px_Album),
                 UIImage.asset(.Icons_24px_DecorateStyle),
@@ -31,6 +32,11 @@ class NewPostViewController: UIViewController {
     }
     
     @objc func createPost() {
+        guard let title = authorNameLabel.text else { return }
+        guard let content = contentTextView.text else { return }
+        guard let user = currentUser else { return }
+        let currentDate = Date()
+        ArticleManager.shared.addPost(title: title, content: content, loveCount: 0, reply: [], comment: [], authorName: user.name, authorUID: user.uid, createTime: currentDate)
         navigationController?.popViewController(animated: true)
         tabBarController?.tabBar.isHidden = false
     }
@@ -54,11 +60,32 @@ class NewPostViewController: UIViewController {
         tableView.bounces = false
     }
     
+    func getCurrentUser() {
+        guard let uid = UserDefaults.standard.string(forKey: "UserToken") else { return }
+        UserManager.shared.fetchCurrentUser(uid: uid, completion: { [weak self] result in
+            guard let strongSelf = self else { return }
+            switch result {
+
+            case .success(let user):
+
+                DispatchQueue.main.async {
+                    strongSelf.authorNameLabel.text = "\(user.name)"
+                    strongSelf.authorImgView.loadImage(user.img)
+                    strongSelf.currentUser = user
+                }
+
+            case .failure(let error):
+
+                print(error)
+            }
+        })
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
         setIBOutlet()
-        
+        getCurrentUser()
     }
     
 }

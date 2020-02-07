@@ -185,13 +185,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="請輸入標題" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rjk-qo-2CQ">
-                                <rect key="frame" x="92" y="60" width="306" height="34"/>
-                                <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="請輸入文章標題" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rjk-qo-2CQ">
+                                <rect key="frame" x="92" y="64" width="306" height="36"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p96-re-GxP">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p96-re-GxP">
                                 <rect key="frame" x="16" y="60" width="60" height="60"/>
                                 <color key="backgroundColor" red="0.29785584240000001" green="0.75686274509999996" blue="0.54783142330000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -200,17 +199,17 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sNz-uT-8aC">
-                                <rect key="frame" x="92" y="102" width="306" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="92" y="100" width="306" height="20"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GBB-F9-kqH">
-                                <rect key="frame" x="0.0" y="560" width="414" height="336"/>
+                                <rect key="frame" x="0.0" y="557" width="414" height="339"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="在想些什麼?" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ci8-lf-EfA">
-                                <rect key="frame" x="16" y="147" width="382" height="383"/>
+                                <rect key="frame" x="16" y="144" width="382" height="383"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="383" id="ocf-Gg-e5i"/>
@@ -227,14 +226,14 @@
                             <constraint firstItem="Ci8-lf-EfA" firstAttribute="leading" secondItem="Qy3-c8-o2u" secondAttribute="leading" constant="16" id="Gp5-ru-sq3"/>
                             <constraint firstItem="Ci8-lf-EfA" firstAttribute="top" secondItem="sNz-uT-8aC" secondAttribute="bottom" constant="24" id="KfN-Qi-oQ2"/>
                             <constraint firstItem="Qy3-c8-o2u" firstAttribute="trailing" secondItem="GBB-F9-kqH" secondAttribute="trailing" id="Lvq-fg-CuE"/>
-                            <constraint firstItem="sNz-uT-8aC" firstAttribute="top" secondItem="rjk-qo-2CQ" secondAttribute="bottom" constant="8" id="MnO-RH-wnq"/>
+                            <constraint firstItem="sNz-uT-8aC" firstAttribute="top" secondItem="rjk-qo-2CQ" secondAttribute="bottom" id="MnO-RH-wnq"/>
                             <constraint firstItem="GBB-F9-kqH" firstAttribute="leading" secondItem="Qy3-c8-o2u" secondAttribute="leading" id="N5X-Xo-Qzk"/>
                             <constraint firstItem="Qy3-c8-o2u" firstAttribute="trailing" secondItem="sNz-uT-8aC" secondAttribute="trailing" constant="16" id="NYx-YZ-j2e"/>
                             <constraint firstItem="GBB-F9-kqH" firstAttribute="top" secondItem="Ci8-lf-EfA" secondAttribute="bottom" constant="30" id="O0X-4I-xvQ"/>
                             <constraint firstItem="GBB-F9-kqH" firstAttribute="bottom" secondItem="Eoi-O2-yxl" secondAttribute="bottom" id="OR6-0Q-ezQ"/>
                             <constraint firstItem="p96-re-GxP" firstAttribute="top" secondItem="Qy3-c8-o2u" secondAttribute="top" constant="16" id="Ura-82-ACD"/>
                             <constraint firstItem="Qy3-c8-o2u" firstAttribute="trailing" secondItem="rjk-qo-2CQ" secondAttribute="trailing" constant="16" id="dQO-P9-4hg"/>
-                            <constraint firstItem="rjk-qo-2CQ" firstAttribute="top" secondItem="Qy3-c8-o2u" secondAttribute="top" constant="16" id="o5A-TR-8Rr"/>
+                            <constraint firstItem="rjk-qo-2CQ" firstAttribute="top" secondItem="Qy3-c8-o2u" secondAttribute="top" constant="20" id="o5A-TR-8Rr"/>
                             <constraint firstItem="sNz-uT-8aC" firstAttribute="leading" secondItem="p96-re-GxP" secondAttribute="trailing" constant="16" id="rVR-qf-K7k"/>
                             <constraint firstItem="Qy3-c8-o2u" firstAttribute="trailing" secondItem="Ci8-lf-EfA" secondAttribute="trailing" constant="16" id="umg-GX-63m"/>
                         </constraints>

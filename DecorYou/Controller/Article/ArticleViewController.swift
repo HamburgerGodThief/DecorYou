@@ -49,7 +49,17 @@ class ArticleViewController: UIViewController {
     @IBAction func createNewPost(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Article", bundle: nil)
         guard let newPostViewController = storyboard.instantiateViewController(withIdentifier: "NewPostViewController") as? NewPostViewController else { return }
-
+        guard UserDefaults.standard.string(forKey: "UserToken") != nil else {
+            
+            let alertController = UIAlertController(title: "錯誤", message: "訪客無法發表文章", preferredStyle: .alert)
+            
+            let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alertController.addAction(defaultAction)
+            
+            present(alertController, animated: true, completion: nil)
+            
+            return 
+        }
         navigationController?.pushViewController(newPostViewController, animated: true)
         tabBarController?.tabBar.isHidden = true
         

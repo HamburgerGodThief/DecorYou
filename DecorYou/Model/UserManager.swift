@@ -16,31 +16,28 @@ struct User {
     let img: String?
     let lovePost: [String]
     let selfPost: [String]
+    let character: String
 }
 
 class UserManager {
     
     static let shared = UserManager()
-    var name = String()
-    var uid = String()
-    var email = String()
-    var img: String?
-    var lovePost = [String]()
-    var selfPost = [String]()
-
+    var userInfo: User?
+    
     private init() {}
     
     lazy var db = Firestore.firestore()
     
     //創建用戶
-    func addUserData(name: String, uid: String, email: String, lovePost: [String], selfPost: [String]) {
-        db.collection("users").addDocument(data: [
+    func addUserData(name: String, uid: String, email: String, lovePost: [String], selfPost: [String], character: String) {
+        db.collection("users").document(uid).setData ([
             "email": email,
             "uid": uid,
             "name": name,
             "img": "",
             "lovePost": lovePost,
-            "selfPost": selfPost
+            "selfPost": selfPost,
+            "character": character
         ]){ (error) in
             if let error = error {
                 print(error)
@@ -64,7 +61,8 @@ class UserManager {
                     let img = data["img"] as? String
                     guard let lovePost = data["lovePost"] as? [String] else { return }
                     guard let selfPost = data["selfPost"] as? [String] else { return }
-                    let user = User(email: email, name: name, uid: uid, img: img, lovePost: lovePost, selfPost: selfPost)
+                    guard let character = data["character"] as? String else { return }
+                    let user = User(email: email, name: name, uid: uid, img: img, lovePost: lovePost, selfPost: selfPost, character: character)
                     userArray.append(user)
                     print(user)
                 }
@@ -73,8 +71,9 @@ class UserManager {
         }
     }
     
-    func fetchCurrentUser(uid: String) {
-        db.collection("users").whereField("uid", isEqualTo: uid).getDocuments() { (querySnapshot, err) in
+    func fetchCurrentUser(uid: String, completion: @escaping (Result<User, Error>) -> Void) {
+        db.collection("users").whereField("uid", isEqualTo: uid).getDocuments() { [weak self] (querySnapshot, err) in
+            guard let strongSelf = self else { return }
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
@@ -87,12 +86,10 @@ class UserManager {
                     let img = data["img"] as? String
                     guard let lovePost = data["lovePost"] as? [String] else { return }
                     guard let selfPost = data["selfPost"] as? [String] else { return }
-                    self.name = name
-                    self.uid = uid
-                    self.email = email
-                    self.img = img
-                    self.lovePost = lovePost
-                    self.selfPost = selfPost
+                    guard let character = data["character"] as? String else { return }
+                    strongSelf.userInfo = User(email: email, name: name, uid: uid, img: img, lovePost: lovePost, selfPost: selfPost, character: character)
+                    guard let user = strongSelf.userInfo else { return }
+                    completion(.success(user))
                 }
             }
         }
