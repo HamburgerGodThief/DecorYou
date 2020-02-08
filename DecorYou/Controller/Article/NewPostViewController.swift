@@ -112,9 +112,13 @@ extension NewPostViewController: UITableViewDelegate, UITableViewDataSource {
             guard let decorateStyleViewController = storyboard.instantiateViewController(withIdentifier: "DecorateStyleViewController") as? DecorateStyleViewController else { return }
             present(decorateStyleViewController, animated: true, completion: nil)
         } else if indexPath.row == 2 {
-            
+            let storyboard = UIStoryboard(name: "Article", bundle: nil)
+            guard let locationViewController = storyboard.instantiateViewController(withIdentifier: "LocationViewController") as? LocationViewController else { return }
+            present(locationViewController, animated: true, completion: nil)
         } else if indexPath.row == 3 {
-            
+            let storyboard = UIStoryboard(name: "Article", bundle: nil)
+            guard let sizeViewController = storyboard.instantiateViewController(withIdentifier: "SizeViewController") as? SizeViewController else { return }
+            present(sizeViewController, animated: true, completion: nil)
         } else if indexPath.row == 4 {
             
         }

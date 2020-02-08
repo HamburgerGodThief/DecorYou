@@ -243,6 +243,130 @@
             </objects>
             <point key="canvasLocation" x="3211.594202898551" y="103.79464285714285"/>
         </scene>
+        <!--Location View Controller-->
+        <scene sceneID="0ke-Va-O0C">
+            <objects>
+                <viewController storyboardIdentifier="LocationViewController" id="g47-Xx-4e5" customClass="LocationViewController" customModule="DecorYou" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Rzx-38-YHy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LYO-34-8OG">
+                                <rect key="frame" x="0.0" y="567" width="414" height="250"/>
+                                <color key="backgroundColor" red="0.84918968780391713" green="0.84918968780391713" blue="0.84918968780391713" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="TtS-oy-wka"/>
+                                </constraints>
+                            </pickerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cjj-BM-2ks">
+                                <rect key="frame" x="0.0" y="816" width="414" height="80"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9NJ-Ea-zbY">
+                                        <rect key="frame" x="187" y="0.0" width="40" height="40"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="20"/>
+                                        <state key="normal" title="確認">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didTouchConfirm:" destination="g47-Xx-4e5" eventType="touchUpInside" id="i6W-aq-YGR"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.84918968780000004" green="0.84918968780000004" blue="0.84918968780000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstItem="9NJ-Ea-zbY" firstAttribute="top" secondItem="cjj-BM-2ks" secondAttribute="top" id="CWZ-do-Q0z"/>
+                                    <constraint firstItem="9NJ-Ea-zbY" firstAttribute="centerX" secondItem="cjj-BM-2ks" secondAttribute="centerX" id="MNl-tK-iaq"/>
+                                    <constraint firstAttribute="height" constant="80" id="ntc-5m-OvA"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="cjj-BM-2ks" firstAttribute="top" secondItem="LYO-34-8OG" secondAttribute="bottom" constant="-1" id="ANT-FN-OB5"/>
+                            <constraint firstItem="tH6-t4-vbc" firstAttribute="trailing" secondItem="LYO-34-8OG" secondAttribute="trailing" id="IPs-6H-zPg"/>
+                            <constraint firstItem="cjj-BM-2ks" firstAttribute="leading" secondItem="tH6-t4-vbc" secondAttribute="leading" id="sxb-uj-OfE"/>
+                            <constraint firstItem="LYO-34-8OG" firstAttribute="leading" secondItem="tH6-t4-vbc" secondAttribute="leading" id="t8D-Y7-eWH"/>
+                            <constraint firstAttribute="bottom" secondItem="cjj-BM-2ks" secondAttribute="bottom" id="tmD-2C-0Sx"/>
+                            <constraint firstItem="tH6-t4-vbc" firstAttribute="trailing" secondItem="cjj-BM-2ks" secondAttribute="trailing" id="yTH-ol-OFc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="tH6-t4-vbc"/>
+                    </view>
+                    <connections>
+                        <outlet property="locationPicker" destination="LYO-34-8OG" id="Lyu-BM-3aT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ilq-12-uKA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3913.04347826087" y="103.79464285714285"/>
+        </scene>
+        <!--Size View Controller-->
+        <scene sceneID="c3J-fS-sLB">
+            <objects>
+                <viewController storyboardIdentifier="SizeViewController" id="iBa-Fs-AL4" customClass="SizeViewController" customModule="DecorYou" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GgR-ag-iUC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l6C-no-tci">
+                                <rect key="frame" x="0.0" y="767" width="414" height="50"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="請輸入室內坪數" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vrW-5y-eBe">
+                                        <rect key="frame" x="120" y="10" width="174" height="34"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" red="0.84918968780000004" green="0.84918968780000004" blue="0.84918968780000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="vrW-5y-eBe" secondAttribute="trailing" constant="120" id="94w-xg-Ufl"/>
+                                    <constraint firstItem="vrW-5y-eBe" firstAttribute="leading" secondItem="l6C-no-tci" secondAttribute="leading" constant="120" id="u6U-cr-HJ7"/>
+                                    <constraint firstAttribute="height" constant="50" id="uDp-SO-JO9"/>
+                                    <constraint firstItem="vrW-5y-eBe" firstAttribute="top" secondItem="l6C-no-tci" secondAttribute="top" constant="10" id="v4h-NU-XBl"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x8m-yg-A3r">
+                                <rect key="frame" x="0.0" y="816" width="414" height="80"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1qk-Yc-1zH">
+                                        <rect key="frame" x="187" y="0.0" width="40" height="40"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="20"/>
+                                        <state key="normal" title="確認">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didTouchConfirm:" destination="iBa-Fs-AL4" eventType="touchUpInside" id="JVS-Ur-mrg"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.84918968780000004" green="0.84918968780000004" blue="0.84918968780000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstItem="1qk-Yc-1zH" firstAttribute="centerX" secondItem="x8m-yg-A3r" secondAttribute="centerX" id="PUS-M7-qJq"/>
+                                    <constraint firstItem="1qk-Yc-1zH" firstAttribute="top" secondItem="x8m-yg-A3r" secondAttribute="top" id="eGh-yY-FcY"/>
+                                    <constraint firstAttribute="height" constant="80" id="gys-0b-gzn"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="8y4-K7-5Kq" firstAttribute="trailing" secondItem="l6C-no-tci" secondAttribute="trailing" id="BYv-Pq-haF"/>
+                            <constraint firstItem="x8m-yg-A3r" firstAttribute="leading" secondItem="8y4-K7-5Kq" secondAttribute="leading" id="OZ2-ut-Sqp"/>
+                            <constraint firstItem="l6C-no-tci" firstAttribute="leading" secondItem="8y4-K7-5Kq" secondAttribute="leading" id="aP2-Gj-DSO"/>
+                            <constraint firstItem="8y4-K7-5Kq" firstAttribute="trailing" secondItem="x8m-yg-A3r" secondAttribute="trailing" id="bfF-uU-qRs"/>
+                            <constraint firstItem="x8m-yg-A3r" firstAttribute="top" secondItem="l6C-no-tci" secondAttribute="bottom" constant="-1" id="jEe-a5-Q0M"/>
+                            <constraint firstAttribute="bottom" secondItem="x8m-yg-A3r" secondAttribute="bottom" id="qsO-VD-aLl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8y4-K7-5Kq"/>
+                    </view>
+                    <connections>
+                        <outlet property="sizeTextField" destination="vrW-5y-eBe" id="h06-0z-Fuh"/>
+                        <outlet property="topView" destination="l6C-no-tci" id="RDl-vb-tfx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1w6-hh-l9F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4570" y="103"/>
+        </scene>
         <!--New Post View Controller-->
         <scene sceneID="V7X-hU-U99">
             <objects>

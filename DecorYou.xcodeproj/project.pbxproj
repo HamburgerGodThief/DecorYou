@@ -57,6 +57,8 @@
 		64FAB12F23ED57900073235C /* DecorateStyleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FAB12D23ED57900073235C /* DecorateStyleCollectionViewCell.xib */; };
 		64FAB13123ED640A0073235C /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FAB13023ED640A0073235C /* UIColor+Extension.swift */; };
 		64FAB13323EE4E5B0073235C /* DecorateStyleCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FAB13223EE4E5B0073235C /* DecorateStyleCollectionReusableView.swift */; };
+		64FAB13523EE528E0073235C /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FAB13423EE528E0073235C /* LocationViewController.swift */; };
+		64FAB13723EEAA160073235C /* SizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FAB13623EEAA160073235C /* SizeViewController.swift */; };
 		64FC818923E7BF3F0027DDEE /* PortfolioCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC818723E7BF3F0027DDEE /* PortfolioCollectionViewCell.swift */; };
 		64FC818A23E7BF3F0027DDEE /* PortfolioCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FC818823E7BF3F0027DDEE /* PortfolioCollectionViewCell.xib */; };
 		64FC818D23E7C26E0027DDEE /* PortfolioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC818B23E7C26E0027DDEE /* PortfolioTableViewCell.swift */; };
@@ -145,6 +147,8 @@
 		64FAB12D23ED57900073235C /* DecorateStyleCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DecorateStyleCollectionViewCell.xib; sourceTree = "<group>"; };
 		64FAB13023ED640A0073235C /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		64FAB13223EE4E5B0073235C /* DecorateStyleCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecorateStyleCollectionReusableView.swift; sourceTree = "<group>"; };
+		64FAB13423EE528E0073235C /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		64FAB13623EEAA160073235C /* SizeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeViewController.swift; sourceTree = "<group>"; };
 		64FC818723E7BF3F0027DDEE /* PortfolioCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioCollectionViewCell.swift; sourceTree = "<group>"; };
 		64FC818823E7BF3F0027DDEE /* PortfolioCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PortfolioCollectionViewCell.xib; sourceTree = "<group>"; };
 		64FC818B23E7C26E0027DDEE /* PortfolioTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioTableViewCell.swift; sourceTree = "<group>"; };
@@ -338,6 +342,8 @@
 				6406276523EAAD1200086434 /* MoreViewController.swift */,
 				6406276723EAB4B200086434 /* ReplyViewController.swift */,
 				64FAB12623ED548A0073235C /* DecorateStyleViewController.swift */,
+				64FAB13423EE528E0073235C /* LocationViewController.swift */,
+				64FAB13623EEAA160073235C /* SizeViewController.swift */,
 			);
 			path = Article;
 			sourceTree = "<group>";
@@ -573,6 +579,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6406276623EAAD1200086434 /* MoreViewController.swift in Sources */,
+				64FAB13723EEAA160073235C /* SizeViewController.swift in Sources */,
 				647A7CB023D83376005D1946 /* STTabBarViewController.swift in Sources */,
 				64FAB13323EE4E5B0073235C /* DecorateStyleCollectionReusableView.swift in Sources */,
 				64FE4ED223E9838B00A5D3EC /* InfoViewController.swift in Sources */,
@@ -605,6 +612,7 @@
 				64FC818D23E7C26E0027DDEE /* PortfolioTableViewCell.swift in Sources */,
 				64FE4EC823E83E9400A5D3EC /* UITextField+Extension.swift in Sources */,
 				64FC819923E7EE2D0027DDEE /* ChatRoomTableViewCell.swift in Sources */,
+				64FAB13523EE528E0073235C /* LocationViewController.swift in Sources */,
 				64FE4ED923E9875E00A5D3EC /* InfoTableViewCell.swift in Sources */,
 				64FA429A23E341440065DCEF /* ArticleTableViewCell.swift in Sources */,
 				64FA42B323E3C5CD0065DCEF /* ResumeViewController.swift in Sources */,
