@@ -177,6 +177,72 @@
             </objects>
             <point key="canvasLocation" x="2179.7101449275365" y="770.75892857142856"/>
         </scene>
+        <!--Decorate Style View Controller-->
+        <scene sceneID="AAN-li-MnZ">
+            <objects>
+                <viewController storyboardIdentifier="DecorateStyleViewController" id="u5l-Z7-0xi" customClass="DecorateStyleViewController" customModule="DecorYou" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3nU-OI-rQ7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4ct-li-ezo">
+                                <rect key="frame" x="0.0" y="453" width="414" height="409"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QPa-0x-EeH">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="50" height="50"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="DecorateStyleCollectionReusableView" id="xk3-ok-a8r" customClass="DecorateStyleCollectionReusableView" customModule="DecorYou" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="至多選擇兩種" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cVO-EC-JqI">
+                                            <rect key="frame" x="141" y="9.5" width="132" height="31"/>
+                                            <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="22"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0ZV-gN-d3O">
+                                            <rect key="frame" x="0.0" y="49" width="414" height="1"/>
+                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="1" id="CMg-aZ-JXs"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="0ZV-gN-d3O" firstAttribute="leading" secondItem="xk3-ok-a8r" secondAttribute="leading" id="MTm-d7-e8z"/>
+                                        <constraint firstAttribute="trailing" secondItem="0ZV-gN-d3O" secondAttribute="trailing" id="SMN-LE-xdx"/>
+                                        <constraint firstAttribute="bottom" secondItem="0ZV-gN-d3O" secondAttribute="bottom" id="XsF-lb-awg"/>
+                                        <constraint firstItem="cVO-EC-JqI" firstAttribute="centerY" secondItem="xk3-ok-a8r" secondAttribute="centerY" id="Yeb-DE-WKl"/>
+                                        <constraint firstItem="cVO-EC-JqI" firstAttribute="centerX" secondItem="xk3-ok-a8r" secondAttribute="centerX" id="ogO-ba-VfB"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="titleLabel" destination="cVO-EC-JqI" id="mrs-Z9-LBw"/>
+                                    </connections>
+                                </collectionReusableView>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Fie-iH-IZ3" firstAttribute="trailing" secondItem="4ct-li-ezo" secondAttribute="trailing" id="Lh0-Wy-orw"/>
+                            <constraint firstItem="Fie-iH-IZ3" firstAttribute="bottom" secondItem="4ct-li-ezo" secondAttribute="bottom" id="ZZW-eD-B02"/>
+                            <constraint firstItem="4ct-li-ezo" firstAttribute="leading" secondItem="Fie-iH-IZ3" secondAttribute="leading" id="bCn-Mt-1ZT"/>
+                            <constraint firstItem="4ct-li-ezo" firstAttribute="top" secondItem="Fie-iH-IZ3" secondAttribute="centerY" id="bmK-oP-7wY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Fie-iH-IZ3"/>
+                    </view>
+                    <connections>
+                        <outlet property="decorateStyleCollectionView" destination="4ct-li-ezo" id="tKr-bh-FdJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NAS-Bd-HaG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3211.594202898551" y="103.79464285714285"/>
+        </scene>
         <!--New Post View Controller-->
         <scene sceneID="V7X-hU-U99">
             <objects>
@@ -204,10 +270,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GBB-F9-kqH">
-                                <rect key="frame" x="0.0" y="557" width="414" height="339"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </tableView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="在想些什麼?" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ci8-lf-EfA">
                                 <rect key="frame" x="16" y="144" width="382" height="383"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -218,6 +280,10 @@
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GBB-F9-kqH">
+                                <rect key="frame" x="0.0" y="557" width="414" height="339"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>

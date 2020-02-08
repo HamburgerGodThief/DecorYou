@@ -52,6 +52,11 @@
 		64FAB11F23EC001A0073235C /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FAB11E23EC001A0073235C /* UserManager.swift */; };
 		64FAB12323ED36130073235C /* JGProgressWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FAB12223ED36130073235C /* JGProgressWrapper.swift */; };
 		64FAB12523ED49F70073235C /* ArticleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FAB12423ED49F70073235C /* ArticleManager.swift */; };
+		64FAB12723ED548A0073235C /* DecorateStyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FAB12623ED548A0073235C /* DecorateStyleViewController.swift */; };
+		64FAB12E23ED57900073235C /* DecorateStyleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FAB12C23ED57900073235C /* DecorateStyleCollectionViewCell.swift */; };
+		64FAB12F23ED57900073235C /* DecorateStyleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FAB12D23ED57900073235C /* DecorateStyleCollectionViewCell.xib */; };
+		64FAB13123ED640A0073235C /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FAB13023ED640A0073235C /* UIColor+Extension.swift */; };
+		64FAB13323EE4E5B0073235C /* DecorateStyleCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FAB13223EE4E5B0073235C /* DecorateStyleCollectionReusableView.swift */; };
 		64FC818923E7BF3F0027DDEE /* PortfolioCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC818723E7BF3F0027DDEE /* PortfolioCollectionViewCell.swift */; };
 		64FC818A23E7BF3F0027DDEE /* PortfolioCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FC818823E7BF3F0027DDEE /* PortfolioCollectionViewCell.xib */; };
 		64FC818D23E7C26E0027DDEE /* PortfolioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC818B23E7C26E0027DDEE /* PortfolioTableViewCell.swift */; };
@@ -135,6 +140,11 @@
 		64FAB11E23EC001A0073235C /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		64FAB12223ED36130073235C /* JGProgressWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGProgressWrapper.swift; sourceTree = "<group>"; };
 		64FAB12423ED49F70073235C /* ArticleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleManager.swift; sourceTree = "<group>"; };
+		64FAB12623ED548A0073235C /* DecorateStyleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecorateStyleViewController.swift; sourceTree = "<group>"; };
+		64FAB12C23ED57900073235C /* DecorateStyleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecorateStyleCollectionViewCell.swift; sourceTree = "<group>"; };
+		64FAB12D23ED57900073235C /* DecorateStyleCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DecorateStyleCollectionViewCell.xib; sourceTree = "<group>"; };
+		64FAB13023ED640A0073235C /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		64FAB13223EE4E5B0073235C /* DecorateStyleCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecorateStyleCollectionReusableView.swift; sourceTree = "<group>"; };
 		64FC818723E7BF3F0027DDEE /* PortfolioCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioCollectionViewCell.swift; sourceTree = "<group>"; };
 		64FC818823E7BF3F0027DDEE /* PortfolioCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PortfolioCollectionViewCell.xib; sourceTree = "<group>"; };
 		64FC818B23E7C26E0027DDEE /* PortfolioTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioTableViewCell.swift; sourceTree = "<group>"; };
@@ -257,6 +267,7 @@
 				64FA42AD23E3A7990065DCEF /* UICollectionView+Extension.swift */,
 				64FA42AF23E3A7C80065DCEF /* UITableView+Extension.swift */,
 				64FE4EC723E83E9400A5D3EC /* UITextField+Extension.swift */,
+				64FAB13023ED640A0073235C /* UIColor+Extension.swift */,
 				64FE4ECF23E95CB200A5D3EC /* RoundCorner+Shadow.swift */,
 				64FA429C23E347060065DCEF /* KingFisherWrapper.swift */,
 				64FAB12223ED36130073235C /* JGProgressWrapper.swift */,
@@ -311,6 +322,9 @@
 				6406275E23EA942900086434 /* ReadPostTableViewCell.xib */,
 				6406276123EAA10100086434 /* ReadPostBottomView.swift */,
 				6406276323EAA21D00086434 /* ReadPostBottomView.xib */,
+				64FAB12C23ED57900073235C /* DecorateStyleCollectionViewCell.swift */,
+				64FAB12D23ED57900073235C /* DecorateStyleCollectionViewCell.xib */,
+				64FAB13223EE4E5B0073235C /* DecorateStyleCollectionReusableView.swift */,
 			);
 			path = Article;
 			sourceTree = "<group>";
@@ -323,6 +337,7 @@
 				6406275B23EA936700086434 /* ReadPostViewController.swift */,
 				6406276523EAAD1200086434 /* MoreViewController.swift */,
 				6406276723EAB4B200086434 /* ReplyViewController.swift */,
+				64FAB12623ED548A0073235C /* DecorateStyleViewController.swift */,
 			);
 			path = Article;
 			sourceTree = "<group>";
@@ -481,6 +496,7 @@
 				64FA429B23E341440065DCEF /* ArticleTableViewCell.xib in Resources */,
 				647A7CD123D83DCA005D1946 /* Auth.storyboard in Resources */,
 				647A7CC623D83B92005D1946 /* Chat.storyboard in Resources */,
+				64FAB12F23ED57900073235C /* DecorateStyleCollectionViewCell.xib in Resources */,
 				64FC819A23E7EE2D0027DDEE /* ChatRoomTableViewCell.xib in Resources */,
 				647A7CB823D83377005D1946 /* LaunchScreen.storyboard in Resources */,
 				647A7CC023D833D4005D1946 /* GoogleService-Info.plist in Resources */,
@@ -558,6 +574,7 @@
 			files = (
 				6406276623EAAD1200086434 /* MoreViewController.swift in Sources */,
 				647A7CB023D83376005D1946 /* STTabBarViewController.swift in Sources */,
+				64FAB13323EE4E5B0073235C /* DecorateStyleCollectionReusableView.swift in Sources */,
 				64FE4ED223E9838B00A5D3EC /* InfoViewController.swift in Sources */,
 				64FA42B923E7B74E0065DCEF /* PortfolioViewController.swift in Sources */,
 				647A7CD523D83E49005D1946 /* CraftsmenViewController.swift in Sources */,
@@ -579,8 +596,10 @@
 				6406276223EAA10100086434 /* ReadPostBottomView.swift in Sources */,
 				64FE4EEA23EA72B900A5D3EC /* CraftsmenResumeViewController.swift in Sources */,
 				6406275F23EA942900086434 /* ReadPostTableViewCell.swift in Sources */,
+				64FAB13123ED640A0073235C /* UIColor+Extension.swift in Sources */,
 				64FE4ED623E983D500A5D3EC /* YourPostViewController.swift in Sources */,
 				64FC819623E7E9D70027DDEE /* ChatRoomViewController.swift in Sources */,
+				64FAB12723ED548A0073235C /* DecorateStyleViewController.swift in Sources */,
 				64FE4EDD23EA4A5900A5D3EC /* FavoriteTableViewCell.swift in Sources */,
 				64FAB12323ED36130073235C /* JGProgressWrapper.swift in Sources */,
 				64FC818D23E7C26E0027DDEE /* PortfolioTableViewCell.swift in Sources */,
@@ -594,6 +613,7 @@
 				64FA42AA23E393280065DCEF /* CraftsmenCollectionViewCell.swift in Sources */,
 				64FE4EC623E824D900A5D3EC /* LogInViewController.swift in Sources */,
 				647A7CCC23D83BCE005D1946 /* UIStoryboard+Extension.swift in Sources */,
+				64FAB12E23ED57900073235C /* DecorateStyleCollectionViewCell.swift in Sources */,
 				64FA429D23E347060065DCEF /* KingFisherWrapper.swift in Sources */,
 				64FE4EC423E824CD00A5D3EC /* SignUpViewController.swift in Sources */,
 				647A7CD923D83E5E005D1946 /* ProfileViewController.swift in Sources */,

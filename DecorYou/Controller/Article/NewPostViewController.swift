@@ -104,4 +104,20 @@ extension NewPostViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            
+        } else if indexPath.row == 1 {
+            let storyboard = UIStoryboard(name: "Article", bundle: nil)
+            guard let decorateStyleViewController = storyboard.instantiateViewController(withIdentifier: "DecorateStyleViewController") as? DecorateStyleViewController else { return }
+            present(decorateStyleViewController, animated: true, completion: nil)
+        } else if indexPath.row == 2 {
+            
+        } else if indexPath.row == 3 {
+            
+        } else if indexPath.row == 4 {
+            
+        }
+    }
+    
 }
