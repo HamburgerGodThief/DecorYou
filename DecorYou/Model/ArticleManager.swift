@@ -8,21 +8,28 @@
 
 import FirebaseCore
 import FirebaseFirestore
+import FirebaseFirestoreSwift
 
-struct Article {
+struct Article: Codable {
     let title: String
-    let content: String
-    let loveCount: Int
-    let reply: [Article]
-    let comment: [Comment]
     let authorName: String
     let authorUID: String
+    let content: String
     let createTime: Date
+    var createTimeString: String {
+        let format = DateFormatter()
+        format.dateFormat = "YYYY-MM-dd HH:mm"
+        return format.string(from: createTime)
+    }
+    let decorateStyle: [String]
+    let location: String?
+    let loveCount: Int
     let postID: String
-//    let houseStyle: [String]
-//    let houseLocation: String?
-//    let houseSize: Int?
-//    let collaborator: [User]
+    let size: String?
+    let collaborator: [DocumentReference]
+    let reply: [DocumentReference]
+    let comment: [DocumentReference]
+    let author: DocumentReference
 }
 
 struct Comment {
@@ -39,20 +46,22 @@ class ArticleManager {
     
     lazy var db = Firestore.firestore()
     
-    //創建用戶
-    func addPost(title: String,
+    //創建貼文
+    func addPost(newPost: DocumentReference,
+                 title: String,
                  content: String,
                  loveCount: Int,
-                 reply: [Article],
-                 comment: [Comment],
+                 reply: [DocumentReference],
+                 comment: [DocumentReference],
                  authorName: String,
                  authorUID: String,
                  createTime: Date,
                  decorateStyle: [String],
                  location: String?,
                  size: String?,
-                 collaborator: [Craftsmen]) {
-        let newPost = db.collection("article").document()
+                 collaboratorRef: [DocumentReference],
+                 author: DocumentReference) {
+//        let newPost = db.collection("article").document()
         db.collection("article").document("\(newPost.documentID)").setData([
             "title": title,
             "content": content,
@@ -62,11 +71,12 @@ class ArticleManager {
             "authorName": authorName,
             "authorUID": authorUID,
             "createTime": createTime,
-//            "decorateStyle": decorateStyle,
-//            "location": location ?? "",
-//            "size": size ?? "",
-//            "collaborator": collaborator,
-            "postID": newPost.documentID
+            "decorateStyle": decorateStyle,
+            "location": location ?? "",
+            "size": size ?? "",
+            "collaborator": collaboratorRef,
+            "postID": newPost.documentID,
+            "author": author
         ]){ (error) in
             if let error = error {
                 print(error)
@@ -74,56 +84,69 @@ class ArticleManager {
         }
     }
     
-    //讀取用戶
-//    func fetchPost() {
-//        db.collection("users").getDocuments() { (querySnapshot, err) in
-//            if let err = err {
-//                print("Error getting documents: \(err)")
-//            } else {
-//                guard let querySnapShot = querySnapshot else { return }
-//                var userArray = [User]()
-//                for document in querySnapShot.documents {
-//                    let data = document.data()
-//                    guard let name = data["name"] as? String else { return }
-//                    guard let uid = data["uid"] as? String else { return }
-//                    guard let email = data["email"] as? String else { return }
-//                    let img = data["img"] as? String
-//                    guard let lovePost = data["lovePost"] as? [String] else { return }
-//                    guard let selfPost = data["selfPost"] as? [String] else { return }
-//                    guard let character = data["character"] as? String else { return }
-//                    let user = User(email: email, name: name, uid: uid, img: img, lovePost: lovePost, selfPost: selfPost, character: character)
-//                    userArray.append(user)
-//                    print(user)
-//                }
-//                //self.userDelegate?.passUserData(manager: self, userData: userArray)
-//            }
-//        }
-//    }
-    /*
-    func fetchSpecificPost(uid: String, completion: @escaping (Result<User, Error>) -> Void) {
-        db.collection("users").whereField("uid", isEqualTo: uid).getDocuments() { [weak self] (querySnapshot, err) in
-            guard let strongSelf = self else { return }
+    //讀取貼文
+    func fetchAllPost(completion: @escaping (Result<[Article], Error>) -> Void) {
+        db.collection("article").order(by: "createTime", descending: true).getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
                 guard let querySnapShot = querySnapshot else { return }
-                for document in querySnapShot.documents {
-                    let data = document.data()
-                    guard let name = data["name"] as? String else { return }
-                    guard let uid = data["uid"] as? String else { return }
-                    guard let email = data["email"] as? String else { return }
-                    let img = data["img"] as? String
-                    guard let lovePost = data["lovePost"] as? [String] else { return }
-                    guard let selfPost = data["selfPost"] as? [String] else { return }
-                    guard let character = data["character"] as? String else { return }
-                    strongSelf.userInfo = User(email: email, name: name, uid: uid, img: img, lovePost: lovePost, selfPost: selfPost, character: character)
-                    guard let user = strongSelf.userInfo else { return }
-                    completion(.success(user))
+                var articles = [Article]()
+                querySnapShot.documents.forEach { document in
+                    do {
+                        if let article = try document.data(as: Article.self, decoder: Firestore.Decoder()) {
+                            articles.append(article)
+                        }
+                    } catch{
+                        completion(.failure(error))
+                        return
+                    }
                 }
+                completion(.success(articles))
             }
         }
     }
     
+//    func fetchSpecificPost(postID: String, completion: @escaping (Result<Article, Error>) -> Void) {
+//        db.collection("article").whereField("postID", isEqualTo: postID).getDocuments() { (querySnapshot, err) in
+//            if let err = err {
+//                print("Error getting documents: \(err)")
+//            } else {
+//                guard let querySnapShot = querySnapshot else { return }
+//                for document in querySnapShot.documents {
+//                    let data = document.data()
+//                    guard let title = data["title"] as? String else { return }
+//                    guard let authorName = data["authorName"] as? String else { return }
+//                    guard let authorUID = data["authorUID"] as? String else { return }
+//                    guard let content = data["content"] as? String else { return }
+//                    guard let createTime = data["createTime"] as? Date else { return }
+//                    guard let decorateStyle = data["decorateStyle"] as? [String] else { return }
+//                    let location = data["location"] as? String?
+//                    guard let loveCount = data["loveCount"] as? Int else { return }
+//                    guard let postID = data["postID"] as? String else { return }
+//                    guard let comment = data["comment"] as? [DocumentReference] else { return }
+//                    guard let reply = data["reply"] as? [DocumentReference] else { return }
+//                    let size = data["size"] as? String?
+//                    guard let collaborator = data["collaborator"] as? [DocumentReference] else { return}
+//                    let article = Article(title: title,
+//                                          authorName: authorName,
+//                                          authorUID: authorUID,
+//                                          content: content,
+//                                          createTime: createTime,
+//                                          decorateStyle: decorateStyle,
+//                                          location: location ?? nil,
+//                                          loveCount: loveCount,
+//                                          postID: postID,
+//                                          size: size ?? nil,
+//                                          collaborator: collaborator,
+//                                          reply: reply,
+//                                          comment: comment)
+//                    completion(.success(article))
+//                }
+//            }
+//        }
+//    }
+    /*
     func updatePost(uid: String, name: String, img: String, lovePost: [String], selfPost: [String]) {
         db.collection("users").document(uid).updateData([
             "name": name,

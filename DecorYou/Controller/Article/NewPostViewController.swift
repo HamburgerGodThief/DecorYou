@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class NewPostViewController: UIViewController {
     
@@ -37,7 +38,7 @@ class NewPostViewController: UIViewController {
             tableView.reloadData()
         }
     }
-    var collaborator: [Craftsmen] = [] {
+    var collaborators: [Craftsmen] = [] {
         didSet {
             tableView.reloadData()
         }
@@ -52,11 +53,38 @@ class NewPostViewController: UIViewController {
     }
     
     @objc func createPost() {
-        guard let title = authorNameLabel.text else { return }
+        guard let title = titleTextField.text else { return }
         guard let content = contentTextView.text else { return }
         guard let user = currentUser else { return }
         let currentDate = Date()
-        ArticleManager.shared.addPost(title: title, content: content, loveCount: 0, reply: [], comment: [], authorName: user.name, authorUID: user.uid, createTime: currentDate, decorateStyle: decorateStyle, location: location, size: size, collaborator: collaborator)
+        
+        var collaboratorRefs: [DocumentReference] = []
+        for collaborator in collaborators {
+            let documentRefString = UserManager.shared.db.collection("user").document(collaborator.uid)
+            let collaboratorRef = UserManager.shared.db.document(documentRefString.path)
+            collaboratorRefs.append(collaboratorRef)
+        }
+        //建立新貼文
+        let newPost = ArticleManager.shared.db.collection("article").document()
+        guard let uid = UserDefaults.standard.string(forKey: "UserToken") else { return }
+        
+        let author = UserManager.shared.db.collection("user").document(uid)
+        ArticleManager.shared.addPost(newPost: newPost, title: title, content: content, loveCount: 0, reply: [], comment: [], authorName: user.name, authorUID: user.uid, createTime: currentDate, decorateStyle: decorateStyle, location: location, size: size, collaboratorRef: collaboratorRefs, author: author)
+        
+        //先讀取User現有的selfPost，再更新User的selfPost
+        UserManager.shared.fetchCurrentUser(uid: uid, completion: { result in
+            switch result {
+            case .success(let user):
+                let currentSelfPost = user.selfPost
+                let newPostRef = ArticleManager.shared.db.collection("article").document(newPost.documentID)
+                var updateSelfPost = currentSelfPost
+                updateSelfPost.append(newPostRef)
+                UserManager.shared.updataUserSelfPost(uid: uid, selfPost: updateSelfPost)
+            case .failure(let error):
+                print(error)
+            }
+        })
+        
         navigationController?.popViewController(animated: true)
         tabBarController?.tabBar.isHidden = false
     }
@@ -170,12 +198,12 @@ extension NewPostViewController: UITableViewDelegate, UITableViewDataSource {
 extension NewPostViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        collaborator.count
+        collaborators.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: CollaboratorLogoCollectionViewCell.self), for: indexPath) as? CollaboratorLogoCollectionViewCell else { return UICollectionViewCell() }
-        cell.logoImg.loadImage(collaborator[indexPath.item].img)
+        cell.logoImg.loadImage(collaborators[indexPath.item].img)
         return cell
     }
     
@@ -217,7 +245,7 @@ extension NewPostViewController: DecorateStyleViewControllerDelegate, LocationVi
     }
     
     func passDataToParentVC(_ collaboratorViewController: CollaboratorViewController) {
-        self.collaborator = collaboratorViewController.selectPeople
+        self.collaborators = collaboratorViewController.selectPeople
     }
     
 }

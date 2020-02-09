@@ -14,8 +14,8 @@ struct User {
     let name: String
     let uid: String
     let img: String?
-    let lovePost: [String]
-    let selfPost: [String]
+    let lovePost: [DocumentReference]
+    let selfPost: [DocumentReference]
     let character: String
 }
 
@@ -24,8 +24,8 @@ struct Craftsmen {
     let name: String
     let uid: String
     let img: String?
-    let lovePost: [String]
-    let selfPost: [String]
+    let lovePost: [DocumentReference]
+    let selfPost: [DocumentReference]
     let character: String
     var select: Bool
 }
@@ -70,8 +70,8 @@ class UserManager {
                     guard let uid = data["uid"] as? String else { return }
                     guard let email = data["email"] as? String else { return }
                     let img = data["img"] as? String
-                    guard let lovePost = data["lovePost"] as? [String] else { return }
-                    guard let selfPost = data["selfPost"] as? [String] else { return }
+                    guard let lovePost = data["lovePost"] as? [DocumentReference] else { return }
+                    guard let selfPost = data["selfPost"] as? [DocumentReference] else { return }
                     guard let character = data["character"] as? String else { return }
                     let user = User(email: email, name: name, uid: uid, img: img, lovePost: lovePost, selfPost: selfPost, character: character)
                     userArray.append(user)
@@ -95,11 +95,33 @@ class UserManager {
                     guard let uid = data["uid"] as? String else { return }
                     guard let email = data["email"] as? String else { return }
                     let img = data["img"] as? String
-                    guard let lovePost = data["lovePost"] as? [String] else { return }
-                    guard let selfPost = data["selfPost"] as? [String] else { return }
+                    guard let lovePost = data["lovePost"] as? [DocumentReference] else { return }
+                    guard let selfPost = data["selfPost"] as? [DocumentReference] else { return }
                     guard let character = data["character"] as? String else { return }
                     strongSelf.userInfo = User(email: email, name: name, uid: uid, img: img, lovePost: lovePost, selfPost: selfPost, character: character)
                     guard let user = strongSelf.userInfo else { return }
+                    completion(.success(user))
+                }
+            }
+        }
+    }
+    
+    func fetchSpecificUser(uid: String, completion: @escaping (Result<User, Error>) -> Void) {
+        db.collection("users").whereField("uid", isEqualTo: uid).getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                guard let querySnapShot = querySnapshot else { return }
+                for document in querySnapShot.documents {
+                    let data = document.data()
+                    guard let name = data["name"] as? String else { return }
+                    guard let uid = data["uid"] as? String else { return }
+                    guard let email = data["email"] as? String else { return }
+                    let img = data["img"] as? String
+                    guard let lovePost = data["lovePost"] as? [DocumentReference] else { return }
+                    guard let selfPost = data["selfPost"] as? [DocumentReference] else { return }
+                    guard let character = data["character"] as? String else { return }
+                    let user = User(email: email, name: name, uid: uid, img: img, lovePost: lovePost, selfPost: selfPost, character: character)
                     completion(.success(user))
                 }
             }
@@ -119,8 +141,8 @@ class UserManager {
                     guard let uid = data["uid"] as? String else { return }
                     guard let email = data["email"] as? String else { return }
                     let img = data["img"] as? String
-                    guard let lovePost = data["lovePost"] as? [String] else { return }
-                    guard let selfPost = data["selfPost"] as? [String] else { return }
+                    guard let lovePost = data["lovePost"] as? [DocumentReference] else { return }
+                    guard let selfPost = data["selfPost"] as? [DocumentReference] else { return }
                     guard let character = data["character"] as? String else { return }
                     allCraftsmen.append(User(email: email, name: name, uid: uid, img: img, lovePost: lovePost, selfPost: selfPost, character: character))
                 }
@@ -129,11 +151,23 @@ class UserManager {
         }
     }
     
-    func updateUser(uid: String, name: String, img: String, lovePost: [String], selfPost: [String]) {
+    func updateUser(uid: String, name: String, img: String, lovePost: [DocumentReference], selfPost: [DocumentReference]) {
         db.collection("users").document(uid).updateData([
             "name": name,
             "img": img,
             "lovePost": lovePost,
+            "selfPost": selfPost
+        ]) { err in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
+    }
+    
+    func updataUserSelfPost(uid: String, selfPost: [DocumentReference]) {
+        db.collection("users").document(uid).updateData([
             "selfPost": selfPost
         ]) { err in
             if let err = err {

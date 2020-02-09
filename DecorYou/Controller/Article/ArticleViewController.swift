@@ -8,11 +8,31 @@
 
 import Foundation
 import UIKit
+import FirebaseCore
+import FirebaseFirestore
 
 class ArticleViewController: UIViewController {
     
     @IBOutlet weak var articleTableView: UITableView!
     @IBOutlet weak var newPostBtn: UIButton!
+    
+    var articlesData: [Article] = [] {
+        didSet {
+            articleTableView.reloadData()
+        }
+    }
+    
+    func getData() {
+        ArticleManager.shared.fetchAllPost(completion: { [weak self] result in
+            guard let strongSelf = self else { return }
+            switch result {
+            case .success(let articles):
+                strongSelf.articlesData = articles
+            case .failure(let error):
+                print(error)
+            }
+        })
+    }
     
     func searchBar() {
         let searchBar = UISearchBar()
@@ -65,6 +85,11 @@ class ArticleViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setTableView()
@@ -80,11 +105,29 @@ extension ArticleViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        return articlesData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ArticleTableViewCell.self), for: indexPath) as? ArticleTableViewCell else { return UITableViewCell() }
+        let article = articlesData[indexPath.row]
+//        article.author.getDocument(completion: { (document, error) in
+//            if let error = error {
+//                print(error)
+//            } else {
+//                guard let document = document else { return }
+//                let data = document.data()
+//                guard let logoImg = data["img"] as? String
+//                cell.fillData(authorImgView: ),
+//                              titleLabel: article.title,
+//                              nameTimeLabel: "\(article.authorName) | \(article.createTimeString)",
+//                              contentLabel: article.content)
+//            }
+//        })
+        cell.fillData(authorImgView: article.title,
+                      titleLabel: article.title,
+                      nameTimeLabel: "\(article.authorName) | \(article.createTimeString)",
+                      contentLabel: article.content)
         return cell
     }
     

@@ -42,5 +42,9 @@ class ArticleTableViewCell: UITableViewCell {
 //            self?.contentLabel.text = contentLabel
 //
 //        }
+//        self.authorImgView.loadImage(authorImgView)
+        self.titleLabel.text = titleLabel
+        self.nameTimeLabel.text = nameTimeLabel
+        self.contentLabel.text = contentLabel
     }
 }
