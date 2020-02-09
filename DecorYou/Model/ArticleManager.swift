@@ -19,6 +19,10 @@ struct Article {
     let authorUID: String
     let createTime: Date
     let postID: String
+//    let houseStyle: [String]
+//    let houseLocation: String?
+//    let houseSize: Int?
+//    let collaborator: [User]
 }
 
 struct Comment {
@@ -43,7 +47,11 @@ class ArticleManager {
                  comment: [Comment],
                  authorName: String,
                  authorUID: String,
-                 createTime: Date) {
+                 createTime: Date,
+                 decorateStyle: [String],
+                 location: String?,
+                 size: String?,
+                 collaborator: [Craftsmen]) {
         let newPost = db.collection("article").document()
         db.collection("article").document("\(newPost.documentID)").setData([
             "title": title,
@@ -54,6 +62,10 @@ class ArticleManager {
             "authorName": authorName,
             "authorUID": authorUID,
             "createTime": createTime,
+//            "decorateStyle": decorateStyle,
+//            "location": location ?? "",
+//            "size": size ?? "",
+//            "collaborator": collaborator,
             "postID": newPost.documentID
         ]){ (error) in
             if let error = error {

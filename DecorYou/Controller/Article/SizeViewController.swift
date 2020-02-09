@@ -8,12 +8,21 @@
 
 import UIKit
 
-class SizeViewController: UIViewController {
+protocol SizeViewControllerDelegate: AnyObject {
+    
+    func passDataToParentVC(_ sizeViewController: SizeViewController)
+    
+}
 
+class SizeViewController: UIViewController {
+    
+    weak var delegate: SizeViewControllerDelegate?
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var sizeTextField: UITextField!
     
     @IBAction func didTouchConfirm(_ sender: Any) {
+        delegate?.passDataToParentVC(self)
+        dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {

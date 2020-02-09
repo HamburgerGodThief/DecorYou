@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollaboratorCollectionViewCell" id="gTV-IL-0wX" customClass="CollaboratorCollectionViewCell" customModule="DecorYou" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="60" height="100"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="60" height="100"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="652-0A-dkn">
+                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                        <color key="backgroundColor" name="mainColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="60" id="4z6-vh-XfC"/>
+                            <constraint firstAttribute="width" secondItem="652-0A-dkn" secondAttribute="height" multiplier="1:1" id="lfV-Rk-Ida"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="弘棋" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bir-Uh-hs3">
+                        <rect key="frame" x="18" y="64" width="24" height="36"/>
+                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="multiply.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="E6K-PT-GDr">
+                        <rect key="frame" x="41" y="1.5" width="18" height="17"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="PDK-Z3-GJS"/>
+                            <constraint firstAttribute="width" secondItem="E6K-PT-GDr" secondAttribute="height" multiplier="1:1" id="T6f-fv-iCK"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="652-0A-dkn" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="BAj-us-Kl2"/>
+                <constraint firstItem="bir-Uh-hs3" firstAttribute="top" secondItem="652-0A-dkn" secondAttribute="bottom" constant="4" id="Dz5-il-IVb"/>
+                <constraint firstItem="E6K-PT-GDr" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="1" id="Il9-iV-wz5"/>
+                <constraint firstItem="bir-Uh-hs3" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="dTH-D3-dT5"/>
+                <constraint firstAttribute="trailing" secondItem="E6K-PT-GDr" secondAttribute="trailing" constant="1" id="gUw-Ag-F5L"/>
+                <constraint firstItem="652-0A-dkn" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="n0U-Zb-wdA"/>
+                <constraint firstAttribute="bottom" secondItem="bir-Uh-hs3" secondAttribute="bottom" id="zGD-oL-U2g"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="122" height="150"/>
+            <connections>
+                <outlet property="closeImg" destination="E6K-PT-GDr" id="OMV-Td-mb3"/>
+                <outlet property="logoImg" destination="652-0A-dkn" id="tAb-bi-TZA"/>
+                <outlet property="nameLabel" destination="bir-Uh-hs3" id="RlW-MW-YX3"/>
+            </connections>
+            <point key="canvasLocation" x="228.98550724637684" y="179.46428571428569"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="multiply.circle.fill" catalog="system" width="64" height="60"/>
+        <namedColor name="mainColor">
+            <color red="0.30196078431372547" green="0.6470588235294118" blue="0.65490196078431373" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

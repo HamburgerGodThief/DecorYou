@@ -367,6 +367,86 @@
             </objects>
             <point key="canvasLocation" x="4570" y="103"/>
         </scene>
+        <!--Collaborator View Controller-->
+        <scene sceneID="ivZ-i4-ell">
+            <objects>
+                <viewController storyboardIdentifier="CollaboratorViewController" id="EVQ-0D-0g8" customClass="CollaboratorViewController" customModule="DecorYou" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dcu-7b-ePI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="2CI-5t-gUk">
+                                <rect key="frame" x="80" y="44" width="254" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mTB-Ts-QtL">
+                                <rect key="frame" x="0.0" y="200" width="414" height="662"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FQF-EU-OZX">
+                                <rect key="frame" x="0.0" y="100" width="414" height="100"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="YIw-lt-oh5"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Dte-Qp-4lJ">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EK5-hR-T5C">
+                                <rect key="frame" x="334" y="44" width="80" height="56"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="18"/>
+                                <state key="normal" title="確認"/>
+                                <connections>
+                                    <action selector="didTouchConfirmBtn:" destination="EVQ-0D-0g8" eventType="touchUpInside" id="Mk1-KI-vBh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pv9-n7-pdm">
+                                <rect key="frame" x="0.0" y="44" width="80" height="56"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="18"/>
+                                <state key="normal" title="取消"/>
+                                <connections>
+                                    <action selector="didTouchCancelBtn:" destination="EVQ-0D-0g8" eventType="touchUpInside" id="xMx-04-yUF"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="EK5-hR-T5C" firstAttribute="top" secondItem="O3Z-Tv-PnZ" secondAttribute="top" id="0hc-F1-w5h"/>
+                            <constraint firstItem="pv9-n7-pdm" firstAttribute="top" secondItem="O3Z-Tv-PnZ" secondAttribute="top" id="1Y0-wz-cH2"/>
+                            <constraint firstItem="O3Z-Tv-PnZ" firstAttribute="trailing" secondItem="mTB-Ts-QtL" secondAttribute="trailing" id="39n-OD-M3W"/>
+                            <constraint firstItem="2CI-5t-gUk" firstAttribute="leading" secondItem="pv9-n7-pdm" secondAttribute="trailing" id="5EM-hq-1gK"/>
+                            <constraint firstItem="mTB-Ts-QtL" firstAttribute="top" secondItem="FQF-EU-OZX" secondAttribute="bottom" id="7fJ-bJ-Sld"/>
+                            <constraint firstItem="mTB-Ts-QtL" firstAttribute="leading" secondItem="O3Z-Tv-PnZ" secondAttribute="leading" id="9tB-ZX-eOr"/>
+                            <constraint firstItem="O3Z-Tv-PnZ" firstAttribute="bottom" secondItem="mTB-Ts-QtL" secondAttribute="bottom" id="ERX-Oa-Y7M"/>
+                            <constraint firstItem="FQF-EU-OZX" firstAttribute="top" secondItem="2CI-5t-gUk" secondAttribute="bottom" id="IiU-QO-hDZ"/>
+                            <constraint firstItem="EK5-hR-T5C" firstAttribute="trailing" secondItem="O3Z-Tv-PnZ" secondAttribute="trailing" id="KUK-fM-r63"/>
+                            <constraint firstItem="EK5-hR-T5C" firstAttribute="leading" secondItem="2CI-5t-gUk" secondAttribute="trailing" id="Mt8-Rd-4mb"/>
+                            <constraint firstItem="2CI-5t-gUk" firstAttribute="trailing" secondItem="O3Z-Tv-PnZ" secondAttribute="trailing" constant="-80" id="TCZ-9M-ueu"/>
+                            <constraint firstItem="FQF-EU-OZX" firstAttribute="leading" secondItem="O3Z-Tv-PnZ" secondAttribute="leading" id="fEe-PB-Lkf"/>
+                            <constraint firstItem="FQF-EU-OZX" firstAttribute="top" secondItem="pv9-n7-pdm" secondAttribute="bottom" id="h3Z-CR-x5n"/>
+                            <constraint firstItem="2CI-5t-gUk" firstAttribute="leading" secondItem="O3Z-Tv-PnZ" secondAttribute="leading" constant="80" id="k6S-vW-UOw"/>
+                            <constraint firstItem="pv9-n7-pdm" firstAttribute="leading" secondItem="O3Z-Tv-PnZ" secondAttribute="leading" id="nLm-B0-9jw"/>
+                            <constraint firstItem="FQF-EU-OZX" firstAttribute="top" secondItem="EK5-hR-T5C" secondAttribute="bottom" id="tTf-VP-f3z"/>
+                            <constraint firstItem="FQF-EU-OZX" firstAttribute="trailing" secondItem="O3Z-Tv-PnZ" secondAttribute="trailing" id="tU2-UV-iGA"/>
+                            <constraint firstItem="2CI-5t-gUk" firstAttribute="top" secondItem="O3Z-Tv-PnZ" secondAttribute="top" id="wc2-y2-ZBv"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="O3Z-Tv-PnZ"/>
+                    </view>
+                    <connections>
+                        <outlet property="collaboratorCollectionView" destination="FQF-EU-OZX" id="zpH-98-zLb"/>
+                        <outlet property="collaboratorSearch" destination="2CI-5t-gUk" id="DnQ-hJ-a3i"/>
+                        <outlet property="collaboratorTableView" destination="mTB-Ts-QtL" id="Dt0-IV-mOE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5PG-HH-KYb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5234.7826086956529" y="101.78571428571428"/>
+        </scene>
         <!--New Post View Controller-->
         <scene sceneID="V7X-hU-U99">
             <objects>

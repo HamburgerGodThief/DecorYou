@@ -12,6 +12,8 @@ class NewPostTableViewCell: UITableViewCell {
 
     @IBOutlet weak var iconImg: UIImageView!
     @IBOutlet weak var optionLabel: UILabel!
+    @IBOutlet weak var ugcLabel: UILabel!
+    @IBOutlet weak var logoCollectionView: UICollectionView!
     
     func fillData(iconImg: UIImage, optionLabelText: String) {
         self.iconImg.image = iconImg

@@ -8,12 +8,20 @@
 
 import UIKit
 
+protocol LocationViewControllerDelegate: AnyObject {
+    
+    func passDataToParentVC(_ locationViewController: LocationViewController)
+    
+}
+
 class LocationViewController: UIViewController {
     
+    weak var delegate: LocationViewControllerDelegate?
     @IBOutlet weak var locationPicker: UIPickerView!
    
     @IBAction func didTouchConfirm(_ sender: Any) {
-        
+        delegate?.passDataToParentVC(self)
+        dismiss(animated: true, completion: nil)
     }
     
     let first_level_area_data = ["臺北市", "新北市", "基隆市", "桃園市", "新竹縣",

@@ -85,7 +85,6 @@ extension ArticleViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ArticleTableViewCell.self), for: indexPath) as? ArticleTableViewCell else { return UITableViewCell() }
-//        cell.fillData(authorImgView: "https://www.impericon.com/en/iron-man-iron-man-mousepad.html", titleLabel: "這是標題", nameTimeLabel: "姓名 | 時間", contentLabel: "asalsa;kdjfl;aksdjfal;skdjfal;skdjfals;dkfjal;skdvmladksfnwlkjeroieqwj;flkamdva,.smvafl;kjdfl;awkeufoia;wfjadl;skfmclsd,v.madvnmalkedfjeiufgypwqioerutp034u98520345l234km.,/amdv,.asdjvlkasdjvakldfj3iour09341uirjeq;lwkfjmladsmvc.a/ds,vmj;akejfg302u50928349r[okmlemva/d.s,mva/s,.dfjal;kdsjfoiweuqporiuqpweorfje;lwkdm/d.s,vm/.,dsamcvakl;dfja;kwldfje0iur23904820[39r")
         return cell
     }
     

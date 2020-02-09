@@ -8,10 +8,17 @@
 
 import UIKit
 
+protocol DecorateStyleViewControllerDelegate: AnyObject {
+    func addDataToParentVC(_ decorateStyleViewController: DecorateStyleViewController)
+    
+    func removeDataToParentVC(_ decorateStyleViewController: DecorateStyleViewController)
+}
+
 class DecorateStyleViewController: UIViewController {
     
     @IBOutlet weak var decorateStyleCollectionView: UICollectionView!
     
+    weak var delegate: DecorateStyleViewControllerDelegate?
     let decorateStyleArray = ["工業", "後現代", "日系",
                               "黑白色調", "森林", "清新",
                               "輕工業", "木質調", "奢華",
@@ -97,18 +104,22 @@ extension DecorateStyleViewController: UICollectionViewDataSource, UICollectionV
             guard let index = selectCell.firstIndex(of: cell) else { return }
             selectCell.remove(at: index)
             selectStyle.remove(at: index)
+            self.delegate?.removeDataToParentVC(self)
         } else {
             selectCell.append(cell)
             selectStyle.append(styleString)
             cell.contentView.backgroundColor = UIColor.assetColor(.mainColor)
             cell.select = true
+            self.delegate?.addDataToParentVC(self)
             if selectCell.count > 2 {
                 selectCell.first?.contentView.backgroundColor = .white
                 selectCell.first?.select = false
                 selectCell.removeFirst()
                 selectStyle.removeFirst()
+                self.delegate?.removeDataToParentVC(self)
             }
         }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
