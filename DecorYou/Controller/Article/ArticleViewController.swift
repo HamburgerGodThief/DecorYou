@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import FirebaseCore
 import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 class ArticleViewController: UIViewController {
     
@@ -111,29 +112,31 @@ extension ArticleViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ArticleTableViewCell.self), for: indexPath) as? ArticleTableViewCell else { return UITableViewCell() }
         let article = articlesData[indexPath.row]
-//        article.author.getDocument(completion: { (document, error) in
-//            if let error = error {
-//                print(error)
-//            } else {
-//                guard let document = document else { return }
-//                let data = document.data()
-//                guard let logoImg = data["img"] as? String
-//                cell.fillData(authorImgView: ),
-//                              titleLabel: article.title,
-//                              nameTimeLabel: "\(article.authorName) | \(article.createTimeString)",
-//                              contentLabel: article.content)
-//            }
-//        })
-        cell.fillData(authorImgView: article.title,
-                      titleLabel: article.title,
-                      nameTimeLabel: "\(article.authorName) | \(article.createTimeString)",
-                      contentLabel: article.content)
+        article.author.getDocument(completion: { (document, error) in
+            if let error = error {
+                print(error)
+            } else {
+                guard let document = document else { return }
+                do {
+                    if let author = try document.data(as: User.self, decoder: Firestore.Decoder()) {
+                        cell.fillData(authorImgURLString: author.img,
+                                      titleLabel: article.title,
+                                      nameTimeLabel: "\(article.authorName) | \(article.createTimeString)",
+                                      contentLabel: article.content)
+                    }
+                } catch{
+                    print(error)
+                    return
+                }
+            }
+        })
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Article", bundle: nil)
         guard let readPostViewController = storyboard.instantiateViewController(withIdentifier: "ReadPostViewController") as? ReadPostViewController else { return }
+        readPostViewController.article = articlesData[indexPath.row]
         navigationController?.pushViewController(readPostViewController, animated: true)
         tabBarController?.tabBar.isHidden = true
     }

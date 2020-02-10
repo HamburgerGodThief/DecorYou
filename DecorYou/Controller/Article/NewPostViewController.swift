@@ -68,8 +68,8 @@ class NewPostViewController: UIViewController {
         let newPost = ArticleManager.shared.db.collection("article").document()
         guard let uid = UserDefaults.standard.string(forKey: "UserToken") else { return }
         
-        let author = UserManager.shared.db.collection("user").document(uid)
-        ArticleManager.shared.addPost(newPost: newPost, title: title, content: content, loveCount: 0, reply: [], comment: [], authorName: user.name, authorUID: user.uid, createTime: currentDate, decorateStyle: decorateStyle, location: location, size: size, collaboratorRef: collaboratorRefs, author: author)
+        let author = UserManager.shared.db.collection("users").document(uid)
+        ArticleManager.shared.addPost(newPost: newPost, title: title, content: content, loveCount: 0, replys: [], comments: [], authorName: user.name, authorUID: user.uid, createTime: currentDate, decorateStyle: decorateStyle, location: location, size: size, collaboratorRef: collaboratorRefs, author: author)
         
         //先讀取User現有的selfPost，再更新User的selfPost
         UserManager.shared.fetchCurrentUser(uid: uid, completion: { result in

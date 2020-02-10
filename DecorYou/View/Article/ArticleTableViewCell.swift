@@ -32,7 +32,7 @@ class ArticleTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func fillData(authorImgView: String, titleLabel: String, nameTimeLabel: String, contentLabel: String) {
+    func fillData(authorImgURLString: String?, titleLabel: String, nameTimeLabel: String, contentLabel: String) {
         
 //        onOutletsBinded = { [weak self] in
 //
@@ -42,7 +42,7 @@ class ArticleTableViewCell: UITableViewCell {
 //            self?.contentLabel.text = contentLabel
 //
 //        }
-//        self.authorImgView.loadImage(authorImgView)
+        self.authorImgView.loadImage(authorImgURLString, placeHolder: UIImage(systemName: "person.circle"))
         self.titleLabel.text = titleLabel
         self.nameTimeLabel.text = nameTimeLabel
         self.contentLabel.text = contentLabel

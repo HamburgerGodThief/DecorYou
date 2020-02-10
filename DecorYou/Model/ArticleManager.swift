@@ -27,15 +27,39 @@ struct Article: Codable {
     let postID: String
     let size: String?
     let collaborator: [DocumentReference]
-    let reply: [DocumentReference]
-    let comment: [DocumentReference]
     let author: DocumentReference
 }
 
-struct Comment {
-    let authorName: String
-    let authorLogo: String
-    let comment: String
+struct Reply: Codable {
+    let author: DocumentReference
+    var authorObject: User?
+    let content: String
+    let createTime: Date
+    var createTimeString: String {
+        let format = DateFormatter()
+        format.dateFormat = "YYYY-MM-dd HH:mm"
+        return format.string(from: createTime)
+    }
+    let replyID: String
+    var comments: [Comment] = []
+    
+    enum CodingKeys: String, CodingKey {
+        case author, content, createTime, replyID
+    }
+}
+
+struct Comment: Codable {
+    
+    let author: DocumentReference
+    var authorObject: User?
+    let content: String
+    let createTime: Date
+    var createTimeString: String {
+        let format = DateFormatter()
+        format.dateFormat = "YYYY-MM-dd HH:mm"
+        return format.string(from: createTime)
+    }
+    let commentID: String
 }
 
 class ArticleManager {
@@ -51,8 +75,8 @@ class ArticleManager {
                  title: String,
                  content: String,
                  loveCount: Int,
-                 reply: [DocumentReference],
-                 comment: [DocumentReference],
+                 replys: [DocumentReference],
+                 comments: [DocumentReference],
                  authorName: String,
                  authorUID: String,
                  createTime: Date,
@@ -66,8 +90,8 @@ class ArticleManager {
             "title": title,
             "content": content,
             "loveCount": loveCount,
-            "reply": reply,
-            "comment": comment,
+            "replys": replys,
+            "comments": comments,
             "authorName": authorName,
             "authorUID": authorUID,
             "createTime": createTime,

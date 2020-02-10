@@ -8,8 +8,9 @@
 
 import FirebaseCore
 import FirebaseFirestore
+import FirebaseFirestoreSwift
 
-struct User {
+struct User: Codable {
     let email: String
     let name: String
     let uid: String
