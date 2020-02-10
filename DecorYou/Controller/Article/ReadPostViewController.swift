@@ -254,12 +254,10 @@ class ReadPostViewController: UIViewController {
         group4.notify(queue: queue4) { [weak self] in
             guard let strongSelf = self else { return }
             
-            if strongSelf.replys.count >= 1 {
-                for order in 0...strongSelf.replys.count - 1 {
+            if strongSelf.replys.count > 1 {
+                for order in 1...strongSelf.replys.count - 1 {
                     group5.enter()
-                    ArticleManager.shared.db.collection("article").document(article.postID).collection("reply").document(strongSelf.replys[order].replyID).collection("comments").getDocuments(completion: {
-                        [weak self] (querySnapShot, err) in
-                        guard let strongSelf = self else { return }
+                    ArticleManager.shared.db.collection("article").document(article.postID).collection("replys").document(strongSelf.replys[order].replyID).collection("comments").getDocuments(completion: { (querySnapShot, err) in
                         if let err = err {
                             print("Error getting documents: \(err)")
                         } else {
@@ -276,8 +274,8 @@ class ReadPostViewController: UIViewController {
                                 }
                             }
                         }
+                        group5.leave()
                     })
-                    group5.leave()
                 }
                 group5.leave()
             }
@@ -305,8 +303,8 @@ class ReadPostViewController: UIViewController {
                                     print(error)
                                     return
                                 }
+                                group6.leave()
                             })
-                            group6.leave()
                         }
                     }
                 }
