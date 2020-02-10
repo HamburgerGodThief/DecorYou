@@ -2,7 +2,7 @@
 //  ReadPostTableViewCell.swift
 //  DecorYou
 //
-//  Created by Hamburger on 2020/2/5.
+//  Created by Hamburger on 2020/2/10.
 //  Copyright © 2020 Hamburger. All rights reserved.
 //
 
@@ -10,11 +10,13 @@ import UIKit
 
 class ReadPostTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var logoImg: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var floorTimeLabel: UILabel!
+    @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
-    
+    @IBOutlet weak var reportBtn: UIButton!
+    @IBOutlet weak var createTimeLabel: UILabel!
+    @IBOutlet weak var logoImg: UIImageView!
+    @IBAction func didTouchReport(_ sender: Any) {
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -65,7 +65,7 @@
     <resources>
         <image name="multiply.circle.fill" catalog="system" width="64" height="60"/>
         <namedColor name="mainColor">
-            <color red="0.30196078431372547" green="0.6470588235294118" blue="0.65490196078431373" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.30199998617172241" green="0.6470000147819519" blue="0.65499997138977051" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

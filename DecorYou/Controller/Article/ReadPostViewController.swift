@@ -11,116 +11,12 @@ import FirebaseCore
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
-class ArticleHandler {
-    
-    var authorName: String
-    var authorLogoURLString: String?
-    let createTimeString: String
-    let content: String
-    let comments: [CommentHandler]
-    
-    init(authorName: String, authorLogoURLString: String?, createTimeString: String, content: String, comments: [CommentHandler]) {
-        self.authorName = authorName
-        self.authorLogoURLString = authorLogoURLString
-        self.createTimeString = createTimeString
-        self.content = content
-        self.comments = comments
-    }
-}
-
-class ReplyHandler {
-    
-    var authorName: String
-    var authorLogoURLString: String?
-    let createTimeString: String
-    let content: String
-    let comments: [CommentHandler]
-    
-    init(authorName: String, authorLogoURLString: String?, createTimeString: String, content: String, comments: [CommentHandler]) {
-        self.authorName = authorName
-        self.authorLogoURLString = authorLogoURLString
-        self.createTimeString = createTimeString
-        self.content = content
-        self.comments = comments
-    }
-//    init(reply: Reply, comment: [CommentHandler]) {
-//        reply.author.getDocument(completion: { [weak self] (document, err) in
-//            guard let strongSelf = self else { return }
-//            if let err = err {
-//                print(err)
-//            } else {
-//                guard let document = document else { return }
-//                do {
-//                    if let replyAuthor = try document.data(as: User.self, decoder: Firestore.Decoder()) {
-//                        strongSelf.authorName = replyAuthor.name
-//                        strongSelf.authorLogoURLString = replyAuthor.img
-//                    }
-//                } catch{
-//                    print(error)
-//                    return
-//                }
-//            }
-//
-//        })
-//
-//        self.createTimeString = reply.createTimeString
-//        self.content = reply.content
-//        self.comments = comment
-//    }
-}
-
-class CommentHandler {
-    var authorName: String
-    var authorLogoURLString: String?
-    let createTimeString: String
-    let content: String
-    
-    init (authorName: String, authorLogoURLString: String?, createTimeString: String, content: String) {
-        self.authorName = authorName
-        self.authorLogoURLString = authorLogoURLString
-        self.createTimeString = createTimeString
-        self.content = content
-    }
-//
-//    init(comment: Comment) {
-//        self.createTimeString = comment.createTimeString
-//        self.content = comment.content
-//        self.authorName = ""
-//        self.authorLogoURLString = ""
-//
-//        comment.author.getDocument(completion: { (document, err) in
-//            if let err = err {
-//                print(err)
-//            } else {
-//                guard let document = document else { return }
-//                do {
-//                    if let commentAuthor = try document.data(as: User.self, decoder: Firestore.Decoder()) {
-//                        self.authorName = commentAuthor.name
-//                        self.authorLogoURLString = commentAuthor.img
-//                    }
-//                } catch{
-//                    print(error)
-//                    return
-//                }
-//            }
-//
-//        })
-//    }
-}
-
 class ReadPostViewController: UIViewController {
     
     @IBOutlet weak var readPostTableView: UITableView!
     var article: Article?
-    var mainPost: ArticleHandler?
-    var replys: [Reply] = [] {
-        didSet {
-            readPostTableView.reloadData()
-        }
-    }
+    var replys: [Reply] = []
     
-    let group = DispatchGroup()
-
     let bottomView = UINib(nibName: "ReadPostBottomView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! ReadPostBottomView
     
     func setTableView() {
@@ -158,12 +54,23 @@ class ReadPostViewController: UIViewController {
     }
     
     func getArticleInfo() {
-        group.notify(queue: DispatchQueue.main) {
-            self.readPostTableView.reloadData()
-        }
+        let group0 = DispatchGroup()
+        let group00 = DispatchGroup()
+        let group01 = DispatchGroup()
+        let group1 = DispatchGroup()
+        let group2 = DispatchGroup()
+        let group3 = DispatchGroup()
+        let group4 = DispatchGroup()
+        let queue0 = DispatchQueue(label: "queue0")
+        let queue00 = DispatchQueue(label: "queue00")
+        let queue01 = DispatchQueue(label: "queue01")
+        let queue1 = DispatchQueue(label: "queue1")
+        let queue3 = DispatchQueue(label: "queue3")
+        let queue4 = DispatchQueue(label: "queue4")
+        
         //拿樓主資訊及其文章
         guard let article = article else { return }
-        var comments: [Comment] = []
+        /*
         article.author.getDocument(completion: {[weak self] (document, error) in
             guard let strongSelf = self else { return }
             if let error = error {
@@ -178,6 +85,7 @@ class ReadPostViewController: UIViewController {
                                 print("Error getting documents: \(err)")
                             } else {
                                 guard let querySnapShot = querySnapshot else { return }
+                                group0.enter()
                                 for document in querySnapShot.documents {
                                     do {
                                         if var comment = try document.data(as: Comment.self, decoder: Firestore.Decoder()) {
@@ -192,6 +100,7 @@ class ReadPostViewController: UIViewController {
                                                             comment.authorObject = commentAuthor
                                                             
                                                             comments.append(comment)
+                                                            group0.leave()
                                                         }
                                                     } catch{
                                                         print(error)
@@ -206,11 +115,14 @@ class ReadPostViewController: UIViewController {
                                         return
                                     }
                                 }
-                                strongSelf.replys.insert(Reply(author: article.author,
-                                                    authorObject: author,
-                                                    content: article.content,
-                                                    createTime: article.createTime,
-                                                    replyID: article.postID), at: 0)
+                                group0.notify(queue: queue0) {
+                                    strongSelf.replys.insert(Reply(author: article.author,
+                                                        authorObject: author,
+                                                        content: article.content,
+                                                        createTime: article.createTime,
+                                                        replyID: article.postID,
+                                                        comments: comments), at: 0)
+                                }
                             }
                             
                         })
@@ -221,78 +133,22 @@ class ReadPostViewController: UIViewController {
                 }
             }
         })
-        
-        //拿全部回覆
-        ArticleManager.shared.db.collection("article").document(article.postID).collection("replys").getDocuments(completion:
-            { [weak self] (querySnapshot, err) in
-                guard let strongSelf = self else { return }
+        */
+        //MARK: -- 拿樓主文章的留言
+        var comments: [Comment] = []
+        group0.enter()
+        ArticleManager.shared.db.collection("article").document(article.postID).collection("comments").getDocuments(completion: { [weak self] (querySnapshot, err) in
+            guard let strongSelf = self else { return }
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
                 guard let querySnapShot = querySnapshot else { return }
+                
                 for document in querySnapShot.documents {
-                    var replyAuthor: User?
                     do {
-                        //拿每一個回覆的作者資訊
-                        if let reply = try document.data(as: Reply.self, decoder: Firestore.Decoder()) {
-                            reply.author.getDocument(completion: {
-                                (document, error) in
-                                if let error = error {
-                                    print(error)
-                                } else {
-                                    guard let document = document else { return }
-                                    do {
-                                        if let replyAuthorInfo = try document.data(as: User.self, decoder: Firestore.Decoder()) {
-                                            replyAuthor = replyAuthorInfo
-                                            //拿取每一個回覆的全部留言
-                                            ArticleManager.shared.db.collection("replys").document(reply.replyID).collection("comments").getDocuments(completion: { (querySnapshot, err) in
-                                                if let err = err {
-                                                    print("Error getting documents: \(err)")
-                                                } else {
-                                                    guard let querySnapShot = querySnapshot else { return }
-                                                    var replyComments: [Comment] = []
-                                                    //拿每一個留言的作者姓名與大頭貼
-                                                    for document in querySnapShot.documents {
-                                                        do {
-                                                            if var comment = try document.data(as: Comment.self, decoder: Firestore.Decoder()) {
-                                                                comment.author.getDocument(completion: { (document, error) in
-                                                                    if let error = error {
-                                                                        print(error)
-                                                                    } else {
-                                                                        guard let document = document else { return }
-                                                                        do {
-                                                                            if let commentAuthor = try document.data(as: User.self, decoder: Firestore.Decoder()) {
-                                                                                comment.authorObject = commentAuthor
-                                                                                replyComments.append(comment)
-                                                                            }
-                                                                        } catch{
-                                                                            print(error)
-                                                                            return
-                                                                        }
-                                                                    }
-                                                                    
-                                                                })
-                                                            }
-                                                        } catch {
-                                                            print(error.localizedDescription)
-                                                            return
-                                                        }
-                                                    }
-                                                    strongSelf.replys.append(Reply(author: reply.author,
-                                                                        authorObject: replyAuthor,
-                                                                        content: reply.content,
-                                                                        createTime: reply.createTime,
-                                                                        replyID: reply.replyID))
-                                                }
-                                            })
-                                        }
-                                    } catch{
-                                        print(error)
-                                        return
-                                    }
-                                }
-                            })
-                            
+                        if let comment = try document.data(as: Comment.self, decoder: Firestore.Decoder()) {
+                            comments.append(comment)
+                            group0.leave()
                         }
                     } catch {
                         print(error)
@@ -302,6 +158,234 @@ class ReadPostViewController: UIViewController {
             }
         })
         
+        //MARK: -- 拿樓主文章留言的作者資訊
+        group0.notify(queue: queue0) {
+            group00.enter()
+            for order in 0...comments.count - 1 {
+                comments[order].author.getDocument(completion: { (document, err) in
+                    guard let document = document else { return }
+                    do {
+                        if let author = try document.data(as: User.self, decoder: Firestore.Decoder()) {
+                            comments[order].authorObject = author
+                            group00.leave()
+                        }
+                    } catch {
+                        print(error)
+                        return
+                    }
+                    
+                })
+            }
+        }
+        
+        //MARK: -- 拿樓主個人資訊
+        group00.notify(queue: queue00) {
+            article.author.getDocument(completion: { [weak self] (document, err) in
+                guard let strongSelf = self else { return }
+                guard let document = document else { return }
+                do {
+                    if let author = try document.data(as: User.self, decoder: Firestore.Decoder()) {
+                        strongSelf.replys.append(Reply(author: article.author, authorObject: author, content: article.content, createTime: article.createTime, replyID: article.postID, comments: comments))
+                    }
+                } catch {
+                    print(error)
+                    return
+                }
+            })
+        }
+        
+        //MARK: -- 拿全部回覆
+        ArticleManager.shared.db.collection("article").document(article.postID).collection("replys").getDocuments(completion: { [weak self] (querySnapshot, err) in
+            guard let strongSelf = self else { return }
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                guard let querySnapShot = querySnapshot else { return }
+                group1.enter()
+                for document in querySnapShot.documents {
+                    do {
+                        if let reply = try document.data(as: Reply.self, decoder: Firestore.Decoder()) {
+                            strongSelf.replys.append(reply)
+                            group1.leave()
+                        }
+                    } catch {
+                        print(error)
+                        return
+                    }
+                }
+            }
+        })
+        
+        //MARK: -- 拿每一個回覆的作者資訊
+        group1.notify(queue: queue1) {
+            group2.enter()
+            if self.replys.count >= 1 {
+                for count in 0...self.replys.count - 1 {
+                    self.replys[count].author.getDocument(completion: { [weak self] (document, err) in
+                        guard let strongSelf = self else { return }
+                        guard let document = document else { return }
+                        do {
+                            if let replyAuthor = try document.data(as: User.self, decoder: Firestore.Decoder()) {
+                                strongSelf.replys[count].authorObject = replyAuthor
+                                group2.leave()
+                            }
+                        } catch {
+                            print(error)
+                            return
+                        }
+                    })
+                }
+            }
+        }
+        
+        //MARK: -- 拿回覆的留言
+        group1.notify(queue: queue1) { [weak self] in
+            guard let strongSelf = self else { return }
+            group3.enter()
+            if strongSelf.replys.count >= 1 {
+                for order in 0...strongSelf.replys.count - 1 {
+                    ArticleManager.shared.db.collection("article").document(article.postID).collection("reply").document(strongSelf.replys[order].replyID).collection("comments").getDocuments(completion: {
+                        [weak self] (querySnapShot, err) in
+                        guard let strongSelf = self else { return }
+                        if let err = err {
+                            print("Error getting documents: \(err)")
+                        } else {
+                            guard let querySnapShot = querySnapShot else { return }
+                            for document in querySnapShot.documents {
+                                do {
+                                    if let comment = try document.data(as: Comment.self, decoder: Firestore.Decoder()) {
+                                        strongSelf.replys[order].comments.append(comment)
+                                        group3.leave()
+                                    }
+                                } catch {
+                                    print(error)
+                                    return
+                                }
+                            }
+                        }
+                    })
+                }
+            }
+        }
+        
+        //MARK: -- 拿留言的作者資訊
+        group3.notify(queue: queue3) { [weak self] in
+            guard let strongSelf = self else { return }
+            group4.enter()
+            if strongSelf.replys.count >= 1 {
+                for order in 0...strongSelf.replys.count - 1 {
+                    if strongSelf.replys[order].comments.count >= 1 {
+                        for commentOrder in 0...strongSelf.replys[order].comments.count - 1 {
+                            
+                            strongSelf.replys[order].comments[commentOrder].author.getDocument(completion: { [weak self] (document, err) in
+                                guard let document = document else { return }
+                                guard let strongSelf = self else { return }
+                                do {
+                                    if let author = try document.data(as: User.self, decoder: Firestore.Decoder()) {
+                                        strongSelf.replys[order].comments[commentOrder].authorObject = author
+                                        group4.leave()
+                                    }
+                                } catch {
+                                    print(error)
+                                    return
+                                }
+                            })
+                        }
+                    }
+                }
+            }
+        }
+        
+        group4.notify(queue: queue4) { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.readPostTableView.reloadData()
+        }
+        
+//        ArticleManager.shared.db.collection("article").document(article.postID).collection("replys").getDocuments(completion:
+//            { [weak self] (querySnapshot, err) in
+//                guard let strongSelf = self else { return }
+//            if let err = err {
+//                print("Error getting documents: \(err)")
+//            } else {
+//                guard let querySnapShot = querySnapshot else { return }
+//                for document in querySnapShot.documents {
+//                    var replyAuthor: User?
+//                    var replyComments: [Comment] = []
+//                    do {
+//                        //拿每一個回覆的作者資訊
+//                        if let reply = try document.data(as: Reply.self, decoder: Firestore.Decoder()) {
+//                            reply.author.getDocument(completion: {
+//                                (document, error) in
+//                                if let error = error {
+//                                    print(error)
+//                                } else {
+//                                    guard let document = document else { return }
+//                                    do {
+//                                        if let replyAuthorInfo = try document.data(as: User.self, decoder: Firestore.Decoder()) {
+//                                            replyAuthor = replyAuthorInfo
+//                                            //拿取每一個回覆的全部留言
+//                                            ArticleManager.shared.db.collection("replys").document(reply.replyID).collection("comments").getDocuments(completion: { (querySnapshot, err) in
+//                                                if let err = err {
+//                                                    print("Error getting documents: \(err)")
+//                                                } else {
+//                                                    guard let querySnapShot = querySnapshot else { return }
+//                                                    //拿每一個留言的作者姓名與大頭貼
+//                                                    let innerGroup = DispatchGroup()
+//                                                    let innerQueue = DispatchQueue(label: "innerQueue")
+//                                                    innerGroup.enter()
+//                                                    for document in querySnapShot.documents {
+//                                                        do {
+//                                                            if var comment = try document.data(as: Comment.self, decoder: Firestore.Decoder()) {
+//                                                                comment.author.getDocument(completion: { (document, error) in
+//                                                                    if let error = error {
+//                                                                        print(error)
+//                                                                    } else {
+//                                                                        guard let document = document else { return }
+//                                                                        do {
+//                                                                            if let commentAuthor = try document.data(as: User.self, decoder: Firestore.Decoder()) {
+//                                                                                comment.authorObject = commentAuthor
+//                                                                                replyComments.append(comment)
+//                                                                                innerGroup.leave()
+//                                                                            }
+//                                                                        } catch{
+//                                                                            print(error)
+//                                                                            return
+//                                                                        }
+//                                                                    }
+//
+//                                                                })
+//                                                            }
+//                                                        } catch {
+//                                                            print(error.localizedDescription)
+//                                                            return
+//                                                        }
+//                                                    }
+//                                                    innerGroup.notify(queue: innerQueue) {
+//                                                        strongSelf.replys.append(Reply(author: reply.author,
+//                                                                                       authorObject: replyAuthor,
+//                                                                                       content: reply.content,
+//                                                                                       createTime: reply.createTime,
+//                                                                                       replyID: reply.replyID,
+//                                                                                       comments: replyComments))
+//                                                    }
+//                                                }
+//                                            })
+//                                        }
+//                                    } catch{
+//                                        print(error)
+//                                        return
+//                                    }
+//                                }
+//                            })
+//                        }
+//                    } catch {
+//                        print(error)
+//                        return
+//                    }
+//                }
+//            }
+//        })
+//
     }
     
     
@@ -345,25 +429,45 @@ class ReadPostViewController: UIViewController {
 
 extension ReadPostViewController: UITableViewDelegate, UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        replys.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return replys.count
+        return replys[section].comments.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ReadPostTableViewCell.self), for: indexPath) as? ReadPostTableViewCell else { return UITableViewCell() }
         switch indexPath.row {
         case 0:
-            cell.logoImg.loadImage(replys[indexPath.row].authorObject?.img, placeHolder: UIImage(systemName: "person.circle"))
-            cell.floorTimeLabel.text = "樓主 | \(replys[indexPath.row].createTimeString)"
-            cell.contentLabel.text = replys[indexPath.row].content
-            cell.nameLabel.text = replys[indexPath.row].authorObject?.name
+            cell.logoImg.loadImage(replys[indexPath.section].comments[indexPath.row].authorObject?.img, placeHolder: UIImage(systemName: "person.circle"))
+            cell.createTimeLabel.text = "\(replys[indexPath.section].comments[indexPath.row].createTimeString)"
+            cell.contentLabel.text = replys[indexPath.section].comments[indexPath.row].content
+            cell.authorNameLabel.text = replys[indexPath.section].comments[indexPath.row].authorObject?.name
         default:
-            cell.logoImg.loadImage(replys[indexPath.row].authorObject?.img, placeHolder: UIImage(systemName: "person.circle"))
-            cell.floorTimeLabel.text = "\(indexPath.row)樓 | \(replys[indexPath.row].createTimeString)"
-            cell.contentLabel.text = replys[indexPath.row].content
-            cell.nameLabel.text = replys[indexPath.row].authorObject?.name
+            cell.logoImg.loadImage(replys[indexPath.section].comments[indexPath.row].authorObject?.img, placeHolder: UIImage(systemName: "person.circle"))
+            cell.createTimeLabel.text = "\(replys[indexPath.section].comments[indexPath.row].createTimeString)"
+            cell.contentLabel.text = replys[indexPath.section].comments[indexPath.row].content
+            cell.authorNameLabel.text = replys[indexPath.section].comments[indexPath.row].authorObject?.name
         }
         return cell
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UINib(nibName: "ReadPostTableViewHeaderView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! ReadPostTableViewHeaderView
+        if section == 0{
+            headerView.floorTimeLabel.text = "樓主 | \(replys[section].createTimeString)"
+        } else {
+            headerView.floorTimeLabel.text = "\(section)樓 | \(replys[section].createTimeString)"
+        }
+        headerView.authorName.text = replys[section].authorObject?.name
+        headerView.logoImg.loadImage(replys[section].authorObject?.img, placeHolder: UIImage(systemName: "person.circle"))
+        headerView.contentLabel.text = replys[section].content
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 400
+    }
 }
