@@ -47,6 +47,4 @@ extension PortfolioViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    
-    
 }

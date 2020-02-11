@@ -42,9 +42,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                     UserManager.shared.fetchCurrentUser(uid: uid, completion: { result in
                         switch result {
                             
-                        case .success( _):
+                        case .success(let user):
                             
-                            print("Success")
+                            UserManager.shared.userInfo = user
                         
                         case .failure(let error):
                             

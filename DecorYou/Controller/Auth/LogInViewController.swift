@@ -35,7 +35,9 @@ class LogInViewController: UIViewController {
                 UserManager.shared.fetchCurrentUser(uid: uid, completion: { result in
                     switch result {
                         
-                    case .success( _):
+                    case .success(let user):
+                        
+                        UserManager.shared.userInfo = user
                         
                         print("Success")
                         

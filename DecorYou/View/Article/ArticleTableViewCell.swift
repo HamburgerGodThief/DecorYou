@@ -15,33 +15,19 @@ class ArticleTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var nameTimeLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
-    
-//    var onOutletsBinded: () -> Void = { }
-    
+        
     override func awakeFromNib() {
         super.awakeFromNib()
         backView.layer.cornerRadius = 20
         authorImgView.layer.cornerRadius = authorImgView.frame.size.width / 2
-        // Initialization code
-//        onOutletsBinded()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     func fillData(authorImgURLString: String?, titleLabel: String, nameTimeLabel: String, contentLabel: String) {
         
-//        onOutletsBinded = { [weak self] in
-//
-//            self?.authorImgView.loadImage(authorImgView)
-//            self?.titleLabel.text = titleLabel
-//            self?.nameTimeLabel.text = nameTimeLabel
-//            self?.contentLabel.text = contentLabel
-//
-//        }
         self.authorImgView.loadImage(authorImgURLString, placeHolder: UIImage(systemName: "person.circle"))
         self.titleLabel.text = titleLabel
         self.nameTimeLabel.text = nameTimeLabel

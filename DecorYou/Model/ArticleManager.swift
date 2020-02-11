@@ -130,46 +130,14 @@ class ArticleManager {
             }
         }
     }
-    
-//    func fetchSpecificPost(postID: String, completion: @escaping (Result<Article, Error>) -> Void) {
-//        db.collection("article").whereField("postID", isEqualTo: postID).getDocuments() { (querySnapshot, err) in
-//            if let err = err {
-//                print("Error getting documents: \(err)")
-//            } else {
-//                guard let querySnapShot = querySnapshot else { return }
-//                for document in querySnapShot.documents {
-//                    let data = document.data()
-//                    guard let title = data["title"] as? String else { return }
-//                    guard let authorName = data["authorName"] as? String else { return }
-//                    guard let authorUID = data["authorUID"] as? String else { return }
-//                    guard let content = data["content"] as? String else { return }
-//                    guard let createTime = data["createTime"] as? Date else { return }
-//                    guard let decorateStyle = data["decorateStyle"] as? [String] else { return }
-//                    let location = data["location"] as? String?
-//                    guard let loveCount = data["loveCount"] as? Int else { return }
-//                    guard let postID = data["postID"] as? String else { return }
-//                    guard let comment = data["comment"] as? [DocumentReference] else { return }
-//                    guard let reply = data["reply"] as? [DocumentReference] else { return }
-//                    let size = data["size"] as? String?
-//                    guard let collaborator = data["collaborator"] as? [DocumentReference] else { return}
-//                    let article = Article(title: title,
-//                                          authorName: authorName,
-//                                          authorUID: authorUID,
-//                                          content: content,
-//                                          createTime: createTime,
-//                                          decorateStyle: decorateStyle,
-//                                          location: location ?? nil,
-//                                          loveCount: loveCount,
-//                                          postID: postID,
-//                                          size: size ?? nil,
-//                                          collaborator: collaborator,
-//                                          reply: reply,
-//                                          comment: comment)
-//                    completion(.success(article))
-//                }
-//            }
-//        }
-//    }
+    //回覆文章
+    func replyPost(postID: String, newReplyID: String, reply: Reply) {
+        
+        do { try db.collection("article").document("\(postID)").collection("replys").document(newReplyID).setData(from: reply)
+        } catch {
+            print("Error writing city to Firestore: \(error)")
+        }
+    }
     /*
     func updatePost(uid: String, name: String, img: String, lovePost: [String], selfPost: [String]) {
         db.collection("users").document(uid).updateData([

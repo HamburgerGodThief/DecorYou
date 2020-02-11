@@ -43,7 +43,7 @@ class ArticleViewController: UIViewController {
         let layoutBtn = UIBarButtonItem(image: UIImage.asset(.Icons_24px_CollectionView), style: .plain, target: self, action: #selector(changeLayout))
         let filterBtn = UIBarButtonItem(image: UIImage.asset(.Icons_24px_Filter), style: .plain, target: self, action: #selector(setfilter))
         navigationItem.rightBarButtonItems = [layoutBtn, filterBtn]
-        navigationController?.navigationBar.backgroundColor = UIColor.brown
+        navigationController?.navigationBar.backgroundColor = UIColor.assetColor(.mainColor)
     }
     
     func setTableView() {
@@ -57,6 +57,22 @@ class ArticleViewController: UIViewController {
         newPostBtn.tintColor = .white
         newPostBtn.backgroundColor = UIColor.brown
         newPostBtn.layer.cornerRadius = newPostBtn.frame.size.width / 2
+    }
+    
+    func getCurrentUser() {
+        guard let uid = UserDefaults.standard.string(forKey: "UserToken") else { return }
+        UserManager.shared.fetchCurrentUser(uid: uid, completion: { result in
+            switch result {
+                
+            case .success(let user):
+                
+                UserManager.shared.userInfo = user
+            
+            case .failure(let error):
+                
+                print(error)
+            }
+        })
     }
     
     @objc func changeLayout() {
@@ -96,6 +112,7 @@ class ArticleViewController: UIViewController {
         setTableView()
         searchBar()
         setNewPost()
+        getCurrentUser()
     }
 }
 

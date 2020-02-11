@@ -20,7 +20,7 @@ class CraftsmenViewController: UIViewController {
     
         let filterBtn = UIBarButtonItem(image: UIImage.asset(.Icons_24px_Filter), style: .plain, target: self, action: #selector(setfilter))
         navigationItem.rightBarButtonItem = filterBtn
-        navigationController?.navigationBar.backgroundColor = UIColor.brown
+        navigationController?.navigationBar.backgroundColor = UIColor.assetColor(.mainColor)
     }
     
     @objc func setfilter() {
@@ -44,11 +44,12 @@ extension CraftsmenViewController: UICollectionViewDataSource, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: CraftsmenCollectionViewCell.self), for: indexPath) as? CraftsmenCollectionViewCell else { return UICollectionViewCell() }
+        cell.layoutIfNeeded()
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = 182
+        let width = 180
         let height = 300
         return CGSize(width: width, height: height)
     }

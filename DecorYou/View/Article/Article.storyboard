@@ -120,7 +120,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iE2-Ls-Bz9">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iE2-Ls-Bz9">
                                 <rect key="frame" x="20" y="52" width="54" height="54"/>
                                 <color key="backgroundColor" red="0.75686274509999996" green="0.63137254899999995" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -128,42 +128,38 @@
                                     <constraint firstAttribute="width" secondItem="iE2-Ls-Bz9" secondAttribute="height" multiplier="1:1" id="cmv-pr-roa"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  RE: 開箱工業宅輕裝潢" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lrf-xa-DSw">
-                                <rect key="frame" x="0.0" y="106" width="414" height="36"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="0ya-Lo-cH6"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fGu-fD-RVJ">
-                                <rect key="frame" x="82" y="56" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="82" y="56" width="47" height="25.5"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="R3g-5y-0Qh">
-                                <rect key="frame" x="0.0" y="142" width="414" height="720"/>
+                                <rect key="frame" x="0.0" y="116" width="414" height="337"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RE: 開箱工業宅輕裝潢" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lrf-xa-DSw">
+                                <rect key="frame" x="82" y="83" width="159" height="22.5"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Lrf-xa-DSw" firstAttribute="leading" secondItem="DcS-CT-of1" secondAttribute="leading" id="Gsf-Re-5vY"/>
-                            <constraint firstItem="R3g-5y-0Qh" firstAttribute="top" secondItem="Lrf-xa-DSw" secondAttribute="bottom" id="Lu6-JM-dlD"/>
+                            <constraint firstItem="Lrf-xa-DSw" firstAttribute="leading" secondItem="iE2-Ls-Bz9" secondAttribute="trailing" constant="8" id="3RA-pV-a9F"/>
+                            <constraint firstItem="Lrf-xa-DSw" firstAttribute="top" secondItem="fGu-fD-RVJ" secondAttribute="bottom" constant="1.5" id="AYd-Jk-99i"/>
+                            <constraint firstItem="R3g-5y-0Qh" firstAttribute="top" secondItem="iE2-Ls-Bz9" secondAttribute="bottom" constant="10" id="CjX-hf-ypC"/>
                             <constraint firstItem="R3g-5y-0Qh" firstAttribute="leading" secondItem="DcS-CT-of1" secondAttribute="leading" id="QpD-dz-R29"/>
-                            <constraint firstItem="Lrf-xa-DSw" firstAttribute="top" secondItem="iE2-Ls-Bz9" secondAttribute="bottom" id="TPA-Lz-SML"/>
                             <constraint firstItem="iE2-Ls-Bz9" firstAttribute="leading" secondItem="DcS-CT-of1" secondAttribute="leading" constant="20" id="UT4-o4-O7o"/>
-                            <constraint firstItem="DcS-CT-of1" firstAttribute="trailing" secondItem="Lrf-xa-DSw" secondAttribute="trailing" id="UgA-2G-NgG"/>
                             <constraint firstItem="fGu-fD-RVJ" firstAttribute="leading" secondItem="iE2-Ls-Bz9" secondAttribute="trailing" constant="8" id="Wbb-Zy-XI7"/>
                             <constraint firstItem="DcS-CT-of1" firstAttribute="trailing" secondItem="R3g-5y-0Qh" secondAttribute="trailing" id="Zfw-jw-anH"/>
                             <constraint firstItem="fGu-fD-RVJ" firstAttribute="top" secondItem="iE2-Ls-Bz9" secondAttribute="top" constant="4" id="hlO-5t-rq8"/>
-                            <constraint firstItem="DcS-CT-of1" firstAttribute="bottom" secondItem="R3g-5y-0Qh" secondAttribute="bottom" id="jPl-n0-c4G"/>
+                            <constraint firstItem="R3g-5y-0Qh" firstAttribute="bottom" secondItem="DcS-CT-of1" secondAttribute="centerY" id="jPl-n0-c4G"/>
                             <constraint firstItem="iE2-Ls-Bz9" firstAttribute="top" secondItem="DcS-CT-of1" secondAttribute="top" constant="8" id="y18-V5-mVB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DcS-CT-of1"/>
@@ -171,6 +167,8 @@
                     <connections>
                         <outlet property="logoImg" destination="iE2-Ls-Bz9" id="iNq-yI-xWM"/>
                         <outlet property="nameLabel" destination="fGu-fD-RVJ" id="1WG-ps-EJM"/>
+                        <outlet property="replyContentTextView" destination="R3g-5y-0Qh" id="EGt-q4-5Av"/>
+                        <outlet property="titleLabel" destination="Lrf-xa-DSw" id="VFH-zL-O04"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YTY-cK-wK2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

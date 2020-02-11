@@ -89,7 +89,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Njh-kQ-CNP"/>
                     </view>
-                    <navigationItem key="navigationItem" id="dy7-2f-YUD"/>
+                    <navigationItem key="navigationItem" id="jgr-KJ-KtG"/>
                     <connections>
                         <outlet property="backgroundImg" destination="uIX-Yy-47f" id="RXP-P7-LgJ"/>
                         <outlet property="logInBtn" destination="7mM-iw-Fdz" id="Zyy-td-CIg"/>

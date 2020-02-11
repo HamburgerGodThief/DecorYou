@@ -21,10 +21,16 @@ class CraftsmenCollectionViewCell: UICollectionViewCell {
         locationLabel.text = location
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+//        logoImg.sizeToFit()
+        logoImg.layer.cornerRadius = logoImg.frame.size.width / 2
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        logoImg.layer.cornerRadius = logoImg.frame.size.width / 2
-        // Initialization code
+        self.layer.cornerRadius = 25
+//        logoImg.layer.cornerRadius = logoImg.frame.size.width / 2
     }
 
 }

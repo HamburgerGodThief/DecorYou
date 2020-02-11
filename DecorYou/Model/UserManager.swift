@@ -78,30 +78,26 @@ class UserManager {
                     userArray.append(user)
                     print(user)
                 }
-                //self.userDelegate?.passUserData(manager: self, userData: userArray)
             }
         }
     }
     
     func fetchCurrentUser(uid: String, completion: @escaping (Result<User, Error>) -> Void) {
-        db.collection("users").whereField("uid", isEqualTo: uid).getDocuments() { [weak self] (querySnapshot, err) in
-            guard let strongSelf = self else { return }
+        db.collection("users").whereField("uid", isEqualTo: uid).getDocuments() { (querySnapshot, err) in
+            
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
                 guard let querySnapShot = querySnapshot else { return }
                 for document in querySnapShot.documents {
-                    let data = document.data()
-                    guard let name = data["name"] as? String else { return }
-                    guard let uid = data["uid"] as? String else { return }
-                    guard let email = data["email"] as? String else { return }
-                    let img = data["img"] as? String
-                    guard let lovePost = data["lovePost"] as? [DocumentReference] else { return }
-                    guard let selfPost = data["selfPost"] as? [DocumentReference] else { return }
-                    guard let character = data["character"] as? String else { return }
-                    strongSelf.userInfo = User(email: email, name: name, uid: uid, img: img, lovePost: lovePost, selfPost: selfPost, character: character)
-                    guard let user = strongSelf.userInfo else { return }
-                    completion(.success(user))
+                    do {
+                        if let user = try document.data(as: User.self, decoder: Firestore.Decoder()) {
+                            completion(.success(user))
+                        }
+                    } catch {
+                        print(error)
+                        return
+                    }
                 }
             }
         }

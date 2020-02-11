@@ -11,6 +11,7 @@ import UIKit
 class MoreViewController: UIViewController {
     
     @IBOutlet weak var moreTBView: UITableView!
+    var parentVC: ReadPostViewController?
     let titleArray = ["重新整理", "回覆文章", "收藏文章", "回文章列表"]
     let iconArray = [UIImage.asset(.Icons_24px_Refresh),
                      UIImage.asset(.Icons_24px_AwaitingReview),
@@ -48,5 +49,23 @@ extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
         cell.iconImg.image = iconArray[indexPath.row]
         cell.functionLabel.text = titleArray[indexPath.row]
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 0:
+            dismiss(animated: true, completion: nil)
+            parentVC?.readPostTableView.reloadData()
+        case 1:
+            dismiss(animated: true, completion: nil)
+            let storyboard = UIStoryboard(name: "Article", bundle: nil)
+            guard let replyViewController = storyboard.instantiateViewController(withIdentifier: "ReplyViewController") as? ReplyViewController else { return }
+            parentVC?.navigationController?.pushViewController(replyViewController, animated: true)
+        case 2:
+            dismiss(animated: true, completion: nil)
+        default:
+            dismiss(animated: true, completion: nil)
+            
+        }
     }
 }
