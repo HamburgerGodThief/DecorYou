@@ -60,6 +60,10 @@ struct Comment: Codable {
         return format.string(from: createTime)
     }
     let commentID: String
+    
+    enum CodingKeys: String, CodingKey {
+        case author, content, createTime, commentID
+    }
 }
 
 class ArticleManager {
@@ -138,6 +142,24 @@ class ArticleManager {
             print("Error writing city to Firestore: \(error)")
         }
     }
+    
+    //樓主文章的留言
+    func commentMainPost(postID: String, newCommentID: String, comment: Comment) {
+        do { try db.collection("article").document("\(postID)").collection("comments").document(newCommentID).setData(from: comment)
+        } catch {
+            print("Error writing city to Firestore: \(error)")
+        }
+    }
+    
+    //回文的留言
+    func commentReplyPost(postID: String, replyID: String, newCommentID: String, comment: Comment) {
+        do { try db.collection("article").document("\(postID)").collection("replys").document(replyID).collection("comments").document(newCommentID).setData(from: comment)
+        } catch {
+            print("Error writing city to Firestore: \(error)")
+        }
+    }
+    
+    
     /*
     func updatePost(uid: String, name: String, img: String, lovePost: [String], selfPost: [String]) {
         db.collection("users").document(uid).updateData([

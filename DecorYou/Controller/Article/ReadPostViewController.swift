@@ -45,7 +45,7 @@ class ReadPostViewController: UIViewController {
     }
     
     func setNavigationBar() {
-        navigationItem.title = "文章title"
+        navigationItem.title = article?.title
         let btn = UIButton()
         btn.setTitle("Back", for: .normal)
         btn.setImage(UIImage.asset(.Icons_24px_Back02), for: .normal)
@@ -143,7 +143,7 @@ class ReadPostViewController: UIViewController {
         //MARK: -- 拿全部回覆
         group3.enter()
         group2.notify(queue: queue2) {
-            ArticleManager.shared.db.collection("article").document(article.postID).collection("replys").order(by: "createTime", descending: false).getDocuments(completion: { [weak self] (querySnapshot, err) in
+            ArticleManager.shared.db.collection("article").document(article.postID).collection("replys").order(by: "createTime", descending: true).getDocuments(completion: { [weak self] (querySnapshot, err) in
                 guard let strongSelf = self else { return }
                 if let err = err {
                     print("Error getting documents: \(err)")
@@ -200,7 +200,7 @@ class ReadPostViewController: UIViewController {
             if strongSelf.replys.count > 1 {
                 for order in 1...strongSelf.replys.count - 1 {
                     group5.enter()
-                    ArticleManager.shared.db.collection("article").document(article.postID).collection("replys").document(strongSelf.replys[order].replyID).collection("comments").getDocuments(completion: { (querySnapShot, err) in
+                    ArticleManager.shared.db.collection("article").document(article.postID).collection("replys").document(strongSelf.replys[order].replyID).collection("comments").order(by: "createTime", descending: true).getDocuments(completion: { (querySnapShot, err) in
                         if let err = err {
                             print("Error getting documents: \(err)")
                         } else {
@@ -287,10 +287,44 @@ class ReadPostViewController: UIViewController {
         navigationController?.pushViewController(replyViewController, animated: true)
     }
     
-    @objc func singleTap() {
-        let storyboard = UIStoryboard(name: "Article", bundle: nil)
-        guard let replyViewController = storyboard.instantiateViewController(withIdentifier: "ReplyViewController") as? ReplyViewController else { return }
-        navigationController?.pushViewController(replyViewController, animated: true)
+    @objc func sendCommentBelowMain(_ sender: UIButton) {
+        guard let footer = sender.superview?.superview as? ReadPostTableViewFooterView else { return }
+        if footer.commentTextField.text != nil {
+            guard let mainArticle = article else { return }
+            let newComment = ArticleManager.shared.db.collection("article").document("\(mainArticle.postID)").collection("comments").document()
+            guard let uid = UserDefaults.standard.string(forKey: "UserToken") else { return }
+            let authorRef = UserManager.shared.db.collection("users").document("\(uid)")
+            let comment = Comment(author: authorRef,
+                                  content: footer.commentTextField.text!,
+                                  createTime: Date(),
+                                  commentID: newComment.documentID)
+            ArticleManager.shared.commentMainPost(postID: mainArticle.postID, newCommentID: newComment.documentID, comment: comment)
+            replys = []
+            getArticleInfo()
+            readPostTableView.reloadData()
+        }
+    }
+    
+    @objc func sendCommentBelowReply(_ sender: UIButton) {
+        guard let footer = sender.superview?.superview as? ReadPostTableViewFooterView else { return }
+        guard let order = footer.order else { return }
+        if footer.commentTextField.text != nil {
+            guard let mainArticle = article else { return }
+            let newComment = ArticleManager.shared.db.collection("article").document("\(mainArticle.postID)").collection("replys").document("\(replys[order].replyID)").collection("comments").document()
+            guard let uid = UserDefaults.standard.string(forKey: "UserToken") else { return }
+            let authorRef = UserManager.shared.db.collection("users").document("\(uid)")
+            let comment = Comment(author: authorRef,
+                                  content: footer.commentTextField.text!,
+                                  createTime: Date(),
+                                  commentID: newComment.documentID)
+            ArticleManager.shared.commentReplyPost(postID: mainArticle.postID,
+                                                   replyID: replys[order].replyID,
+                                                   newCommentID: newComment.documentID,
+                                                   comment: comment)
+            replys = []
+            getArticleInfo()
+            readPostTableView.reloadData()
+        }
     }
     
     override func viewDidLoad() {
@@ -346,7 +380,14 @@ extension ReadPostViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footerView = UINib(nibName: "ReadPostTableViewFooterView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! ReadPostTableViewFooterView
-        
+//        footerView.sendBtn.tag = section
+        footerView.order = section
+        switch section {
+        case 0:
+            footerView.sendBtn.addTarget(self, action: #selector(sendCommentBelowMain), for: .touchUpInside)
+        default:
+            footerView.sendBtn.addTarget(self, action: #selector(sendCommentBelowReply), for: .touchUpInside)
+        }
         return footerView
     }
     

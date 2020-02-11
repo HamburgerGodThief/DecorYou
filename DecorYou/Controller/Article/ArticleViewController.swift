@@ -43,7 +43,8 @@ class ArticleViewController: UIViewController {
         let layoutBtn = UIBarButtonItem(image: UIImage.asset(.Icons_24px_CollectionView), style: .plain, target: self, action: #selector(changeLayout))
         let filterBtn = UIBarButtonItem(image: UIImage.asset(.Icons_24px_Filter), style: .plain, target: self, action: #selector(setfilter))
         navigationItem.rightBarButtonItems = [layoutBtn, filterBtn]
-        navigationController?.navigationBar.backgroundColor = UIColor.assetColor(.mainColor)
+        navigationController?.navigationBar.barTintColor = UIColor.assetColor(.mainColor)
+        navigationController?.navigationBar.isTranslucent = false
     }
     
     func setTableView() {

@@ -13,6 +13,7 @@ class ReadPostTableViewFooterView: UIView {
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var sendBtn: UIButton!
+    var order: Int?
     
     override func awakeFromNib() {
         super.awakeFromNib()

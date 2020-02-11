@@ -60,6 +60,8 @@ extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
             dismiss(animated: true, completion: nil)
             let storyboard = UIStoryboard(name: "Article", bundle: nil)
             guard let replyViewController = storyboard.instantiateViewController(withIdentifier: "ReplyViewController") as? ReplyViewController else { return }
+            replyViewController.thisMainArticle = parentVC?.article
+            replyViewController.parentVC = parentVC
             parentVC?.navigationController?.pushViewController(replyViewController, animated: true)
         case 2:
             dismiss(animated: true, completion: nil)
