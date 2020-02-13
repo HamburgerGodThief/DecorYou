@@ -9,16 +9,15 @@
 import UIKit
 import Firebase
 
-class SignUpViewController: UIViewController, UITextFieldDelegate {
+class PickCustomerViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var characterSegmentControl: UISegmentedControl!
     @IBOutlet weak var signUpBtn: UIButton!
     
     @IBAction func signUp(_ sender: Any) {
-        guard let character = characterSegmentControl.titleForSegment(at: characterSegmentControl.selectedSegmentIndex) else { return }
+        
         guard let email = emailTextField.text, let password = passwordTextField.text, let name = userNameTextField.text else {
             
             let alertController = UIAlertController(title: "Error", message: "Name/email/password can't be empty", preferredStyle: .alert)
@@ -38,7 +37,14 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                     let user = Auth.auth().currentUser
                     guard let uid = user?.uid else { return }
                     UserDefaults.standard.set(uid, forKey: "UserToken")
-                    UserManager.shared.addUserData(name: name, uid: uid, email: email, lovePost: [], selfPost: [], character: character)
+                    UserManager.shared.addUserData(name: name,
+                                                   uid: uid,
+                                                   email: email,
+                                                   lovePost: [],
+                                                   selfPost: [],
+                                                   character: "customer")
+                    
+                    
                     UserManager.shared.fetchCurrentUser(uid: uid, completion: { result in
                         switch result {
                             

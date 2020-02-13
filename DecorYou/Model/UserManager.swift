@@ -18,30 +18,37 @@ struct User: Codable {
     let lovePost: [DocumentReference]
     let selfPost: [DocumentReference]
     let character: String
-    
 }
 
-struct Craftsmen {
-    var email: String
+struct Craftsmen: Codable {
+    
+    let email: String
     let name: String
     let uid: String
-    let img: String?
+    var img: String?
     let lovePost: [DocumentReference]
     let selfPost: [DocumentReference]
     let character: String
-    var select: Bool
+    let serviceLocation: [String]
+    let serviceCategory: String
+    var select: Bool = false
+    
+    enum CodingKeys: String, CodingKey {
+        case email, name, uid, character, serviceLocation, serviceCategory, lovePost, selfPost
+    }
 }
 
 class UserManager {
     
     static let shared = UserManager()
     var userInfo: User?
+    var craftsmenInfo: Craftsmen?
     
     private init() {}
     
     lazy var db = Firestore.firestore()
     
-    //創建用戶
+    //創建一般用戶
     func addUserData(name: String, uid: String, email: String, lovePost: [String], selfPost: [String], character: String) {
         db.collection("users").document(uid).setData ([
             "email": email,
@@ -55,6 +62,15 @@ class UserManager {
             if let error = error {
                 print(error)
             }
+        }
+    }
+    
+    //創建匠人
+    func addCraftsmanData(uid: String, craftman: Craftsmen) {
+        do {
+            try db.collection("craftsmen").document(uid).setData(from: craftman)
+        } catch {
+            print("Error writing city to Firestore: \(error)")
         }
     }
     
@@ -104,6 +120,27 @@ class UserManager {
         }
     }
     
+    func fetchCurrentCraftsmen(uid: String, completion: @escaping (Result<Craftsmen, Error>) -> Void) {
+        db.collection("craftsmen").whereField("uid", isEqualTo: uid).getDocuments() { (querySnapshot, err) in
+            
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                guard let querySnapShot = querySnapshot else { return }
+                for document in querySnapShot.documents {
+                    do {
+                        if let craftsmen = try document.data(as: Craftsmen.self, decoder: Firestore.Decoder()) {
+                            completion(.success(craftsmen))
+                        }
+                    } catch {
+                        print(error)
+                        return
+                    }
+                }
+            }
+        }
+    }
+    
     func fetchSpecificUser(uid: String, completion: @escaping (Result<User, Error>) -> Void) {
         db.collection("users").whereField("uid", isEqualTo: uid).getDocuments() { (querySnapshot, err) in
             if let err = err {
@@ -126,23 +163,22 @@ class UserManager {
         }
     }
     
-    func fetchAllCraftsmen(completion: @escaping (Result<[User], Error>) -> Void) {
-        db.collection("users").whereField("character", isEqualTo: "Craftsmen").getDocuments() {(querySnapshot, err) in
+    func fetchAllCraftsmen(completion: @escaping (Result<[Craftsmen], Error>) -> Void) {
+        db.collection("craftsmen").getDocuments() {(querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
                 guard let querySnapShot = querySnapshot else { return }
-                var allCraftsmen = [User]()
-                for document in querySnapShot.documents {
-                    let data = document.data()
-                    guard let name = data["name"] as? String else { return }
-                    guard let uid = data["uid"] as? String else { return }
-                    guard let email = data["email"] as? String else { return }
-                    let img = data["img"] as? String
-                    guard let lovePost = data["lovePost"] as? [DocumentReference] else { return }
-                    guard let selfPost = data["selfPost"] as? [DocumentReference] else { return }
-                    guard let character = data["character"] as? String else { return }
-                    allCraftsmen.append(User(email: email, name: name, uid: uid, img: img, lovePost: lovePost, selfPost: selfPost, character: character))
+                var allCraftsmen: [Craftsmen] = []
+                querySnapShot.documents.forEach { document in
+                    do {
+                        if let craftsmen = try document.data(as: Craftsmen.self, decoder: Firestore.Decoder()) {
+                            allCraftsmen.append(craftsmen)
+                        }
+                    } catch{
+                        completion(.failure(error))
+                        return
+                    }
                 }
                 completion(.success(allCraftsmen))
             }

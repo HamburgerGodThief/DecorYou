@@ -31,45 +31,15 @@
                                     <action selector="createNewPost:" destination="ZUJ-vY-5N1" eventType="touchUpInside" id="d6B-vZ-qBh"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eE3-xE-HHu">
-                                <rect key="frame" x="414" y="0.0" width="200" height="896"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="篩選文章" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O3T-Ut-hyo">
-                                        <rect key="frame" x="6" y="24" width="128" height="45"/>
-                                        <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="32"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gUc-3W-cOG">
-                                        <rect key="frame" x="6" y="69" width="100" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="100" id="Wpz-kE-q62"/>
-                                            <constraint firstAttribute="height" constant="50" id="ofn-Fc-Tdi"/>
-                                        </constraints>
-                                        <state key="normal" title="搜尋"/>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="gUc-3W-cOG" firstAttribute="top" secondItem="O3T-Ut-hyo" secondAttribute="bottom" id="ShK-LH-gQU"/>
-                                    <constraint firstAttribute="width" constant="200" id="T82-3N-Z3k"/>
-                                    <constraint firstItem="gUc-3W-cOG" firstAttribute="leading" secondItem="eE3-xE-HHu" secondAttribute="leading" constant="6" id="ZuS-af-iCG"/>
-                                    <constraint firstItem="O3T-Ut-hyo" firstAttribute="top" secondItem="eE3-xE-HHu" secondAttribute="top" constant="24" id="lky-KM-o8X"/>
-                                    <constraint firstItem="O3T-Ut-hyo" firstAttribute="leading" secondItem="eE3-xE-HHu" secondAttribute="leading" constant="6" id="tXd-IY-s7m"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="eE3-xE-HHu" firstAttribute="leading" secondItem="N9o-Df-qc3" secondAttribute="trailing" id="3T9-7k-lKo"/>
                             <constraint firstItem="4sn-Gg-jbO" firstAttribute="leading" secondItem="N9o-Df-qc3" secondAttribute="leading" id="5zo-hE-J0g"/>
                             <constraint firstItem="4sn-Gg-jbO" firstAttribute="trailing" secondItem="N9o-Df-qc3" secondAttribute="trailing" id="7QY-XC-TMb"/>
                             <constraint firstItem="N9o-Df-qc3" firstAttribute="bottom" secondItem="d8U-xu-8yG" secondAttribute="bottom" constant="16" id="AZy-2I-3Qd"/>
                             <constraint firstItem="N9o-Df-qc3" firstAttribute="bottom" secondItem="4sn-Gg-jbO" secondAttribute="bottom" id="Lgs-8e-K6G"/>
-                            <constraint firstItem="eE3-xE-HHu" firstAttribute="bottom" secondItem="v7g-Rg-UK4" secondAttribute="bottom" id="OG1-HJ-qd5"/>
                             <constraint firstItem="4sn-Gg-jbO" firstAttribute="top" secondItem="N9o-Df-qc3" secondAttribute="top" id="RFG-9r-Fuy"/>
                             <constraint firstItem="N9o-Df-qc3" firstAttribute="trailing" secondItem="d8U-xu-8yG" secondAttribute="trailing" constant="16" id="SQo-F5-Dop"/>
-                            <constraint firstItem="eE3-xE-HHu" firstAttribute="top" secondItem="v7g-Rg-UK4" secondAttribute="top" id="bJM-9T-Ytl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="N9o-Df-qc3"/>
                     </view>
@@ -572,7 +542,7 @@
     </scenes>
     <resources>
         <namedColor name="shadowLightGray">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.89800000190734863" green="0.89800000190734863" blue="0.89800000190734863" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

@@ -20,8 +20,8 @@ class AuthViewController: UIViewController {
     
     @IBAction func signUp(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Auth", bundle: nil)
-        guard let signUpViewController = storyboard.instantiateViewController(withIdentifier: "SignUpViewController") as? SignUpViewController else { return }
-        navigationController?.pushViewController(signUpViewController, animated: true)
+        guard let characterPickViewController = storyboard.instantiateViewController(withIdentifier: "CharacterPickViewController") as? CharacterPickViewController else { return }
+        navigationController?.pushViewController(characterPickViewController, animated: true)
     }
     
     @IBAction func logIn(_ sender: Any) {
