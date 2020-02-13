@@ -13,6 +13,8 @@ enum STColor: String {
     // swiftlint:disable identifier_name
     case mainColor
     case highlightColor
+    case shadowLightGray
+    case darkMainColor
 }
 
 extension UIColor {

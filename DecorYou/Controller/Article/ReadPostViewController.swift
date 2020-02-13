@@ -46,16 +46,18 @@ class ReadPostViewController: UIViewController {
     
     func setNavigationBar() {
         navigationItem.title = article?.title
+        navigationController?.navigationBar.titleTextAttributes =
+        [NSAttributedString.Key.foregroundColor: UIColor.white,
+         NSAttributedString.Key.font: UIFont(name: "PingFangTC-Medium", size: 18)!]
         let btn = UIButton()
-        btn.setTitle("Back", for: .normal)
-        btn.setImage(UIImage.asset(.Icons_24px_Back02), for: .normal)
-        btn.sizeToFit()
-        btn.setTitleColor(.black, for: .normal)
+        btn.setImage(UIImage.asset(.Icons_48px_Back01), for: .normal)
+        btn.tintColor = UIColor.white
         btn.addTarget(self, action: #selector(backToArticle), for: .touchUpInside)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: btn)
     }
     
     func getArticleInfo() {
+        replys = []
         let group0 = DispatchGroup()
         let group1 = DispatchGroup()
         let group2 = DispatchGroup()
@@ -143,7 +145,7 @@ class ReadPostViewController: UIViewController {
         //MARK: -- 拿全部回覆
         group3.enter()
         group2.notify(queue: queue2) {
-            ArticleManager.shared.db.collection("article").document(article.postID).collection("replys").order(by: "createTime", descending: true).getDocuments(completion: { [weak self] (querySnapshot, err) in
+            ArticleManager.shared.db.collection("article").document(article.postID).collection("replys").order(by: "createTime", descending: false).getDocuments(completion: { [weak self] (querySnapshot, err) in
                 guard let strongSelf = self else { return }
                 if let err = err {
                     print("Error getting documents: \(err)")
@@ -299,7 +301,6 @@ class ReadPostViewController: UIViewController {
                                   createTime: Date(),
                                   commentID: newComment.documentID)
             ArticleManager.shared.commentMainPost(postID: mainArticle.postID, newCommentID: newComment.documentID, comment: comment)
-            replys = []
             getArticleInfo()
             readPostTableView.reloadData()
         }
@@ -321,16 +322,19 @@ class ReadPostViewController: UIViewController {
                                                    replyID: replys[order].replyID,
                                                    newCommentID: newComment.documentID,
                                                    comment: comment)
-            replys = []
             getArticleInfo()
             readPostTableView.reloadData()
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setNavigationBar()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setTableView()
-        setNavigationBar()
         setBottomView()
         setBottomViewAction()
         getArticleInfo()

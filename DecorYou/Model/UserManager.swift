@@ -18,6 +18,7 @@ struct User: Codable {
     let lovePost: [DocumentReference]
     let selfPost: [DocumentReference]
     let character: String
+    
 }
 
 struct Craftsmen {

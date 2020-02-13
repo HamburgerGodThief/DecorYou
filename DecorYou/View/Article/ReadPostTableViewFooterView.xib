@@ -43,7 +43,7 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" name="shadowLightGray"/>
             <constraints>
                 <constraint firstItem="ea9-Wy-1o2" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" constant="-10" id="Me2-6y-PoU"/>
                 <constraint firstItem="ea9-Wy-1o2" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="QZ1-Ec-Zc3"/>
@@ -64,6 +64,9 @@
         <image name="paperplane.fill" catalog="system" width="64" height="60"/>
         <namedColor name="mainColor">
             <color red="0.30199998617172241" green="0.6470000147819519" blue="0.65499997138977051" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="shadowLightGray">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

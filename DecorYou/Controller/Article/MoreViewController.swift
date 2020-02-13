@@ -54,8 +54,9 @@ extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            dismiss(animated: true, completion: nil)
+            parentVC?.getArticleInfo()
             parentVC?.readPostTableView.reloadData()
+            dismiss(animated: true, completion: nil)
         case 1:
             dismiss(animated: true, completion: nil)
             let storyboard = UIStoryboard(name: "Article", bundle: nil)

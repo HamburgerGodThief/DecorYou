@@ -12,8 +12,6 @@ import FirebaseFirestoreSwift
 
 struct Article: Codable {
     let title: String
-    let authorName: String
-    let authorUID: String
     let content: String
     let createTime: Date
     var createTimeString: String {
@@ -28,6 +26,11 @@ struct Article: Codable {
     let size: String?
     let collaborator: [DocumentReference]
     let author: DocumentReference
+    var authorObject: User?
+    
+    enum CodingKeys: String, CodingKey {
+        case author, title, postID, content, createTime, collaborator, size, loveCount, location, decorateStyle
+    }
 }
 
 struct Reply: Codable {

@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,38 +15,48 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZOQ-Ix-Gdm">
-                    <rect key="frame" x="315" y="10" width="98" height="40"/>
+                    <rect key="frame" x="315" y="8" width="98" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="jnl-wY-FEA"/>
                     </constraints>
-                    <color key="tintColor" red="0.1802120727980096" green="0.45792556235888326" blue="0.33145509436263992" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <color key="tintColor" name="mainColor"/>
                     <state key="normal" image="Icons_24px_Floor"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lZZ-et-BFY">
-                    <rect key="frame" x="421" y="10" width="50" height="40"/>
+                    <rect key="frame" x="421" y="8" width="50" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="46S-YC-jDh"/>
                     </constraints>
-                    <color key="tintColor" red="0.1802120727980096" green="0.45792556235888326" blue="0.33145509436263992" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <color key="tintColor" name="mainColor"/>
                     <state key="normal" image="Icons_24px_More"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="67h-H0-HLA">
                     <rect key="frame" x="16" y="10" width="287" height="35"/>
                     <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
                     <state key="normal" title="  回覆文章">
-                        <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="titleColor" red="0.43222984719196489" green="0.70977412807729823" blue="0.72332307378652738" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </state>
                 </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nr3-bv-vND">
+                    <rect key="frame" x="0.0" y="0.0" width="485" height="1"/>
+                    <color key="backgroundColor" name="shadowLightGray"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="G6q-hb-CNl"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="lZZ-et-BFY" secondAttribute="trailing" constant="14" id="2Jg-rb-vNY"/>
-                <constraint firstItem="lZZ-et-BFY" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="VWr-Zz-0hw"/>
+                <constraint firstItem="nr3-bv-vND" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="3Ig-eG-sRv"/>
+                <constraint firstItem="lZZ-et-BFY" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="VWr-Zz-0hw"/>
+                <constraint firstAttribute="trailing" secondItem="nr3-bv-vND" secondAttribute="trailing" id="X0O-a4-afX"/>
                 <constraint firstItem="lZZ-et-BFY" firstAttribute="leading" secondItem="ZOQ-Ix-Gdm" secondAttribute="trailing" constant="8" id="c4u-bZ-5KY"/>
                 <constraint firstItem="67h-H0-HLA" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="eRD-Zf-bXY"/>
                 <constraint firstItem="67h-H0-HLA" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="i6F-X1-uxu"/>
+                <constraint firstItem="nr3-bv-vND" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="lFd-86-FWe"/>
                 <constraint firstItem="ZOQ-Ix-Gdm" firstAttribute="leading" secondItem="67h-H0-HLA" secondAttribute="trailing" constant="12" id="qxB-NX-sqJ"/>
-                <constraint firstItem="ZOQ-Ix-Gdm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="vTf-je-tHq"/>
+                <constraint firstItem="ZOQ-Ix-Gdm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="vTf-je-tHq"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
@@ -60,5 +71,11 @@
     <resources>
         <image name="Icons_24px_Floor" width="49" height="49"/>
         <image name="Icons_24px_More" width="25" height="25"/>
+        <namedColor name="mainColor">
+            <color red="0.30199998617172241" green="0.6470000147819519" blue="0.65499997138977051" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="shadowLightGray">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

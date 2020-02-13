@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -61,7 +62,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="YVl-VA-mcg" secondAttribute="trailing" constant="16" id="BYU-y8-cP7"/>
                             <constraint firstItem="TVx-yI-EBt" firstAttribute="top" secondItem="YVl-VA-mcg" secondAttribute="bottom" id="GrG-2w-RHY"/>
@@ -78,7 +79,7 @@
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="0v8-07-bh3" secondAttribute="bottom" id="Cmn-fg-fDa"/>
                     <constraint firstAttribute="trailing" secondItem="0v8-07-bh3" secondAttribute="trailing" constant="16" id="DjV-tW-f1O"/>
@@ -86,6 +87,7 @@
                     <constraint firstItem="0v8-07-bh3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="k2w-4l-bnL"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" name="shadowLightGray"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="authorImgView" destination="ERT-mr-Rga" id="FpT-Wm-MDp"/>
@@ -97,4 +99,9 @@
             <point key="canvasLocation" x="176.08695652173915" y="101.45089285714285"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <namedColor name="shadowLightGray">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

@@ -16,7 +16,7 @@ class ReadPostBottomView: UIView {
     
     func setLabelUI() {
         replyBtn.layer.cornerRadius = 10
-        replyBtn.layer.borderColor = UIColor.darkGray.cgColor
+        replyBtn.layer.borderColor = UIColor.assetColor(.mainColor)?.cgColor
         replyBtn.layer.borderWidth = 2
         replyBtn.setTitle("  回覆文章", for: .normal)
         replyBtn.clipsToBounds = true

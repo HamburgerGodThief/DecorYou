@@ -19,25 +19,22 @@ class ReplyViewController: UIViewController {
     
     func setNavigationBar() {
         navigationItem.title = "回覆文章"
+        navigationController?.navigationBar.titleTextAttributes =
+            [NSAttributedString.Key.foregroundColor: UIColor.white,
+             NSAttributedString.Key.font: UIFont(name: "PingFangTC-Semibold", size: 24)!]
+        
         let rightBtn = UIBarButtonItem(title: "送出", style: .plain, target: self, action: #selector(createPost))
         let leftBtn = UIBarButtonItem(title: "取消", style: .plain, target: self, action: #selector(cancelPost))
+        
         navigationItem.rightBarButtonItem = rightBtn
+        navigationItem.rightBarButtonItem?.tintColor = .white
         navigationItem.leftBarButtonItem = leftBtn
+        navigationItem.leftBarButtonItem?.tintColor = .white
     }
     
     func setOutletContent() {
         logoImg.layer.cornerRadius = logoImg.frame.size.width / 2
         nameLabel.text = "User name"
-    }
-    
-    @objc func createPost() {
-        sendPost()
-        parentVC?.readPostTableView.reloadData()
-        navigationController?.popViewController(animated: true)
-    }
-    
-    @objc func cancelPost() {
-        navigationController?.popViewController(animated: true)
     }
     
     func sendPost() {
@@ -49,12 +46,31 @@ class ReplyViewController: UIViewController {
         ArticleManager.shared.replyPost(postID: mainArticle.postID, newReplyID: newReply.documentID, reply: reply)
     }
     
+    func setLayoutDefault() {
+        nameLabel.text = UserManager.shared.userInfo?.name
+        titleLabel.text = "Re: \(thisMainArticle!.title)"
+        replyContentTextView.text = "引述 <()> 之銘言 \n)"
+        logoImg.loadImage(UserManager.shared.userInfo?.img)
+    }
+    
+    @objc func createPost() {
+        sendPost()
+        parentVC?.getArticleInfo()
+        parentVC?.readPostTableView.reloadData()
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func cancelPost() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
         setOutletContent()
-        nameLabel.text = UserManager.shared.userInfo?.name
-        titleLabel.text = "Re: \(thisMainArticle!.title)"
-        logoImg.loadImage(UserManager.shared.userInfo?.img)
+        setLayoutDefault()
+        
     }
 }

@@ -52,14 +52,13 @@ enum ImageAsset: String {
     //Drop down
     case Icons_24px_DropDown
     
-    //Filter Icon
-    case Icons_24px_Filter
-    
+    //Filter Icon    
     case Icons_24px_Favorite
     case Icons_24px_reply
     case Icons_24px_More
     case Icons_24px_Floor
     case Icons_24px_Refresh
+    case Icons_48px_Back01
     case Icons_24px_Back03
     case Icons_24px_Location
     case Icons_24px_Album
@@ -69,6 +68,8 @@ enum ImageAsset: String {
     case Icons_24px_DecorateStyle
     case Icons_24px_NewPost
     case Icons_24px_Camera
+    case Icons_24px_Filter
+    case Icons_24px_Layout
 }
 
 // swiftlint:enable identifier_name

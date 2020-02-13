@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2PB-Ji-j6x">
-                        <rect key="frame" x="253" y="6" width="33" height="18.5"/>
+                        <rect key="frame" x="260" y="6" width="33" height="18.5"/>
                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="13"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -32,9 +32,9 @@
                         </constraints>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OPg-lC-Vco">
-                        <rect key="frame" x="286" y="6" width="18" height="18"/>
+                        <rect key="frame" x="294" y="9" width="12" height="12"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="18" id="oQt-wa-GuO"/>
+                            <constraint firstAttribute="height" constant="12" id="oQt-wa-GuO"/>
                             <constraint firstAttribute="width" secondItem="OPg-lC-Vco" secondAttribute="height" multiplier="1:1" id="pbp-IA-FHG"/>
                         </constraints>
                         <color key="tintColor" name="mainColor"/>
@@ -59,9 +59,9 @@
                 <constraints>
                     <constraint firstItem="2PB-Ji-j6x" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="35h-nL-7Sz"/>
                     <constraint firstItem="rhO-8v-dyi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="8aT-NR-OEI"/>
-                    <constraint firstItem="OPg-lC-Vco" firstAttribute="leading" secondItem="2PB-Ji-j6x" secondAttribute="trailing" id="JJw-kW-7sa"/>
-                    <constraint firstItem="OPg-lC-Vco" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="OAa-it-NIS"/>
-                    <constraint firstAttribute="trailing" secondItem="OPg-lC-Vco" secondAttribute="trailing" constant="6" id="UQl-TM-1P2"/>
+                    <constraint firstItem="OPg-lC-Vco" firstAttribute="leading" secondItem="2PB-Ji-j6x" secondAttribute="trailing" constant="1" id="JJw-kW-7sa"/>
+                    <constraint firstItem="OPg-lC-Vco" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="9" id="OAa-it-NIS"/>
+                    <constraint firstAttribute="trailing" secondItem="OPg-lC-Vco" secondAttribute="trailing" constant="4" id="UQl-TM-1P2"/>
                     <constraint firstItem="rhO-8v-dyi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Ufp-7K-mSh"/>
                     <constraint firstItem="DBB-pA-bwu" firstAttribute="leading" secondItem="rhO-8v-dyi" secondAttribute="trailing" constant="4" id="VHm-Bj-FWJ"/>
                     <constraint firstItem="DBB-pA-bwu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="dWn-y4-2Yy"/>
