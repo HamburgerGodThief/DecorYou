@@ -70,8 +70,8 @@ class CollaboratorViewController: UIViewController {
                                          lovePost: craftmen.lovePost,
                                          selfPost: craftmen.selfPost,
                                          character: craftmen.character,
-                                         location: craftmen.location,
-                                         service: craftmen.service,
+                                         serviceLocation: craftmen.serviceLocation,
+                                         serviceCategory: craftmen.serviceCategory,
                                          select: false)
                     strongSelf.allCraftsMen.append(data)
                 }

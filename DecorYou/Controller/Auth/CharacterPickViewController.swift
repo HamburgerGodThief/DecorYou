@@ -24,8 +24,24 @@ class CharacterPickViewController: UIViewController {
         navigationController?.pushViewController(pickCustomerViewController, animated: true)
     }
     
+    func setNavigationBar() {
+        navigationItem.title = ""
+        let btn = UIButton()
+        btn.setTitle(" LOG IN", for: .normal)
+        btn.setImage(UIImage.asset(.Icons_24px_Back02), for: .normal)
+        btn.tintColor = .white
+        btn.sizeToFit()
+        btn.addTarget(self, action: #selector(back), for: .touchUpInside)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: btn)
+    }
+    
+    @objc func back() {
+        navigationController?.popViewController(animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNavigationBar()
         craftsmenBtn.layer.cornerRadius = 20
         customerBtn.layer.cornerRadius = 20
     }

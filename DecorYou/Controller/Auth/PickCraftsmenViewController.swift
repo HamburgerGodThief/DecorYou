@@ -87,10 +87,26 @@ class PickCraftsmenViewController: UIViewController {
         }
     }
     
+    func setNavigationBar() {
+        navigationItem.title = ""
+        let btn = UIButton()
+        btn.setTitle(" Who You Are", for: .normal)
+        btn.setImage(UIImage.asset(.Icons_24px_Back02), for: .normal)
+        btn.tintColor = .white
+        btn.sizeToFit()
+        btn.addTarget(self, action: #selector(back), for: .touchUpInside)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: btn)
+    }
+    
+    @objc func back() {
+        navigationController?.popViewController(animated: true)
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setIBOutlet()
+        setNavigationBar()
         // Do any additional setup after loading the view.
     }
 }

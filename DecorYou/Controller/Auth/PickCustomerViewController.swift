@@ -44,16 +44,11 @@ class PickCustomerViewController: UIViewController, UITextFieldDelegate {
                                                    selfPost: [],
                                                    character: "customer")
                     
-                    
                     UserManager.shared.fetchCurrentUser(uid: uid, completion: { result in
                         switch result {
-                            
-                        case .success(let user):
-                            
-                            UserManager.shared.userInfo = user
-                        
-                        case .failure(let error):
-                            
+                        case.success(let user):
+                             UserManager.shared.userInfo = user
+                        case.failure(let error):
                             print(error)
                         }
                     })
@@ -82,7 +77,7 @@ class PickCustomerViewController: UIViewController, UITextFieldDelegate {
     func setNavigationBar() {
         navigationItem.title = ""
         let btn = UIButton()
-        btn.setTitle(" LOG IN", for: .normal)
+        btn.setTitle(" Who You Are", for: .normal)
         btn.setImage(UIImage.asset(.Icons_24px_Back02), for: .normal)
         btn.tintColor = .white
         btn.sizeToFit()
