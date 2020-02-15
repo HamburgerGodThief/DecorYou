@@ -78,40 +78,11 @@ class ArticleManager {
     lazy var db = Firestore.firestore()
     
     //創建貼文
-    func addPost(newPost: DocumentReference,
-                 title: String,
-                 content: String,
-                 loveCount: Int,
-                 replys: [DocumentReference],
-                 comments: [DocumentReference],
-                 authorName: String,
-                 authorUID: String,
-                 createTime: Date,
-                 decorateStyle: [String],
-                 location: String?,
-                 size: String?,
-                 collaboratorRef: [DocumentReference],
-                 author: DocumentReference) {
-//        let newPost = db.collection("article").document()
-        db.collection("article").document("\(newPost.documentID)").setData([
-            "title": title,
-            "content": content,
-            "loveCount": loveCount,
-            "replys": replys,
-            "comments": comments,
-            "authorName": authorName,
-            "authorUID": authorUID,
-            "createTime": createTime,
-            "decorateStyle": decorateStyle,
-            "location": location ?? "",
-            "size": size ?? "",
-            "collaborator": collaboratorRef,
-            "postID": newPost.documentID,
-            "author": author
-        ]){ (error) in
-            if let error = error {
-                print(error)
-            }
+    func addPost(newPostID: String, article: Article) {
+        do {
+            try db.collection("article").document(newPostID).setData(from: article)
+        } catch {
+            print("Error writing city to Firestore: \(error)")
         }
     }
     

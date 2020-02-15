@@ -14,11 +14,28 @@ class PortfolioViewController: UIViewController {
     
     let area = ["客廳", "主臥室", "廚房", "次臥室"]
     
+    func setNavigationBar() {
+        let btn = UIButton()
+        btn.titleLabel?.attributedText = NSAttributedString(string: "業者名字", attributes:
+            [.foregroundColor: UIColor.white,
+             .font: UIFont(name: "PingFangTC-Medium", size: 14)!])
+        btn.setImage(UIImage.asset(.Icons_48px_Back01), for: .normal)
+        btn.sizeToFit()
+        btn.addTarget(self, action: #selector(backToResume), for: .touchUpInside)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: btn)
+    }
+    
+    @objc func backToResume() {
+        navigationController?.popViewController(animated: true)
+        tabBarController?.tabBar.isHidden = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         portfolioTableView.lk_registerCellWithNib(identifier: String(describing: PortfolioTableViewCell.self), bundle: nil)
         portfolioTableView.delegate = self
         portfolioTableView.dataSource = self
+        setNavigationBar()
 
     }
 }

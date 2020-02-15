@@ -15,8 +15,12 @@ class PickCraftsmenViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var serviceCategoryTextField: UITextField!
-    @IBOutlet weak var serviceAreaTextField: UITextField!
     @IBOutlet weak var signUPBtn: UIButton!
+    @IBOutlet weak var serviceAreaCollectionView: UICollectionView!
+    var picker = UIPickerView()
+    var selectAreaCell: [ServiceAreaCollectionViewCell] = []
+    let pickerData: [String] = ["室內設計師", "木工師傅", "水電師傅",
+                                "油漆師傅", "弱電師傅", "園藝設計師", "其他"]
     
     func setIBOutlet() {
         signUPBtn.layer.cornerRadius = 15
@@ -24,7 +28,14 @@ class PickCraftsmenViewController: UIViewController {
         emailTextField.addLine(position: LINE_POSITION.LINE_POSITION_BOTTOM, color: .white, width: 3)
         passwordTextField.addLine(position: LINE_POSITION.LINE_POSITION_BOTTOM, color: .white, width: 3)
         serviceCategoryTextField.addLine(position: LINE_POSITION.LINE_POSITION_BOTTOM, color: .white, width: 3)
-        serviceAreaTextField.addLine(position: LINE_POSITION.LINE_POSITION_BOTTOM, color: .white, width: 3)
+    }
+    
+    func setPickerView() {
+        picker.delegate = self
+        picker.dataSource = self
+        serviceCategoryTextField.inputView = picker
+        let tap = UITapGestureRecognizer(target: self, action: #selector(closeKeyboard))
+        view.addGestureRecognizer(tap)
     }
     
     @IBAction func didTouchSignUp(_ sender: Any) {
@@ -51,27 +62,36 @@ class PickCraftsmenViewController: UIViewController {
                     let user = Auth.auth().currentUser
                     guard let uid = user?.uid else { return }
                     UserDefaults.standard.set(uid, forKey: "UserToken")
-                    let craftman = Craftsmen(email: email,
-                                             name: name,
-                                             uid: uid,
-                                             lovePost: [],
-                                             selfPost: [],
-                                             character: "craftsmen",
-                                             serviceLocation: ["ss", "asdf"],
-                                             serviceCategory: serviceCategory)
-                    UserManager.shared.addCraftsmanData(uid: uid, craftman: craftman)
-                    UserManager.shared.fetchCurrentCraftsmen(uid: uid, completion: { result in
-                        switch result {
-                            
-                        case .success(let craftsmen):
-                            
-                            UserManager.shared.craftsmenInfo = craftsmen
-                        
-                        case .failure(let error):
-                            
-                            print(error)
-                        }
-                    })
+                    UserDefaults.standard.set("craftsmen", forKey: "UserCharacter")
+                    var location: [String] = []
+                    for cell in strongSelf.selectAreaCell {
+                        guard let text = cell.areaLabel.text else { return }
+                        location.append(text)
+                    }
+                    let newUser = User(uid: uid,
+                                       email: email,
+                                       name: name,
+                                       img: nil,
+                                       lovePost: [],
+                                       selfPost: [],
+                                       character: "craftsmen",
+                                       serviceLocation: location,
+                                       serviceCategory: serviceCategory,
+                                       select: false)
+                    UserManager.shared.addUserData(uid: uid, user: newUser)
+                    UserManager.shared.fetchCurrentUser(uid: uid)
+//                        , completion: { result in
+//                        switch result {
+//                            
+//                        case .success(let user):
+//
+//                            UserManager.shared.userInfo = user
+//
+//                        case .failure(let error):
+//
+//                            print(error)
+//                        }
+//                    })
                     guard let tabVC = strongSelf.presentingViewController as? STTabBarViewController else { return }
                     tabVC.selectedIndex = 3
                     strongSelf.presentingViewController?.dismiss(animated: true, completion: nil)
@@ -98,8 +118,30 @@ class PickCraftsmenViewController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: btn)
     }
     
+    func setCollectionView() {
+        serviceAreaCollectionView.lk_registerCellWithNib(identifier: String(describing: ServiceAreaCollectionViewCell.self), bundle: nil)
+        serviceAreaCollectionView.delegate = self
+        serviceAreaCollectionView.dataSource = self
+        
+        let singleFinger = UITapGestureRecognizer(target:self, action:#selector(popServiceAreaVC))
+        singleFinger.numberOfTapsRequired = 1
+        singleFinger.numberOfTouchesRequired = 1
+        serviceAreaCollectionView.addGestureRecognizer(singleFinger)
+    }
+    
+    @objc func popServiceAreaVC() {
+        let storyboard = UIStoryboard(name: "Auth", bundle: nil)
+        guard let serviceAreaViewController = storyboard.instantiateViewController(withIdentifier: "ServiceAreaViewController") as? ServiceAreaViewController else { return }
+        serviceAreaViewController.delegate = self
+        present(serviceAreaViewController, animated: true, completion: nil)
+    }
+    
     @objc func back() {
         navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func closeKeyboard() {
+        self.view.endEditing(true)
     }
     
     
@@ -107,6 +149,84 @@ class PickCraftsmenViewController: UIViewController {
         super.viewDidLoad()
         setIBOutlet()
         setNavigationBar()
+        setCollectionView()
+        setPickerView()
         // Do any additional setup after loading the view.
     }
+}
+
+extension PickCraftsmenViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return selectAreaCell.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: ServiceAreaCollectionViewCell.self), for: indexPath) as? ServiceAreaCollectionViewCell else { return UICollectionViewCell() }
+        cell.layoutIfNeeded()
+        cell.areaLabel.text = selectAreaCell[indexPath.item].areaLabel.text
+        cell.areaLabel.backgroundColor = .lightGray
+        cell.areaLabel.font.withSize(14)
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = 80
+        let height = 32
+        return CGSize(width: width, height: height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        let left = CGFloat(0)
+        let right = CGFloat(0)
+        let top = CGFloat(0)
+        let bottom = CGFloat(0)
+        return UIEdgeInsets(top: top, left: left, bottom: bottom, right: right)
+    }
+    
+    func collectionView(_: UICollectionView, layout: UICollectionViewLayout, minimumLineSpacingForSectionAt: Int) -> CGFloat {
+        return 8
+    }
+    
+    func collectionView(_: UICollectionView, layout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt: Int) -> CGFloat {
+        return 0
+    }
+    
+}
+
+extension PickCraftsmenViewController: ServiceAreaViewControllerDelegate {
+    
+    func passDataToParentVC(_ serviceAreaViewController: ServiceAreaViewController) {
+        selectAreaCell = serviceAreaViewController.finalSelectCell
+        serviceAreaCollectionView.reloadData()
+    }
+    
+}
+
+extension PickCraftsmenViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerData.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        switch row {
+        case pickerData.count - 1:
+            serviceCategoryTextField.inputView = nil
+            serviceCategoryTextField.text = ""
+            serviceCategoryTextField.reloadInputViews()
+            serviceCategoryTextField.inputView = picker
+        default:
+            serviceCategoryTextField.text = pickerData[row]
+        }
+        
+    }
+
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerData[row]
+    }
+    
 }

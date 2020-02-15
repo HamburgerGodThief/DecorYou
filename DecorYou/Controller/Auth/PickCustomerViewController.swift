@@ -37,21 +37,27 @@ class PickCustomerViewController: UIViewController, UITextFieldDelegate {
                     let user = Auth.auth().currentUser
                     guard let uid = user?.uid else { return }
                     UserDefaults.standard.set(uid, forKey: "UserToken")
-                    UserManager.shared.addUserData(name: name,
-                                                   uid: uid,
-                                                   email: email,
-                                                   lovePost: [],
-                                                   selfPost: [],
-                                                   character: "customer")
-                    
-                    UserManager.shared.fetchCurrentUser(uid: uid, completion: { result in
-                        switch result {
-                        case.success(let user):
-                             UserManager.shared.userInfo = user
-                        case.failure(let error):
-                            print(error)
-                        }
-                    })
+                    UserDefaults.standard.set("customer", forKey: "UserCharacter")
+                    let newUser = User(uid: uid,
+                                       email: email,
+                                       name: name,
+                                       img: nil,
+                                       lovePost: [],
+                                       selfPost: [],
+                                       character: "customer",
+                                       serviceLocation: [],
+                                       serviceCategory: nil,
+                                       select: nil)
+                    UserManager.shared.addUserData(uid: uid, user: newUser)
+                    UserManager.shared.fetchCurrentUser(uid: uid)
+//                        , completion: { result in
+//                        switch result {
+//                        case.success(let user):
+//                             UserManager.shared.userInfo = user
+//                        case.failure(let error):
+//                            print(error)
+//                        }
+//                    })
                     guard let tabVC = strongSelf.presentingViewController as? STTabBarViewController else { return }
                     tabVC.selectedIndex = 3
                     strongSelf.presentingViewController?.dismiss(animated: true, completion: nil)

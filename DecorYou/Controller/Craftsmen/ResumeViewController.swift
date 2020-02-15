@@ -16,6 +16,8 @@ class ResumeViewController: UIViewController {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var styleLabel: UILabel!
     @IBOutlet weak var chatBtn: UIButton!
+    var craftsman: Craftsmen?
+    var allPortfolio: [Portfolio] = []
     let itemSpace: CGFloat = 3
     let columnCount: CGFloat = 3
     
@@ -25,14 +27,32 @@ class ResumeViewController: UIViewController {
     }
     
     func setNavigationBar() {
-        navigationItem.title = "業者履歷(要改成業者名字)"
+        navigationItem.title = craftsman?.name
+        navigationController?.navigationBar.titleTextAttributes =
+        [.foregroundColor: UIColor.white,
+         .font: UIFont(name: "PingFangTC-Medium", size: 18)!]
         let btn = UIButton()
-        btn.setTitle("Back", for: .normal)
-        btn.setImage(UIImage.asset(.Icons_24px_Back02), for: .normal)
+        btn.setImage(UIImage.asset(.Icons_48px_Back01), for: .normal)
         btn.sizeToFit()
-        btn.setTitleColor(.black, for: .normal)
         btn.addTarget(self, action: #selector(backToCraftsmen), for: .touchUpInside)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: btn)
+    }
+    
+    func getDataAndShowIt() {
+        guard let craftsman = craftsman else { return }
+        logoImg.loadImage(craftsman.img)
+        serviceLabel.text = "服務項目: \(craftsman.serviceCategory)"
+        
+        UserManager.shared.fetchSpecificCraftsmanPortfolio(uid: craftsman.uid, completion: { [weak self] result in
+            guard let strongSelf = self else { return }
+            switch result {
+            case .success(let allPortfolio):
+                strongSelf.allPortfolio = allPortfolio
+                strongSelf.resumeCollectionView.reloadData()
+            case .failure(let error):
+                print(error)
+            }
+        })
     }
     
     @objc func backToCraftsmen() {
@@ -42,6 +62,7 @@ class ResumeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getDataAndShowIt()
         logoImg.layer.cornerRadius = logoImg.frame.size.width / 2
         setNavigationBar()
         resumeCollectionView.dataSource = self
@@ -54,11 +75,12 @@ class ResumeViewController: UIViewController {
 extension ResumeViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 22
+        return allPortfolio.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: ResumeCollectionViewCell.self), for: indexPath) as? ResumeCollectionViewCell else { return UICollectionViewCell() }
+        cell.portfolioImg.loadImage(allPortfolio[indexPath.item].mainImage)
         return cell
     }
     

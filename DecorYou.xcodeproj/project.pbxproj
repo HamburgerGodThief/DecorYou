@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2967C2F39E399953A4883E61 /* Pods_DecorYou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DCBAF85DD003295D6685158 /* Pods_DecorYou.framework */; };
+		64012B9823F67009001D20D0 /* ServiceAreaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64012B9723F67009001D20D0 /* ServiceAreaViewController.swift */; };
+		64012B9B23F67043001D20D0 /* ServiceAreaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64012B9923F67043001D20D0 /* ServiceAreaCollectionViewCell.swift */; };
+		64012B9C23F67043001D20D0 /* ServiceAreaCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64012B9A23F67043001D20D0 /* ServiceAreaCollectionViewCell.xib */; };
 		6406275923EA91EC00086434 /* ArticleAnimationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6406275823EA91EC00086434 /* ArticleAnimationTransition.swift */; };
 		6406275C23EA936700086434 /* ReadPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6406275B23EA936700086434 /* ReadPostViewController.swift */; };
 		6406275F23EA942900086434 /* ReadPostTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6406275D23EA942900086434 /* ReadPostTableViewHeaderView.swift */; };
@@ -109,6 +112,9 @@
 		16811DD988D5917B85CF4132 /* Pods-DecorYou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DecorYou.release.xcconfig"; path = "Target Support Files/Pods-DecorYou/Pods-DecorYou.release.xcconfig"; sourceTree = "<group>"; };
 		1F3011E028BC5AE10C835F5E /* Pods-DecorYou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DecorYou.debug.xcconfig"; path = "Target Support Files/Pods-DecorYou/Pods-DecorYou.debug.xcconfig"; sourceTree = "<group>"; };
 		2DCBAF85DD003295D6685158 /* Pods_DecorYou.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DecorYou.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		64012B9723F67009001D20D0 /* ServiceAreaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAreaViewController.swift; sourceTree = "<group>"; };
+		64012B9923F67043001D20D0 /* ServiceAreaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAreaCollectionViewCell.swift; sourceTree = "<group>"; };
+		64012B9A23F67043001D20D0 /* ServiceAreaCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceAreaCollectionViewCell.xib; sourceTree = "<group>"; };
 		6406275823EA91EC00086434 /* ArticleAnimationTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleAnimationTransition.swift; sourceTree = "<group>"; };
 		6406275B23EA936700086434 /* ReadPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadPostViewController.swift; sourceTree = "<group>"; };
 		6406275D23EA942900086434 /* ReadPostTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadPostTableViewHeaderView.swift; sourceTree = "<group>"; };
@@ -251,6 +257,8 @@
 			isa = PBXGroup;
 			children = (
 				647A7CD023D83DCA005D1946 /* Auth.storyboard */,
+				64012B9923F67043001D20D0 /* ServiceAreaCollectionViewCell.swift */,
+				64012B9A23F67043001D20D0 /* ServiceAreaCollectionViewCell.xib */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -442,6 +450,7 @@
 				647A7CD223D83E33005D1946 /* AuthViewController.swift */,
 				64FA7CC723F550C600975B03 /* CharacterPickViewController.swift */,
 				64FA7CC923F5511B00975B03 /* PickCraftsmenViewController.swift */,
+				64012B9723F67009001D20D0 /* ServiceAreaViewController.swift */,
 				64FE4EC323E824CD00A5D3EC /* PickCustomerViewController.swift */,
 				64FE4EC523E824D900A5D3EC /* LogInViewController.swift */,
 			);
@@ -551,6 +560,7 @@
 				6406276423EAA21D00086434 /* ReadPostBottomView.xib in Resources */,
 				647A7CC423D83B7F005D1946 /* Profile.storyboard in Resources */,
 				647A7CC823D83BA0005D1946 /* Craftsmen.storyboard in Resources */,
+				64012B9C23F67043001D20D0 /* ServiceAreaCollectionViewCell.xib in Resources */,
 				64FE4ECC23E918EA00A5D3EC /* ProfileTableViewCell.xib in Resources */,
 				64FA42B723E7B3800065DCEF /* ResumeCollectionViewCell.xib in Resources */,
 				64FE4EE223EA55CB00A5D3EC /* YourPostTableViewCell.xib in Resources */,
@@ -625,6 +635,7 @@
 				6406276623EAAD1200086434 /* MoreViewController.swift in Sources */,
 				64FAB13723EEAA160073235C /* SizeViewController.swift in Sources */,
 				647A7CB023D83376005D1946 /* STTabBarViewController.swift in Sources */,
+				64012B9823F67009001D20D0 /* ServiceAreaViewController.swift in Sources */,
 				64FAB14723EEB9FD0073235C /* CollaboratorTableViewCell.swift in Sources */,
 				64FAB13323EE4E5B0073235C /* DecorateStyleCollectionReusableView.swift in Sources */,
 				64FE4ED223E9838B00A5D3EC /* InfoViewController.swift in Sources */,
@@ -666,6 +677,7 @@
 				64FA42B323E3C5CD0065DCEF /* ResumeViewController.swift in Sources */,
 				64FE4EE523EA643300A5D3EC /* YourPostCollectionViewCell.swift in Sources */,
 				647A7CCE23D83C61005D1946 /* UIImage+Extension.swift in Sources */,
+				64012B9B23F67043001D20D0 /* ServiceAreaCollectionViewCell.swift in Sources */,
 				64FA42AA23E393280065DCEF /* CraftsmenCollectionViewCell.swift in Sources */,
 				64FE4EC623E824D900A5D3EC /* LogInViewController.swift in Sources */,
 				647A7CCC23D83BCE005D1946 /* UIStoryboard+Extension.swift in Sources */,

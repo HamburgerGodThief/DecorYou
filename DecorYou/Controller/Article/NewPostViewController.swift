@@ -17,6 +17,7 @@ class NewPostViewController: UIViewController {
     @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var contentTextView: UITextView!
     var currentUser: User?
+    var currentCraftsmen: Craftsmen?
     let option = ["插入相片", "裝潢風格", "房屋地區", "房屋坪數", "合作業者"]
     let icon = [UIImage.asset(.Icons_24px_Album),
                 UIImage.asset(.Icons_24px_DecorateStyle),
@@ -55,8 +56,6 @@ class NewPostViewController: UIViewController {
     @objc func createPost() {
         guard let title = titleTextField.text else { return }
         guard let content = contentTextView.text else { return }
-        guard let user = currentUser else { return }
-        let currentDate = Date()
         
         var collaboratorRefs: [DocumentReference] = []
         for collaborator in collaborators {
@@ -68,22 +67,57 @@ class NewPostViewController: UIViewController {
         let newPost = ArticleManager.shared.db.collection("article").document()
         guard let uid = UserDefaults.standard.string(forKey: "UserToken") else { return }
         
-        let author = UserManager.shared.db.collection("users").document(uid)
-        ArticleManager.shared.addPost(newPost: newPost, title: title, content: content, loveCount: 0, replys: [], comments: [], authorName: user.name, authorUID: user.uid, createTime: currentDate, decorateStyle: decorateStyle, location: location, size: size, collaboratorRef: collaboratorRefs, author: author)
+        if currentUser != nil {
+            let author = UserManager.shared.db.collection("users").document(uid)
+            let article = Article(title: title,
+                                  content: content,
+                                  createTime: Date(),
+                                  decorateStyle: decorateStyle,
+                                  location: location,
+                                  loveCount: 0,
+                                  postID: newPost.documentID,
+                                  size: size,
+                                  collaborator: collaboratorRefs,
+                                  author: author)
+            ArticleManager.shared.addPost(newPostID: newPost.documentID, article: article)
+        }
+        
+        if currentCraftsmen != nil {
+            let author = UserManager.shared.db.collection("craftsmen").document(uid)
+            let article = Article(title: title,
+                                  content: content,
+                                  createTime: Date(),
+                                  decorateStyle: decorateStyle,
+                                  location: location,
+                                  loveCount: 0,
+                                  postID: newPost.documentID,
+                                  size: size,
+                                  collaborator: collaboratorRefs,
+                                  author: author)
+            ArticleManager.shared.addPost(newPostID: newPost.documentID, article: article)
+        }
+        
         
         //先讀取User現有的selfPost，再更新User的selfPost
-        UserManager.shared.fetchCurrentUser(uid: uid, completion: { result in
-            switch result {
-            case .success(let user):
-                let currentSelfPost = user.selfPost
-                let newPostRef = ArticleManager.shared.db.collection("article").document(newPost.documentID)
-                var updateSelfPost = currentSelfPost
-                updateSelfPost.append(newPostRef)
-                UserManager.shared.updataUserSelfPost(uid: uid, selfPost: updateSelfPost)
-            case .failure(let error):
-                print(error)
-            }
-        })
+        UserManager.shared.fetchCurrentUser(uid: uid)
+        guard let user = UserManager.shared.user else { return }
+        let currentSelfPost = user.selfPost
+        let newPostRef = ArticleManager.shared.db.collection("article").document(newPost.documentID)
+        var updateSelfPost = currentSelfPost
+        updateSelfPost.append(newPostRef)
+        UserManager.shared.updataUserSelfPost(uid: uid, selfPost: updateSelfPost)
+//        , completion: { result in
+//            switch result {
+//            case .success(let user):
+//                let currentSelfPost = user.selfPost
+//                let newPostRef = ArticleManager.shared.db.collection("article").document(newPost.documentID)
+//                var updateSelfPost = currentSelfPost
+//                updateSelfPost.append(newPostRef)
+//                UserManager.shared.updataUserSelfPost(uid: uid, selfPost: updateSelfPost)
+//            case .failure(let error):
+//                print(error)
+//            }
+//        })
         
         navigationController?.popViewController(animated: true)
         tabBarController?.tabBar.isHidden = false
@@ -109,24 +143,25 @@ class NewPostViewController: UIViewController {
     }
     
     func getCurrentUser() {
-        guard let uid = UserDefaults.standard.string(forKey: "UserToken") else { return }
-        UserManager.shared.fetchCurrentUser(uid: uid, completion: { [weak self] result in
-            guard let strongSelf = self else { return }
-            switch result {
-
-            case .success(let user):
-
-                DispatchQueue.main.async {
-                    strongSelf.authorNameLabel.text = "\(user.name)"
-                    strongSelf.authorImgView.loadImage(user.img)
-                    strongSelf.currentUser = user
-                }
-
-            case .failure(let error):
-
-                print(error)
-            }
-        })
+//        guard let uid = UserDefaults.standard.string(forKey: "UserToken") else { return }
+//        UserManager.shared.fetchCurrentUser(uid: uid, completion: { [weak self] result in
+//            guard let strongSelf = self else { return }
+//            switch result {
+//
+//            case .success(let user):
+//
+//                DispatchQueue.main.async {
+//                    strongSelf.authorNameLabel.text = "\(user.name)"
+//                    strongSelf.authorImgView.loadImage(user.img)
+//                    strongSelf.currentUser = user
+//                }
+//
+//            case .failure(let error):
+//
+//                print(error)
+//            }
+//        })
+        currentUser = UserManager.shared.user
     }
     
     override func viewDidLoad() {

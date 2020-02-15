@@ -47,10 +47,10 @@ class ReplyViewController: UIViewController {
     }
     
     func setLayoutDefault() {
-        nameLabel.text = UserManager.shared.userInfo?.name
+        nameLabel.text = UserManager.shared.user?.name
         titleLabel.text = "Re: \(thisMainArticle!.title)"
         replyContentTextView.text = "引述 <()> 之銘言 \n)"
-        logoImg.loadImage(UserManager.shared.userInfo?.img)
+        logoImg.loadImage(UserManager.shared.user?.img)
     }
     
     @objc func createPost() {

@@ -28,7 +28,7 @@ class ArticleViewController: UIViewController {
         let group0 = DispatchGroup()
         let group1 = DispatchGroup()
         let queue0 = DispatchQueue(label: "queue0")
-        
+        //抓全部文章
         group0.enter()
         ArticleManager.shared.fetchAllPost(completion: { [weak self] result in
             guard let strongSelf = self else { return }
@@ -40,7 +40,7 @@ class ArticleViewController: UIViewController {
                 print(error)
             }
         })
-        
+        //抓文章的作者
         group1.enter()
         group0.notify(queue: queue0) { [weak self] in
             guard let strongSelf = self else { return }
@@ -122,18 +122,20 @@ class ArticleViewController: UIViewController {
     
     func getCurrentUser() {
         guard let uid = UserDefaults.standard.string(forKey: "UserToken") else { return }
-        UserManager.shared.fetchCurrentUser(uid: uid, completion: { result in
-            switch result {
-                
-            case .success(let user):
-                
-                UserManager.shared.userInfo = user
-            
-            case .failure(let error):
-                
-                print(error)
-            }
-        })
+        
+        UserManager.shared.fetchCurrentUser(uid: uid)
+//        , completion: { result in
+//            switch result {
+//
+//            case .success(let user):
+//
+//                UserManager.shared.userInfo = user
+//
+//            case .failure(let error):
+//
+//                print(error)
+//            }
+//        })
     }
     
     func searchContent(for searchText: String) {
