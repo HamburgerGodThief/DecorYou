@@ -15,14 +15,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="AuthBackground" translatesAutoresizingMaskIntoConstraints="NO" id="ain-hK-NIY">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AuthBackground" translatesAutoresizingMaskIntoConstraints="NO" id="ain-hK-NIY">
                                 <rect key="frame" x="0.0" y="88" width="414" height="212"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="212" id="om5-oK-ckg"/>
+                                </constraints>
                             </imageView>
-                            <view alpha="0.40000000000000002" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z2R-GM-1c5">
-                                <rect key="frame" x="0.0" y="88" width="414" height="756"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z2R-GM-1c5">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RBT-15-qa4" customClass="RoundCornerAndShadow" customModule="DecorYou" customModuleProvider="target">
@@ -100,18 +101,25 @@
                         <constraints>
                             <constraint firstItem="lIU-zV-2fB" firstAttribute="bottom" secondItem="v8C-1m-DmA" secondAttribute="bottom" constant="-6" id="02p-kJ-EIX"/>
                             <constraint firstItem="DZc-2W-S2b" firstAttribute="leading" secondItem="bUn-hP-LHQ" secondAttribute="leading" constant="24" id="19e-e1-Lux"/>
+                            <constraint firstItem="ain-hK-NIY" firstAttribute="leading" secondItem="bUn-hP-LHQ" secondAttribute="leading" id="3UW-D2-p4a"/>
                             <constraint firstItem="usE-XY-fZ0" firstAttribute="centerX" secondItem="uni-m3-eU9" secondAttribute="centerX" id="74N-XS-KBc"/>
                             <constraint firstItem="RBT-15-qa4" firstAttribute="leading" secondItem="bUn-hP-LHQ" secondAttribute="leading" constant="24" id="H9Q-gp-Pag"/>
                             <constraint firstItem="RBT-15-qa4" firstAttribute="top" secondItem="usE-XY-fZ0" secondAttribute="bottom" constant="12" id="Io0-U1-m65"/>
                             <constraint firstItem="bUn-hP-LHQ" firstAttribute="trailing" secondItem="RBT-15-qa4" secondAttribute="trailing" constant="24" id="T4y-lN-nhO"/>
                             <constraint firstItem="DZc-2W-S2b" firstAttribute="top" secondItem="usE-XY-fZ0" secondAttribute="bottom" constant="12" id="Z2m-9m-6ug"/>
                             <constraint firstItem="v8C-1m-DmA" firstAttribute="centerX" secondItem="uni-m3-eU9" secondAttribute="centerX" id="Zb9-HA-hUB"/>
+                            <constraint firstItem="ain-hK-NIY" firstAttribute="top" secondItem="bUn-hP-LHQ" secondAttribute="top" id="a7S-re-Bey"/>
                             <constraint firstItem="usE-XY-fZ0" firstAttribute="top" secondItem="v8C-1m-DmA" secondAttribute="bottom" constant="20" id="ahc-bX-8Mg"/>
+                            <constraint firstItem="ain-hK-NIY" firstAttribute="trailing" secondItem="bUn-hP-LHQ" secondAttribute="trailing" id="axE-Wh-Has"/>
+                            <constraint firstItem="bUn-hP-LHQ" firstAttribute="bottom" secondItem="z2R-GM-1c5" secondAttribute="bottom" id="bvd-Bh-mS1"/>
                             <constraint firstItem="lIU-zV-2fB" firstAttribute="trailing" secondItem="v8C-1m-DmA" secondAttribute="trailing" constant="-6" id="gG9-xL-Ugo"/>
+                            <constraint firstItem="z2R-GM-1c5" firstAttribute="top" secondItem="bUn-hP-LHQ" secondAttribute="top" id="gkW-eF-KvA"/>
                             <constraint firstItem="v8C-1m-DmA" firstAttribute="top" secondItem="bUn-hP-LHQ" secondAttribute="top" constant="20" id="hVU-1Y-Raz"/>
+                            <constraint firstItem="z2R-GM-1c5" firstAttribute="trailing" secondItem="bUn-hP-LHQ" secondAttribute="trailing" id="hYy-Kl-hk7"/>
                             <constraint firstItem="bUn-hP-LHQ" firstAttribute="bottom" secondItem="RBT-15-qa4" secondAttribute="bottom" constant="18" id="mIy-70-hSZ"/>
                             <constraint firstItem="bUn-hP-LHQ" firstAttribute="trailing" secondItem="DZc-2W-S2b" secondAttribute="trailing" constant="24" id="odu-vl-zTI"/>
                             <constraint firstItem="bUn-hP-LHQ" firstAttribute="bottom" secondItem="DZc-2W-S2b" secondAttribute="bottom" constant="18" id="t4N-79-VoJ"/>
+                            <constraint firstItem="z2R-GM-1c5" firstAttribute="leading" secondItem="bUn-hP-LHQ" secondAttribute="leading" id="zia-bN-Vaq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bUn-hP-LHQ"/>
                     </view>

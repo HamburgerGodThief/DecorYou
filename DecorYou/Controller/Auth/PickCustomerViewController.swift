@@ -50,14 +50,6 @@ class PickCustomerViewController: UIViewController, UITextFieldDelegate {
                                        select: nil)
                     UserManager.shared.addUserData(uid: uid, user: newUser)
                     UserManager.shared.fetchCurrentUser(uid: uid)
-//                        , completion: { result in
-//                        switch result {
-//                        case.success(let user):
-//                             UserManager.shared.userInfo = user
-//                        case.failure(let error):
-//                            print(error)
-//                        }
-//                    })
                     guard let tabVC = strongSelf.presentingViewController as? STTabBarViewController else { return }
                     tabVC.selectedIndex = 3
                     strongSelf.presentingViewController?.dismiss(animated: true, completion: nil)

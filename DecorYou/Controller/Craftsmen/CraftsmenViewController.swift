@@ -96,11 +96,11 @@ class CraftsmenViewController: UIViewController {
         craftsmenCollectionView.lk_registerCellWithNib(identifier: String(describing: CraftsmenCollectionViewCell.self), bundle: nil)
         craftsmenCollectionView.delegate = self
         craftsmenCollectionView.dataSource = self
-        getAllCraftsmen()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        getAllCraftsmen()
         configureSearchController()
         setNavBar()
     }

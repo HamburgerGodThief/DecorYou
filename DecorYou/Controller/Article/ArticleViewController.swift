@@ -124,18 +124,6 @@ class ArticleViewController: UIViewController {
         guard let uid = UserDefaults.standard.string(forKey: "UserToken") else { return }
         
         UserManager.shared.fetchCurrentUser(uid: uid)
-//        , completion: { result in
-//            switch result {
-//
-//            case .success(let user):
-//
-//                UserManager.shared.userInfo = user
-//
-//            case .failure(let error):
-//
-//                print(error)
-//            }
-//        })
     }
     
     func searchContent(for searchText: String) {
@@ -185,11 +173,12 @@ class ArticleViewController: UIViewController {
         setTableView()
         setNewPost()
         getCurrentUser()
-        getData()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        getData()
         configureSearchController()
         setNavBar()
     }

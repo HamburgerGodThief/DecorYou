@@ -11,6 +11,16 @@ import UIKit
 import FirebaseStorage
 import FirebaseDatabase
 
+class FuncTable {
+    let name: String
+    let img: UIImage?
+    
+    init(name: String, img: UIImage?) {
+        self.name = name
+        self.img = img
+    }
+}
+
 class ProfileViewController: UIViewController {
     
     @IBOutlet weak var logoImg: UIImageView!
@@ -19,8 +29,125 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var postLabel: UILabel!
     @IBOutlet weak var lovePost: UILabel!
     @IBOutlet weak var cameraBtn: UIButton!
-    let functionLabelText = ["個人資訊", "收藏文章", "你的文章", "登出"]
+    let userFunction: [FuncTable] = [
+        FuncTable(name: "個人資訊", img: UIImage.asset(.Icons_24px_UserInfo)),
+        FuncTable(name: "收藏文章", img: UIImage(systemName: "heart")),
+        FuncTable(name: "你的文章", img: UIImage(systemName: "doc.text")),
+        FuncTable(name: "登出", img: UIImage.asset(.Icons_24px_LogOut))
+    ]
+    let craftsmenFunction: [FuncTable] = [FuncTable(name: "個人資訊", img: UIImage.asset(.Icons_24px_UserInfo)),
+                                          FuncTable(name: "履歷與作品集", img: UIImage.asset(.Icons_24px_Profolio)),
+                                          FuncTable(name: "收藏文章", img: UIImage(systemName: "heart")),
+                                          FuncTable(name: "你的文章", img: UIImage(systemName: "doc.text")),
+                                          FuncTable(name: "登出", img: UIImage.asset(.Icons_24px_LogOut))]
+    var finalFunction: [FuncTable] = []
+    
     let withIdentifier = ["InfoViewController", "FavoriteViewController", "YourPostViewController"]
+    
+    func setNavigationBar() {
+        navigationItem.title = "個人頁面"
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white,
+                                                                   .font: UIFont(name: "PingFangTC-Medium", size: 18)!]
+        navigationController?.navigationBar.barTintColor = UIColor.assetColor(.mainColor)
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.barStyle = .black
+    }
+    
+    func setTableView() {
+        profileTableView.delegate = self
+        profileTableView.dataSource = self
+        profileTableView.lk_registerCellWithNib(identifier: String(describing: ProfileTableViewCell.self), bundle: nil)
+        profileTableView.separatorStyle = .none
+        profileTableView.bounces = false
+        shadowView.layoutTableView(profileTableView, radius: 10, color: .black, offset: CGSize(width: 10, height: 10), opacity: 0.8, cornerRadius: 60)
+    }
+    
+    func setIBOutlet() {
+        logoImg.layer.cornerRadius = logoImg.frame.width / 2
+        logoImg.layer.borderWidth = 5
+        logoImg.layer.borderColor = UIColor.white.cgColor
+        cameraBtn.layer.cornerRadius = cameraBtn.frame.width / 2
+        cameraBtn.layer.borderWidth = 2
+        cameraBtn.layer.borderColor = UIColor.white.cgColor
+    }
+    
+    func getUserInfo() {
+        guard let uid = UserDefaults.standard.string(forKey: "UserToken") else { return }
+        UserManager.shared.fetchCurrentUser(uid: uid)
+        guard let user = UserManager.shared.user else { return }
+        logoImg.loadImage(user.img, placeHolder: UIImage())
+        postLabel.text = "\(user.selfPost.count)"
+        lovePost.text = "\(user.lovePost.count)"
+        
+        if user.character == "customer" {
+            finalFunction = userFunction
+        } else {
+            finalFunction = craftsmenFunction
+        }
+        profileTableView.reloadData()
+    }
+    
+    func customerCellDidSelect(indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Profile", bundle: nil)
+        var nextVC: UIViewController?
+        switch indexPath.row {
+        case 0:
+            nextVC = storyboard.instantiateViewController(withIdentifier: "InfoViewController") as? InfoViewController
+        case 1:
+            nextVC = storyboard.instantiateViewController(withIdentifier: "FavoriteViewController") as? FavoriteViewController
+        case 2:
+            nextVC = storyboard.instantiateViewController(withIdentifier: "FavoriteViewController") as? FavoriteViewController
+        default:
+            UserDefaults.standard.set(nil, forKey: "UserToken")
+            UserDefaults.standard.set(nil, forKey: "UserCharacter")
+            UserManager.shared.user = nil
+            let alertController = UIAlertController(title: "成功登出", message: "你已成功登出", preferredStyle: .alert)
+            
+            let defaultAction = UIAlertAction(title: "OK", style: .default, handler: { [weak self] (action: UIAlertAction!) -> Void in
+                guard let strongSelf = self else { return }
+                guard let tabVC = strongSelf.presentingViewController as? STTabBarViewController else { return }
+                tabVC.selectedIndex = 0
+            })
+            
+            alertController.addAction(defaultAction)
+            
+            present(alertController, animated: true, completion: nil)
+        }
+        guard let nvc = nextVC else { return }
+        navigationController?.pushViewController(nvc, animated: true)
+    }
+    
+    func craftsmenCellDidSelect(indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Profile", bundle: nil)
+        var nextVC: UIViewController?
+        switch indexPath.row {
+        case 0:
+            nextVC = storyboard.instantiateViewController(withIdentifier: "InfoViewController") as? InfoViewController
+        case 1:
+            nextVC = storyboard.instantiateViewController(withIdentifier: "CraftsmenResumeViewController") as? CraftsmenResumeViewController
+        case 2:
+            nextVC = storyboard.instantiateViewController(withIdentifier: "FavoriteViewController") as? FavoriteViewController
+        case 3:
+            nextVC = storyboard.instantiateViewController(withIdentifier: "YourPostViewController") as? YourPostViewController
+        default:
+            UserDefaults.standard.set(nil, forKey: "UserToken")
+            UserDefaults.standard.set(nil, forKey: "UserCharacter")
+            UserManager.shared.user = nil
+            let alertController = UIAlertController(title: "成功登出", message: "你已成功登出", preferredStyle: .alert)
+            
+            let defaultAction = UIAlertAction(title: "OK", style: .default, handler: { [weak self] (action: UIAlertAction!) -> Void in
+                guard let strongSelf = self else { return }
+                strongSelf.tabBarController?.selectedIndex = 0
+            })
+            
+            alertController.addAction(defaultAction)
+            
+            present(alertController, animated: true, completion: nil)
+        }
+        guard let nvc = nextVC else { return }
+        navigationController?.pushViewController(nvc, animated: true)
+    }
     
     @IBAction func changeImg(_ sender: Any) {
         
@@ -72,61 +199,11 @@ class ProfileViewController: UIViewController {
         present(imagePickerAlertController, animated: true, completion: nil)
     }
     
-    func setNavigationBar() {
-        navigationItem.title = "個人頁面"
-    }
-    
-    func setTableView() {
-        profileTableView.delegate = self
-        profileTableView.dataSource = self
-        profileTableView.lk_registerCellWithNib(identifier: String(describing: ProfileTableViewCell.self), bundle: nil)
-        profileTableView.separatorStyle = .none
-        profileTableView.bounces = false
-        shadowView.layoutTableView(profileTableView, radius: 10, color: .black, offset: CGSize(width: 10, height: 10), opacity: 0.8, cornerRadius: 60)
-    }
-    
-    func setIBOutlet() {
-        logoImg.layer.cornerRadius = logoImg.frame.width / 2
-        logoImg.layer.borderWidth = 5
-        logoImg.layer.borderColor = UIColor.white.cgColor
-        cameraBtn.layer.cornerRadius = cameraBtn.frame.width / 2
-        cameraBtn.layer.borderWidth = 2
-        cameraBtn.layer.borderColor = UIColor.white.cgColor
-    }
-    
-    func getUserInfo() {
-        guard let uid = UserDefaults.standard.string(forKey: "UserToken") else { return }
-        UserManager.shared.fetchCurrentUser(uid: uid)
-        guard let user = UserManager.shared.user else { return }
-        logoImg.loadImage(user.img, placeHolder: UIImage())
-        postLabel.text = "\(user.selfPost.count)"
-        lovePost.text = "\(user.lovePost.count)"
-//            , completion: { [weak self] result in
-//            guard let strongSelf = self else { return }
-//            switch result {
-//
-//            case .success(let user):
-//
-//                DispatchQueue.main.async {
-//                    strongSelf.postLabel.text = "\(user.selfPost.count)"
-//                    strongSelf.lovePost.text = "\(user.lovePost.count)"
-//                    strongSelf.logoImg.loadImage(user.img)
-//                    strongSelf.user = user
-//                }
-//
-//            case .failure(let error):
-//
-//                print(error)
-//            }
-//        })
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
         setTableView()
         setIBOutlet()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -138,40 +215,25 @@ class ProfileViewController: UIViewController {
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return tableView.frame.height / CGFloat(finalFunction.count)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return finalFunction.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProfileTableViewCell.self), for: indexPath) as? ProfileTableViewCell else { return UITableViewCell() }
-        cell.functionLabel.text = functionLabelText[indexPath.row]
+        cell.functionLabel.text = finalFunction[indexPath.row].name
+        cell.iconImg.image = finalFunction[indexPath.row].img
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
-            let storyboard = UIStoryboard(name: "Profile", bundle: nil)
-            guard let infoViewController = storyboard.instantiateViewController(withIdentifier: "InfoViewController") as? InfoViewController else { return }
-            present(infoViewController, animated: true, completion: nil)
-        } else if indexPath.row == 1 {
-            let storyboard = UIStoryboard(name: "Profile", bundle: nil)
-            guard let favoriteViewController = storyboard.instantiateViewController(withIdentifier: "FavoriteViewController") as? FavoriteViewController else { return }
-            navigationController?.pushViewController(favoriteViewController, animated: true)
-        } else if indexPath.row == 2 {
-            let storyboard = UIStoryboard(name: "Profile", bundle: nil)
-            guard let yourPostViewController = storyboard.instantiateViewController(withIdentifier: "YourPostViewController") as? YourPostViewController else { return }
-            navigationController?.pushViewController(yourPostViewController, animated: true)
-        } else if indexPath.row == 3 {
-            UserDefaults.standard.set(nil, forKey: "UserToken")
-            UserDefaults.standard.set(nil, forKey: "UserCharacter")
-            UserManager.shared.user = nil
-            let storyboard = UIStoryboard(name: "Profile", bundle: nil)
-            guard let craftsmenResumeViewController = storyboard.instantiateViewController(withIdentifier: "CraftsmenResumeViewController") as? CraftsmenResumeViewController else { return }
-            navigationController?.pushViewController(craftsmenResumeViewController, animated: true)
-            tabBarController?.tabBar.isHidden = true
+        if UserDefaults.standard.string(forKey: "UserCharacter") == "customer" {
+            customerCellDidSelect(indexPath: indexPath)
+        } else {
+            craftsmenCellDidSelect(indexPath: indexPath)
         }
     }
 }
