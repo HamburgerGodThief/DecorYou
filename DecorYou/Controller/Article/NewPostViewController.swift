@@ -106,19 +106,6 @@ class NewPostViewController: UIViewController {
         var updateSelfPost = currentSelfPost
         updateSelfPost.append(newPostRef)
         UserManager.shared.updataUserSelfPost(uid: uid, selfPost: updateSelfPost)
-//        , completion: { result in
-//            switch result {
-//            case .success(let user):
-//                let currentSelfPost = user.selfPost
-//                let newPostRef = ArticleManager.shared.db.collection("article").document(newPost.documentID)
-//                var updateSelfPost = currentSelfPost
-//                updateSelfPost.append(newPostRef)
-//                UserManager.shared.updataUserSelfPost(uid: uid, selfPost: updateSelfPost)
-//            case .failure(let error):
-//                print(error)
-//            }
-//        })
-        
         navigationController?.popViewController(animated: true)
         tabBarController?.tabBar.isHidden = false
     }
@@ -143,24 +130,6 @@ class NewPostViewController: UIViewController {
     }
     
     func getCurrentUser() {
-//        guard let uid = UserDefaults.standard.string(forKey: "UserToken") else { return }
-//        UserManager.shared.fetchCurrentUser(uid: uid, completion: { [weak self] result in
-//            guard let strongSelf = self else { return }
-//            switch result {
-//
-//            case .success(let user):
-//
-//                DispatchQueue.main.async {
-//                    strongSelf.authorNameLabel.text = "\(user.name)"
-//                    strongSelf.authorImgView.loadImage(user.img)
-//                    strongSelf.currentUser = user
-//                }
-//
-//            case .failure(let error):
-//
-//                print(error)
-//            }
-//        })
         currentUser = UserManager.shared.user
     }
     

@@ -11,6 +11,7 @@ import UIKit
 class CraftsmenResumeViewController: UIViewController {
     
     @IBOutlet weak var portfolioCollectionView: UICollectionView!
+    @IBOutlet weak var createNewProfolioBtn: UIButton!
     let itemSpace: CGFloat = 3
     let columnCount: CGFloat = 3
     
@@ -19,16 +20,39 @@ class CraftsmenResumeViewController: UIViewController {
         portfolioCollectionView.delegate = self
         portfolioCollectionView.lk_registerCellWithNib(identifier: String(describing: ResumeCollectionViewCell.self), bundle: nil)
     }
+    @IBAction func didTouchCreate(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Profile", bundle: nil)
+        guard let uploadProfolioViewController = storyboard.instantiateViewController(identifier: "UploadProfolioViewController") as? UploadProfolioViewController else { return }
+        navigationController?.pushViewController(uploadProfolioViewController, animated: true)
+    }
     
     func setNavigationBar() {
-        navigationItem.title = "編輯作品"
-        let btn = UIButton()
-        btn.setTitle("Back", for: .normal)
-        btn.setImage(UIImage.asset(.Icons_24px_Back02), for: .normal)
-        btn.sizeToFit()
-        btn.setTitleColor(.black, for: .normal)
-        btn.addTarget(self, action: #selector(backToProfile), for: .touchUpInside)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: btn)
+        navigationItem.title = "你的作品"
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white,
+                                                                   .font: UIFont(name: "PingFangTC-Medium", size: 18)!]
+        let leftbtn = UIButton()
+        leftbtn.tintColor = .white
+        leftbtn.setImage(UIImage.asset(.Icons_48px_Back01), for: .normal)
+        leftbtn.sizeToFit()
+        leftbtn.addTarget(self, action: #selector(backToProfile), for: .touchUpInside)
+        let rightbtn = UIButton()
+        rightbtn.tintColor = .white
+        rightbtn.setTitle("edit", for: .normal)
+        rightbtn.titleLabel?.attributedText = NSAttributedString(string: "edit",
+                                                                 attributes: [.foregroundColor: UIColor.white,
+                                                                              .font: UIFont(name: "PingFangTC-Medium", size: 14)!])
+        rightbtn.sizeToFit()
+        rightbtn.addTarget(self, action: #selector(editProfolio), for: .touchUpInside)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftbtn)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightbtn)
+    }
+    
+    func setCreateBtn() {
+        createNewProfolioBtn.layer.cornerRadius = createNewProfolioBtn.frame.width / 2
+    }
+    
+    @objc func editProfolio() {
+        
     }
     
     @objc func backToProfile() {
@@ -40,6 +64,7 @@ class CraftsmenResumeViewController: UIViewController {
         super.viewDidLoad()
         setNavigationBar()
         setCollectionView()
+        setCreateBtn()
     }
 }
 

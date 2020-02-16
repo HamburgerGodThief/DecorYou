@@ -75,6 +75,9 @@ enum ImageAsset: String {
     case Icons_24px_UserInfo
     case Icons_24px_Profolio
     case Icons_24px_LogOut
+    
+    case Icons_24px_CreateProfolio
+    case Icons_24px_AddPhoto
 }
 
 // swiftlint:enable identifier_name
