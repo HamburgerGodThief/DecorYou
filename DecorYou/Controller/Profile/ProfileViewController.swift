@@ -97,7 +97,7 @@ class ProfileViewController: UIViewController {
         case 1:
             nextVC = storyboard.instantiateViewController(withIdentifier: "FavoriteViewController") as? FavoriteViewController
         case 2:
-            nextVC = storyboard.instantiateViewController(withIdentifier: "FavoriteViewController") as? FavoriteViewController
+            nextVC = storyboard.instantiateViewController(withIdentifier: "YourPostViewController") as? YourPostViewController
         default:
             UserDefaults.standard.set(nil, forKey: "UserToken")
             UserDefaults.standard.set(nil, forKey: "UserCharacter")
@@ -230,7 +230,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if UserDefaults.standard.string(forKey: "UserCharacter") == "customer" {
+        guard let user = UserManager.shared.user else { return }
+        if user.character == "customer" {
             customerCellDidSelect(indexPath: indexPath)
         } else {
             craftsmenCellDidSelect(indexPath: indexPath)

@@ -47,8 +47,8 @@ class ReadPostViewController: UIViewController {
     func setNavigationBar() {
         navigationItem.title = article?.title
         navigationController?.navigationBar.titleTextAttributes =
-        [NSAttributedString.Key.foregroundColor: UIColor.white,
-         NSAttributedString.Key.font: UIFont(name: "PingFangTC-Medium", size: 18)!]
+        [.foregroundColor: UIColor.white,
+         .font: UIFont(name: "PingFangTC-Medium", size: 18)!]
         let btn = UIButton()
         btn.setImage(UIImage.asset(.Icons_48px_Back01), for: .normal)
         btn.tintColor = UIColor.white

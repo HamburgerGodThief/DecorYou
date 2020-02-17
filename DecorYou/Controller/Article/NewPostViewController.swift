@@ -17,7 +17,6 @@ class NewPostViewController: UIViewController {
     @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var contentTextView: UITextView!
     var currentUser: User?
-    var currentCraftsmen: Craftsmen?
     let option = ["插入相片", "裝潢風格", "房屋地區", "房屋坪數", "合作業者"]
     let icon = [UIImage.asset(.Icons_24px_Album),
                 UIImage.asset(.Icons_24px_DecorateStyle),
@@ -47,6 +46,8 @@ class NewPostViewController: UIViewController {
     
     func setNavigationBar() {
         navigationItem.title = "發表文章"
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white,
+                                                                   .font: UIFont(name: "PingFangTC-Medium", size: 18)!]
         let rightBtn = UIBarButtonItem(title: "送出", style: .plain, target: self, action: #selector(createPost))
         let leftBtn = UIBarButtonItem(title: "取消", style: .plain, target: self, action: #selector(cancelPost))
         navigationItem.rightBarButtonItem = rightBtn
@@ -63,40 +64,22 @@ class NewPostViewController: UIViewController {
             let collaboratorRef = UserManager.shared.db.document(documentRefString.path)
             collaboratorRefs.append(collaboratorRef)
         }
+        
         //建立新貼文
         let newPost = ArticleManager.shared.db.collection("article").document()
         guard let uid = UserDefaults.standard.string(forKey: "UserToken") else { return }
-        
-        if currentUser != nil {
-            let author = UserManager.shared.db.collection("users").document(uid)
-            let article = Article(title: title,
-                                  content: content,
-                                  createTime: Date(),
-                                  decorateStyle: decorateStyle,
-                                  location: location,
-                                  loveCount: 0,
-                                  postID: newPost.documentID,
-                                  size: size,
-                                  collaborator: collaboratorRefs,
-                                  author: author)
-            ArticleManager.shared.addPost(newPostID: newPost.documentID, article: article)
-        }
-        
-        if currentCraftsmen != nil {
-            let author = UserManager.shared.db.collection("craftsmen").document(uid)
-            let article = Article(title: title,
-                                  content: content,
-                                  createTime: Date(),
-                                  decorateStyle: decorateStyle,
-                                  location: location,
-                                  loveCount: 0,
-                                  postID: newPost.documentID,
-                                  size: size,
-                                  collaborator: collaboratorRefs,
-                                  author: author)
-            ArticleManager.shared.addPost(newPostID: newPost.documentID, article: article)
-        }
-        
+        let author = UserManager.shared.db.collection("users").document(uid)
+        let article = Article(title: title,
+                              content: content,
+                              createTime: Date(),
+                              decorateStyle: decorateStyle,
+                              location: location,
+                              loveCount: 0,
+                              postID: newPost.documentID,
+                              size: size,
+                              collaborator: collaboratorRefs,
+                              author: author)
+        ArticleManager.shared.addPost(newPostID: newPost.documentID, article: article)
         
         //先讀取User現有的selfPost，再更新User的selfPost
         UserManager.shared.fetchCurrentUser(uid: uid)
@@ -131,6 +114,8 @@ class NewPostViewController: UIViewController {
     
     func getCurrentUser() {
         currentUser = UserManager.shared.user
+        authorImgView.loadImage(currentUser?.img)
+        authorNameLabel.text = currentUser?.name
     }
     
     override func viewDidLoad() {

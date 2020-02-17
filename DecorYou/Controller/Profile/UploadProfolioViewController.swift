@@ -14,14 +14,16 @@ import FirebaseDatabase
 class UploadProfolioViewController: UIViewController {
     
     @IBOutlet weak var newProfolioTableView: UITableView!
-    
-    let itemSpace = CGFloat(4)
-    let columnCount = CGFloat(4)
-    let areaData: [String] = ["客廳", "主臥室", "廚房", "次臥室"]
-    var selectedPhotoInTableView: [[UIImage]] = []
+    let tableFooterView = UINib(nibName: "UploadProfolioTableFooterView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! UploadProfolioTableFooterView
+    var selectedPhotoInTableView: [[UIImage]] = [] {
+        didSet {
+            newProfolioTableView.reloadData()
+        }
+    }
     var selectedPhotos: [UIImage] = [] {
         didSet {
-            selectedPhotoInTableView.append(selectedPhotos)
+            selectedPhotoInTableView[selectedPhotoInTableView.count - 1] = selectedPhotos
+//            selectedPhotoInTableView.append(selectedPhotos)
             newProfolioTableView.reloadData()
         }
     }
@@ -38,13 +40,22 @@ class UploadProfolioViewController: UIViewController {
         newProfolioTableView.delegate = self
         newProfolioTableView.dataSource = self
         newProfolioTableView.lk_registerCellWithNib(identifier: String(describing: UploadProfolioTableViewCell.self), bundle: nil)
-    }
-    
-    func setPickerView() {
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(closeKeyboard))
-        view.addGestureRecognizer(tap)
+        let customView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
+        customView.backgroundColor = UIColor.red
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
+        button.setTitle("＋ 新增區域", for: .normal)
+        button.setAttributedTitle(NSAttributedString(string: "＋ 新增區域", attributes: [
+        .foregroundColor: UIColor.black,
+        .font: UIFont(name: "PingFangTC-Medium", size: 24)!]), for: .normal)
+        button.addTarget(self, action: #selector(newArea), for: .touchUpInside)
         
+        button.backgroundColor = .green
+        customView.addSubview(button)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.centerXAnchor.constraint(equalTo: customView.centerXAnchor).isActive = true
+        button.centerYAnchor.constraint(equalTo: customView.centerYAnchor).isActive = true
+        newProfolioTableView.tableFooterView = customView
     }
     
     @objc func closeKeyboard() {
@@ -52,14 +63,18 @@ class UploadProfolioViewController: UIViewController {
     }
     
     @objc func createProfolio() {
-        //建立新貼文
+        //建立新作品
         
         
-        //先讀取Craftsmen現有的profolio，再更新Craftsmen的profolio
+        
     }
     
     @objc func cancel() {
         navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func newArea() {
+        selectedPhotoInTableView.append([])
     }
     
     override func viewDidLoad() {
@@ -76,60 +91,63 @@ extension UploadProfolioViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return selectedPhotoInTableView.count + 1
+        return selectedPhotoInTableView.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: UploadProfolioTableViewCell.self), for: indexPath) as? UploadProfolioTableViewCell else { return UITableViewCell() }
-        cell.newPhotoCollectionView.delegate = self
-        cell.newPhotoCollectionView.dataSource = self
-        cell.newPhotoCollectionView.lk_registerCellWithNib(identifier: String(describing: PortfolioCollectionViewCell.self), bundle: nil)
+        cell.selectedPhotos = selectedPhotoInTableView[indexPath.row]
+        cell.cellVC = self
         cell.newPhotoCollectionView.reloadData()
         return cell
     }
-    
 }
 
-extension UploadProfolioViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return selectedPhotos.count + 1
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: PortfolioCollectionViewCell.self), for: indexPath) as? PortfolioCollectionViewCell else { return UICollectionViewCell() }
-        if indexPath.item == 0 {
-            cell.portfolioImg.contentMode = .scaleAspectFit
-            cell.portfolioImg.image = UIImage.asset(.Icons_24px_AddPhoto)
-        } else {
-            cell.portfolioImg.image = selectedPhotos[indexPath.item - 1]
-        }
-        cell.portfolioImg.backgroundColor = .lightGray
-        return cell
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = CGFloat(floor((collectionView.bounds.width - itemSpace * (columnCount-1)) / columnCount))
-        let height = width
-        return CGSize(width: width, height: height)
-    }
-
-    func collectionView(_: UICollectionView, layout: UICollectionViewLayout, minimumLineSpacingForSectionAt: Int) -> CGFloat {
-        return itemSpace
-    }
-
-    func collectionView(_: UICollectionView, layout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt: Int) -> CGFloat {
-        return itemSpace
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "Profile", bundle: nil)
-        guard let photosViewController = storyboard.instantiateViewController(withIdentifier: "PhotosViewController") as? PhotosViewController else { return }
-        photosViewController.parentVC = self
-        present(photosViewController, animated: true, completion: nil)
-    }
-
-}
+//extension UploadProfolioViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+//
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return selectedPhotos.count + 1
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        guard let tableCell = collectionView.superview?.superview as? UploadProfolioTableViewCell else { return UICollectionViewCell() }
+//
+//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: PortfolioCollectionViewCell.self), for: indexPath) as? PortfolioCollectionViewCell else { return UICollectionViewCell() }
+//        guard let tableCellIndexPath = newProfolioTableView.indexPath(for: tableCell) else {
+//            return cell
+//        }
+//        if indexPath.item == 0 {
+//            cell.portfolioImg.contentMode = .scaleAspectFit
+//            cell.portfolioImg.image = UIImage.asset(.Icons_24px_AddPhoto)
+//        } else {
+//            cell.portfolioImg.image = selectedPhotos[indexPath.item - 1]
+//        }
+//        cell.portfolioImg.backgroundColor = .lightGray
+//        return cell
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        let width = CGFloat(floor((collectionView.bounds.width - itemSpace * (columnCount-1)) / columnCount))
+//        let height = width
+//        return CGSize(width: width, height: height)
+//    }
+//
+//    func collectionView(_: UICollectionView, layout: UICollectionViewLayout, minimumLineSpacingForSectionAt: Int) -> CGFloat {
+//        return itemSpace
+//    }
+//
+//    func collectionView(_: UICollectionView, layout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt: Int) -> CGFloat {
+//        return itemSpace
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let storyboard = UIStoryboard(name: "Profile", bundle: nil)
+//        guard let photosViewController = storyboard.instantiateViewController(withIdentifier: "PhotosViewController") as? PhotosViewController else { return }
+//        photosViewController.parentVC = self
+//        present(photosViewController, animated: true, completion: nil)
+//    }
+//
+//}
 
 
 //

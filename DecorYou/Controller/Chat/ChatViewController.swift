@@ -19,6 +19,7 @@ class ChatViewController: UIViewController {
         let leftBtn = UIBarButtonItem(title: "編輯", style: .plain, target: self, action: #selector(edit))
         navigationItem.leftBarButtonItem = leftBtn
         navigationController?.navigationBar.backgroundColor = UIColor.brown
+        navigationController?.navigationBar.barStyle = .black
     }
     
     func setTableHeaderView() {
