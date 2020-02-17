@@ -33,16 +33,26 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m71-De-shs">
-                        <rect key="frame" x="112" y="9" width="141" height="34"/>
+                        <rect key="frame" x="112" y="9" width="61" height="34"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BoR-IR-HDl">
+                        <rect key="frame" x="335" y="14" width="24" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="BoR-IR-HDl" secondAttribute="height" multiplier="1:1" id="TCk-Rk-UxW"/>
+                        </constraints>
+                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <state key="normal" image="Icons_24px_Close"/>
+                    </button>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="BoR-IR-HDl" secondAttribute="trailing" constant="14" id="92B-pb-Pao"/>
                     <constraint firstAttribute="bottom" secondItem="isD-eA-fFg" secondAttribute="bottom" constant="12" id="9HD-S6-CLW"/>
+                    <constraint firstItem="BoR-IR-HDl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="E22-KK-hTN"/>
                     <constraint firstItem="isD-eA-fFg" firstAttribute="top" secondItem="m71-De-shs" secondAttribute="bottom" constant="12" id="Vbn-Oi-N2Z"/>
                     <constraint firstItem="Bx4-O5-Du8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="XxK-kr-dqz"/>
-                    <constraint firstAttribute="trailing" secondItem="m71-De-shs" secondAttribute="trailing" constant="120" id="aNd-tX-9Tx"/>
+                    <constraint firstAttribute="trailing" secondItem="m71-De-shs" secondAttribute="trailing" constant="200" id="aNd-tX-9Tx"/>
                     <constraint firstAttribute="trailing" secondItem="isD-eA-fFg" secondAttribute="trailing" constant="14" id="bzJ-Er-14o"/>
                     <constraint firstItem="Bx4-O5-Du8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="gmJ-im-GIH"/>
                     <constraint firstItem="m71-De-shs" firstAttribute="leading" secondItem="Bx4-O5-Du8" secondAttribute="trailing" constant="4" id="j4C-M0-QIF"/>
@@ -54,8 +64,12 @@
             <connections>
                 <outlet property="areaTextField" destination="m71-De-shs" id="3Ih-z8-RdP"/>
                 <outlet property="newPhotoCollectionView" destination="isD-eA-fFg" id="aPH-kk-rPw"/>
+                <outlet property="removeBtn" destination="BoR-IR-HDl" id="fCh-Z9-uLb"/>
             </connections>
             <point key="canvasLocation" x="100.72463768115942" y="205.24553571428569"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="Icons_24px_Close" width="24" height="24"/>
+    </resources>
 </document>

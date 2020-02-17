@@ -14,16 +14,13 @@ import FirebaseDatabase
 class UploadProfolioViewController: UIViewController {
     
     @IBOutlet weak var newProfolioTableView: UITableView!
-    let tableFooterView = UINib(nibName: "UploadProfolioTableFooterView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! UploadProfolioTableFooterView
-    var selectedPhotoInTableView: [[UIImage]] = [] {
+    var selectAreaInTableView: [String] = [] {
         didSet {
             newProfolioTableView.reloadData()
         }
     }
-    var selectedPhotos: [UIImage] = [] {
+    var selectedPhotoInTableView: [[UIImage]] = [] {
         didSet {
-            selectedPhotoInTableView[selectedPhotoInTableView.count - 1] = selectedPhotos
-//            selectedPhotoInTableView.append(selectedPhotos)
             newProfolioTableView.reloadData()
         }
     }
@@ -58,14 +55,8 @@ class UploadProfolioViewController: UIViewController {
         newProfolioTableView.tableFooterView = customView
     }
     
-    @objc func closeKeyboard() {
-        self.view.endEditing(true)
-    }
-    
     @objc func createProfolio() {
         //建立新作品
-        
-        
         
     }
     
@@ -74,7 +65,32 @@ class UploadProfolioViewController: UIViewController {
     }
     
     @objc func newArea() {
-        selectedPhotoInTableView.append([])
+        if selectAreaInTableView.count == 0 && selectedPhotoInTableView.count == 0 {
+            selectedPhotoInTableView.append([])
+            selectAreaInTableView.append("")
+        } else {
+            guard let lastArea = selectAreaInTableView.last else { return }
+            guard let lastPhotos = selectedPhotoInTableView.last else { return }
+            if lastArea == "" || lastPhotos.isEmpty {
+                let alertController = UIAlertController(title: "錯誤", message: "請先選擇照片與區域才可新增新的區域", preferredStyle: .alert)
+                
+                let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alertController.addAction(defaultAction)
+                
+                present(alertController, animated: true, completion: nil)
+            } else {
+                selectedPhotoInTableView.append([])
+                selectAreaInTableView.append("")
+            }
+        }
+    }
+    
+    @objc func removeCell(sender: UIButton) {
+        guard let cell = sender.superview?.superview as? UploadProfolioTableViewCell else { return }
+        guard let indexPath = newProfolioTableView.indexPath(for: cell) else { return }
+        selectedPhotoInTableView.remove(at: indexPath.row)
+        selectAreaInTableView.remove(at: indexPath.row)
+        newProfolioTableView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -96,12 +112,37 @@ extension UploadProfolioViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: UploadProfolioTableViewCell.self), for: indexPath) as? UploadProfolioTableViewCell else { return UITableViewCell() }
-        cell.selectedPhotos = selectedPhotoInTableView[indexPath.row]
         cell.cellVC = self
+        cell.indexPathRow = indexPath.row
+        cell.pickerView.tag = indexPath.row
+        cell.removeBtn.addTarget(self, action: #selector(removeCell), for: .touchUpInside)
+        cell.areaTextField.text = selectAreaInTableView[indexPath.row]
+        cell.selectedPhotos = selectedPhotoInTableView[indexPath.row]
         cell.newPhotoCollectionView.reloadData()
         return cell
     }
 }
+
+//extension UploadProfolioViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+//
+//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+//        return 1
+//    }
+//
+//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+//        return areaData.count
+//    }
+//
+//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+//        selectArea[selectArea.count - 1] = areaData[row]
+//        newProfolioTableView.reloadData()
+//    }
+//
+//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+//        return areaData[row]
+//    }
+//
+//}
 
 //extension UploadProfolioViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 //

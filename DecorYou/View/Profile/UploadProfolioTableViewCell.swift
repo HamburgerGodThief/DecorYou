@@ -12,12 +12,14 @@ class UploadProfolioTableViewCell: UITableViewCell {
 
     @IBOutlet weak var newPhotoCollectionView: UICollectionView!
     @IBOutlet weak var areaTextField: UITextField!
+    @IBOutlet weak var removeBtn: UIButton!
     let pickerView = UIPickerView()
     let areaData: [String] = ["客廳", "主臥室", "廚房", "次臥室"]
     var selectedPhotos: [UIImage] = []
     let itemSpace = CGFloat(4)
     let columnCount = CGFloat(4)
     var cellVC: UploadProfolioViewController?
+    var indexPathRow: Int?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -49,7 +51,8 @@ extension UploadProfolioTableViewCell: UIPickerViewDelegate, UIPickerViewDataSou
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        areaTextField.text = areaData[row]
+        guard let cellVC = cellVC else { return }
+        cellVC.selectAreaInTableView[pickerView.tag] = areaData[row]
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
@@ -95,6 +98,7 @@ extension UploadProfolioTableViewCell: UICollectionViewDataSource, UICollectionV
         let storyboard = UIStoryboard(name: "Profile", bundle: nil)
         guard let photosViewController = storyboard.instantiateViewController(withIdentifier: "PhotosViewController") as? PhotosViewController else { return }
         guard let uploadProfolioVC = cellVC else { return }
+        photosViewController.indexPathRow = indexPathRow
         photosViewController.parentVC = uploadProfolioVC
         uploadProfolioVC.present(photosViewController, animated: true, completion: nil)
     }

@@ -19,6 +19,7 @@ class PhotosViewController: UIViewController {
     let columnCount = CGFloat(3)
     var parentVC: UploadProfolioViewController?
     var selectedPhotos: [UIImage] = []
+    var indexPathRow: Int?
     
     @IBAction func closePhotosVC(_ sender: Any) {
         
@@ -73,7 +74,8 @@ class PhotosViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         guard let parentVC = parentVC else { return }
-        parentVC.selectedPhotos = selectedPhotos
+        guard let indexPathRow = indexPathRow else { return }
+        parentVC.selectedPhotoInTableView[indexPathRow] = selectedPhotos
     }
 }
 

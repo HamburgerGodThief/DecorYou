@@ -42,8 +42,6 @@
 		64F9D89823F9239D00F28186 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F9D89723F9239D00F28186 /* PhotosViewController.swift */; };
 		64F9D89B23F9379400F28186 /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F9D89923F9379400F28186 /* PhotosCollectionViewCell.swift */; };
 		64F9D89C23F9379400F28186 /* PhotosCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64F9D89A23F9379400F28186 /* PhotosCollectionViewCell.xib */; };
-		64F9D89E23FA406400F28186 /* UploadProfolioTableFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64F9D89D23FA406400F28186 /* UploadProfolioTableFooterView.xib */; };
-		64F9D8A023FA407400F28186 /* UploadProfolioTableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F9D89F23FA407400F28186 /* UploadProfolioTableFooterView.swift */; };
 		64FA429523DD3BD60065DCEF /* STBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA429423DD3BD60065DCEF /* STBaseViewController.swift */; };
 		64FA429A23E341440065DCEF /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA429823E341440065DCEF /* ArticleTableViewCell.swift */; };
 		64FA429B23E341440065DCEF /* ArticleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FA429923E341440065DCEF /* ArticleTableViewCell.xib */; };
@@ -156,8 +154,6 @@
 		64F9D89723F9239D00F28186 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		64F9D89923F9379400F28186 /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
 		64F9D89A23F9379400F28186 /* PhotosCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotosCollectionViewCell.xib; sourceTree = "<group>"; };
-		64F9D89D23FA406400F28186 /* UploadProfolioTableFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UploadProfolioTableFooterView.xib; sourceTree = "<group>"; };
-		64F9D89F23FA407400F28186 /* UploadProfolioTableFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadProfolioTableFooterView.swift; sourceTree = "<group>"; };
 		64FA429423DD3BD60065DCEF /* STBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STBaseViewController.swift; sourceTree = "<group>"; };
 		64FA429823E341440065DCEF /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
 		64FA429923E341440065DCEF /* ArticleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleTableViewCell.xib; sourceTree = "<group>"; };
@@ -491,8 +487,6 @@
 				64012BA223F7FA81001D20D0 /* UploadProfolioTableViewCell.xib */,
 				64F9D89923F9379400F28186 /* PhotosCollectionViewCell.swift */,
 				64F9D89A23F9379400F28186 /* PhotosCollectionViewCell.xib */,
-				64F9D89D23FA406400F28186 /* UploadProfolioTableFooterView.xib */,
-				64F9D89F23FA407400F28186 /* UploadProfolioTableFooterView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -588,7 +582,6 @@
 				64012B9C23F67043001D20D0 /* ServiceAreaCollectionViewCell.xib in Resources */,
 				64FE4ECC23E918EA00A5D3EC /* ProfileTableViewCell.xib in Resources */,
 				64FA42B723E7B3800065DCEF /* ResumeCollectionViewCell.xib in Resources */,
-				64F9D89E23FA406400F28186 /* UploadProfolioTableFooterView.xib in Resources */,
 				64FE4EE223EA55CB00A5D3EC /* YourPostTableViewCell.xib in Resources */,
 				64FC819423E7E4D70027DDEE /* ChatListTableViewCell.xib in Resources */,
 				647A7CCA23D83BB0005D1946 /* Article.storyboard in Resources */,
@@ -728,7 +721,6 @@
 				64FE4EE123EA55CB00A5D3EC /* YourPostTableViewCell.swift in Sources */,
 				647A7CAC23D83376005D1946 /* AppDelegate.swift in Sources */,
 				64FAB11F23EC001A0073235C /* UserManager.swift in Sources */,
-				64F9D8A023FA407400F28186 /* UploadProfolioTableFooterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
