@@ -16,8 +16,8 @@ class ResumeViewController: UIViewController {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var styleLabel: UILabel!
     @IBOutlet weak var chatBtn: UIButton!
-    var craftsman: Craftsmen?
-    var allPortfolio: [Portfolio] = []
+    var craftsman: User?
+    var allProfolio: [Profolio] = []
     let itemSpace: CGFloat = 3
     let columnCount: CGFloat = 3
     
@@ -41,13 +41,14 @@ class ResumeViewController: UIViewController {
     func getDataAndShowIt() {
         guard let craftsman = craftsman else { return }
         logoImg.loadImage(craftsman.img)
-        serviceLabel.text = "服務項目: \(craftsman.serviceCategory)"
+        guard let serviceCat = craftsman.serviceCategory else { return }
+        serviceLabel.text = "服務項目: \(serviceCat)"
         
         UserManager.shared.fetchSpecificCraftsmanPortfolio(uid: craftsman.uid, completion: { [weak self] result in
             guard let strongSelf = self else { return }
             switch result {
-            case .success(let allPortfolio):
-                strongSelf.allPortfolio = allPortfolio
+            case .success(let allProfolio):
+                strongSelf.allProfolio = allProfolio
                 strongSelf.resumeCollectionView.reloadData()
             case .failure(let error):
                 print(error)
@@ -75,12 +76,12 @@ class ResumeViewController: UIViewController {
 extension ResumeViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return allPortfolio.count
+        return allProfolio.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: ResumeCollectionViewCell.self), for: indexPath) as? ResumeCollectionViewCell else { return UICollectionViewCell() }
-        cell.portfolioImg.loadImage(allPortfolio[indexPath.item].mainImage)
+        cell.portfolioImg.loadImage(allProfolio[indexPath.item].livingRoom.first)
         return cell
     }
     

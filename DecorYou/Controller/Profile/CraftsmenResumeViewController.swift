@@ -20,6 +20,7 @@ class CraftsmenResumeViewController: UIViewController {
         portfolioCollectionView.delegate = self
         portfolioCollectionView.lk_registerCellWithNib(identifier: String(describing: ResumeCollectionViewCell.self), bundle: nil)
     }
+    
     @IBAction func didTouchCreate(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Profile", bundle: nil)
         guard let uploadProfolioViewController = storyboard.instantiateViewController(identifier: "UploadProfolioViewController") as? UploadProfolioViewController else { return }
@@ -50,6 +51,11 @@ class CraftsmenResumeViewController: UIViewController {
     func setCreateBtn() {
         createNewProfolioBtn.layer.cornerRadius = createNewProfolioBtn.frame.width / 2
     }
+    
+//    func fetchProfolio() {
+//        guard let uid = UserDefaults.standard.string(forKey: "UserToken") else { return }
+//        UserManager.shared.fetchSpecificCraftsmanPortfolio(uid: <#T##String#>, completion: <#T##(Result<[Profolio], Error>) -> Void#>)
+//    }
     
     @objc func editProfolio() {
         

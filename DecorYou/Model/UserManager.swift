@@ -28,36 +28,23 @@ struct User: Codable {
     }
 }
 
-struct Craftsmen: Codable {
+struct Profolio: Codable {
     
-    let email: String
-    let name: String
-    let uid: String
-    var img: String?
-    let lovePost: [DocumentReference]
-    let selfPost: [DocumentReference]
-    let character: String
-    let serviceLocation: [String]
-    let serviceCategory: String
-    var select: Bool = false
-    
-    enum CodingKeys: String, CodingKey {
-        case email, name, uid, character, serviceLocation, serviceCategory, lovePost, selfPost, img
-    }
-}
-
-struct Portfolio: Codable {
-    
-    var mainImage: String
     var livingRoom: [String]
     var dinningRoom: [String]
     var mainRoom: [String]
-    var guestRoom: [String]
+    var firstRoom: [String]
     var kitchen: [String]
     var bathRoom: [String]
+    let createTime: Date
+    var createTimeString: String {
+        let format = DateFormatter()
+        format.dateFormat = "YYYY-MM-dd HH:mm"
+        return format.string(from: createTime)
+    }
     
     enum CodingKeys: String, CodingKey {
-        case mainImage, livingRoom, dinningRoom, mainRoom, guestRoom, kitchen, bathRoom
+        case livingRoom, dinningRoom, mainRoom, firstRoom, kitchen, bathRoom, createTime
     }
 }
 
@@ -78,17 +65,27 @@ class UserManager {
             print("Error writing city to Firestore: \(error)")
         }
     }
+    //創建Profolio
+    func addProfolio(profolio: Profolio) {
+        guard let uid = UserDefaults.standard.string(forKey: "UserToken") else { return }
+        do {
+            try db.collection("users").document(uid).collection("Profolio").document().setData(from: profolio)
+        } catch {
+            print("Error writing city to Firestore: \(error)")
+        }
+    }
+    
     //讀取所有匠人
-    func fetchAllCraftsmen(completion: @escaping (Result<[Craftsmen], Error>) -> Void) {
+    func fetchAllCraftsmen(completion: @escaping (Result<[User], Error>) -> Void) {
         db.collection("users").whereField("character", isEqualTo: "craftsmen").getDocuments() {(querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
                 guard let querySnapShot = querySnapshot else { return }
-                var allCraftsmen: [Craftsmen] = []
+                var allCraftsmen: [User] = []
                 querySnapShot.documents.forEach { document in
                     do {
-                        if let craftsmen = try document.data(as: Craftsmen.self, decoder: Firestore.Decoder()) {
+                        if let craftsmen = try document.data(as: User.self, decoder: Firestore.Decoder()) {
                             allCraftsmen.append(craftsmen)
                         }
                     } catch{
@@ -120,17 +117,17 @@ class UserManager {
         }
     }
     
-    func fetchSpecificCraftsmanPortfolio(uid: String, completion: @escaping (Result<[Portfolio], Error>) -> Void) {
-        db.collection("users").document(uid).collection("portfolio").getDocuments() { (querySnapshot, err) in
+    func fetchSpecificCraftsmanPortfolio(uid: String, completion: @escaping (Result<[Profolio], Error>) -> Void) {
+        db.collection("users").document(uid).collection("Profolio").getDocuments() { (querySnapshot, err) in
             
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
                 guard let querySnapShot = querySnapshot else { return }
-                var allPortfolio: [Portfolio] = []
+                var allPortfolio: [Profolio] = []
                 querySnapShot.documents.forEach { document in
                     do {
-                        if let portfolio = try document.data(as: Portfolio.self, decoder: Firestore.Decoder()) {
+                        if let portfolio = try document.data(as: Profolio.self, decoder: Firestore.Decoder()) {
                             allPortfolio.append(portfolio)
                         }
                     } catch{
@@ -153,7 +150,7 @@ class UserManager {
         }
     }
     
-    func updataUserSelfPost(uid: String, selfPost: [DocumentReference]) {
+    func updateUserSelfPost(uid: String, selfPost: [DocumentReference]) {
         db.collection("users").document(uid).updateData([
             "selfPost": selfPost
         ]) { err in
@@ -165,7 +162,7 @@ class UserManager {
         }
     }
     
-    func updataUserLovePost(uid: String, lovePost: [DocumentReference]) {
+    func updateUserLovePost(uid: String, lovePost: [DocumentReference]) {
         db.collection("users").document(uid).updateData([
             "lovePost": lovePost
         ]) { err in

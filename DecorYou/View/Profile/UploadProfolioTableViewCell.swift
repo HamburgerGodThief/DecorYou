@@ -14,7 +14,7 @@ class UploadProfolioTableViewCell: UITableViewCell {
     @IBOutlet weak var areaTextField: UITextField!
     @IBOutlet weak var removeBtn: UIButton!
     let pickerView = UIPickerView()
-    let areaData: [String] = ["客廳", "主臥室", "廚房", "次臥室"]
+    let areaData: [String] = ["客廳", "餐廳", "主臥室", "房間一", "廚房", "浴廁"]
     var selectedPhotos: [UIImage] = []
     let itemSpace = CGFloat(4)
     let columnCount = CGFloat(4)

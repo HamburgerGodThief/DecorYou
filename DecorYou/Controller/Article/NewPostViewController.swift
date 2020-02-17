@@ -38,7 +38,7 @@ class NewPostViewController: UIViewController {
             tableView.reloadData()
         }
     }
-    var collaborators: [Craftsmen] = [] {
+    var collaborators: [User] = [] {
         didSet {
             tableView.reloadData()
         }
@@ -88,7 +88,7 @@ class NewPostViewController: UIViewController {
         let newPostRef = ArticleManager.shared.db.collection("article").document(newPost.documentID)
         var updateSelfPost = currentSelfPost
         updateSelfPost.append(newPostRef)
-        UserManager.shared.updataUserSelfPost(uid: uid, selfPost: updateSelfPost)
+        UserManager.shared.updateUserSelfPost(uid: uid, selfPost: updateSelfPost)
         navigationController?.popViewController(animated: true)
         tabBarController?.tabBar.isHidden = false
     }

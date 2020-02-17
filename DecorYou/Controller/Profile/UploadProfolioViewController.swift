@@ -11,9 +11,23 @@ import Photos
 import FirebaseStorage
 import FirebaseDatabase
 
+struct UploadData {
+    var areaTitle: String
+    var areaPhoto: [UIImage]
+}
+
 class UploadProfolioViewController: UIViewController {
     
     @IBOutlet weak var newProfolioTableView: UITableView!
+    
+    var profolio = Profolio(livingRoom: [],
+                            dinningRoom: [],
+                            mainRoom: [],
+                            firstRoom: [],
+                            kitchen: [],
+                            bathRoom: [],
+                            createTime: Date())
+    
     var selectAreaInTableView: [String] = [] {
         didSet {
             newProfolioTableView.reloadData()
@@ -56,8 +70,76 @@ class UploadProfolioViewController: UIViewController {
     }
     
     @objc func createProfolio() {
-        //建立新作品
         
+        var uploadDatas: [UploadData] = []
+        for order in 0..<selectAreaInTableView.count {
+            uploadDatas.append(UploadData(areaTitle: selectAreaInTableView[order], areaPhoto: selectedPhotoInTableView[order]))
+        }
+        
+        for data in uploadDatas {
+            if data.areaTitle == "" || data.areaPhoto.isEmpty {
+                let alertController = UIAlertController(title: "錯誤", message: "請先選擇照片與區域才可上傳", preferredStyle: .alert)
+                
+                let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alertController.addAction(defaultAction)
+                
+                present(alertController, animated: true, completion: nil)
+                return
+            }
+        }
+        
+        let areaGroup = DispatchGroup()
+        //建立新作品
+        for uploadData in uploadDatas {
+            areaGroup.enter()
+            var urlAry: [String] = []
+            let group = DispatchGroup()
+            for img in uploadData.areaPhoto {
+                if let uploadImg = img.pngData() {
+                    let uniqueString = NSUUID().uuidString
+                    let storageRef = Storage.storage().reference().child("Profile").child("\(uniqueString).png")
+                    // 這行就是 FirebaseStorage 關鍵的存取方法。
+                    group.enter()
+                    storageRef.putData(uploadImg, metadata: nil, completion: { (data, error) in
+                        
+                        if error != nil {
+                            
+                            // 若有接收到錯誤，我們就直接印在 Console 就好，在這邊就不另外做處理。
+                            print("Error: \(error!.localizedDescription)")
+                            return
+                        }
+                        
+                        //將圖片的URL放到Cloud Firestore
+                        storageRef.downloadURL(completion: {(url, error) in
+                            guard let imgURL = url?.absoluteString else { return }
+                            urlAry.append(imgURL)
+                            group.leave()
+                        })
+                    })
+                }
+            }
+            group.notify(queue: .main) {
+                if uploadData.areaTitle == "客廳" {
+                    self.profolio.livingRoom = urlAry
+                } else if uploadData.areaTitle == "餐廳" {
+                    self.profolio.dinningRoom = urlAry
+                } else if uploadData.areaTitle == "主臥室" {
+                    self.profolio.mainRoom = urlAry
+                } else if uploadData.areaTitle == "房間一" {
+                    self.profolio.firstRoom = urlAry
+                } else if uploadData.areaTitle == "廚房" {
+                    self.profolio.kitchen = urlAry
+                } else if uploadData.areaTitle == "浴廁" {
+                    self.profolio.bathRoom = urlAry
+                }
+                areaGroup.leave()
+            }
+            
+        }
+        areaGroup.notify(queue: .main) {
+            UserManager.shared.addProfolio(profolio: self.profolio)
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     @objc func cancel() {

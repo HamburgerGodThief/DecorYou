@@ -20,12 +20,12 @@ class CollaboratorViewController: UIViewController {
     @IBOutlet weak var collaboratorTableView: UITableView!
     @IBOutlet weak var collaboratorCollectionView: UICollectionView!
     weak var delegate: CollaboratorViewControllerDelegate?
-    var allCraftsMen: [Craftsmen] = [] {
+    var allCraftsMen: [User] = [] {
         didSet {
             collaboratorTableView.reloadData()
         }
     }
-    var selectPeople: [Craftsmen] = [] {
+    var selectPeople: [User] = [] {
         didSet {
             collaboratorCollectionView.reloadData()
         }
@@ -63,16 +63,16 @@ class CollaboratorViewController: UIViewController {
             switch result {
             case .success(let craftmens):
                 for craftmen in craftmens {
-                    let data = Craftsmen(email: craftmen.email,
-                                         name: craftmen.name,
-                                         uid: craftmen.uid,
-                                         img: craftmen.img,
-                                         lovePost: craftmen.lovePost,
-                                         selfPost: craftmen.selfPost,
-                                         character: craftmen.character,
-                                         serviceLocation: craftmen.serviceLocation,
-                                         serviceCategory: craftmen.serviceCategory,
-                                         select: false)
+                    let data = User(uid: craftmen.uid,
+                                    email: craftmen.email,
+                                    name: craftmen.name,
+                                    img: craftmen.img,
+                                    lovePost: craftmen.lovePost,
+                                    selfPost: craftmen.selfPost,
+                                    character: craftmen.character,
+                                    serviceLocation: craftmen.serviceLocation,
+                                    serviceCategory: craftmen.serviceCategory,
+                                    select: false)
                     strongSelf.allCraftsMen.append(data)
                 }
             case .failure(let error):

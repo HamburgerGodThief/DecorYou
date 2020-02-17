@@ -14,9 +14,9 @@ class CraftsmenViewController: UIViewController {
     @IBOutlet weak var craftsmenCollectionView: UICollectionView!
     var searchController = UISearchController(searchResultsController: nil)
     
-    var allCraftsmen: [Craftsmen] = []
-    var searchCraftsmen: [Craftsmen] = []
-    var finalData: [Craftsmen] = []
+    var allCraftsmen: [User] = []
+    var searchCraftsmen: [User] = []
+    var finalData: [User] = []
     
     func configureSearchController() {
         searchController.hidesNavigationBarDuringPresentation = false
