@@ -8,13 +8,13 @@
 
 import UIKit
 
-class PortfolioTableViewCell: UITableViewCell {
+class ProfolioTableViewCell: UITableViewCell {
     
     @IBOutlet weak var portfolioCollectionView: UICollectionView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        portfolioCollectionView.lk_registerCellWithNib(identifier: String(describing: PortfolioCollectionViewCell.self), bundle: nil)
+        portfolioCollectionView.lk_registerCellWithNib(identifier: String(describing: ProfolioCollectionViewCell.self), bundle: nil)
         portfolioCollectionView.delegate = self
         portfolioCollectionView.dataSource = self
         // Initialization code
@@ -27,14 +27,14 @@ class PortfolioTableViewCell: UITableViewCell {
     }
 }
 
-extension PortfolioTableViewCell: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension ProfolioTableViewCell: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 8
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: PortfolioCollectionViewCell.self), for: indexPath) as? PortfolioCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: ProfolioCollectionViewCell.self), for: indexPath) as? ProfolioCollectionViewCell else { return UICollectionViewCell() }
         return cell
     }
     

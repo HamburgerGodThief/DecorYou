@@ -32,7 +32,7 @@ class PortfolioViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        portfolioTableView.lk_registerCellWithNib(identifier: String(describing: PortfolioTableViewCell.self), bundle: nil)
+        portfolioTableView.lk_registerCellWithNib(identifier: String(describing: ProfolioTableViewCell.self), bundle: nil)
         portfolioTableView.delegate = self
         portfolioTableView.dataSource = self
         setNavigationBar()
@@ -60,8 +60,37 @@ extension PortfolioViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PortfolioTableViewCell.self), for: indexPath) as? PortfolioTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProfolioTableViewCell.self), for: indexPath) as? ProfolioTableViewCell else { return UITableViewCell() }
+//        cell.portfolioCollectionView.delegate = self
+//        cell.portfolioCollectionView.dataSource = self
         return cell
     }
     
 }
+
+//extension PortfolioViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+//
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return profolio.count
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: ResumeCollectionViewCell.self), for: indexPath) as? ResumeCollectionViewCell else { return UICollectionViewCell() }
+//        cell.portfolioImg.loadImage(profolio[indexPath.item].dinningRoom[0])
+//        return cell
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        let width = CGFloat(floor((profolioCollectionView.bounds.width - itemSpace * (columnCount-1)) / columnCount))
+//        let height = width
+//        return CGSize(width: width, height: height)
+//    }
+//
+//    func collectionView(_: UICollectionView, layout: UICollectionViewLayout, minimumLineSpacingForSectionAt: Int) -> CGFloat {
+//        return itemSpace
+//    }
+//
+//    func collectionView(_: UICollectionView, layout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt: Int) -> CGFloat {
+//        return itemSpace
+//    }
+//}

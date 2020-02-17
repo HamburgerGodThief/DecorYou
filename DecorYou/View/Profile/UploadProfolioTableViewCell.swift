@@ -27,7 +27,7 @@ class UploadProfolioTableViewCell: UITableViewCell {
         pickerView.delegate = self
         pickerView.dataSource = self
         // Initialization code
-        newPhotoCollectionView.lk_registerCellWithNib(identifier: String(describing: PortfolioCollectionViewCell.self), bundle: nil)
+        newPhotoCollectionView.lk_registerCellWithNib(identifier: String(describing: ProfolioCollectionViewCell.self), bundle: nil)
         newPhotoCollectionView.delegate = self
         newPhotoCollectionView.dataSource = self
     }
@@ -69,7 +69,7 @@ extension UploadProfolioTableViewCell: UICollectionViewDataSource, UICollectionV
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: PortfolioCollectionViewCell.self), for: indexPath) as? PortfolioCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: ProfolioCollectionViewCell.self), for: indexPath) as? ProfolioCollectionViewCell else { return UICollectionViewCell() }
         if indexPath.item == 0 {
             cell.portfolioImg.contentMode = .scaleAspectFit
             cell.portfolioImg.image = UIImage.asset(.Icons_24px_AddPhoto)

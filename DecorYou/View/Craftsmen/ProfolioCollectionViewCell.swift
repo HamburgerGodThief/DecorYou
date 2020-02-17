@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PortfolioCollectionViewCell: UICollectionViewCell {
+class ProfolioCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var portfolioImg: UIImageView!
     

@@ -18,7 +18,8 @@ class ChatViewController: UIViewController {
         
         let leftBtn = UIBarButtonItem(title: "編輯", style: .plain, target: self, action: #selector(edit))
         navigationItem.leftBarButtonItem = leftBtn
-        navigationController?.navigationBar.backgroundColor = UIColor.brown
+        navigationController?.navigationBar.barTintColor = UIColor.assetColor(.mainColor)
+        navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.barStyle = .black
     }
     
@@ -54,6 +55,11 @@ class ChatViewController: UIViewController {
         chatListTableView.delegate = self
         chatListTableView.dataSource = self
         chatListTableView.lk_registerCellWithNib(identifier: String(describing: ChatListTableViewCell.self), bundle: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = false
     }
 }
 

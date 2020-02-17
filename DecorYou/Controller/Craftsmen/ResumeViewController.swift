@@ -44,7 +44,7 @@ class ResumeViewController: UIViewController {
         guard let serviceCat = craftsman.serviceCategory else { return }
         serviceLabel.text = "服務項目: \(serviceCat)"
         
-        UserManager.shared.fetchSpecificCraftsmanPortfolio(uid: craftsman.uid, completion: { [weak self] result in
+        UserManager.shared.fetchSpecificCraftsmanProfolio(uid: craftsman.uid, completion: { [weak self] result in
             guard let strongSelf = self else { return }
             switch result {
             case .success(let allProfolio):
@@ -81,7 +81,7 @@ extension ResumeViewController: UICollectionViewDataSource, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: ResumeCollectionViewCell.self), for: indexPath) as? ResumeCollectionViewCell else { return UICollectionViewCell() }
-        cell.portfolioImg.loadImage(allProfolio[indexPath.item].livingRoom.first)
+        cell.portfolioImg.loadImage(allProfolio[indexPath.item].dinningRoom.first)
         return cell
     }
     

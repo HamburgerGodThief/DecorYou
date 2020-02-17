@@ -81,10 +81,10 @@
 		64FAB14823EEB9FD0073235C /* CollaboratorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FAB14623EEB9FD0073235C /* CollaboratorTableViewCell.xib */; };
 		64FAB14B23EFF0CD0073235C /* CollaboratorLogoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FAB14923EFF0CD0073235C /* CollaboratorLogoCollectionViewCell.swift */; };
 		64FAB14C23EFF0CD0073235C /* CollaboratorLogoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FAB14A23EFF0CD0073235C /* CollaboratorLogoCollectionViewCell.xib */; };
-		64FC818923E7BF3F0027DDEE /* PortfolioCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC818723E7BF3F0027DDEE /* PortfolioCollectionViewCell.swift */; };
-		64FC818A23E7BF3F0027DDEE /* PortfolioCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FC818823E7BF3F0027DDEE /* PortfolioCollectionViewCell.xib */; };
-		64FC818D23E7C26E0027DDEE /* PortfolioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC818B23E7C26E0027DDEE /* PortfolioTableViewCell.swift */; };
-		64FC818E23E7C26E0027DDEE /* PortfolioTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FC818C23E7C26E0027DDEE /* PortfolioTableViewCell.xib */; };
+		64FC818923E7BF3F0027DDEE /* ProfolioCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC818723E7BF3F0027DDEE /* ProfolioCollectionViewCell.swift */; };
+		64FC818A23E7BF3F0027DDEE /* ProfolioCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FC818823E7BF3F0027DDEE /* ProfolioCollectionViewCell.xib */; };
+		64FC818D23E7C26E0027DDEE /* ProfolioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC818B23E7C26E0027DDEE /* ProfolioTableViewCell.swift */; };
+		64FC818E23E7C26E0027DDEE /* ProfolioTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FC818C23E7C26E0027DDEE /* ProfolioTableViewCell.xib */; };
 		64FC819323E7E4D70027DDEE /* ChatListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC819123E7E4D70027DDEE /* ChatListTableViewCell.swift */; };
 		64FC819423E7E4D70027DDEE /* ChatListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FC819223E7E4D70027DDEE /* ChatListTableViewCell.xib */; };
 		64FC819623E7E9D70027DDEE /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC819523E7E9D70027DDEE /* ChatRoomViewController.swift */; };
@@ -193,10 +193,10 @@
 		64FAB14623EEB9FD0073235C /* CollaboratorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollaboratorTableViewCell.xib; sourceTree = "<group>"; };
 		64FAB14923EFF0CD0073235C /* CollaboratorLogoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollaboratorLogoCollectionViewCell.swift; sourceTree = "<group>"; };
 		64FAB14A23EFF0CD0073235C /* CollaboratorLogoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollaboratorLogoCollectionViewCell.xib; sourceTree = "<group>"; };
-		64FC818723E7BF3F0027DDEE /* PortfolioCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioCollectionViewCell.swift; sourceTree = "<group>"; };
-		64FC818823E7BF3F0027DDEE /* PortfolioCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PortfolioCollectionViewCell.xib; sourceTree = "<group>"; };
-		64FC818B23E7C26E0027DDEE /* PortfolioTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioTableViewCell.swift; sourceTree = "<group>"; };
-		64FC818C23E7C26E0027DDEE /* PortfolioTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PortfolioTableViewCell.xib; sourceTree = "<group>"; };
+		64FC818723E7BF3F0027DDEE /* ProfolioCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfolioCollectionViewCell.swift; sourceTree = "<group>"; };
+		64FC818823E7BF3F0027DDEE /* ProfolioCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfolioCollectionViewCell.xib; sourceTree = "<group>"; };
+		64FC818B23E7C26E0027DDEE /* ProfolioTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfolioTableViewCell.swift; sourceTree = "<group>"; };
+		64FC818C23E7C26E0027DDEE /* ProfolioTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfolioTableViewCell.xib; sourceTree = "<group>"; };
 		64FC819123E7E4D70027DDEE /* ChatListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListTableViewCell.swift; sourceTree = "<group>"; };
 		64FC819223E7E4D70027DDEE /* ChatListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatListTableViewCell.xib; sourceTree = "<group>"; };
 		64FC819523E7E9D70027DDEE /* ChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
@@ -411,10 +411,10 @@
 				647A7CC723D83BA0005D1946 /* Craftsmen.storyboard */,
 				64FA42A823E393280065DCEF /* CraftsmenCollectionViewCell.swift */,
 				64FA42A923E393280065DCEF /* CraftsmenCollectionViewCell.xib */,
-				64FC818B23E7C26E0027DDEE /* PortfolioTableViewCell.swift */,
-				64FC818C23E7C26E0027DDEE /* PortfolioTableViewCell.xib */,
-				64FC818723E7BF3F0027DDEE /* PortfolioCollectionViewCell.swift */,
-				64FC818823E7BF3F0027DDEE /* PortfolioCollectionViewCell.xib */,
+				64FC818B23E7C26E0027DDEE /* ProfolioTableViewCell.swift */,
+				64FC818C23E7C26E0027DDEE /* ProfolioTableViewCell.xib */,
+				64FC818723E7BF3F0027DDEE /* ProfolioCollectionViewCell.swift */,
+				64FC818823E7BF3F0027DDEE /* ProfolioCollectionViewCell.xib */,
 				64FA42B423E7B3800065DCEF /* ResumeCollectionViewCell.swift */,
 				64FA42B523E7B3800065DCEF /* ResumeCollectionViewCell.xib */,
 			);
@@ -575,7 +575,7 @@
 				647A7CB823D83377005D1946 /* LaunchScreen.storyboard in Resources */,
 				64012BA423F7FA81001D20D0 /* UploadProfolioTableViewCell.xib in Resources */,
 				647A7CC023D833D4005D1946 /* GoogleService-Info.plist in Resources */,
-				64FC818A23E7BF3F0027DDEE /* PortfolioCollectionViewCell.xib in Resources */,
+				64FC818A23E7BF3F0027DDEE /* ProfolioCollectionViewCell.xib in Resources */,
 				6406276423EAA21D00086434 /* ReadPostBottomView.xib in Resources */,
 				647A7CC423D83B7F005D1946 /* Profile.storyboard in Resources */,
 				647A7CC823D83BA0005D1946 /* Craftsmen.storyboard in Resources */,
@@ -598,7 +598,7 @@
 				64FC819E23E7FC190027DDEE /* ChatRoomBottomView.xib in Resources */,
 				64FA42AB23E393280065DCEF /* CraftsmenCollectionViewCell.xib in Resources */,
 				647A7CB323D83376005D1946 /* Main.storyboard in Resources */,
-				64FC818E23E7C26E0027DDEE /* PortfolioTableViewCell.xib in Resources */,
+				64FC818E23E7C26E0027DDEE /* ProfolioTableViewCell.xib in Resources */,
 				64FA7CC223F2365800975B03 /* ReadPostTableViewFooterView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -691,7 +691,7 @@
 				64FE4EDD23EA4A5900A5D3EC /* FavoriteTableViewCell.swift in Sources */,
 				64FAB12323ED36130073235C /* JGProgressWrapper.swift in Sources */,
 				64012BA323F7FA81001D20D0 /* UploadProfolioTableViewCell.swift in Sources */,
-				64FC818D23E7C26E0027DDEE /* PortfolioTableViewCell.swift in Sources */,
+				64FC818D23E7C26E0027DDEE /* ProfolioTableViewCell.swift in Sources */,
 				64FE4EC823E83E9400A5D3EC /* UITextField+Extension.swift in Sources */,
 				64FC819923E7EE2D0027DDEE /* ChatRoomTableViewCell.swift in Sources */,
 				64FAB13523EE528E0073235C /* LocationViewController.swift in Sources */,
@@ -715,7 +715,7 @@
 				64FA7CC423F2366A00975B03 /* ReadPostTableViewFooterView.swift in Sources */,
 				6406275923EA91EC00086434 /* ArticleAnimationTransition.swift in Sources */,
 				64FE4ED023E95CB200A5D3EC /* RoundCorner+Shadow.swift in Sources */,
-				64FC818923E7BF3F0027DDEE /* PortfolioCollectionViewCell.swift in Sources */,
+				64FC818923E7BF3F0027DDEE /* ProfolioCollectionViewCell.swift in Sources */,
 				64FA429523DD3BD60065DCEF /* STBaseViewController.swift in Sources */,
 				647A7CD323D83E33005D1946 /* AuthViewController.swift in Sources */,
 				64FE4EE123EA55CB00A5D3EC /* YourPostTableViewCell.swift in Sources */,
