@@ -56,7 +56,7 @@
 		64FA42B323E3C5CD0065DCEF /* ResumeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA42B223E3C5CD0065DCEF /* ResumeViewController.swift */; };
 		64FA42B623E7B3800065DCEF /* ResumeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA42B423E7B3800065DCEF /* ResumeCollectionViewCell.swift */; };
 		64FA42B723E7B3800065DCEF /* ResumeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FA42B523E7B3800065DCEF /* ResumeCollectionViewCell.xib */; };
-		64FA42B923E7B74E0065DCEF /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA42B823E7B74E0065DCEF /* PortfolioViewController.swift */; };
+		64FA42B923E7B74E0065DCEF /* ProfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA42B823E7B74E0065DCEF /* ProfolioViewController.swift */; };
 		64FA7CBD23F1483D00975B03 /* ReadPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA7CBB23F1483D00975B03 /* ReadPostTableViewCell.swift */; };
 		64FA7CBE23F1483D00975B03 /* ReadPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FA7CBC23F1483D00975B03 /* ReadPostTableViewCell.xib */; };
 		64FA7CC023F148D800975B03 /* ReadPostTableViewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FA7CBF23F148D800975B03 /* ReadPostTableViewHeaderView.xib */; };
@@ -168,7 +168,7 @@
 		64FA42B223E3C5CD0065DCEF /* ResumeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeViewController.swift; sourceTree = "<group>"; };
 		64FA42B423E7B3800065DCEF /* ResumeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeCollectionViewCell.swift; sourceTree = "<group>"; };
 		64FA42B523E7B3800065DCEF /* ResumeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResumeCollectionViewCell.xib; sourceTree = "<group>"; };
-		64FA42B823E7B74E0065DCEF /* PortfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
+		64FA42B823E7B74E0065DCEF /* ProfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfolioViewController.swift; sourceTree = "<group>"; };
 		64FA7CBB23F1483D00975B03 /* ReadPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadPostTableViewCell.swift; sourceTree = "<group>"; };
 		64FA7CBC23F1483D00975B03 /* ReadPostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReadPostTableViewCell.xib; sourceTree = "<group>"; };
 		64FA7CBF23F148D800975B03 /* ReadPostTableViewHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReadPostTableViewHeaderView.xib; sourceTree = "<group>"; };
@@ -426,7 +426,7 @@
 			children = (
 				647A7CD423D83E49005D1946 /* CraftsmenViewController.swift */,
 				64FA42B223E3C5CD0065DCEF /* ResumeViewController.swift */,
-				64FA42B823E7B74E0065DCEF /* PortfolioViewController.swift */,
+				64FA42B823E7B74E0065DCEF /* ProfolioViewController.swift */,
 			);
 			path = Craftsmen;
 			sourceTree = "<group>";
@@ -661,7 +661,7 @@
 				64FAB13323EE4E5B0073235C /* DecorateStyleCollectionReusableView.swift in Sources */,
 				64FE4ED223E9838B00A5D3EC /* InfoViewController.swift in Sources */,
 				64F9D89B23F9379400F28186 /* PhotosCollectionViewCell.swift in Sources */,
-				64FA42B923E7B74E0065DCEF /* PortfolioViewController.swift in Sources */,
+				64FA42B923E7B74E0065DCEF /* ProfolioViewController.swift in Sources */,
 				647A7CD523D83E49005D1946 /* CraftsmenViewController.swift in Sources */,
 				64FE4ECB23E918EA00A5D3EC /* ProfileTableViewCell.swift in Sources */,
 				647A7CD723D83E55005D1946 /* ChatViewController.swift in Sources */,

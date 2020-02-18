@@ -147,7 +147,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="PbZ-FI-yyo">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <color key="backgroundColor" red="0.75686274509999996" green="0.63137254899999995" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1fz-wF-ua4">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -172,21 +172,41 @@
                                     <action selector="didTouchCreate:" destination="F9a-YL-ECs" eventType="touchUpInside" id="2iU-ZR-SZE"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上傳你的作品" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bXL-rz-vkD">
+                                <rect key="frame" x="108" y="394" width="198" height="46.5"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="33"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上傳你的作品後，這些內容會顯示在你的個人檔案中" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tVp-p7-gfU">
+                                <rect key="frame" x="20" y="452.5" width="374" height="22.5"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="VIk-Th-Nm6" firstAttribute="trailing" secondItem="tVp-p7-gfU" secondAttribute="trailing" constant="20" id="3IP-3T-5bB"/>
+                            <constraint firstItem="tVp-p7-gfU" firstAttribute="leading" secondItem="VIk-Th-Nm6" secondAttribute="leading" constant="20" id="Li6-fu-jXF"/>
+                            <constraint firstItem="tVp-p7-gfU" firstAttribute="centerX" secondItem="fXs-dl-erp" secondAttribute="centerX" id="MZp-qC-dQt"/>
+                            <constraint firstItem="tVp-p7-gfU" firstAttribute="top" secondItem="bXL-rz-vkD" secondAttribute="bottom" constant="12" id="RaX-qU-iex"/>
+                            <constraint firstItem="bXL-rz-vkD" firstAttribute="top" secondItem="VIk-Th-Nm6" secondAttribute="top" constant="350" id="aVn-Au-VtM"/>
                             <constraint firstItem="VIk-Th-Nm6" firstAttribute="trailing" secondItem="Vbq-w8-cJS" secondAttribute="trailing" constant="16" id="eYX-if-lwP"/>
                             <constraint firstItem="VIk-Th-Nm6" firstAttribute="bottom" secondItem="Vbq-w8-cJS" secondAttribute="bottom" constant="16" id="jFH-Yx-NYG"/>
                             <constraint firstItem="VIk-Th-Nm6" firstAttribute="trailing" secondItem="PbZ-FI-yyo" secondAttribute="trailing" id="ntI-oU-wWf"/>
                             <constraint firstItem="PbZ-FI-yyo" firstAttribute="leading" secondItem="VIk-Th-Nm6" secondAttribute="leading" id="pi2-rN-NXa"/>
+                            <constraint firstItem="bXL-rz-vkD" firstAttribute="centerX" secondItem="fXs-dl-erp" secondAttribute="centerX" id="qny-jb-BoP"/>
                             <constraint firstItem="PbZ-FI-yyo" firstAttribute="top" secondItem="VIk-Th-Nm6" secondAttribute="top" id="udb-2Q-G3t"/>
                             <constraint firstItem="VIk-Th-Nm6" firstAttribute="bottom" secondItem="PbZ-FI-yyo" secondAttribute="bottom" id="vhL-Kd-CqF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VIk-Th-Nm6"/>
                     </view>
                     <connections>
+                        <outlet property="contentLabel" destination="tVp-p7-gfU" id="enB-xK-ndR"/>
                         <outlet property="createNewProfolioBtn" destination="Vbq-w8-cJS" id="xHl-PU-Ied"/>
                         <outlet property="profolioCollectionView" destination="PbZ-FI-yyo" id="WOD-Uj-g6y"/>
+                        <outlet property="titleLabel" destination="bXL-rz-vkD" id="nMA-dc-caA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KOb-R8-hZS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -208,7 +228,7 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="0FQ-eh-JdH" firstAttribute="top" secondItem="vXA-TQ-mYA" secondAttribute="top" id="9qZ-Hk-e3s"/>
+                            <constraint firstItem="0FQ-eh-JdH" firstAttribute="top" secondItem="vXA-TQ-mYA" secondAttribute="top" id="Ois-yt-7yl"/>
                             <constraint firstItem="vXA-TQ-mYA" firstAttribute="trailing" secondItem="0FQ-eh-JdH" secondAttribute="trailing" id="Tld-YB-Ec8"/>
                             <constraint firstItem="vXA-TQ-mYA" firstAttribute="bottom" secondItem="0FQ-eh-JdH" secondAttribute="bottom" id="wCc-Ci-m2K"/>
                             <constraint firstItem="0FQ-eh-JdH" firstAttribute="leading" secondItem="vXA-TQ-mYA" secondAttribute="leading" id="zNB-IA-oaf"/>
@@ -221,7 +241,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m8c-ZL-a3z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2112" y="644"/>
+            <point key="canvasLocation" x="2111.594202898551" y="643.52678571428567"/>
         </scene>
         <!--Info View Controller-->
         <scene sceneID="f3U-cA-Cqa">

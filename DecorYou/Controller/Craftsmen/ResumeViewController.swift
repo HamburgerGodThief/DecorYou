@@ -81,7 +81,7 @@ extension ResumeViewController: UICollectionViewDataSource, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: ResumeCollectionViewCell.self), for: indexPath) as? ResumeCollectionViewCell else { return UICollectionViewCell() }
-        cell.portfolioImg.loadImage(allProfolio[indexPath.item].dinningRoom.first)
+        cell.portfolioImg.loadImage(allProfolio[indexPath.item].coverImg)
         return cell
     }
     
@@ -101,9 +101,9 @@ extension ResumeViewController: UICollectionViewDataSource, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Craftsmen", bundle: nil)
-        guard let portfolioViewController = storyboard.instantiateViewController(withIdentifier: "PortfolioViewController") as? PortfolioViewController else { return }
-
-        navigationController?.pushViewController(portfolioViewController, animated: true)
+        guard let profolioViewController = storyboard.instantiateViewController(withIdentifier: "ProfolioViewController") as? ProfolioViewController else { return }
+        profolioViewController.profolio = allProfolio[indexPath.item]
+        navigationController?.pushViewController(profolioViewController, animated: true)
         
     }
 }

@@ -28,14 +28,21 @@ struct User: Codable {
     }
 }
 
+struct PhotoSet {
+    let name: String
+    let images: [String]
+}
+
 struct Profolio: Codable {
     
+    var coverImg: String
     var livingRoom: [String]
     var dinningRoom: [String]
     var mainRoom: [String]
     var firstRoom: [String]
     var kitchen: [String]
     var bathRoom: [String]
+    var totalArea: [String]
     let createTime: Date
     var createTimeString: String {
         let format = DateFormatter()
@@ -44,7 +51,19 @@ struct Profolio: Codable {
     }
     
     enum CodingKeys: String, CodingKey {
-        case livingRoom, dinningRoom, mainRoom, firstRoom, kitchen, bathRoom, createTime
+        case coverImg, livingRoom, dinningRoom, mainRoom, firstRoom, kitchen, bathRoom, totalArea, createTime
+    }
+    
+    var dataSet: [PhotoSet] {
+        
+        return [
+            PhotoSet(name: "livingRoom", images: livingRoom),
+            PhotoSet(name: "dinningRoom", images: dinningRoom),
+            PhotoSet(name: "kitchen", images: kitchen),
+            PhotoSet(name: "mainRoom", images: mainRoom),
+            PhotoSet(name: "firstRoom", images: firstRoom),
+            PhotoSet(name: "bathRoom", images: bathRoom)
+        ]
     }
 }
 

@@ -11,6 +11,8 @@ import UIKit
 class CraftsmenResumeViewController: UIViewController {
     
     @IBOutlet weak var profolioCollectionView: UICollectionView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var createNewProfolioBtn: UIButton!
     let itemSpace: CGFloat = 3
     let columnCount: CGFloat = 3
@@ -60,11 +62,23 @@ class CraftsmenResumeViewController: UIViewController {
             switch result {
             case .success(let profolio):
                 strongSelf.profolio = profolio
-                strongSelf.profolioCollectionView.reloadData()
+                DispatchQueue.main.async {
+                    if strongSelf.profolio.count == 0 {
+                        strongSelf.labelShouldShow(shouldShow: true)
+                    } else {
+                        strongSelf.labelShouldShow(shouldShow: false)
+                    }
+                    strongSelf.profolioCollectionView.reloadData()
+                }
             case .failure(let error):
                 print(error)
             }
         })
+    }
+    
+    func labelShouldShow(shouldShow: Bool) {
+        contentLabel.isHidden = !shouldShow
+        titleLabel.isHidden = !shouldShow
     }
     
     @objc func editProfolio() {
@@ -81,6 +95,7 @@ class CraftsmenResumeViewController: UIViewController {
         setNavigationBar()
         setCollectionView()
         setCreateBtn()
+        labelShouldShow(shouldShow: false)
         fetchProfolio()
     }
 }
@@ -93,7 +108,7 @@ extension CraftsmenResumeViewController: UICollectionViewDataSource, UICollectio
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: ResumeCollectionViewCell.self), for: indexPath) as? ResumeCollectionViewCell else { return UICollectionViewCell() }
-        cell.portfolioImg.loadImage(profolio[indexPath.item].dinningRoom[0])
+        cell.portfolioImg.loadImage(profolio[indexPath.item].coverImg)
         return cell
     }
     
@@ -113,9 +128,9 @@ extension CraftsmenResumeViewController: UICollectionViewDataSource, UICollectio
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Craftsmen", bundle: nil)
-        guard let portfolioViewController = storyboard.instantiateViewController(withIdentifier: "PortfolioViewController") as? PortfolioViewController else { return }
-
-        navigationController?.pushViewController(portfolioViewController, animated: true)
+        guard let profolioViewController = storyboard.instantiateViewController(withIdentifier: "ProfolioViewController") as? ProfolioViewController else { return }
+        profolioViewController.profolio = profolio[indexPath.item]
+        navigationController?.pushViewController(profolioViewController, animated: true)
     }
     
 }

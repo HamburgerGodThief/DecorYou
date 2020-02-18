@@ -71,7 +71,7 @@ extension UploadProfolioTableViewCell: UICollectionViewDataSource, UICollectionV
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: ProfolioCollectionViewCell.self), for: indexPath) as? ProfolioCollectionViewCell else { return UICollectionViewCell() }
         if indexPath.item == 0 {
-            cell.portfolioImg.contentMode = .scaleAspectFit
+            cell.portfolioImg.contentMode = .scaleAspectFill
             cell.portfolioImg.image = UIImage.asset(.Icons_24px_AddPhoto)
         } else {
             cell.portfolioImg.image = selectedPhotos[indexPath.item - 1]
