@@ -18,7 +18,7 @@ class ArticleViewController: UIViewController {
     @IBOutlet weak var newPostBtn: UIButton!
     let transition: CircularTransition = CircularTransition()
     var searchController = UISearchController(searchResultsController: nil)
-    
+    var refreshControl = UIRefreshControl()
     var shouldShowSearchResults = false
     var isChangeLayout: Bool = false {
         didSet {
@@ -73,6 +73,7 @@ class ArticleViewController: UIViewController {
         }
         
         group1.notify(queue: .main) { [weak self] in
+            self?.refreshControl.endRefreshing()
             self?.articleTableView.reloadData()
         }
     }
@@ -100,8 +101,9 @@ class ArticleViewController: UIViewController {
     func showNavRightButton(shouldShow: Bool) {
         if shouldShow {
             let layoutBtn = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), style: .plain, target: self, action: #selector(changeLayout))
+            layoutBtn.imageInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
             let filterBtn = UIBarButtonItem(image: UIImage.asset(.Icons_24px_Filter), style: .plain, target: self, action: #selector(setfilter))
-            navigationItem.rightBarButtonItems = [layoutBtn, filterBtn]
+            navigationItem.rightBarButtonItems = [filterBtn, layoutBtn]
         } else {
             navigationItem.rightBarButtonItems = nil
         }
@@ -145,15 +147,28 @@ class ArticleViewController: UIViewController {
         
     }
     
+    func addRefreshControl() {
+        refreshControl.addTarget(self, action: #selector(refreshContent), for: .valueChanged)
+        articleTableView.refreshControl = refreshControl
+    }
+    
+    @objc func refreshData() {
+        getData()
+    }
+    
+    @objc func refreshContent() {
+        perform(#selector(refreshData), with: nil, afterDelay: 1.5)
+    }
+    
     @objc func changeLayout() {
         if isChangeLayout == false {
             articleTableView.separatorStyle = .singleLine
             articleTableView.separatorInset = UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 12)
-            navigationItem.rightBarButtonItems?[0].image = UIImage(systemName: "capsule")
+            navigationItem.rightBarButtonItems?[1].image = UIImage(systemName: "capsule")
             isChangeLayout = true
         } else {
             articleTableView.separatorStyle = .none
-            navigationItem.rightBarButtonItems?[0].image = UIImage(systemName: "list.bullet")
+            navigationItem.rightBarButtonItems?[1].image = UIImage(systemName: "list.bullet")
             isChangeLayout = false
         }
     }
@@ -191,7 +206,7 @@ class ArticleViewController: UIViewController {
         setTableView()
         setNewPost()
         getCurrentUser()
-        
+        addRefreshControl()
     }
     
     override func viewWillAppear(_ animated: Bool) {
