@@ -20,7 +20,12 @@ class ArticleViewController: UIViewController {
     var searchController = UISearchController(searchResultsController: nil)
     
     var shouldShowSearchResults = false
-    
+    var isChangeLayout: Bool = false {
+        didSet {
+            
+            articleTableView.reloadData()
+        }
+    }
     var articlesData: [Article] = []
     var searchResults: [Article] = []
     var finalData: [Article] = []
@@ -94,7 +99,7 @@ class ArticleViewController: UIViewController {
     
     func showNavRightButton(shouldShow: Bool) {
         if shouldShow {
-            let layoutBtn = UIBarButtonItem(image: UIImage.asset(.Icons_24px_Layout), style: .plain, target: self, action: #selector(changeLayout))
+            let layoutBtn = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), style: .plain, target: self, action: #selector(changeLayout))
             let filterBtn = UIBarButtonItem(image: UIImage.asset(.Icons_24px_Filter), style: .plain, target: self, action: #selector(setfilter))
             navigationItem.rightBarButtonItems = [layoutBtn, filterBtn]
         } else {
@@ -112,6 +117,7 @@ class ArticleViewController: UIViewController {
         articleTableView.delegate = self
         articleTableView.dataSource = self
         articleTableView.lk_registerCellWithNib(identifier: String(describing: ArticleTableViewCell.self), bundle: nil)
+        articleTableView.lk_registerCellWithNib(identifier: String(describing: ArticleListTableViewCell.self), bundle: nil)
     }
     
     func setNewPost() {
@@ -140,7 +146,16 @@ class ArticleViewController: UIViewController {
     }
     
     @objc func changeLayout() {
-        
+        if isChangeLayout == false {
+            articleTableView.separatorStyle = .singleLine
+            articleTableView.separatorInset = UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 12)
+            navigationItem.rightBarButtonItems?[0].image = UIImage(systemName: "capsule")
+            isChangeLayout = true
+        } else {
+            articleTableView.separatorStyle = .none
+            navigationItem.rightBarButtonItems?[0].image = UIImage(systemName: "list.bullet")
+            isChangeLayout = false
+        }
     }
     
     @objc func setfilter() {
@@ -196,7 +211,12 @@ class ArticleViewController: UIViewController {
 extension ArticleViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 250
+        if isChangeLayout {
+            return 80
+        } else {
+            return 250
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -208,14 +228,41 @@ extension ArticleViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ArticleTableViewCell.self), for: indexPath) as? ArticleTableViewCell else { return UITableViewCell() }
         let article = (searchController.searchBar.searchTextField.isEditing) ? searchResults[indexPath.row]: articlesData[indexPath.row]
         guard let authorObject = article.authorObject else { return UITableViewCell() }
-        cell.fillData(authorImgURLString: authorObject.img,
-                      titleLabel: article.title,
-                      nameTimeLabel: "\(authorObject.name) | \(article.createTimeString)",
-                      contentLabel: article.content)
-        return cell
+        var intervalString: String {
+            let interval = Date().timeIntervalSince(article.createTime)
+            let days = Double(60 * 60 * 24)
+            let hours = Double(60 * 60)
+            let minutes = Double(60)
+            
+            if interval / days > 0 {
+                return "\(Int(interval / days))天前"
+            } else {
+                if interval / hours > 0 {
+                    return "\(Int(interval / hours))小時前"
+                } else {
+                    return "\(Int(interval / minutes))分前"
+                }
+            }
+            
+        }
+        
+        if isChangeLayout == false {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ArticleTableViewCell.self), for: indexPath) as? ArticleTableViewCell else { return UITableViewCell() }
+            cell.fillData(authorImgURLString: authorObject.img,
+                          titleLabel: article.title,
+                          nameTimeLabel: "\(authorObject.name) ・ \(intervalString)",
+                          contentLabel: article.content)
+            return cell
+        } else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ArticleListTableViewCell.self), for: indexPath) as? ArticleListTableViewCell else { return UITableViewCell() }
+            cell.titleLabel.text = article.title
+            cell.nameAndCreateTime.text = "\(authorObject.name) ・ \(intervalString)"
+            cell.replyCount.text = "100"
+            cell.loveCount.text = "20"
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -89,6 +89,8 @@
 		64FC72EC23FD296B004F2A07 /* ZoomDismissalInteractionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC72EB23FD296B004F2A07 /* ZoomDismissalInteractionController.swift */; };
 		64FC72EE23FD2975004F2A07 /* ZoomTransitionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC72ED23FD2975004F2A07 /* ZoomTransitionController.swift */; };
 		64FC72F023FD2C12004F2A07 /* ProfolioCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC72EF23FD2C12004F2A07 /* ProfolioCollectionReusableView.swift */; };
+		64FC72F323FD3BD6004F2A07 /* ArticleListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC72F123FD3BD6004F2A07 /* ArticleListTableViewCell.swift */; };
+		64FC72F423FD3BD6004F2A07 /* ArticleListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FC72F223FD3BD6004F2A07 /* ArticleListTableViewCell.xib */; };
 		64FC818923E7BF3F0027DDEE /* ProfolioCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC818723E7BF3F0027DDEE /* ProfolioCollectionViewCell.swift */; };
 		64FC818A23E7BF3F0027DDEE /* ProfolioCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FC818823E7BF3F0027DDEE /* ProfolioCollectionViewCell.xib */; };
 		64FC818D23E7C26E0027DDEE /* ProfolioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC818B23E7C26E0027DDEE /* ProfolioTableViewCell.swift */; };
@@ -209,6 +211,8 @@
 		64FC72EB23FD296B004F2A07 /* ZoomDismissalInteractionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomDismissalInteractionController.swift; sourceTree = "<group>"; };
 		64FC72ED23FD2975004F2A07 /* ZoomTransitionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomTransitionController.swift; sourceTree = "<group>"; };
 		64FC72EF23FD2C12004F2A07 /* ProfolioCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfolioCollectionReusableView.swift; sourceTree = "<group>"; };
+		64FC72F123FD3BD6004F2A07 /* ArticleListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListTableViewCell.swift; sourceTree = "<group>"; };
+		64FC72F223FD3BD6004F2A07 /* ArticleListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleListTableViewCell.xib; sourceTree = "<group>"; };
 		64FC818723E7BF3F0027DDEE /* ProfolioCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfolioCollectionViewCell.swift; sourceTree = "<group>"; };
 		64FC818823E7BF3F0027DDEE /* ProfolioCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfolioCollectionViewCell.xib; sourceTree = "<group>"; };
 		64FC818B23E7C26E0027DDEE /* ProfolioTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfolioTableViewCell.swift; sourceTree = "<group>"; };
@@ -386,6 +390,8 @@
 				647A7CC923D83BB0005D1946 /* Article.storyboard */,
 				64FA429823E341440065DCEF /* ArticleTableViewCell.swift */,
 				64FA429923E341440065DCEF /* ArticleTableViewCell.xib */,
+				64FC72F123FD3BD6004F2A07 /* ArticleListTableViewCell.swift */,
+				64FC72F223FD3BD6004F2A07 /* ArticleListTableViewCell.xib */,
 				64FA42A423E382DF0065DCEF /* NewPostTableViewCell.swift */,
 				64FA42A523E382DF0065DCEF /* NewPostTableViewCell.xib */,
 				6406275D23EA942900086434 /* ReadPostTableViewHeaderView.swift */,
@@ -605,6 +611,7 @@
 				647A7CC823D83BA0005D1946 /* Craftsmen.storyboard in Resources */,
 				64012B9C23F67043001D20D0 /* ServiceAreaCollectionViewCell.xib in Resources */,
 				64FE4ECC23E918EA00A5D3EC /* ProfileTableViewCell.xib in Resources */,
+				64FC72F423FD3BD6004F2A07 /* ArticleListTableViewCell.xib in Resources */,
 				64FA42B723E7B3800065DCEF /* ResumeCollectionViewCell.xib in Resources */,
 				64FE4EE223EA55CB00A5D3EC /* YourPostTableViewCell.xib in Resources */,
 				64FC819423E7E4D70027DDEE /* ChatListTableViewCell.xib in Resources */,
@@ -744,6 +751,7 @@
 				6406275923EA91EC00086434 /* ArticleAnimationTransition.swift in Sources */,
 				64FC72E823FD270B004F2A07 /* PhotoZoomViewController.swift in Sources */,
 				64FC72EE23FD2975004F2A07 /* ZoomTransitionController.swift in Sources */,
+				64FC72F323FD3BD6004F2A07 /* ArticleListTableViewCell.swift in Sources */,
 				64FE4ED023E95CB200A5D3EC /* RoundCorner+Shadow.swift in Sources */,
 				64FC818923E7BF3F0027DDEE /* ProfolioCollectionViewCell.swift in Sources */,
 				64FC72EA23FD2962004F2A07 /* ZoomAnimator.swift in Sources */,
