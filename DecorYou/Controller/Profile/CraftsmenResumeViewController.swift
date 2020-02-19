@@ -108,7 +108,7 @@ extension CraftsmenResumeViewController: UICollectionViewDataSource, UICollectio
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: ResumeCollectionViewCell.self), for: indexPath) as? ResumeCollectionViewCell else { return UICollectionViewCell() }
-        cell.portfolioImg.loadImage(profolio[indexPath.item].coverImg)
+        cell.profolioImg.loadImage(profolio[indexPath.item].coverImg)
         return cell
     }
     

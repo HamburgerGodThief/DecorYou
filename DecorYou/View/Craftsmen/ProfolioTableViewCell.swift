@@ -10,13 +10,13 @@ import UIKit
 
 class ProfolioTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var portfolioCollectionView: UICollectionView!
+    @IBOutlet weak var profolioCollectionView: UICollectionView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        portfolioCollectionView.lk_registerCellWithNib(identifier: String(describing: ProfolioCollectionViewCell.self), bundle: nil)
-        portfolioCollectionView.delegate = self
-        portfolioCollectionView.dataSource = self
+        profolioCollectionView.lk_registerCellWithNib(identifier: String(describing: ProfolioCollectionViewCell.self), bundle: nil)
+        profolioCollectionView.delegate = self
+        profolioCollectionView.dataSource = self
         // Initialization code
     }
     
@@ -51,11 +51,4 @@ extension ProfolioTableViewCell: UICollectionViewDataSource, UICollectionViewDel
     func collectionView(_: UICollectionView, layout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt: Int) -> CGFloat {
         return 0
     }
-//
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        guard let item = collectionView.cellForItem(at: indexPath) as? PortfolioCollectionViewCell else { return}
-//        let apple = UIViewPropertyAnimator(duration: 0.5, curve: .easeInOut, animations:)
-//
-//        apple.startAnimation()
-//    }
 }

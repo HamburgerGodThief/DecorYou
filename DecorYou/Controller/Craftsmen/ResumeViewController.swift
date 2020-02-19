@@ -81,7 +81,7 @@ extension ResumeViewController: UICollectionViewDataSource, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: ResumeCollectionViewCell.self), for: indexPath) as? ResumeCollectionViewCell else { return UICollectionViewCell() }
-        cell.portfolioImg.loadImage(allProfolio[indexPath.item].coverImg)
+        cell.profolioImg.loadImage(allProfolio[indexPath.item].coverImg)
         return cell
     }
     

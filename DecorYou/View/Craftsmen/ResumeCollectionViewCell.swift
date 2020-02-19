@@ -10,7 +10,7 @@ import UIKit
 
 class ResumeCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var portfolioImg: UIImageView!
+    @IBOutlet weak var profolioImg: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

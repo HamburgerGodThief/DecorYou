@@ -31,7 +31,7 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="150" height="150"/>
             <connections>
-                <outlet property="portfolioImg" destination="GYY-9I-awD" id="dLk-Wi-NoG"/>
+                <outlet property="profolioImg" destination="GYY-9I-awD" id="dLk-Wi-NoG"/>
             </connections>
             <point key="canvasLocation" x="210.1449275362319" y="141.96428571428569"/>
         </collectionViewCell>

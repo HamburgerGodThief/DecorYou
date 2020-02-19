@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfolioViewController: UIViewController {
+class ProfolioViewController: UIViewController{
     
     @IBOutlet weak var profolioTableView: UITableView!
     var profolio: Profolio?
@@ -56,6 +56,7 @@ class ProfolioViewController: UIViewController {
         profolioTableView.dataSource = self
         setNavigationBar()
         reOrderProfolio()
+        navigationController?.delegate = self
     }
 }
 
@@ -80,10 +81,10 @@ extension ProfolioViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProfolioTableViewCell.self), for: indexPath) as? ProfolioTableViewCell else { return UITableViewCell() }
-        cell.portfolioCollectionView.delegate = self
-        cell.portfolioCollectionView.dataSource = self
-        cell.portfolioCollectionView.tag = indexPath.section
-        cell.portfolioCollectionView.lk_registerCellWithNib(identifier: String(describing: ResumeCollectionViewCell.self), bundle: nil)
+        cell.profolioCollectionView.delegate = self
+        cell.profolioCollectionView.dataSource = self
+        cell.profolioCollectionView.tag = indexPath.section
+        cell.profolioCollectionView.lk_registerCellWithNib(identifier: String(describing: ResumeCollectionViewCell.self), bundle: nil)
         return cell
     }
     
@@ -103,7 +104,7 @@ extension ProfolioViewController: UICollectionViewDataSource, UICollectionViewDe
             
             return UICollectionViewCell()
         }
-        cell.portfolioImg.loadImage(photoSet[collectionView.tag].images[indexPath.item])
+        cell.profolioImg.loadImage(photoSet[collectionView.tag].images[indexPath.item])
         
         return cell
     }
@@ -121,4 +122,12 @@ extension ProfolioViewController: UICollectionViewDataSource, UICollectionViewDe
     func collectionView(_: UICollectionView, layout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt: Int) -> CGFloat {
         return itemSpace
     }
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let storyboard = UIStoryboard(name: "Craftsmen", bundle: nil)
+//        guard let fullScreenViewController = storyboard.instantiateViewController(withIdentifier: "FullScreenViewController") as? FullScreenViewController else { return }
+//        fullScreenViewController.modalPresentationStyle = .custom
+//        fullScreenViewController.modalTransitionStyle = .crossDissolve
+//        fullScreenViewController.imgSet = photoSet[collectionView.tag].images
+//        navigationController?.pushViewController(fullScreenViewController, animated: true)
+//    }
 }

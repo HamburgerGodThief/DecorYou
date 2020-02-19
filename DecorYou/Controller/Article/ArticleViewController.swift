@@ -16,6 +16,7 @@ class ArticleViewController: UIViewController {
     
     @IBOutlet weak var articleTableView: UITableView!
     @IBOutlet weak var newPostBtn: UIButton!
+    let transition: CircularTransition = CircularTransition()
     var searchController = UISearchController(searchResultsController: nil)
     
     var shouldShowSearchResults = false
@@ -144,13 +145,10 @@ class ArticleViewController: UIViewController {
     
     @objc func setfilter() {
         
-        
-        
     }
     
     @IBAction func createNewPost(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Article", bundle: nil)
-        guard let newPostViewController = storyboard.instantiateViewController(withIdentifier: "NewPostViewController") as? NewPostViewController else { return }
+        
         guard UserDefaults.standard.string(forKey: "UserToken") != nil else {
             
             let alertController = UIAlertController(title: "錯誤", message: "訪客無法發表文章", preferredStyle: .alert)
@@ -162,7 +160,12 @@ class ArticleViewController: UIViewController {
             
             return 
         }
+        let storyboard = UIStoryboard(name: "Article", bundle: nil)
+        guard let newPostViewController = storyboard.instantiateViewController(withIdentifier: "NewPostViewController") as? NewPostViewController else { return }
         navigationItem.titleView = nil
+        newPostViewController.transitioningDelegate = self
+        newPostViewController.modalPresentationStyle = .custom
+//        present(newPostViewController, animated: true, completion: nil)
         navigationController?.pushViewController(newPostViewController, animated: true)
         tabBarController?.tabBar.isHidden = true
         
@@ -255,5 +258,22 @@ extension ArticleViewController: UISearchBarDelegate{
                                                                              attributes: [.foregroundColor: UIColor(red: 187, green: 208, blue: 211, alpha: 1)])
         searching(shouldShow: false)
         searchController.searchBar.resignFirstResponder()
+    }
+}
+
+extension ArticleViewController: UIViewControllerTransitioningDelegate {
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionMode = .present
+        transition.startingPoint = newPostBtn.center
+        transition.circleColor = newPostBtn.backgroundColor!
+        return transition
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionMode = .present
+        transition.startingPoint = newPostBtn.center
+        transition.circleColor = newPostBtn.backgroundColor!
+        return transition
     }
 }
