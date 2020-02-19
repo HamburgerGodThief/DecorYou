@@ -24,7 +24,7 @@ class DecorateStyleViewController: UIViewController {
                               "輕工業", "木質調", "奢華",
                               "北歐", "古典", "鄉村",
                               "地中海", "美式", "東方", "無特定"]
-    var selectCell = [DecorateStyleCollectionViewCell]()
+    var selectCell: [DecorateStyleCollectionViewCell] = []
     var selectStyle = [String]()
     let itemSpace: CGFloat = 2
     let columnCount: CGFloat = 2

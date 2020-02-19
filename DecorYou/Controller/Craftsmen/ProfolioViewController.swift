@@ -56,7 +56,6 @@ class ProfolioViewController: UIViewController{
         profolioTableView.dataSource = self
         setNavigationBar()
         reOrderProfolio()
-        navigationController?.delegate = self
     }
 }
 

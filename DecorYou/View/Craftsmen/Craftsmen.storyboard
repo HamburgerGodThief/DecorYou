@@ -151,30 +151,56 @@
             </objects>
             <point key="canvasLocation" x="1740.5797101449277" y="64.955357142857139"/>
         </scene>
-        <!--Profolio View Controller-->
+        <!--Profolio Test View Controller-->
         <scene sceneID="Msg-ta-ZcK">
             <objects>
-                <viewController storyboardIdentifier="ProfolioViewController" id="FkA-XH-XUR" customClass="ProfolioViewController" customModule="DecorYou" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfolioTestViewController" id="FkA-XH-XUR" customClass="ProfolioTestViewController" customModule="DecorYou" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Atp-jZ-Rkk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kPG-uI-4sJ">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="54a-dq-Fbh">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </tableView>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dP0-hb-z7j">
+                                    <size key="itemSize" width="194" height="199"/>
+                                    <size key="headerReferenceSize" width="50" height="50"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="ProfolioCollectionReusableView" id="kB6-Zs-zvR" customClass="ProfolioCollectionReusableView" customModule="DecorYou" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UU2-ra-Gzw">
+                                            <rect key="frame" x="169" y="4" width="76" height="42"/>
+                                            <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="30"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="UU2-ra-Gzw" firstAttribute="centerX" secondItem="kB6-Zs-zvR" secondAttribute="centerX" id="EvX-Fe-y1A"/>
+                                        <constraint firstItem="UU2-ra-Gzw" firstAttribute="centerY" secondItem="kB6-Zs-zvR" secondAttribute="centerY" id="kqD-gk-UlI"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="sectionTitle" destination="UU2-ra-Gzw" id="g1y-Vx-E15"/>
+                                    </connections>
+                                </collectionReusableView>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="UPm-In-ckq" firstAttribute="trailing" secondItem="kPG-uI-4sJ" secondAttribute="trailing" id="EEI-x5-F4q"/>
-                            <constraint firstItem="kPG-uI-4sJ" firstAttribute="top" secondItem="UPm-In-ckq" secondAttribute="top" id="lta-qh-002"/>
-                            <constraint firstItem="UPm-In-ckq" firstAttribute="bottom" secondItem="kPG-uI-4sJ" secondAttribute="bottom" id="p5H-HQ-dCp"/>
-                            <constraint firstItem="kPG-uI-4sJ" firstAttribute="leading" secondItem="UPm-In-ckq" secondAttribute="leading" id="ssK-No-oav"/>
+                            <constraint firstItem="UPm-In-ckq" firstAttribute="bottom" secondItem="54a-dq-Fbh" secondAttribute="bottom" id="Cie-FK-cLu"/>
+                            <constraint firstItem="UPm-In-ckq" firstAttribute="trailing" secondItem="54a-dq-Fbh" secondAttribute="trailing" id="Mpt-Jf-7pn"/>
+                            <constraint firstItem="54a-dq-Fbh" firstAttribute="leading" secondItem="UPm-In-ckq" secondAttribute="leading" id="NHG-pm-GEj"/>
+                            <constraint firstItem="54a-dq-Fbh" firstAttribute="top" secondItem="UPm-In-ckq" secondAttribute="top" id="wAM-Vr-VlC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="UPm-In-ckq"/>
                     </view>
                     <connections>
-                        <outlet property="profolioTableView" destination="kPG-uI-4sJ" id="5QG-mA-tWQ"/>
+                        <outlet property="collectionView" destination="54a-dq-Fbh" id="qM0-b4-asA"/>
                         <segue destination="2xX-hU-HfK" kind="show" identifier="ShowPhotoPageView" id="ti7-Ah-OcK"/>
                     </connections>
                 </viewController>
@@ -210,7 +236,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TqE-sR-FHX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3178" y="65"/>
+            <point key="canvasLocation" x="3176.811594202899" y="64.955357142857139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7M4-Uc-KvE">
@@ -271,6 +297,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="G2X-n6-4lX"/>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="m4l-Hc-ep5" id="xGj-EH-Gvj"/>
+                        <outlet property="imageViewBottomConstraint" destination="RYf-vc-yvA" id="IH0-t5-jG4"/>
+                        <outlet property="imageViewLeadingConstraint" destination="LLp-VO-eJH" id="jvY-aP-GVX"/>
+                        <outlet property="imageViewTopConstraint" destination="D0C-Kd-GzP" id="6Px-6b-9Xh"/>
+                        <outlet property="imageViewTrailingConstraint" destination="fmr-Rz-dt8" id="HLy-DJ-0pO"/>
+                        <outlet property="scrollView" destination="eIn-u7-0cc" id="Ac7-nz-QIA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r5I-KE-Pjj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

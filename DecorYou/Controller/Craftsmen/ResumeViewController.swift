@@ -31,6 +31,7 @@ class ResumeViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes =
         [.foregroundColor: UIColor.white,
          .font: UIFont(name: "PingFangTC-Medium", size: 18)!]
+        navigationController?.navigationBar.isTranslucent = false
         let btn = UIButton()
         btn.setImage(UIImage.asset(.Icons_48px_Back01), for: .normal)
         btn.sizeToFit()
@@ -101,7 +102,7 @@ extension ResumeViewController: UICollectionViewDataSource, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Craftsmen", bundle: nil)
-        guard let profolioViewController = storyboard.instantiateViewController(withIdentifier: "ProfolioViewController") as? ProfolioViewController else { return }
+        guard let profolioViewController = storyboard.instantiateViewController(withIdentifier: "ProfolioTestViewController") as? ProfolioTestViewController else { return }
         profolioViewController.profolio = allProfolio[indexPath.item]
         navigationController?.pushViewController(profolioViewController, animated: true)
         
