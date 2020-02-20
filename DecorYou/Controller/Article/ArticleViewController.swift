@@ -174,7 +174,8 @@ class ArticleViewController: UIViewController {
     }
     
     @objc func setfilter() {
-        
+        guard let tabBarController = tabBarController as? STTabBarViewController else { return }
+        tabBarController.showFilter()
     }
     
     @IBAction func createNewPost(_ sender: Any) {

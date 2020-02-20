@@ -384,7 +384,6 @@ extension ReadPostViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footerView = UINib(nibName: "ReadPostTableViewFooterView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! ReadPostTableViewFooterView
-//        footerView.sendBtn.tag = section
         footerView.order = section
         switch section {
         case 0:

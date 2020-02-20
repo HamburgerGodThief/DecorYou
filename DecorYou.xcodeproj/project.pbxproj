@@ -57,6 +57,16 @@
 		64FA42B623E7B3800065DCEF /* ResumeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA42B423E7B3800065DCEF /* ResumeCollectionViewCell.swift */; };
 		64FA42B723E7B3800065DCEF /* ResumeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FA42B523E7B3800065DCEF /* ResumeCollectionViewCell.xib */; };
 		64FA42B923E7B74E0065DCEF /* ProfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA42B823E7B74E0065DCEF /* ProfolioViewController.swift */; };
+		64FA58BD23FE651B003D7353 /* FilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FA58BC23FE651B003D7353 /* FilterView.xib */; };
+		64FA58C323FE7023003D7353 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA58C223FE7023003D7353 /* FilterView.swift */; };
+		64FA58C623FE852A003D7353 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA58C423FE852A003D7353 /* FilterTableViewCell.swift */; };
+		64FA58C723FE852A003D7353 /* FilterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FA58C523FE852A003D7353 /* FilterTableViewCell.xib */; };
+		64FA58CA23FE86E5003D7353 /* FilterCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA58C823FE86E5003D7353 /* FilterCollectionTableViewCell.swift */; };
+		64FA58CB23FE86E5003D7353 /* FilterCollectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FA58C923FE86E5003D7353 /* FilterCollectionTableViewCell.xib */; };
+		64FA58CD23FE8C48003D7353 /* FilterTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA58CC23FE8C48003D7353 /* FilterTableViewHeaderView.swift */; };
+		64FA58CF23FE8C5E003D7353 /* FilterTableViewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FA58CE23FE8C5E003D7353 /* FilterTableViewHeaderView.xib */; };
+		64FA58D223FE91F0003D7353 /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA58D023FE91F0003D7353 /* FilterCollectionViewCell.swift */; };
+		64FA58D323FE91F0003D7353 /* FilterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FA58D123FE91F0003D7353 /* FilterCollectionViewCell.xib */; };
 		64FA7CBD23F1483D00975B03 /* ReadPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA7CBB23F1483D00975B03 /* ReadPostTableViewCell.swift */; };
 		64FA7CBE23F1483D00975B03 /* ReadPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FA7CBC23F1483D00975B03 /* ReadPostTableViewCell.xib */; };
 		64FA7CC023F148D800975B03 /* ReadPostTableViewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FA7CBF23F148D800975B03 /* ReadPostTableViewHeaderView.xib */; };
@@ -179,6 +189,16 @@
 		64FA42B423E7B3800065DCEF /* ResumeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeCollectionViewCell.swift; sourceTree = "<group>"; };
 		64FA42B523E7B3800065DCEF /* ResumeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResumeCollectionViewCell.xib; sourceTree = "<group>"; };
 		64FA42B823E7B74E0065DCEF /* ProfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfolioViewController.swift; sourceTree = "<group>"; };
+		64FA58BC23FE651B003D7353 /* FilterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterView.xib; sourceTree = "<group>"; };
+		64FA58C223FE7023003D7353 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
+		64FA58C423FE852A003D7353 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
+		64FA58C523FE852A003D7353 /* FilterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterTableViewCell.xib; sourceTree = "<group>"; };
+		64FA58C823FE86E5003D7353 /* FilterCollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionTableViewCell.swift; sourceTree = "<group>"; };
+		64FA58C923FE86E5003D7353 /* FilterCollectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCollectionTableViewCell.xib; sourceTree = "<group>"; };
+		64FA58CC23FE8C48003D7353 /* FilterTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewHeaderView.swift; sourceTree = "<group>"; };
+		64FA58CE23FE8C5E003D7353 /* FilterTableViewHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterTableViewHeaderView.xib; sourceTree = "<group>"; };
+		64FA58D023FE91F0003D7353 /* FilterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewCell.swift; sourceTree = "<group>"; };
+		64FA58D123FE91F0003D7353 /* FilterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCollectionViewCell.xib; sourceTree = "<group>"; };
 		64FA7CBB23F1483D00975B03 /* ReadPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadPostTableViewCell.swift; sourceTree = "<group>"; };
 		64FA7CBC23F1483D00975B03 /* ReadPostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReadPostTableViewCell.xib; sourceTree = "<group>"; };
 		64FA7CBF23F148D800975B03 /* ReadPostTableViewHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReadPostTableViewHeaderView.xib; sourceTree = "<group>"; };
@@ -388,6 +408,16 @@
 			isa = PBXGroup;
 			children = (
 				647A7CC923D83BB0005D1946 /* Article.storyboard */,
+				64FA58C223FE7023003D7353 /* FilterView.swift */,
+				64FA58BC23FE651B003D7353 /* FilterView.xib */,
+				64FA58CC23FE8C48003D7353 /* FilterTableViewHeaderView.swift */,
+				64FA58CE23FE8C5E003D7353 /* FilterTableViewHeaderView.xib */,
+				64FA58C423FE852A003D7353 /* FilterTableViewCell.swift */,
+				64FA58C523FE852A003D7353 /* FilterTableViewCell.xib */,
+				64FA58C823FE86E5003D7353 /* FilterCollectionTableViewCell.swift */,
+				64FA58C923FE86E5003D7353 /* FilterCollectionTableViewCell.xib */,
+				64FA58D023FE91F0003D7353 /* FilterCollectionViewCell.swift */,
+				64FA58D123FE91F0003D7353 /* FilterCollectionViewCell.xib */,
 				64FA429823E341440065DCEF /* ArticleTableViewCell.swift */,
 				64FA429923E341440065DCEF /* ArticleTableViewCell.xib */,
 				64FC72F123FD3BD6004F2A07 /* ArticleListTableViewCell.swift */,
@@ -606,7 +636,9 @@
 				64012BA423F7FA81001D20D0 /* UploadProfolioTableViewCell.xib in Resources */,
 				647A7CC023D833D4005D1946 /* GoogleService-Info.plist in Resources */,
 				64FC818A23E7BF3F0027DDEE /* ProfolioCollectionViewCell.xib in Resources */,
+				64FA58CF23FE8C5E003D7353 /* FilterTableViewHeaderView.xib in Resources */,
 				6406276423EAA21D00086434 /* ReadPostBottomView.xib in Resources */,
+				64FA58D323FE91F0003D7353 /* FilterCollectionViewCell.xib in Resources */,
 				647A7CC423D83B7F005D1946 /* Profile.storyboard in Resources */,
 				647A7CC823D83BA0005D1946 /* Craftsmen.storyboard in Resources */,
 				64012B9C23F67043001D20D0 /* ServiceAreaCollectionViewCell.xib in Resources */,
@@ -614,6 +646,7 @@
 				64FC72F423FD3BD6004F2A07 /* ArticleListTableViewCell.xib in Resources */,
 				64FA42B723E7B3800065DCEF /* ResumeCollectionViewCell.xib in Resources */,
 				64FE4EE223EA55CB00A5D3EC /* YourPostTableViewCell.xib in Resources */,
+				64FA58BD23FE651B003D7353 /* FilterView.xib in Resources */,
 				64FC819423E7E4D70027DDEE /* ChatListTableViewCell.xib in Resources */,
 				647A7CCA23D83BB0005D1946 /* Article.storyboard in Resources */,
 				64FA7CBE23F1483D00975B03 /* ReadPostTableViewCell.xib in Resources */,
@@ -621,6 +654,7 @@
 				64FE4EC123E8091800A5D3EC /* ChatRoomSelfTableViewCell.xib in Resources */,
 				64FA42A723E382DF0065DCEF /* NewPostTableViewCell.xib in Resources */,
 				647A7CB523D83377005D1946 /* Assets.xcassets in Resources */,
+				64FA58CB23FE86E5003D7353 /* FilterCollectionTableViewCell.xib in Resources */,
 				64FE4EDA23E9875E00A5D3EC /* InfoTableViewCell.xib in Resources */,
 				64FE4EDE23EA4A5900A5D3EC /* FavoriteTableViewCell.xib in Resources */,
 				64FA7CC023F148D800975B03 /* ReadPostTableViewHeaderView.xib in Resources */,
@@ -631,6 +665,7 @@
 				647A7CB323D83376005D1946 /* Main.storyboard in Resources */,
 				64FC818E23E7C26E0027DDEE /* ProfolioTableViewCell.xib in Resources */,
 				64FA7CC223F2365800975B03 /* ReadPostTableViewFooterView.xib in Resources */,
+				64FA58C723FE852A003D7353 /* FilterTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -704,7 +739,10 @@
 				64FA42B623E7B3800065DCEF /* ResumeCollectionViewCell.swift in Sources */,
 				64FA7CBD23F1483D00975B03 /* ReadPostTableViewCell.swift in Sources */,
 				64FC72D423FBF0D2004F2A07 /* CircularTransition.swift in Sources */,
+				64FA58D223FE91F0003D7353 /* FilterCollectionViewCell.swift in Sources */,
+				64FA58CD23FE8C48003D7353 /* FilterTableViewHeaderView.swift in Sources */,
 				6406275C23EA936700086434 /* ReadPostViewController.swift in Sources */,
+				64FA58CA23FE86E5003D7353 /* FilterCollectionTableViewCell.swift in Sources */,
 				64FE4EC023E8091800A5D3EC /* ChatRoomSelfTableViewCell.swift in Sources */,
 				64FAB12523ED49F70073235C /* ArticleManager.swift in Sources */,
 				64FC819323E7E4D70027DDEE /* ChatListTableViewCell.swift in Sources */,
@@ -712,6 +750,7 @@
 				64FA7CC823F550C600975B03 /* CharacterPickViewController.swift in Sources */,
 				647A7CC223D83718005D1946 /* ArticleViewController.swift in Sources */,
 				64FA42B023E3A7C80065DCEF /* UITableView+Extension.swift in Sources */,
+				64FA58C623FE852A003D7353 /* FilterTableViewCell.swift in Sources */,
 				64FA42AE23E3A7990065DCEF /* UICollectionView+Extension.swift in Sources */,
 				6406276223EAA10100086434 /* ReadPostBottomView.swift in Sources */,
 				64FE4EEA23EA72B900A5D3EC /* CraftsmenResumeViewController.swift in Sources */,
@@ -740,6 +779,7 @@
 				647A7CCC23D83BCE005D1946 /* UIStoryboard+Extension.swift in Sources */,
 				64FAB14323EEB8C30073235C /* CollaboratorCollectionViewCell.swift in Sources */,
 				64FAB12E23ED57900073235C /* DecorateStyleCollectionViewCell.swift in Sources */,
+				64FA58C323FE7023003D7353 /* FilterView.swift in Sources */,
 				64FAB14B23EFF0CD0073235C /* CollaboratorLogoCollectionViewCell.swift in Sources */,
 				64FC72E623FD26FD004F2A07 /* PhotoPageContainerViewController.swift in Sources */,
 				64FAB13923EEB6E00073235C /* CollaboratorViewController.swift in Sources */,

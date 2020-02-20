@@ -42,6 +42,8 @@
 	<string>看照片</string>
 	<key>NSCameraUsageDescription</key>
 	<string>開相機</string>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<true/>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
