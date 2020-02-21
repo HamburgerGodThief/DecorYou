@@ -156,10 +156,11 @@ class STTabBarViewController: UITabBarController, UITabBarControllerDelegate {
         filterView.transparentView.addGestureRecognizer(singleFinger)
         
         view.addSubview(filterView)
+        
+        
     }
     
     @objc func singleTap() {
-//        statusBarHidden = false
         UIView.animate(withDuration: 0.6, delay: 0,
                        usingSpringWithDamping: 0.8,
                        initialSpringVelocity: 0,
@@ -171,7 +172,6 @@ class STTabBarViewController: UITabBarController, UITabBarControllerDelegate {
     
     func showFilter() {
         filterView.isHidden = false
-//        statusBarHidden = true
         //show filter
         UIView.animate(withDuration: 0.6, delay: 0,
                        usingSpringWithDamping: 0.8,

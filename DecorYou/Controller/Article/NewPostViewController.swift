@@ -124,7 +124,6 @@ class NewPostViewController: UIViewController {
         setIBOutlet()
         getCurrentUser()
     }
-    
 }
 
 

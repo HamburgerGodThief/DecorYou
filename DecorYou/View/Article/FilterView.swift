@@ -15,6 +15,7 @@ class FilterView: UIView {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var resetBtn: UIButton!
     @IBOutlet weak var confirmFilterBtn: UIButton!
+    var firstSectionCell: FilterCollectionTableViewCell?
     let sectionHeaderTitle: [String] = ["裝潢風格", "房屋地區", "房屋坪數", "回覆文章數量", "被收藏次數"]
     let decorateStyleArray = ["工業", "後現代", "日系",
                               "黑白色調", "森林", "清新",
@@ -29,12 +30,18 @@ class FilterView: UIView {
         tableView.dataSource = self
         tableView.lk_registerCellWithNib(identifier: "FilterCollectionTableViewCell", bundle: nil)
         tableView.lk_registerCellWithNib(identifier: "FilterTableViewCell", bundle: nil)
+        tableView.estimatedRowHeight = 100
+        tableView.rowHeight = UITableView.automaticDimension
     }
     
     
 }
 
 extension FilterView: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40
@@ -61,15 +68,19 @@ extension FilterView: UITableViewDelegate, UITableViewDataSource {
             cell.collectionView.delegate = self
             cell.collectionView.dataSource = self
             cell.collectionView.lk_registerCellWithNib(identifier: "FilterCollectionViewCell", bundle: nil)
+            firstSectionCell = cell
             return cell
         case 1:
-            print("ttt")
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "FilterTableViewCell", for: indexPath) as? FilterTableViewCell else { return UITableViewCell() }
+            cell.minValueTextField.placeholder = "一級縣市"
+            cell.maxValueTextField.placeholder = "鄉/鎮/市/區"
+            
+            return cell
         default:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "FilterTableViewCell", for: indexPath) as? FilterTableViewCell else { return UITableViewCell() }
             
             return cell
         }
-        return UITableViewCell()
     }
 }
 

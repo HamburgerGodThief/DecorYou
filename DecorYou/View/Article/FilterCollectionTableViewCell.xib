@@ -9,16 +9,19 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FilterCollectionTableViewCell" rowHeight="80" id="KGk-i7-Jjw" customClass="FilterCollectionTableViewCell" customModule="DecorYou" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FilterCollectionTableViewCell" rowHeight="125" id="KGk-i7-Jjw" customClass="FilterCollectionTableViewCell" customModule="DecorYou" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="125"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="125"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="kAQ-nf-gXu">
                         <rect key="frame" x="12" y="0.0" width="296" height="80"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.43222984720000002" green="0.70977412809999996" blue="0.72332307380000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="80" id="O9Q-FR-YJs"/>
+                        </constraints>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QjP-XG-o5R">
                             <size key="itemSize" width="50" height="50"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -26,19 +29,42 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                     </collectionView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NYf-KQ-wTp">
+                        <rect key="frame" x="100" y="80" width="120" height="45"/>
+                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <state key="normal" title="顯示更多" image="chevron.down" catalog="system">
+                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                        <state key="selected" title="顯示較少" image="chevron.up" catalog="system"/>
+                        <connections>
+                            <action selector="seeMore:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="hto-er-572"/>
+                        </connections>
+                    </button>
                 </subviews>
+                <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="NYf-KQ-wTp" secondAttribute="trailing" constant="100" id="2Sb-yf-Tzn"/>
+                    <constraint firstItem="NYf-KQ-wTp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="100" id="7Oq-us-2Ct"/>
                     <constraint firstItem="kAQ-nf-gXu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="JA8-Zt-Tgx"/>
-                    <constraint firstAttribute="bottom" secondItem="kAQ-nf-gXu" secondAttribute="bottom" id="g1Y-Iq-RTp"/>
+                    <constraint firstAttribute="bottom" secondItem="NYf-KQ-wTp" secondAttribute="bottom" id="Vxk-hp-GJ1"/>
                     <constraint firstAttribute="trailing" secondItem="kAQ-nf-gXu" secondAttribute="trailing" constant="12" id="hHf-RD-RQf"/>
                     <constraint firstItem="kAQ-nf-gXu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="iSk-YP-2fN"/>
+                    <constraint firstItem="NYf-KQ-wTp" firstAttribute="top" secondItem="kAQ-nf-gXu" secondAttribute="bottom" id="s2Z-Pg-2Nq"/>
+                    <constraint firstItem="NYf-KQ-wTp" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="sLQ-PS-dbv"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="collectionHeightConstraint" destination="O9Q-FR-YJs" id="DM6-aW-JiP"/>
                 <outlet property="collectionView" destination="kAQ-nf-gXu" id="vwG-nj-bYD"/>
+                <outlet property="seeMoreBtn" destination="NYf-KQ-wTp" id="Pqg-FL-pji"/>
             </connections>
-            <point key="canvasLocation" x="137.68115942028987" y="138.61607142857142"/>
+            <point key="canvasLocation" x="137.68115942028987" y="153.68303571428569"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="chevron.down" catalog="system" width="64" height="36"/>
+        <image name="chevron.up" catalog="system" width="64" height="36"/>
+    </resources>
 </document>

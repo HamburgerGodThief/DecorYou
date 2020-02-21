@@ -11,9 +11,23 @@ import UIKit
 class FilterCollectionTableViewCell: UITableViewCell {
 
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var collectionHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var seeMoreBtn: UIButton!
     
+    @IBAction func seeMore(_ sender: Any) {
+        seeMoreBtn.isSelected.toggle()
+        if seeMoreBtn.isSelected {
+            collectionHeightConstraint.constant = 320
+        } else {
+            collectionHeightConstraint.constant = 80
+        }
+        guard let tableView = superview as? UITableView else { return }
+        tableView.reloadData()
+        
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
+        collectionView.isScrollEnabled = false
         // Initialization code
     }
 
