@@ -57,8 +57,6 @@
 		64FA42B623E7B3800065DCEF /* ResumeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA42B423E7B3800065DCEF /* ResumeCollectionViewCell.swift */; };
 		64FA42B723E7B3800065DCEF /* ResumeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FA42B523E7B3800065DCEF /* ResumeCollectionViewCell.xib */; };
 		64FA42B923E7B74E0065DCEF /* ProfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA42B823E7B74E0065DCEF /* ProfolioViewController.swift */; };
-		64FA58BD23FE651B003D7353 /* FilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FA58BC23FE651B003D7353 /* FilterView.xib */; };
-		64FA58C323FE7023003D7353 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA58C223FE7023003D7353 /* FilterView.swift */; };
 		64FA58C623FE852A003D7353 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA58C423FE852A003D7353 /* FilterTableViewCell.swift */; };
 		64FA58C723FE852A003D7353 /* FilterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FA58C523FE852A003D7353 /* FilterTableViewCell.xib */; };
 		64FA58CA23FE86E5003D7353 /* FilterCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA58C823FE86E5003D7353 /* FilterCollectionTableViewCell.swift */; };
@@ -74,6 +72,10 @@
 		64FA7CC423F2366A00975B03 /* ReadPostTableViewFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA7CC323F2366A00975B03 /* ReadPostTableViewFooterView.swift */; };
 		64FA7CC823F550C600975B03 /* CharacterPickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA7CC723F550C600975B03 /* CharacterPickViewController.swift */; };
 		64FA7CCA23F5511B00975B03 /* PickCraftsmenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA7CC923F5511B00975B03 /* PickCraftsmenViewController.swift */; };
+		64FA8E3E23FF90FE000A1334 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA8E3D23FF90FE000A1334 /* FilterViewController.swift */; };
+		64FA8E4123FFC272000A1334 /* FilterPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA8E3F23FFC272000A1334 /* FilterPickerTableViewCell.swift */; };
+		64FA8E4223FFC272000A1334 /* FilterPickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FA8E4023FFC272000A1334 /* FilterPickerTableViewCell.xib */; };
+		64FA8E442400F479000A1334 /* FilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA8E432400F479000A1334 /* FilterModel.swift */; };
 		64FAB11F23EC001A0073235C /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FAB11E23EC001A0073235C /* UserManager.swift */; };
 		64FAB12323ED36130073235C /* JGProgressWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FAB12223ED36130073235C /* JGProgressWrapper.swift */; };
 		64FAB12523ED49F70073235C /* ArticleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FAB12423ED49F70073235C /* ArticleManager.swift */; };
@@ -189,8 +191,6 @@
 		64FA42B423E7B3800065DCEF /* ResumeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeCollectionViewCell.swift; sourceTree = "<group>"; };
 		64FA42B523E7B3800065DCEF /* ResumeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResumeCollectionViewCell.xib; sourceTree = "<group>"; };
 		64FA42B823E7B74E0065DCEF /* ProfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfolioViewController.swift; sourceTree = "<group>"; };
-		64FA58BC23FE651B003D7353 /* FilterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterView.xib; sourceTree = "<group>"; };
-		64FA58C223FE7023003D7353 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		64FA58C423FE852A003D7353 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
 		64FA58C523FE852A003D7353 /* FilterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterTableViewCell.xib; sourceTree = "<group>"; };
 		64FA58C823FE86E5003D7353 /* FilterCollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionTableViewCell.swift; sourceTree = "<group>"; };
@@ -206,6 +206,10 @@
 		64FA7CC323F2366A00975B03 /* ReadPostTableViewFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadPostTableViewFooterView.swift; sourceTree = "<group>"; };
 		64FA7CC723F550C600975B03 /* CharacterPickViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterPickViewController.swift; sourceTree = "<group>"; };
 		64FA7CC923F5511B00975B03 /* PickCraftsmenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickCraftsmenViewController.swift; sourceTree = "<group>"; };
+		64FA8E3D23FF90FE000A1334 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		64FA8E3F23FFC272000A1334 /* FilterPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterPickerTableViewCell.swift; sourceTree = "<group>"; };
+		64FA8E4023FFC272000A1334 /* FilterPickerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterPickerTableViewCell.xib; sourceTree = "<group>"; };
+		64FA8E432400F479000A1334 /* FilterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterModel.swift; sourceTree = "<group>"; };
 		64FAB11E23EC001A0073235C /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		64FAB12223ED36130073235C /* JGProgressWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGProgressWrapper.swift; sourceTree = "<group>"; };
 		64FAB12423ED49F70073235C /* ArticleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleManager.swift; sourceTree = "<group>"; };
@@ -305,6 +309,7 @@
 				64FC72D323FBF0D2004F2A07 /* CircularTransition.swift */,
 				64FAB11E23EC001A0073235C /* UserManager.swift */,
 				64FAB12423ED49F70073235C /* ArticleManager.swift */,
+				64FA8E432400F479000A1334 /* FilterModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -408,10 +413,10 @@
 			isa = PBXGroup;
 			children = (
 				647A7CC923D83BB0005D1946 /* Article.storyboard */,
-				64FA58C223FE7023003D7353 /* FilterView.swift */,
-				64FA58BC23FE651B003D7353 /* FilterView.xib */,
 				64FA58CC23FE8C48003D7353 /* FilterTableViewHeaderView.swift */,
 				64FA58CE23FE8C5E003D7353 /* FilterTableViewHeaderView.xib */,
+				64FA8E3F23FFC272000A1334 /* FilterPickerTableViewCell.swift */,
+				64FA8E4023FFC272000A1334 /* FilterPickerTableViewCell.xib */,
 				64FA58C423FE852A003D7353 /* FilterTableViewCell.swift */,
 				64FA58C523FE852A003D7353 /* FilterTableViewCell.xib */,
 				64FA58C823FE86E5003D7353 /* FilterCollectionTableViewCell.swift */,
@@ -449,6 +454,7 @@
 			isa = PBXGroup;
 			children = (
 				647A7CC123D83718005D1946 /* ArticleViewController.swift */,
+				64FA8E3D23FF90FE000A1334 /* FilterViewController.swift */,
 				64FA42A123E35F2D0065DCEF /* NewPostViewController.swift */,
 				6406275B23EA936700086434 /* ReadPostViewController.swift */,
 				6406276523EAAD1200086434 /* MoreViewController.swift */,
@@ -642,11 +648,11 @@
 				647A7CC423D83B7F005D1946 /* Profile.storyboard in Resources */,
 				647A7CC823D83BA0005D1946 /* Craftsmen.storyboard in Resources */,
 				64012B9C23F67043001D20D0 /* ServiceAreaCollectionViewCell.xib in Resources */,
+				64FA8E4223FFC272000A1334 /* FilterPickerTableViewCell.xib in Resources */,
 				64FE4ECC23E918EA00A5D3EC /* ProfileTableViewCell.xib in Resources */,
 				64FC72F423FD3BD6004F2A07 /* ArticleListTableViewCell.xib in Resources */,
 				64FA42B723E7B3800065DCEF /* ResumeCollectionViewCell.xib in Resources */,
 				64FE4EE223EA55CB00A5D3EC /* YourPostTableViewCell.xib in Resources */,
-				64FA58BD23FE651B003D7353 /* FilterView.xib in Resources */,
 				64FC819423E7E4D70027DDEE /* ChatListTableViewCell.xib in Resources */,
 				647A7CCA23D83BB0005D1946 /* Article.storyboard in Resources */,
 				64FA7CBE23F1483D00975B03 /* ReadPostTableViewCell.xib in Resources */,
@@ -723,6 +729,7 @@
 				64FAB13723EEAA160073235C /* SizeViewController.swift in Sources */,
 				647A7CB023D83376005D1946 /* STTabBarViewController.swift in Sources */,
 				64012B9823F67009001D20D0 /* ServiceAreaViewController.swift in Sources */,
+				64FA8E4123FFC272000A1334 /* FilterPickerTableViewCell.swift in Sources */,
 				64FAB14723EEB9FD0073235C /* CollaboratorTableViewCell.swift in Sources */,
 				64FAB13323EE4E5B0073235C /* DecorateStyleCollectionReusableView.swift in Sources */,
 				64FE4ED223E9838B00A5D3EC /* InfoViewController.swift in Sources */,
@@ -760,6 +767,7 @@
 				64FC819623E7E9D70027DDEE /* ChatRoomViewController.swift in Sources */,
 				64FAB12723ED548A0073235C /* DecorateStyleViewController.swift in Sources */,
 				64FE4EDD23EA4A5900A5D3EC /* FavoriteTableViewCell.swift in Sources */,
+				64FA8E3E23FF90FE000A1334 /* FilterViewController.swift in Sources */,
 				64FAB12323ED36130073235C /* JGProgressWrapper.swift in Sources */,
 				64012BA323F7FA81001D20D0 /* UploadProfolioTableViewCell.swift in Sources */,
 				64FC818D23E7C26E0027DDEE /* ProfolioTableViewCell.swift in Sources */,
@@ -779,7 +787,6 @@
 				647A7CCC23D83BCE005D1946 /* UIStoryboard+Extension.swift in Sources */,
 				64FAB14323EEB8C30073235C /* CollaboratorCollectionViewCell.swift in Sources */,
 				64FAB12E23ED57900073235C /* DecorateStyleCollectionViewCell.swift in Sources */,
-				64FA58C323FE7023003D7353 /* FilterView.swift in Sources */,
 				64FAB14B23EFF0CD0073235C /* CollaboratorLogoCollectionViewCell.swift in Sources */,
 				64FC72E623FD26FD004F2A07 /* PhotoPageContainerViewController.swift in Sources */,
 				64FAB13923EEB6E00073235C /* CollaboratorViewController.swift in Sources */,
@@ -792,6 +799,7 @@
 				64FC72E823FD270B004F2A07 /* PhotoZoomViewController.swift in Sources */,
 				64FC72EE23FD2975004F2A07 /* ZoomTransitionController.swift in Sources */,
 				64FC72F323FD3BD6004F2A07 /* ArticleListTableViewCell.swift in Sources */,
+				64FA8E442400F479000A1334 /* FilterModel.swift in Sources */,
 				64FE4ED023E95CB200A5D3EC /* RoundCorner+Shadow.swift in Sources */,
 				64FC818923E7BF3F0027DDEE /* ProfolioCollectionViewCell.swift in Sources */,
 				64FC72EA23FD2962004F2A07 /* ZoomAnimator.swift in Sources */,

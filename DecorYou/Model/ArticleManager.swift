@@ -23,7 +23,7 @@ struct Article: Codable {
     let location: String?
     let loveCount: Int
     let postID: String
-    let size: String?
+    let size: Int?
     let collaborator: [DocumentReference]
     let author: DocumentReference
     var authorObject: User?
@@ -69,6 +69,13 @@ struct Comment: Codable {
     }
 }
 
+enum NewCondition {
+    case size
+    case replyCount
+    case loveCount
+    case location
+}
+
 class ArticleManager {
     
     static let shared = ArticleManager()
@@ -88,12 +95,13 @@ class ArticleManager {
     
     //讀取貼文
     func fetchAllPost(completion: @escaping (Result<[Article], Error>) -> Void) {
+        
         db.collection("article").order(by: "createTime", descending: true).getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
                 guard let querySnapShot = querySnapshot else { return }
-                var articles = [Article]()
+                var articles: [Article] = []
                 querySnapShot.documents.forEach { document in
                     do {
                         if let article = try document.data(as: Article.self, decoder: Firestore.Decoder()) {
@@ -108,6 +116,29 @@ class ArticleManager {
             }
         }
     }
+    
+    func fetchAllConditionPost(completion: @escaping (Result<[Article], Error>) -> Void) {
+        db.collection("article").order(by: "createTime", descending: true).getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                guard let querySnapShot = querySnapshot else { return }
+                var articles: [Article] = []
+                querySnapShot.documents.forEach { document in
+                    do {
+                        if let article = try document.data(as: Article.self, decoder: Firestore.Decoder()) {
+                            articles.append(article)
+                        }
+                    } catch{
+                        completion(.failure(error))
+                        return
+                    }
+                }
+                completion(.success(articles))
+            }
+        }
+    }
+    
     //回覆文章
     func replyPost(postID: String, newReplyID: String, reply: Reply) {
         

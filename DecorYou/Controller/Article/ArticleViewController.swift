@@ -78,6 +78,54 @@ class ArticleViewController: UIViewController {
         }
     }
     
+    func getConditionData() {
+        let group0 = DispatchGroup()
+        let group1 = DispatchGroup()
+        let queue0 = DispatchQueue(label: "queue0")
+        //抓全部文章
+        group0.enter()
+        ArticleManager.shared.fetchAllPost(completion: { [weak self] result in
+            guard let strongSelf = self else { return }
+            switch result {
+            case .success(let articles):
+                strongSelf.articlesData = articles
+                group0.leave()
+            case .failure(let error):
+                print(error)
+            }
+        })
+        //抓文章的作者
+        group1.enter()
+        group0.notify(queue: queue0) { [weak self] in
+            guard let strongSelf = self else { return }
+            for order in 0...strongSelf.articlesData.count - 1 {
+                group1.enter()
+                strongSelf.articlesData[order].author.getDocument(completion: { (document, error) in
+                    if let error = error {
+                        print(error)
+                    } else {
+                        guard let document = document else { return }
+                        do {
+                            if let author = try document.data(as: User.self, decoder: Firestore.Decoder()) {
+                                strongSelf.articlesData[order].authorObject = author
+                                group1.leave()
+                            }
+                        } catch{
+                            print(error)
+                            return
+                        }
+                    }
+                })
+            }
+            group1.leave()
+        }
+        
+        group1.notify(queue: .main) { [weak self] in
+            self?.refreshControl.endRefreshing()
+            self?.articleTableView.reloadData()
+        }
+    }
+    
     func configureSearchController() {
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.obscuresBackgroundDuringPresentation = false
@@ -175,7 +223,7 @@ class ArticleViewController: UIViewController {
     
     @objc func setfilter() {
         guard let tabBarController = tabBarController as? STTabBarViewController else { return }
-        tabBarController.showFilter()
+        present(tabBarController.filterVC, animated: false, completion: nil)
     }
     
     @IBAction func createNewPost(_ sender: Any) {
@@ -208,11 +256,11 @@ class ArticleViewController: UIViewController {
         setNewPost()
         getCurrentUser()
         addRefreshControl()
+        getData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getData()
         configureSearchController()
         setNavBar()
     }

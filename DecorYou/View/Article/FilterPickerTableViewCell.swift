@@ -1,19 +1,17 @@
 //
-//  FilterTableViewCell.swift
+//  FilterPickerTableViewCell.swift
 //  DecorYou
 //
-//  Created by Hamburger on 2020/2/20.
+//  Created by Hamburger on 2020/2/21.
 //  Copyright © 2020 Hamburger. All rights reserved.
 //
 
 import UIKit
 
-class FilterTableViewCell: UITableViewCell {
+class FilterPickerTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var minValueTextField: UITextField!
-    @IBOutlet weak var maxValueTextField: UITextField!
-    let minPickerView = UIPickerView()
-    let maxPickerView = UIPickerView()
+    @IBOutlet weak var locationTextField: UITextField!
+    let pickerView = UIPickerView()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,4 +23,5 @@ class FilterTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
 }

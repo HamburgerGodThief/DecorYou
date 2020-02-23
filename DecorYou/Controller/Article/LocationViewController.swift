@@ -80,7 +80,7 @@ class LocationViewController: UIViewController {
             "南竿鄉", "北竿鄉", "莒光鄉", "東引鄉"
         ]]
     var firstSelected: String?
-    var second = [String]()
+    var second: [String] = []
     var secondSelected: String?
     
     func setPicker() {

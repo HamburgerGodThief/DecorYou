@@ -18,7 +18,7 @@
                 <subviews>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="kAQ-nf-gXu">
                         <rect key="frame" x="12" y="0.0" width="296" height="80"/>
-                        <color key="backgroundColor" red="0.43222984720000002" green="0.70977412809999996" blue="0.72332307380000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="80" id="O9Q-FR-YJs"/>
                         </constraints>
@@ -42,7 +42,7 @@
                         </connections>
                     </button>
                 </subviews>
-                <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="NYf-KQ-wTp" secondAttribute="trailing" constant="100" id="2Sb-yf-Tzn"/>
                     <constraint firstItem="NYf-KQ-wTp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="100" id="7Oq-us-2Ct"/>

@@ -86,23 +86,9 @@ class STTabBarViewController: UITabBarController, UITabBarControllerDelegate {
     
     var orderObserver: NSKeyValueObservation!
     
-    var filterView: FilterView = UINib(nibName: "FilterView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! FilterView
+    var filterVC: FilterViewController!
     
     var isExpand: Bool = false
-    
-    var statusBarHidden = true {
-        
-        didSet {
-            setNeedsStatusBarAppearanceUpdate()
-        }
-        
-    }
-    
-    override var prefersStatusBarHidden: Bool {
-        
-        return statusBarHidden
-        
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -115,7 +101,7 @@ class STTabBarViewController: UITabBarController, UITabBarControllerDelegate {
         
         delegate = self
         
-        configureFilterView()
+        configureFilterVC()
     }
     
     // MARK: - UITabBarControllerDelegate
@@ -143,43 +129,12 @@ class STTabBarViewController: UITabBarController, UITabBarControllerDelegate {
         return true
     }
     
-    func configureFilterView() {
-        filterView.frame.origin.x = -self.view.frame.width
-        filterView.isHidden = true
-        
-        let singleFinger = UITapGestureRecognizer(target:self, action:#selector(singleTap))
-
-        singleFinger.numberOfTapsRequired = 1
-
-        singleFinger.numberOfTouchesRequired = 1
-
-        filterView.transparentView.addGestureRecognizer(singleFinger)
-        
-        view.addSubview(filterView)
-        
-        
-    }
-    
-    @objc func singleTap() {
-        UIView.animate(withDuration: 0.6, delay: 0,
-                       usingSpringWithDamping: 0.8,
-                       initialSpringVelocity: 0,
-                       options: .curveEaseInOut,
-                       animations: {
-                        self.filterView.frame.origin.x = -self.view.frame.width
-        }, completion: nil)
-    }
-    
-    func showFilter() {
-        filterView.isHidden = false
-        //show filter
-        UIView.animate(withDuration: 0.6, delay: 0,
-                       usingSpringWithDamping: 0.8,
-                       initialSpringVelocity: 0,
-                       options: .curveEaseInOut,
-                       animations: {
-                        self.filterView.frame.origin.x = 0
-        }, completion: nil)
+    func configureFilterVC() {
+        if filterVC == nil {
+            let storyboard = UIStoryboard(name: "Article", bundle: nil)
+            filterVC = storyboard.instantiateViewController(identifier: "FilterViewController") as? FilterViewController
+        }
+        filterVC.modalPresentationStyle = .overFullScreen
     }
     
 }

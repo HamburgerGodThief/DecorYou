@@ -33,7 +33,7 @@ class NewPostViewController: UIViewController {
             tableView.reloadData()
         }
     }
-    var size: String? {
+    var size: Int? {
         didSet {
             tableView.reloadData()
         }
@@ -147,7 +147,7 @@ extension NewPostViewController: UITableViewDelegate, UITableViewDataSource {
         } else if indexPath.row == 2 {
             cell.ugcLabel.text = location
         } else if indexPath.row == 3 && size != nil {
-            cell.ugcLabel.text = "\(size ?? "")坪"
+            cell.ugcLabel.text = "\(size!)坪"
         } else if indexPath.row == 4 {
             cell.logoCollectionView.isHidden = false
             cell.logoCollectionView.delegate = self
@@ -229,7 +229,7 @@ extension NewPostViewController: DecorateStyleViewControllerDelegate, LocationVi
     
     func passDataToParentVC(_ sizeViewController: SizeViewController) {
         guard let size = sizeViewController.sizeTextField.text else { return }
-        self.size = size
+        self.size = Int(size)
     }
     
     func passDataToParentVC(_ collaboratorViewController: CollaboratorViewController) {
