@@ -78,6 +78,7 @@
 		64FA8E442400F479000A1334 /* FilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA8E432400F479000A1334 /* FilterModel.swift */; };
 		64FA8E46240256CA000A1334 /* CraftsmenFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA8E45240256CA000A1334 /* CraftsmenFilterViewController.swift */; };
 		64FA8E4824025B3D000A1334 /* CraftsmenFilterCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA8E4724025B3D000A1334 /* CraftsmenFilterCondition.swift */; };
+		64FA8E4E2402660B000A1334 /* CraftsmenFilterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA8E4D2402660B000A1334 /* CraftsmenFilterCollectionReusableView.swift */; };
 		64FAB11F23EC001A0073235C /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FAB11E23EC001A0073235C /* UserManager.swift */; };
 		64FAB12323ED36130073235C /* JGProgressWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FAB12223ED36130073235C /* JGProgressWrapper.swift */; };
 		64FAB12523ED49F70073235C /* ArticleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FAB12423ED49F70073235C /* ArticleManager.swift */; };
@@ -214,6 +215,7 @@
 		64FA8E432400F479000A1334 /* FilterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterModel.swift; sourceTree = "<group>"; };
 		64FA8E45240256CA000A1334 /* CraftsmenFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CraftsmenFilterViewController.swift; sourceTree = "<group>"; };
 		64FA8E4724025B3D000A1334 /* CraftsmenFilterCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CraftsmenFilterCondition.swift; sourceTree = "<group>"; };
+		64FA8E4D2402660B000A1334 /* CraftsmenFilterCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CraftsmenFilterCollectionReusableView.swift; sourceTree = "<group>"; };
 		64FAB11E23EC001A0073235C /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		64FAB12223ED36130073235C /* JGProgressWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGProgressWrapper.swift; sourceTree = "<group>"; };
 		64FAB12423ED49F70073235C /* ArticleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleManager.swift; sourceTree = "<group>"; };
@@ -476,6 +478,7 @@
 			isa = PBXGroup;
 			children = (
 				647A7CC723D83BA0005D1946 /* Craftsmen.storyboard */,
+				64FA8E4D2402660B000A1334 /* CraftsmenFilterCollectionReusableView.swift */,
 				64FC72EF23FD2C12004F2A07 /* ProfolioCollectionReusableView.swift */,
 				64FA42A823E393280065DCEF /* CraftsmenCollectionViewCell.swift */,
 				64FA42A923E393280065DCEF /* CraftsmenCollectionViewCell.xib */,
@@ -771,6 +774,7 @@
 				6406275F23EA942900086434 /* ReadPostTableViewHeaderView.swift in Sources */,
 				64FAB13123ED640A0073235C /* UIColor+Extension.swift in Sources */,
 				64FE4ED623E983D500A5D3EC /* YourPostViewController.swift in Sources */,
+				64FA8E4E2402660B000A1334 /* CraftsmenFilterCollectionReusableView.swift in Sources */,
 				64FC819623E7E9D70027DDEE /* ChatRoomViewController.swift in Sources */,
 				64FAB12723ED548A0073235C /* DecorateStyleViewController.swift in Sources */,
 				64FA8E4824025B3D000A1334 /* CraftsmenFilterCondition.swift in Sources */,

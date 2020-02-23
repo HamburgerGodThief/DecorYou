@@ -9,18 +9,31 @@
 import UIKit
 
 class CraftsmenFilterViewController: UIViewController {
+    
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var setBtn: UIButton!
     @IBOutlet weak var resetBtn: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var dismissView: UIView!
     var conditionsArray: [CraftsmenConditionDelegate] = []
+    var conditionCells: [FilterCollectionViewCell] = []
+    let itemSpace: CGFloat = 18
+    let columnCount: CGFloat = 3
+    let serviceCategoryData: [String] = ["室內設計師", "木工師傅", "水電師傅",
+                                         "油漆師傅", "弱電師傅", "園藝設計師", "其他"]
+    let areaData = ["臺北市", "新北市", "基隆市", "桃園市", "新竹縣",
+                    "新竹市", "苗栗縣", "臺中市", "南投縣", "彰化縣",
+                    "雲林縣", "嘉義縣", "嘉義市", "臺南市", "高雄市",
+                    "屏東縣", "宜蘭縣", "花蓮縣", "臺東縣", "澎湖縣",
+                    "金門縣", "連江縣"]
     
     @IBAction func didTouchSet(_ sender: Any) {
         
     }
+    
     @IBAction func didTouchReset(_ sender: Any) {
-        
+        conditionsArray = []
+        collectionView.reloadData()
     }
     
     func viewAddTapGesture() {
@@ -34,11 +47,7 @@ class CraftsmenFilterViewController: UIViewController {
     }
     
     @objc func singleTap() {
-//        UIView.animate(withDuration: 5, delay: 1, options: .curveEaseInOut, animations: {
-//            self.contentViewLeading.constant = 0
-//        }, completion: nil)
         dismiss(animated: false, completion: nil)
-        
     }
     
     override func viewDidLoad() {
@@ -48,6 +57,7 @@ class CraftsmenFilterViewController: UIViewController {
         resetBtn.layer.borderWidth = 1
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.allowsMultipleSelection = false
         collectionView.lk_registerCellWithNib(identifier: "FilterCollectionViewCell", bundle: nil)
     }
 }
@@ -55,36 +65,154 @@ class CraftsmenFilterViewController: UIViewController {
 extension CraftsmenFilterViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return 2
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-        if kind == UICollectionView.elementKindSectionHeader {
+        let header = collectionView.dequeueReusableSupplementaryView(
+            ofKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: String(describing: CraftsmenFilterCollectionReusableView.self),
+            for: indexPath
+        )
 
-            let header = collectionView.dequeueReusableSupplementaryView(
-                ofKind: UICollectionView.elementKindSectionHeader,
-                withReuseIdentifier: String(describing: DecorateStyleCollectionReusableView.self),
-                for: indexPath
-            )
-
-            guard let decorateStyleView = header as? DecorateStyleCollectionReusableView else { return header }
-
-            decorateStyleView.titleLabel.text = "至多選擇兩項"
-
-            return decorateStyleView
+        guard let headerView = header as? CraftsmenFilterCollectionReusableView else { return header }
+        
+        if indexPath.section == 0 {
+            headerView.sectionTitleLabel.text = "服務項目"
+        } else {
+            headerView.sectionTitleLabel.text = "服務地區"
         }
 
-        return UICollectionReusableView()
+        return headerView
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        if section == 0 {
+            return serviceCategoryData.count
+        } else {
+            return areaData.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FilterCollectionViewCell", for: indexPath) as? FilterCollectionViewCell else { return UICollectionViewCell() }
-        return cell
+        cell.layer.cornerRadius = CGFloat(floor((collectionView.bounds.width - itemSpace * (columnCount - 1 + 2)) / columnCount)) / 6
+        cell.backgroundColor = UIColor.assetColor(.shadowLightGray)
+        cell.layer.borderWidth = 0
+        
+        if indexPath.section == 0 {
+            cell.optionLabel.text = serviceCategoryData[indexPath.item]
+            return cell
+        } else {
+            cell.optionLabel.text = areaData[indexPath.item]
+            return cell
+        }
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = CGFloat(floor((collectionView.bounds.width - itemSpace * (columnCount - 1 + 2)) / columnCount))
+        let height = width / 3
+        return CGSize(width: width, height: height)
+    }
+    
+    func collectionView(_: UICollectionView, layout: UICollectionViewLayout, minimumLineSpacingForSectionAt: Int) -> CGFloat {
+        return itemSpace
+    }
+    
+    func collectionView(_: UICollectionView, layout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt: Int) -> CGFloat {
+        return itemSpace
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: itemSpace, bottom: 10, right: itemSpace)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? FilterCollectionViewCell else { return }
+        cell.backgroundColor = .white
+        cell.layer.borderWidth = 1
+        cell.layer.borderColor = UIColor.assetColor(.mainColor)?.cgColor
+        
+        if indexPath.section == 0 {
+            conditionsArray =  conditionsArray.filter { element in
+                if element as? ServiceCategoryCondition == nil {
+                    return true
+                }
+                return false
+            }
+            guard let catText = cell.optionLabel.text else { return }
+            let catetory = ServiceCategoryCondition(conditionValue: catText)
+            conditionsArray.append(catetory)
+        } else {
+            conditionsArray =  conditionsArray.filter { element in
+                if element as? ServiceLocationCondition == nil {
+                    return true
+                }
+                return false
+            }
+            guard let locationText = cell.optionLabel.text else { return }
+            let location = ServiceLocationCondition(conditionValue: locationText)
+            conditionsArray.append(location)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? FilterCollectionViewCell else { return }
+        cell.backgroundColor = UIColor.assetColor(.shadowLightGray)
+        cell.layer.borderWidth = 0
+    }
+    
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        guard let cell = collectionView.cellForItem(at: indexPath) as? FilterCollectionViewCell else { return }
+//        if conditionCells.contains(cell) {
+//            cell.backgroundColor = UIColor.assetColor(.shadowLightGray)
+//            cell.layer.borderWidth = 0
+//            cell.select = false
+//            guard let index = conditionCells.firstIndex(of: cell) else { return }
+//            conditionCells.remove(at: index)
+//            if indexPath.section == 0 {
+//                conditionsArray =  conditionsArray.filter { element in
+//                    if element as? ServiceCategoryCondition == nil {
+//                        return true
+//                    }
+//                    return false
+//                }
+//            } else {
+//                conditionsArray =  conditionsArray.filter { element in
+//                    if element as? ServiceLocationCondition == nil {
+//                        return true
+//                    }
+//                    return false
+//                }
+//            }
+//        } else {
+//            cell.select = true
+//            cell.backgroundColor = .white
+//            cell.layer.borderWidth = 1
+//            cell.layer.borderColor = UIColor.assetColor(.mainColor)?.cgColor
+//            conditionCells.append(cell)
+//            if indexPath.section == 0 {
+//                conditionsArray =  conditionsArray.filter { element in
+//                    if element as? ServiceCategoryCondition == nil {
+//                        return true
+//                    }
+//                    return false
+//                }
+//                guard let catText = cell.optionLabel.text else { return }
+//                let catetory = ServiceCategoryCondition(conditionValue: catText)
+//                conditionsArray.append(catetory)
+//            } else {
+//                conditionsArray =  conditionsArray.filter { element in
+//                    if element as? ServiceLocationCondition == nil {
+//                        return true
+//                    }
+//                    return false
+//                }
+//                guard let locationText = cell.optionLabel.text else { return }
+//                let location = ServiceLocationCondition(conditionValue: locationText)
+//                conditionsArray.append(location)
+//            }
+//        }
+//    }
 }
