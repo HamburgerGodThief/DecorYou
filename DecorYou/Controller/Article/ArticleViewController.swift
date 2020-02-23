@@ -26,9 +26,10 @@ class ArticleViewController: UIViewController {
             articleTableView.reloadData()
         }
     }
+    var isFilter: Bool = false
     var articlesData: [Article] = []
+    var finalArticlesData: [Article] = []
     var searchResults: [Article] = []
-    var finalData: [Article] = []
     
     func getData() {
         let group0 = DispatchGroup()
@@ -41,6 +42,7 @@ class ArticleViewController: UIViewController {
             switch result {
             case .success(let articles):
                 strongSelf.articlesData = articles
+                strongSelf.finalArticlesData = strongSelf.articlesData
                 group0.leave()
             case .failure(let error):
                 print(error)
@@ -60,54 +62,7 @@ class ArticleViewController: UIViewController {
                         do {
                             if let author = try document.data(as: User.self, decoder: Firestore.Decoder()) {
                                 strongSelf.articlesData[order].authorObject = author
-                                group1.leave()
-                            }
-                        } catch{
-                            print(error)
-                            return
-                        }
-                    }
-                })
-            }
-            group1.leave()
-        }
-        
-        group1.notify(queue: .main) { [weak self] in
-            self?.refreshControl.endRefreshing()
-            self?.articleTableView.reloadData()
-        }
-    }
-    
-    func getConditionData() {
-        let group0 = DispatchGroup()
-        let group1 = DispatchGroup()
-        let queue0 = DispatchQueue(label: "queue0")
-        //抓全部文章
-        group0.enter()
-        ArticleManager.shared.fetchAllPost(completion: { [weak self] result in
-            guard let strongSelf = self else { return }
-            switch result {
-            case .success(let articles):
-                strongSelf.articlesData = articles
-                group0.leave()
-            case .failure(let error):
-                print(error)
-            }
-        })
-        //抓文章的作者
-        group1.enter()
-        group0.notify(queue: queue0) { [weak self] in
-            guard let strongSelf = self else { return }
-            for order in 0...strongSelf.articlesData.count - 1 {
-                group1.enter()
-                strongSelf.articlesData[order].author.getDocument(completion: { (document, error) in
-                    if let error = error {
-                        print(error)
-                    } else {
-                        guard let document = document else { return }
-                        do {
-                            if let author = try document.data(as: User.self, decoder: Firestore.Decoder()) {
-                                strongSelf.articlesData[order].authorObject = author
+                                strongSelf.finalArticlesData[order].authorObject = strongSelf.articlesData[order].authorObject
                                 group1.leave()
                             }
                         } catch{
@@ -148,12 +103,33 @@ class ArticleViewController: UIViewController {
     
     func showNavRightButton(shouldShow: Bool) {
         if shouldShow {
-            let layoutBtn = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), style: .plain, target: self, action: #selector(changeLayout))
-            layoutBtn.imageInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
-            let filterBtn = UIBarButtonItem(image: UIImage.asset(.Icons_24px_Filter), style: .plain, target: self, action: #selector(setfilter))
+            let layoutBtn = isChangeLayout(isChangeLayout: isChangeLayout)
+            let filterBtn = isFiltering(isFilter: isFilter)
             navigationItem.rightBarButtonItems = [filterBtn, layoutBtn]
         } else {
             navigationItem.rightBarButtonItems = nil
+        }
+    }
+    
+    func isFiltering(isFilter: Bool) -> UIBarButtonItem {
+        if isFilter {
+            let filterBtn = UIBarButtonItem(image: UIImage.asset(.Icons_24px_FilterSelected), style: .plain, target: self, action: #selector(setfilter))
+            return filterBtn
+        } else {
+            let filterBtn = UIBarButtonItem(image: UIImage.asset(.Icons_24px_Filter), style: .plain, target: self, action: #selector(setfilter))
+            return filterBtn
+        }
+    }
+    
+    func isChangeLayout(isChangeLayout: Bool) -> UIBarButtonItem {
+        if isChangeLayout {
+            let layoutBtn = UIBarButtonItem(image: UIImage(systemName: "capsule"), style: .plain, target: self, action: #selector(changeLayout))
+            layoutBtn.imageInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
+            return layoutBtn
+        } else {
+            let layoutBtn = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), style: .plain, target: self, action: #selector(changeLayout))
+            layoutBtn.imageInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
+            return layoutBtn
         }
     }
     
@@ -287,12 +263,12 @@ extension ArticleViewController: UITableViewDelegate, UITableViewDataSource {
         if searchController.searchBar.searchTextField.isEditing {
             return searchResults.count
         } else {
-            return articlesData.count
+            return finalArticlesData.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let article = (searchController.searchBar.searchTextField.isEditing) ? searchResults[indexPath.row]: articlesData[indexPath.row]
+        let article = (searchController.searchBar.searchTextField.isEditing) ? searchResults[indexPath.row]: finalArticlesData[indexPath.row]
         guard let authorObject = article.authorObject else { return UITableViewCell() }
         var intervalString: String {
             let interval = Date().timeIntervalSince(article.createTime)

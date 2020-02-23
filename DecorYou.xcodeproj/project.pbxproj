@@ -76,6 +76,8 @@
 		64FA8E4123FFC272000A1334 /* FilterPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA8E3F23FFC272000A1334 /* FilterPickerTableViewCell.swift */; };
 		64FA8E4223FFC272000A1334 /* FilterPickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FA8E4023FFC272000A1334 /* FilterPickerTableViewCell.xib */; };
 		64FA8E442400F479000A1334 /* FilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA8E432400F479000A1334 /* FilterModel.swift */; };
+		64FA8E46240256CA000A1334 /* CraftsmenFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA8E45240256CA000A1334 /* CraftsmenFilterViewController.swift */; };
+		64FA8E4824025B3D000A1334 /* CraftsmenFilterCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA8E4724025B3D000A1334 /* CraftsmenFilterCondition.swift */; };
 		64FAB11F23EC001A0073235C /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FAB11E23EC001A0073235C /* UserManager.swift */; };
 		64FAB12323ED36130073235C /* JGProgressWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FAB12223ED36130073235C /* JGProgressWrapper.swift */; };
 		64FAB12523ED49F70073235C /* ArticleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FAB12423ED49F70073235C /* ArticleManager.swift */; };
@@ -210,6 +212,8 @@
 		64FA8E3F23FFC272000A1334 /* FilterPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterPickerTableViewCell.swift; sourceTree = "<group>"; };
 		64FA8E4023FFC272000A1334 /* FilterPickerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterPickerTableViewCell.xib; sourceTree = "<group>"; };
 		64FA8E432400F479000A1334 /* FilterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterModel.swift; sourceTree = "<group>"; };
+		64FA8E45240256CA000A1334 /* CraftsmenFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CraftsmenFilterViewController.swift; sourceTree = "<group>"; };
+		64FA8E4724025B3D000A1334 /* CraftsmenFilterCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CraftsmenFilterCondition.swift; sourceTree = "<group>"; };
 		64FAB11E23EC001A0073235C /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		64FAB12223ED36130073235C /* JGProgressWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGProgressWrapper.swift; sourceTree = "<group>"; };
 		64FAB12423ED49F70073235C /* ArticleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleManager.swift; sourceTree = "<group>"; };
@@ -309,6 +313,7 @@
 				64FC72D323FBF0D2004F2A07 /* CircularTransition.swift */,
 				64FAB11E23EC001A0073235C /* UserManager.swift */,
 				64FAB12423ED49F70073235C /* ArticleManager.swift */,
+				64FA8E4724025B3D000A1334 /* CraftsmenFilterCondition.swift */,
 				64FA8E432400F479000A1334 /* FilterModel.swift */,
 			);
 			path = Model;
@@ -488,6 +493,7 @@
 			isa = PBXGroup;
 			children = (
 				647A7CD423D83E49005D1946 /* CraftsmenViewController.swift */,
+				64FA8E45240256CA000A1334 /* CraftsmenFilterViewController.swift */,
 				64FA42B223E3C5CD0065DCEF /* ResumeViewController.swift */,
 				64FA42B823E7B74E0065DCEF /* ProfolioViewController.swift */,
 				64FC72E323FD26EC004F2A07 /* ProfolioTestViewController.swift */,
@@ -752,6 +758,7 @@
 				64FA58CA23FE86E5003D7353 /* FilterCollectionTableViewCell.swift in Sources */,
 				64FE4EC023E8091800A5D3EC /* ChatRoomSelfTableViewCell.swift in Sources */,
 				64FAB12523ED49F70073235C /* ArticleManager.swift in Sources */,
+				64FA8E46240256CA000A1334 /* CraftsmenFilterViewController.swift in Sources */,
 				64FC819323E7E4D70027DDEE /* ChatListTableViewCell.swift in Sources */,
 				64FE4ED423E983B200A5D3EC /* FavoriteViewController.swift in Sources */,
 				64FA7CC823F550C600975B03 /* CharacterPickViewController.swift in Sources */,
@@ -766,6 +773,7 @@
 				64FE4ED623E983D500A5D3EC /* YourPostViewController.swift in Sources */,
 				64FC819623E7E9D70027DDEE /* ChatRoomViewController.swift in Sources */,
 				64FAB12723ED548A0073235C /* DecorateStyleViewController.swift in Sources */,
+				64FA8E4824025B3D000A1334 /* CraftsmenFilterCondition.swift in Sources */,
 				64FE4EDD23EA4A5900A5D3EC /* FavoriteTableViewCell.swift in Sources */,
 				64FA8E3E23FF90FE000A1334 /* FilterViewController.swift in Sources */,
 				64FAB12323ED36130073235C /* JGProgressWrapper.swift in Sources */,

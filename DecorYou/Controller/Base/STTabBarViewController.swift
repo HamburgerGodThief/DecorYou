@@ -88,6 +88,8 @@ class STTabBarViewController: UITabBarController, UITabBarControllerDelegate {
     
     var filterVC: FilterViewController!
     
+    var craftsmenFilterVC: CraftsmenFilterViewController!
+    
     var isExpand: Bool = false
     
     override func viewDidLoad() {
@@ -102,6 +104,8 @@ class STTabBarViewController: UITabBarController, UITabBarControllerDelegate {
         delegate = self
         
         configureFilterVC()
+        
+        configureCraftsmenFilterVC()
     }
     
     // MARK: - UITabBarControllerDelegate
@@ -135,6 +139,14 @@ class STTabBarViewController: UITabBarController, UITabBarControllerDelegate {
             filterVC = storyboard.instantiateViewController(identifier: "FilterViewController") as? FilterViewController
         }
         filterVC.modalPresentationStyle = .overFullScreen
+    }
+    
+    func configureCraftsmenFilterVC() {
+        if craftsmenFilterVC == nil {
+            let storyboard = UIStoryboard(name: "Craftsmen", bundle: nil)
+            craftsmenFilterVC = storyboard.instantiateViewController(identifier: "CraftsmenFilterViewController") as? CraftsmenFilterViewController
+        }
+        craftsmenFilterVC.modalPresentationStyle = .overFullScreen
     }
     
 }

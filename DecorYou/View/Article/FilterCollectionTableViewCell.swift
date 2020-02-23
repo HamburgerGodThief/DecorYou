@@ -23,8 +23,8 @@ class FilterCollectionTableViewCell: UITableViewCell {
         }
         guard let tableView = superview as? UITableView else { return }
         tableView.reloadData()
-        
     }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         collectionView.isScrollEnabled = false

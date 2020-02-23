@@ -88,7 +88,8 @@ class CraftsmenViewController: UIViewController {
     }
     
     @objc func setfilter() {
-        
+        guard let tabBarController = tabBarController as? STTabBarViewController else { return }
+        present(tabBarController.craftsmenFilterVC , animated: false, completion: nil)
     }
     
     override func viewDidLoad() {

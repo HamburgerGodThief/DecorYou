@@ -8,8 +8,6 @@
 
 import UIKit
 
-
-
 class FilterViewController: UIViewController {
 
     @IBOutlet weak var dismissView: UIView!
@@ -19,6 +17,7 @@ class FilterViewController: UIViewController {
     @IBOutlet weak var resetBtn: UIButton!
     @IBOutlet weak var contentViewLeading: NSLayoutConstraint!
     var conditionsArray: [ConditionDelegate] = []
+    var decorateStyleCell: FilterCollectionTableViewCell?
     let sectionHeaderTitle: [String] = ["裝潢風格", "房屋地區", "房屋坪數", "回覆文章數量", "被收藏次數"]
     let decorateStyleArray = ["工業", "後現代", "日系",
                               "黑白色調", "森林", "清新",
@@ -83,15 +82,6 @@ class FilterViewController: UIViewController {
     var second: [String] = []
     var secondSelected: String = ""
     
-    var decorateStyle: String?
-    var location: String?
-    var sizeMax: Int?
-    var sizeMin: Int?
-    var replyMin: Int?
-    var replyMax: Int?
-    var loveMin: Int?
-    var loveMax: Int?
-    
     func viewAddTapGesture() {
         let singleFinger = UITapGestureRecognizer(target:self, action:#selector(singleTap))
 
@@ -112,16 +102,31 @@ class FilterViewController: UIViewController {
             fitlerArticles = condition.filter(data: fitlerArticles)
         }
         
-        articleVC.articlesData = fitlerArticles
+        articleVC.finalArticlesData = fitlerArticles
+        if conditionsArray.isEmpty {
+            articleVC.isFilter = false
+        } else {
+            articleVC.isFilter = true
+        }
+        articleVC.showNavRightButton(shouldShow: true)
         articleVC.articleTableView.reloadData()
         dismiss(animated: false, completion: nil)
     }
     
     @IBAction func didTouchReset(_ sender: Any) {
+        guard let tabVC = self.presentingViewController as? STTabBarViewController else { return }
+        guard let navVC = tabVC.selectedViewController as? UINavigationController else { return }
+        guard let articleVC = navVC.topViewController as? ArticleViewController else { return }
+    
+        articleVC.isFilter = false
+        articleVC.showNavRightButton(shouldShow: true)
+        articleVC.finalArticlesData = articleVC.articlesData
         conditionsArray = []
         firstSelected = ""
         secondSelected = ""
         tableView.reloadData()
+        decorateStyleCell?.collectionView.reloadData()
+        articleVC.articleTableView.reloadData()
     }
     
     @objc func singleTap() {
@@ -190,7 +195,7 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
             cell.collectionView.delegate = self
             cell.collectionView.dataSource = self
             cell.collectionView.lk_registerCellWithNib(identifier: "FilterCollectionViewCell", bundle: nil)
-            cell.collectionView.reloadData()
+            decorateStyleCell = cell
             return cell
         } else if indexPath.section == 1{
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "FilterPickerTableViewCell", for: indexPath) as? FilterPickerTableViewCell else { return UITableViewCell() }

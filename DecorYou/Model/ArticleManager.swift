@@ -69,13 +69,6 @@ struct Comment: Codable {
     }
 }
 
-enum NewCondition {
-    case size
-    case replyCount
-    case loveCount
-    case location
-}
-
 class ArticleManager {
     
     static let shared = ArticleManager()

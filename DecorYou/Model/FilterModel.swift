@@ -5,15 +5,6 @@
 //  Created by Hamburger on 2020/2/22.
 //  Copyright © 2020 Hamburger. All rights reserved.
 //
-
-extension Array {
-   func filteredByType<T> (_: T.Type) -> [T] {
-       return compactMap({ (element) in
-           return element as? T
-       })
-   }
-}
-
 protocol ConditionDelegate {
     
     var conditionType: String { get set }
