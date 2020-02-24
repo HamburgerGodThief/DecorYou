@@ -11,7 +11,7 @@ import UIKit
 class YourPostViewController: UIViewController {
     
     @IBOutlet weak var yourPostTableView: UITableView!
-    var collectionView: UICollectionView?
+    var yourPost: [Article] = []
     
     func setTableView() {
         yourPostTableView.delegate = self
@@ -32,12 +32,12 @@ class YourPostViewController: UIViewController {
 extension YourPostViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return yourPost.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: YourPostTableViewCell.self), for: indexPath) as? YourPostTableViewCell else { return UITableViewCell() }
-        collectionView = cell.collectionView
+        cell.collectionView.tag = indexPath.row
         cell.collectionView.delegate = self
         cell.collectionView.dataSource = self
         cell.collectionView.lk_registerCellWithNib(identifier: String(describing: YourPostCollectionViewCell.self), bundle: nil)
@@ -53,8 +53,8 @@ extension YourPostViewController: UICollectionViewDataSource, UICollectionViewDe
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: YourPostCollectionViewCell.self), for: indexPath) as? YourPostCollectionViewCell else { return UICollectionViewCell() }
-        cell.titleLabel.text = "開箱文"
-        cell.timeLabel.text = "12:30"
+        cell.titleLabel.text = yourPost[collectionView.tag].title
+        cell.timeLabel.text = yourPost[collectionView.tag].createTimeString
         cell.replyCountLabel.text = "20"
         return cell
     }
@@ -69,6 +69,4 @@ extension YourPostViewController: UICollectionViewDataSource, UICollectionViewDe
         print("test")
 
     }
-    
-    
 }

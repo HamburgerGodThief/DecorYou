@@ -27,7 +27,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var profileTableView: UITableView!
     @IBOutlet weak var shadowView: RoundCornerAndShadow!
     @IBOutlet weak var postLabel: UILabel!
-    @IBOutlet weak var lovePost: UILabel!
+    @IBOutlet weak var loveLabel: UILabel!
     @IBOutlet weak var cameraBtn: UIButton!
     let userFunction: [FuncTable] = [
         FuncTable(name: "個人資訊", img: UIImage.asset(.Icons_24px_UserInfo)),
@@ -41,8 +41,14 @@ class ProfileViewController: UIViewController {
                                           FuncTable(name: "你的文章", img: UIImage(systemName: "doc.text")),
                                           FuncTable(name: "登出", img: UIImage.asset(.Icons_24px_LogOut))]
     var finalFunction: [FuncTable] = []
-    
     let withIdentifier = ["InfoViewController", "FavoriteViewController", "YourPostViewController"]
+    var user: User? {
+        didSet {
+            getSelfPostandLovePost()
+        }
+    }
+    var selfPost: [Article] = []
+    var lovePost: [Article] = []
     
     func setNavigationBar() {
         navigationItem.title = "個人頁面"
@@ -75,10 +81,18 @@ class ProfileViewController: UIViewController {
     func getUserInfo() {
         guard let uid = UserDefaults.standard.string(forKey: "UserToken") else { return }
         UserManager.shared.fetchCurrentUser(uid: uid)
+        UserManager.shared.fetchCurrentUser(uid: uid, completion: { result in
+            switch result {
+            case .success(let user):
+                self.user = user
+            case .failure(let error):
+                print(error)
+            }
+        })
         guard let user = UserManager.shared.user else { return }
         logoImg.loadImage(user.img, placeHolder: UIImage())
         postLabel.text = "\(user.selfPost.count)"
-        lovePost.text = "\(user.lovePost.count)"
+        loveLabel.text = "\(user.lovePost.count)"
         
         if user.character == "customer" {
             finalFunction = userFunction
@@ -88,16 +102,45 @@ class ProfileViewController: UIViewController {
         profileTableView.reloadData()
     }
     
+    func getSelfPostandLovePost() {
+        guard let user = user else { return }
+        for selfPostRef in user.selfPost {
+            ArticleManager.shared.fetchPostRef(postRef: selfPostRef, completion: { result in
+                switch result {
+                case .success(let article):
+                    self.selfPost.append(article)
+                case .failure(let error):
+                    print(error)
+                }
+            })
+        }
+        
+        for lovePostRef in user.lovePost {
+            ArticleManager.shared.fetchPostRef(postRef: lovePostRef, completion: { result in
+                switch result {
+                case .success(let article):
+                    self.lovePost.append(article)
+                case .failure(let error):
+                    print(error)
+                }
+            })
+        }
+    }
+    
     func customerCellDidSelect(indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Profile", bundle: nil)
-        var nextVC: UIViewController?
         switch indexPath.row {
         case 0:
-            nextVC = storyboard.instantiateViewController(withIdentifier: "InfoViewController") as? InfoViewController
+            guard let nextVC = storyboard.instantiateViewController(withIdentifier: "InfoViewController") as? InfoViewController else { return }
+            navigationController?.pushViewController(nextVC, animated: true)
         case 1:
-            nextVC = storyboard.instantiateViewController(withIdentifier: "FavoriteViewController") as? FavoriteViewController
+            guard let nextVC = storyboard.instantiateViewController(withIdentifier: "FavoriteViewController") as? FavoriteViewController else { return }
+            nextVC.lovePost = lovePost
+            navigationController?.pushViewController(nextVC, animated: true)
         case 2:
-            nextVC = storyboard.instantiateViewController(withIdentifier: "YourPostViewController") as? YourPostViewController
+            guard let nextVC = storyboard.instantiateViewController(withIdentifier: "YourPostViewController") as? YourPostViewController else { return }
+            nextVC.yourPost = selfPost
+            navigationController?.pushViewController(nextVC, animated: true)
         default:
             UserDefaults.standard.set(nil, forKey: "UserToken")
             UserDefaults.standard.set(nil, forKey: "UserCharacter")
@@ -114,22 +157,26 @@ class ProfileViewController: UIViewController {
             
             present(alertController, animated: true, completion: nil)
         }
-        guard let nvc = nextVC else { return }
-        navigationController?.pushViewController(nvc, animated: true)
     }
     
     func craftsmenCellDidSelect(indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Profile", bundle: nil)
-        var nextVC: UIViewController?
         switch indexPath.row {
         case 0:
-            nextVC = storyboard.instantiateViewController(withIdentifier: "InfoViewController") as? InfoViewController
+            guard let nextVC = storyboard.instantiateViewController(withIdentifier: "InfoViewController") as? InfoViewController else { return }
+            navigationController?.pushViewController(nextVC, animated: true)
         case 1:
-            nextVC = storyboard.instantiateViewController(withIdentifier: "CraftsmenResumeViewController") as? CraftsmenResumeViewController
+            guard let nextVC = storyboard.instantiateViewController(withIdentifier: "CraftsmenResumeViewController") as? CraftsmenResumeViewController else { return }
+            
+            navigationController?.pushViewController(nextVC, animated: true)
         case 2:
-            nextVC = storyboard.instantiateViewController(withIdentifier: "FavoriteViewController") as? FavoriteViewController
+            guard let nextVC = storyboard.instantiateViewController(withIdentifier: "FavoriteViewController") as? FavoriteViewController else { return }
+            nextVC.lovePost = lovePost
+            navigationController?.pushViewController(nextVC, animated: true)
         case 3:
-            nextVC = storyboard.instantiateViewController(withIdentifier: "YourPostViewController") as? YourPostViewController
+            guard let nextVC = storyboard.instantiateViewController(withIdentifier: "YourPostViewController") as? YourPostViewController else { return }
+            nextVC.yourPost = selfPost
+            navigationController?.pushViewController(nextVC, animated: true)
         default:
             UserDefaults.standard.set(nil, forKey: "UserToken")
             UserDefaults.standard.set(nil, forKey: "UserCharacter")
@@ -145,8 +192,6 @@ class ProfileViewController: UIViewController {
             
             present(alertController, animated: true, completion: nil)
         }
-        guard let nvc = nextVC else { return }
-        navigationController?.pushViewController(nvc, animated: true)
     }
     
     @IBAction func changeImg(_ sender: Any) {

@@ -71,22 +71,58 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BvQ-11-iu8">
+                                <rect key="frame" x="508.5" y="16" width="22.5" height="20"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble.left.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="QP2-Jz-Job">
+                                <rect key="frame" x="490.5" y="18.5" width="16" height="15.5"/>
+                                <color key="tintColor" name="mainColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="QP2-Jz-Job" secondAttribute="height" multiplier="1:1" id="BYt-A8-9Db"/>
+                                    <constraint firstAttribute="height" constant="16" id="rqm-3G-AUQ"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="78A-7E-p71">
+                                <rect key="frame" x="471.5" y="16" width="17" height="20"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Wyo-pL-9E9">
+                                <rect key="frame" x="453.5" y="19.5" width="16" height="13.5"/>
+                                <color key="tintColor" name="mainColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Wyo-pL-9E9" secondAttribute="height" multiplier="1:1" id="OUB-t0-mae"/>
+                                    <constraint firstAttribute="height" constant="16" id="uDi-fL-BYF"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="QP2-Jz-Job" firstAttribute="leading" secondItem="78A-7E-p71" secondAttribute="trailing" constant="2" id="8iV-Au-h5A"/>
                             <constraint firstAttribute="trailing" secondItem="YVl-VA-mcg" secondAttribute="trailing" constant="16" id="BYU-y8-cP7"/>
+                            <constraint firstItem="BvQ-11-iu8" firstAttribute="leading" secondItem="QP2-Jz-Job" secondAttribute="trailing" constant="2" id="Buj-io-HIP"/>
                             <constraint firstItem="TVx-yI-EBt" firstAttribute="top" secondItem="YVl-VA-mcg" secondAttribute="bottom" id="GrG-2w-RHY"/>
+                            <constraint firstItem="Wyo-pL-9E9" firstAttribute="centerY" secondItem="BvQ-11-iu8" secondAttribute="centerY" id="ORJ-sX-I6m"/>
+                            <constraint firstAttribute="trailing" secondItem="BvQ-11-iu8" secondAttribute="trailing" constant="16" id="QbK-KF-80h"/>
                             <constraint firstItem="ERT-mr-Rga" firstAttribute="top" secondItem="0v8-07-bh3" secondAttribute="top" constant="8" id="T9n-Bg-MZj"/>
                             <constraint firstItem="YVl-VA-mcg" firstAttribute="leading" secondItem="ERT-mr-Rga" secondAttribute="trailing" constant="4" id="VhR-mC-ecj"/>
+                            <constraint firstItem="78A-7E-p71" firstAttribute="leading" secondItem="Wyo-pL-9E9" secondAttribute="trailing" constant="2" id="VjQ-pH-rnV"/>
                             <constraint firstItem="ERT-mr-Rga" firstAttribute="leading" secondItem="0v8-07-bh3" secondAttribute="leading" constant="8" id="b0L-ec-YmI"/>
                             <constraint firstAttribute="trailing" secondItem="TVx-yI-EBt" secondAttribute="trailing" constant="16" id="b36-8e-Wzu"/>
                             <constraint firstItem="YVl-VA-mcg" firstAttribute="top" secondItem="ERT-mr-Rga" secondAttribute="top" constant="4" id="bW3-KC-DRq"/>
                             <constraint firstItem="VBD-aO-DKY" firstAttribute="leading" secondItem="0v8-07-bh3" secondAttribute="leading" constant="12" id="bcJ-to-F1f"/>
                             <constraint firstAttribute="trailing" secondItem="wqT-Sy-uTj" secondAttribute="trailing" constant="25" id="eud-3D-UFA"/>
+                            <constraint firstItem="BvQ-11-iu8" firstAttribute="centerY" secondItem="YVl-VA-mcg" secondAttribute="centerY" id="fK2-3f-rH5"/>
                             <constraint firstItem="wqT-Sy-uTj" firstAttribute="top" secondItem="VBD-aO-DKY" secondAttribute="bottom" constant="10" id="hhk-Jt-8GH"/>
+                            <constraint firstItem="78A-7E-p71" firstAttribute="centerY" secondItem="BvQ-11-iu8" secondAttribute="centerY" id="lit-BF-dBt"/>
                             <constraint firstAttribute="bottom" secondItem="VBD-aO-DKY" secondAttribute="bottom" constant="60" id="pTX-VM-WFU"/>
                             <constraint firstItem="TVx-yI-EBt" firstAttribute="leading" secondItem="ERT-mr-Rga" secondAttribute="trailing" constant="4" id="pfm-ff-7WI"/>
                             <constraint firstItem="wqT-Sy-uTj" firstAttribute="leading" secondItem="0v8-07-bh3" secondAttribute="leading" constant="25" id="px8-5J-7hN"/>
+                            <constraint firstItem="QP2-Jz-Job" firstAttribute="centerY" secondItem="BvQ-11-iu8" secondAttribute="centerY" id="sDL-9H-RNG"/>
                             <constraint firstAttribute="trailing" secondItem="VBD-aO-DKY" secondAttribute="trailing" constant="16" id="sGd-kG-Ltq"/>
                             <constraint firstAttribute="bottom" secondItem="wqT-Sy-uTj" secondAttribute="bottom" id="uqb-J7-6x7"/>
                             <constraint firstItem="VBD-aO-DKY" firstAttribute="top" secondItem="ERT-mr-Rga" secondAttribute="bottom" constant="4" id="ysP-9n-cF9"/>
@@ -108,13 +144,20 @@
                 <outlet property="backView" destination="0v8-07-bh3" id="LSc-8F-7Td"/>
                 <outlet property="collectionView" destination="wqT-Sy-uTj" id="L6u-y7-ntc"/>
                 <outlet property="contentLabel" destination="VBD-aO-DKY" id="LQt-XV-4Zg"/>
+                <outlet property="loveCount" destination="78A-7E-p71" id="o1n-9C-xxW"/>
                 <outlet property="nameTimeLabel" destination="TVx-yI-EBt" id="nJh-0i-cqZ"/>
+                <outlet property="replyCount" destination="BvQ-11-iu8" id="XOn-45-Mus"/>
                 <outlet property="titleLabel" destination="YVl-VA-mcg" id="5dK-wi-W7X"/>
             </connections>
             <point key="canvasLocation" x="176.08695652173915" y="101.45089285714285"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="bubble.left.fill" catalog="system" width="64" height="54"/>
+        <image name="heart.fill" catalog="system" width="64" height="54"/>
+        <namedColor name="mainColor">
+            <color red="0.30199998617172241" green="0.6470000147819519" blue="0.65499997138977051" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="shadowLightGray">
             <color red="0.89800000190734863" green="0.89800000190734863" blue="0.89800000190734863" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

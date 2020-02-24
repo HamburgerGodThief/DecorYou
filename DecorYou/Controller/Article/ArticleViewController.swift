@@ -277,7 +277,6 @@ extension ArticleViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             return 220
         }
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -319,13 +318,15 @@ extension ArticleViewController: UITableViewDelegate, UITableViewDataSource {
             cell.collectionView.dataSource = self
             cell.collectionView.lk_registerCellWithNib(identifier: "FilterCollectionViewCell", bundle: nil)
             cell.collectionView.tag = indexPath.row
+            cell.replyCount.text = "100"
+            cell.loveCount.text = "\(article.loveCount)"
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ArticleListTableViewCell.self), for: indexPath) as? ArticleListTableViewCell else { return UITableViewCell() }
             cell.titleLabel.text = article.title
             cell.nameAndCreateTime.text = "\(authorObject.name) ・ \(intervalString)"
             cell.replyCount.text = "100"
-            cell.loveCount.text = "20"
+            cell.loveCount.text = "\(article.loveCount)"
             return cell
         }
     }
@@ -392,9 +393,9 @@ extension ArticleViewController: UISearchBarDelegate{
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        print("End editing")
-        guard let searchText = searchBar.text else { return }
-        searchContent(for: searchText)
+//        print("End editing")
+//        guard let searchText = searchBar.text else { return }
+//        searchContent(for: searchText)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {

@@ -16,6 +16,8 @@ class ArticleTableViewCell: UITableViewCell {
     @IBOutlet weak var nameTimeLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var replyCount: UILabel!
+    @IBOutlet weak var loveCount: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -132,6 +132,27 @@ class UserManager {
                     print(error)
                     return
                 }
+                
+            }
+        }
+    }
+    
+    func fetchCurrentUser(uid: String, completion: @escaping (Result<User, Error>) -> Void) {
+        db.collection("users").document(uid).getDocument() { (document, err) in
+            
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                guard let document = document else { return }
+                do {
+                    if let user = try document.data(as: User.self, decoder: Firestore.Decoder()) {
+                        completion(.success(user))
+                    }
+                } catch {
+                    print(error)
+                    return
+                }
+                
             }
         }
     }

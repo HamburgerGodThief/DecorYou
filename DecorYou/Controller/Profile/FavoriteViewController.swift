@@ -11,6 +11,7 @@ import UIKit
 class FavoriteViewController: UIViewController {
     
     @IBOutlet weak var favoriteTableView: UITableView!
+    var lovePost: [Article] = []
     
     func setTableView() {
         favoriteTableView.delegate = self
@@ -29,12 +30,12 @@ class FavoriteViewController: UIViewController {
 extension FavoriteViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return lovePost.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: FavoriteTableViewCell.self), for: indexPath) as? FavoriteTableViewCell else { return UITableViewCell() }
-        cell.titleLabel.text = "開箱 Row: \(indexPath.row)"
+        cell.titleLabel.text = lovePost[indexPath.row].title
         cell.authorAndTimeLabel.text = "作者: | time: "
         cell.replyCountLabel.text = "\(indexPath.row + 8)"
         return cell

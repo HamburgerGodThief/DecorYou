@@ -196,9 +196,9 @@ extension CraftsmenViewController: UISearchBarDelegate {
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        print("End editing")
-        guard let searchText = searchBar.text else { return }
-        searchContent(for: searchText)
+//        print("End editing")
+//        guard let searchText = searchBar.text else { return }
+//        searchContent(for: searchText)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -206,8 +206,6 @@ extension CraftsmenViewController: UISearchBarDelegate {
         searchBar.searchTextField.backgroundColor = UIColor.assetColor(.darkMainColor)
         searchBar.searchTextField.attributedPlaceholder = NSAttributedString(string: "想找哪位匠人",
                                                                              attributes: [.foregroundColor: UIColor(red: 187, green: 208, blue: 211, alpha: 1)])
-        
-        print("Teste")
         finalData = allCraftsmen
         craftsmenCollectionView.reloadData()
         searching(shouldShow: false)

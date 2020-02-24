@@ -86,6 +86,25 @@ class ArticleManager {
         }
     }
     
+    func fetchPostRef(postRef: DocumentReference ,completion: @escaping (Result<Article, Error>) -> Void) {
+        postRef.getDocument(completion: { (document, err) in
+            
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                guard let document = document else { return }
+                do {
+                    if let article = try document.data(as: Article.self, decoder: Firestore.Decoder()) {
+                        completion(.success(article))
+                    }
+                } catch {
+                    print(error)
+                    return
+                }
+            }
+        })
+    }
+    
     //讀取貼文
     func fetchAllPost(completion: @escaping (Result<[Article], Error>) -> Void) {
         
@@ -156,22 +175,4 @@ class ArticleManager {
             print("Error writing city to Firestore: \(error)")
         }
     }
-    
-    
-    /*
-    func updatePost(uid: String, name: String, img: String, lovePost: [String], selfPost: [String]) {
-        db.collection("users").document(uid).updateData([
-            "name": name,
-            "img": img,
-            "lovePost": lovePost,
-            "selfPost": selfPost
-        ]) { err in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                print("Document successfully updated")
-            }
-        }
-    }
- */
 }
