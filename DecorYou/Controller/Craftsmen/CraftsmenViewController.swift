@@ -12,11 +12,27 @@ import UIKit
 class CraftsmenViewController: UIViewController {
     
     @IBOutlet weak var craftsmenCollectionView: UICollectionView!
+    @IBOutlet weak var searchResultLabel: UILabel!
     var searchController = UISearchController(searchResultsController: nil)
     
     var allCraftsmen: [User] = []
-    var searchCraftsmen: [User] = []
+    var filterCraftsmen: [User] = []
     var finalData: [User] = []
+    var isFilter: Bool = false
+    
+    func getAllCraftsmen() {
+        UserManager.shared.fetchAllCraftsmen(completion: { [weak self] result in
+            switch result {
+            case .success(let allCraftsmen):
+                guard let strongSelf = self else { return }
+                strongSelf.allCraftsmen = allCraftsmen
+                strongSelf.finalData = strongSelf.allCraftsmen
+                strongSelf.craftsmenCollectionView.reloadData()
+            case .failure(let error):
+                print(error)
+            }
+        })
+    }
     
     func configureSearchController() {
         searchController.hidesNavigationBarDuringPresentation = false
@@ -40,10 +56,20 @@ class CraftsmenViewController: UIViewController {
     
     func showNavRightButton(shouldShow: Bool) {
         if shouldShow {
-            let filterBtn = UIBarButtonItem(image: UIImage.asset(.Icons_24px_Filter), style: .plain, target: self, action: #selector(setfilter))
+            let filterBtn = isFiltering(isFilter: isFilter)
             navigationItem.rightBarButtonItem = filterBtn
         } else {
             navigationItem.rightBarButtonItem = nil
+        }
+    }
+    
+    func isFiltering(isFilter: Bool) -> UIBarButtonItem {
+        if isFilter {
+            let filterBtn = UIBarButtonItem(image: UIImage.asset(.Icons_24px_FilterSelected), style: .plain, target: self, action: #selector(setfilter))
+            return filterBtn
+        } else {
+            let filterBtn = UIBarButtonItem(image: UIImage.asset(.Icons_24px_Filter), style: .plain, target: self, action: #selector(setfilter))
+            return filterBtn
         }
     }
     
@@ -52,39 +78,26 @@ class CraftsmenViewController: UIViewController {
         searchController.searchBar.showsCancelButton = shouldShow
     }
     
-    func getAllCraftsmen() {
-        UserManager.shared.fetchAllCraftsmen(completion: { [weak self] result in
-            switch result {
-            case .success(let allCraftsmen):
-                guard let strongSelf = self else { return }
-                strongSelf.allCraftsmen = allCraftsmen
-                strongSelf.isSearch(isSearch: false)
-            case .failure(let error):
-                print(error)
-            }
-        })
-    }
-    
-    func isSearch(isSearch: Bool) {
-        finalData = isSearch ? searchCraftsmen: allCraftsmen
-        craftsmenCollectionView.reloadData()
-    }
-    
     func searchContent(for searchText: String) {
-        
-        searchCraftsmen = allCraftsmen.filter({ (craftsman) -> Bool in
-            let name = craftsman.name
-            let isMatch = name.localizedCaseInsensitiveContains(searchText)
-            return isMatch
-        })
-        if searchCraftsmen.isEmpty {
-            finalData = allCraftsmen
+//        searchResultLabel.isHidden = true
+        if isFilter {
+            finalData = filterCraftsmen.filter({ (craftsman) -> Bool in
+                let name = craftsman.name
+                let isMatch = name.localizedCaseInsensitiveContains(searchText)
+                return isMatch
+            })
         } else {
-            finalData = searchCraftsmen
+            finalData = allCraftsmen.filter({ (craftsman) -> Bool in
+                let name = craftsman.name
+                let isMatch = name.localizedCaseInsensitiveContains(searchText)
+                return isMatch
+            })
         }
         
+        if filterCraftsmen.isEmpty {
+//            searchResultLabel.isHidden = false
+        }
         craftsmenCollectionView.reloadData()
-        
     }
     
     @objc func setfilter() {
@@ -94,14 +107,15 @@ class CraftsmenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchResultLabel.isHidden = true
         craftsmenCollectionView.lk_registerCellWithNib(identifier: String(describing: CraftsmenCollectionViewCell.self), bundle: nil)
         craftsmenCollectionView.delegate = self
         craftsmenCollectionView.dataSource = self
+        getAllCraftsmen()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getAllCraftsmen()
         configureSearchController()
         setNavBar()
     }
@@ -122,15 +136,19 @@ extension CraftsmenViewController: UICollectionViewDataSource, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: CraftsmenCollectionViewCell.self), for: indexPath) as? CraftsmenCollectionViewCell else { return UICollectionViewCell() }
         cell.layoutIfNeeded()
+        let location = finalData[indexPath.item].serviceLocation.reduce("", { (sum, string) -> String in
+            return sum + string + "、"
+        })
         cell.logoImg.loadImage(finalData[indexPath.item].img)
-        cell.nameLabel.text = "名稱: \(finalData[indexPath.item].name)"
-        
+        cell.nameLabel.text = finalData[indexPath.item].name
+        cell.serviceLabel.text = finalData[indexPath.item].serviceCategory!
+        cell.locationLabel.text = location
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = 180
-        let height = 300
+        let height = 270
         return CGSize(width: width, height: height)
     }
     
@@ -188,6 +206,10 @@ extension CraftsmenViewController: UISearchBarDelegate {
         searchBar.searchTextField.backgroundColor = UIColor.assetColor(.darkMainColor)
         searchBar.searchTextField.attributedPlaceholder = NSAttributedString(string: "想找哪位匠人",
                                                                              attributes: [.foregroundColor: UIColor(red: 187, green: 208, blue: 211, alpha: 1)])
+        
+        print("Teste")
+        finalData = allCraftsmen
+        craftsmenCollectionView.reloadData()
         searching(shouldShow: false)
         searchController.searchBar.resignFirstResponder()
     }

@@ -30,6 +30,9 @@ class ArticleViewController: UIViewController {
     var articlesData: [Article] = []
     var finalArticlesData: [Article] = []
     var searchResults: [Article] = []
+    let itemSpace: CGFloat = 12
+    let columnCount: CGFloat = 4
+    var collectionItem: [[String]] = []
     
     func getData() {
         let group0 = DispatchGroup()
@@ -76,6 +79,7 @@ class ArticleViewController: UIViewController {
         }
         
         group1.notify(queue: .main) { [weak self] in
+            self?.combineDataForCollectionItem()
             self?.refreshControl.endRefreshing()
             self?.articleTableView.reloadData()
         }
@@ -176,6 +180,23 @@ class ArticleViewController: UIViewController {
         articleTableView.refreshControl = refreshControl
     }
     
+    func combineDataForCollectionItem () {
+        for index in 0..<finalArticlesData.count {
+            collectionItem.append([])
+            if finalArticlesData[index].location != nil {
+                collectionItem[index].append(finalArticlesData[index].location!)
+            }
+            if finalArticlesData[index].size != nil {
+                collectionItem[index].append(String(finalArticlesData[index].size!))
+            }
+            if finalArticlesData[index].decorateStyle.count != 0 {
+                for style in finalArticlesData[index].decorateStyle {
+                    collectionItem[index].append(style)
+                }
+            }
+        }
+    }
+    
     @objc func refreshData() {
         getData()
     }
@@ -254,7 +275,7 @@ extension ArticleViewController: UITableViewDelegate, UITableViewDataSource {
         if isChangeLayout {
             return 80
         } else {
-            return 250
+            return 220
         }
         
     }
@@ -294,6 +315,10 @@ extension ArticleViewController: UITableViewDelegate, UITableViewDataSource {
                           titleLabel: article.title,
                           nameTimeLabel: "\(authorObject.name) ・ \(intervalString)",
                           contentLabel: article.content)
+            cell.collectionView.delegate = self
+            cell.collectionView.dataSource = self
+            cell.collectionView.lk_registerCellWithNib(identifier: "FilterCollectionViewCell", bundle: nil)
+            cell.collectionView.tag = indexPath.row
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ArticleListTableViewCell.self), for: indexPath) as? ArticleListTableViewCell else { return UITableViewCell() }
@@ -312,6 +337,40 @@ extension ArticleViewController: UITableViewDelegate, UITableViewDataSource {
         navigationItem.titleView = nil
         navigationController?.pushViewController(readPostViewController, animated: true)
         tabBarController?.tabBar.isHidden = true
+    }
+}
+
+extension ArticleViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return collectionItem[collectionView.tag].count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FilterCollectionViewCell", for: indexPath) as? FilterCollectionViewCell else { return UICollectionViewCell() }
+        cell.layer.cornerRadius = CGFloat(floor((collectionView.bounds.width - itemSpace * (columnCount - 1 + 2)) / columnCount)) / 6
+        cell.backgroundColor = UIColor.assetColor(.shadowLightGray)
+        cell.optionLabel.text = collectionItem[collectionView.tag][indexPath.item]
+        cell.optionLabel.font = UIFont(name: "PingFangTC-Medium", size: 10)
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = CGFloat(floor((collectionView.bounds.width - itemSpace * (columnCount - 1)) / columnCount))
+        let height = width / 3
+        return CGSize(width: width, height: height)
+    }
+    
+    func collectionView(_: UICollectionView, layout: UICollectionViewLayout, minimumLineSpacingForSectionAt: Int) -> CGFloat {
+        return itemSpace
+    }
+    
+    func collectionView(_: UICollectionView, layout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt: Int) -> CGFloat {
+        return itemSpace
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
 }
 

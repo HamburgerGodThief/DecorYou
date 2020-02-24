@@ -14,8 +14,11 @@ class ResumeViewController: UIViewController {
     @IBOutlet weak var logoImg: UIImageView!
     @IBOutlet weak var serviceLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
-    @IBOutlet weak var styleLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var chatBtn: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var nullImageView: UIImageView!
+    @IBOutlet weak var nullLabel: UILabel!
     var craftsman: User?
     var allProfolio: [Profolio] = []
     let itemSpace: CGFloat = 3
@@ -43,18 +46,31 @@ class ResumeViewController: UIViewController {
         guard let craftsman = craftsman else { return }
         logoImg.loadImage(craftsman.img)
         guard let serviceCat = craftsman.serviceCategory else { return }
-        serviceLabel.text = "服務項目: \(serviceCat)"
+        let location = craftsman.serviceLocation.reduce("", { (sum, string) -> String in
+            return sum + string + "、"
+        })
+        serviceLabel.text = "職業: \(serviceCat)"
+        locationLabel.text = "地區: \(location)"
+        emailLabel.text = "電子信箱: \(craftsman.email)"
         
         UserManager.shared.fetchSpecificCraftsmanProfolio(uid: craftsman.uid, completion: { [weak self] result in
             guard let strongSelf = self else { return }
             switch result {
             case .success(let allProfolio):
                 strongSelf.allProfolio = allProfolio
+                if strongSelf.allProfolio.count == 0 {
+                    strongSelf.showNullAlert(shouldShow: false)
+                }
                 strongSelf.resumeCollectionView.reloadData()
             case .failure(let error):
                 print(error)
             }
         })
+    }
+    
+    func showNullAlert(shouldShow: Bool) {
+        nullLabel.isHidden = shouldShow
+        nullImageView.isHidden = shouldShow
     }
     
     @objc func backToCraftsmen() {
@@ -70,6 +86,10 @@ class ResumeViewController: UIViewController {
         resumeCollectionView.dataSource = self
         resumeCollectionView.delegate = self
         resumeCollectionView.lk_registerCellWithNib(identifier: String(describing: ResumeCollectionViewCell.self), bundle: nil)
+        titleLabel.layer.borderColor = UIColor.lightGray.cgColor
+        titleLabel.layer.borderWidth = 1
+        nullImageView.isHidden = true
+        nullLabel.isHidden = true
     }
     
 }

@@ -29,11 +29,36 @@ class CraftsmenFilterViewController: UIViewController {
                     "金門縣", "連江縣"]
     
     @IBAction func didTouchSet(_ sender: Any) {
+        guard let tabVC = self.presentingViewController as? STTabBarViewController else { return }
+        guard let navVC = tabVC.selectedViewController as? UINavigationController else { return }
+        guard let craftsmenVC = navVC.topViewController as? CraftsmenViewController else { return }
+        var fitlerCraftsmen = craftsmenVC.allCraftsmen
         
+        for condition in conditionsArray {
+            fitlerCraftsmen = condition.filter(data: fitlerCraftsmen)
+        }
+        
+        craftsmenVC.filterCraftsmen = fitlerCraftsmen
+        craftsmenVC.finalData = craftsmenVC.filterCraftsmen
+        if conditionsArray.isEmpty {
+            craftsmenVC.isFilter = false
+        } else {
+            craftsmenVC.isFilter = true
+        }
+        craftsmenVC.showNavRightButton(shouldShow: true)
+        craftsmenVC.craftsmenCollectionView.reloadData()
+        dismiss(animated: false, completion: nil)
     }
     
     @IBAction func didTouchReset(_ sender: Any) {
+        guard let tabVC = self.presentingViewController as? STTabBarViewController else { return }
+        guard let navVC = tabVC.selectedViewController as? UINavigationController else { return }
+        guard let craftsmenVC = navVC.topViewController as? CraftsmenViewController else { return }
+        craftsmenVC.finalData = craftsmenVC.allCraftsmen
+        
         conditionsArray = []
+        firstConditionCell = []
+        secondConditionCell = []
         collectionView.reloadData()
     }
     
@@ -170,57 +195,4 @@ extension CraftsmenFilterViewController: UICollectionViewDelegateFlowLayout, UIC
             }
         }
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        guard let cell = collectionView.cellForItem(at: indexPath) as? FilterCollectionViewCell else { return }
-//        if conditionCells.contains(cell) {
-//            cell.backgroundColor = UIColor.assetColor(.shadowLightGray)
-//            cell.layer.borderWidth = 0
-//            cell.select = false
-//            guard let index = conditionCells.firstIndex(of: cell) else { return }
-//            conditionCells.remove(at: index)
-//            if indexPath.section == 0 {
-//                conditionsArray =  conditionsArray.filter { element in
-//                    if element as? ServiceCategoryCondition == nil {
-//                        return true
-//                    }
-//                    return false
-//                }
-//            } else {
-//                conditionsArray =  conditionsArray.filter { element in
-//                    if element as? ServiceLocationCondition == nil {
-//                        return true
-//                    }
-//                    return false
-//                }
-//            }
-//        } else {
-//            cell.select = true
-//            cell.backgroundColor = .white
-//            cell.layer.borderWidth = 1
-//            cell.layer.borderColor = UIColor.assetColor(.mainColor)?.cgColor
-//            conditionCells.append(cell)
-//            if indexPath.section == 0 {
-//                conditionsArray =  conditionsArray.filter { element in
-//                    if element as? ServiceCategoryCondition == nil {
-//                        return true
-//                    }
-//                    return false
-//                }
-//                guard let catText = cell.optionLabel.text else { return }
-//                let catetory = ServiceCategoryCondition(conditionValue: catText)
-//                conditionsArray.append(catetory)
-//            } else {
-//                conditionsArray =  conditionsArray.filter { element in
-//                    if element as? ServiceLocationCondition == nil {
-//                        return true
-//                    }
-//                    return false
-//                }
-//                guard let locationText = cell.optionLabel.text else { return }
-//                let location = ServiceLocationCondition(conditionValue: locationText)
-//                conditionsArray.append(location)
-//            }
-//        }
-//    }
 }

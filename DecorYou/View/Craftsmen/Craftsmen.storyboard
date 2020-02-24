@@ -27,11 +27,19 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry, we couldn't find any content." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gt8-JC-dtx">
+                                <rect key="frame" x="66.5" y="436" width="281" height="24"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="fLs-2V-pbd" firstAttribute="trailing" secondItem="5Mo-l9-cgr" secondAttribute="trailing" id="39S-Gk-Yzl"/>
                             <constraint firstItem="5Mo-l9-cgr" firstAttribute="leading" secondItem="fLs-2V-pbd" secondAttribute="leading" id="I9U-qV-gca"/>
+                            <constraint firstItem="gt8-JC-dtx" firstAttribute="centerX" secondItem="hPU-jV-weP" secondAttribute="centerX" id="Tnf-4v-wLj"/>
+                            <constraint firstItem="gt8-JC-dtx" firstAttribute="centerY" secondItem="hPU-jV-weP" secondAttribute="centerY" id="ipk-n9-UVZ"/>
                             <constraint firstItem="fLs-2V-pbd" firstAttribute="bottom" secondItem="5Mo-l9-cgr" secondAttribute="bottom" id="qZL-5Y-XSJ"/>
                             <constraint firstItem="5Mo-l9-cgr" firstAttribute="top" secondItem="fLs-2V-pbd" secondAttribute="top" id="xWN-hX-Lnx"/>
                         </constraints>
@@ -40,6 +48,7 @@
                     <navigationItem key="navigationItem" id="StI-3L-YGH"/>
                     <connections>
                         <outlet property="craftsmenCollectionView" destination="5Mo-l9-cgr" id="91f-qV-Dx6"/>
+                        <outlet property="searchResultLabel" destination="gt8-JC-dtx" id="wgU-Tu-CZV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y8Y-63-EWL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -216,7 +225,7 @@
                                     <constraint firstAttribute="width" constant="120" id="pfY-5q-yBs"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="服務項目：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHp-CZ-vf1">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="職業：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHp-CZ-vf1">
                                 <rect key="frame" x="138" y="77" width="252" height="21"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="15"/>
                                 <nil key="textColor"/>
@@ -228,13 +237,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="服務地區：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O21-dc-yH3">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="地區：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O21-dc-yH3">
                                 <rect key="frame" x="138" y="116" width="275" height="21"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="擅長風格：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vBG-RS-AiU">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="作品總數：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vBG-RS-AiU">
                                 <rect key="frame" x="138" y="155" width="252" height="21"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="15"/>
                                 <nil key="textColor"/>
@@ -254,6 +263,19 @@
                                     <action selector="startConversation:" destination="LVR-DT-Hub" eventType="touchUpInside" id="XEI-qo-JL4"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="此業者尚未上傳任何作品" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s1W-k2-r27">
+                                <rect key="frame" x="58.5" y="584" width="297" height="38"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="27"/>
+                                <color key="textColor" red="0.60392156862745094" green="0.60392156862745094" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icons_96px_Null" translatesAutoresizingMaskIntoConstraints="NO" id="1HO-bf-Ywm">
+                                <rect key="frame" x="127" y="404" width="160" height="160"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="1HO-bf-Ywm" secondAttribute="height" multiplier="1:1" id="B9Z-QS-S43"/>
+                                    <constraint firstAttribute="height" constant="160" id="GBM-py-yjs"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -262,11 +284,15 @@
                             <constraint firstItem="pRD-EB-Nai" firstAttribute="bottom" secondItem="psw-Mn-4gT" secondAttribute="bottom" id="1nD-B2-I7w"/>
                             <constraint firstItem="pRD-EB-Nai" firstAttribute="trailing" secondItem="vBG-RS-AiU" secondAttribute="trailing" constant="24" id="2qg-mA-Cg2"/>
                             <constraint firstItem="toh-bW-MfD" firstAttribute="top" secondItem="Yot-Gg-tDl" secondAttribute="bottom" id="38v-uZ-Df3"/>
+                            <constraint firstItem="1HO-bf-Ywm" firstAttribute="centerX" secondItem="lLV-fl-EJn" secondAttribute="centerX" id="3hx-Er-lmv"/>
+                            <constraint firstItem="psw-Mn-4gT" firstAttribute="top" secondItem="s1W-k2-r27" secondAttribute="bottom" constant="180" id="5A5-hx-8qB"/>
+                            <constraint firstItem="s1W-k2-r27" firstAttribute="top" secondItem="1HO-bf-Ywm" secondAttribute="bottom" constant="20" id="ACk-JM-4SA"/>
                             <constraint firstItem="toh-bW-MfD" firstAttribute="trailing" secondItem="pRD-EB-Nai" secondAttribute="trailing" id="Br7-NQ-waD"/>
                             <constraint firstItem="vBG-RS-AiU" firstAttribute="top" secondItem="O21-dc-yH3" secondAttribute="bottom" constant="18" id="MHy-Y4-tOt"/>
                             <constraint firstItem="toh-bW-MfD" firstAttribute="leading" secondItem="pRD-EB-Nai" secondAttribute="leading" id="Ma5-zi-geM"/>
                             <constraint firstItem="psw-Mn-4gT" firstAttribute="leading" secondItem="pRD-EB-Nai" secondAttribute="leading" id="O3l-GR-olz"/>
                             <constraint firstItem="psw-Mn-4gT" firstAttribute="top" secondItem="toh-bW-MfD" secondAttribute="bottom" id="OcY-DW-Dc6"/>
+                            <constraint firstItem="s1W-k2-r27" firstAttribute="centerX" secondItem="lLV-fl-EJn" secondAttribute="centerX" id="PVT-97-jU7"/>
                             <constraint firstItem="O21-dc-yH3" firstAttribute="leading" secondItem="yMM-BL-iis" secondAttribute="trailing" constant="12" id="VSs-Cj-i5G"/>
                             <constraint firstItem="yMM-BL-iis" firstAttribute="leading" secondItem="pRD-EB-Nai" secondAttribute="leading" constant="6" id="XJz-Uu-zT0"/>
                             <constraint firstItem="pRD-EB-Nai" firstAttribute="trailing" secondItem="cHp-CZ-vf1" secondAttribute="trailing" constant="24" id="Xp4-LS-npa"/>
@@ -283,11 +309,14 @@
                     </view>
                     <connections>
                         <outlet property="chatBtn" destination="psw-Mn-4gT" id="nOa-RT-5LB"/>
+                        <outlet property="emailLabel" destination="vBG-RS-AiU" id="RcW-QF-ka7"/>
                         <outlet property="locationLabel" destination="O21-dc-yH3" id="m6w-i6-WNC"/>
                         <outlet property="logoImg" destination="yMM-BL-iis" id="cQe-5w-ftJ"/>
+                        <outlet property="nullImageView" destination="1HO-bf-Ywm" id="rsN-HX-mda"/>
+                        <outlet property="nullLabel" destination="s1W-k2-r27" id="Ccx-Aj-yxk"/>
                         <outlet property="resumeCollectionView" destination="toh-bW-MfD" id="4NC-rI-Rdj"/>
                         <outlet property="serviceLabel" destination="cHp-CZ-vf1" id="zO7-rS-F72"/>
-                        <outlet property="styleLabel" destination="vBG-RS-AiU" id="RcW-QF-ka7"/>
+                        <outlet property="titleLabel" destination="Yot-Gg-tDl" id="D9Q-uW-Zyl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DGQ-89-qMk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -456,6 +485,7 @@
     </scenes>
     <resources>
         <image name="AuthBackground" width="467" height="700.5"/>
+        <image name="Icons_96px_Null" width="64" height="64"/>
         <namedColor name="mainColor">
             <color red="0.30199998617172241" green="0.6470000147819519" blue="0.65499997138977051" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

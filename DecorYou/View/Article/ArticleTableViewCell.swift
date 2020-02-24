@@ -15,10 +15,11 @@ class ArticleTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var nameTimeLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
-        
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        backView.layer.cornerRadius = 20
+        backView.layer.cornerRadius = 25
         authorImgView.layer.cornerRadius = authorImgView.frame.size.width / 2
     }
 
