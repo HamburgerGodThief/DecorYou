@@ -16,7 +16,8 @@ class CraftsmenFilterViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var dismissView: UIView!
     var conditionsArray: [CraftsmenConditionDelegate] = []
-    var conditionCells: [FilterCollectionViewCell] = []
+    var firstConditionCell: [FilterCollectionViewCell] = []
+    var secondConditionCell: [FilterCollectionViewCell] = []
     let itemSpace: CGFloat = 18
     let columnCount: CGFloat = 3
     let serviceCategoryData: [String] = ["室內設計師", "木工師傅", "水電師傅",
@@ -57,7 +58,6 @@ class CraftsmenFilterViewController: UIViewController {
         resetBtn.layer.borderWidth = 1
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.allowsMultipleSelection = false
         collectionView.lk_registerCellWithNib(identifier: "FilterCollectionViewCell", bundle: nil)
     }
 }
@@ -98,8 +98,7 @@ extension CraftsmenFilterViewController: UICollectionViewDelegateFlowLayout, UIC
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FilterCollectionViewCell", for: indexPath) as? FilterCollectionViewCell else { return UICollectionViewCell() }
         cell.layer.cornerRadius = CGFloat(floor((collectionView.bounds.width - itemSpace * (columnCount - 1 + 2)) / columnCount)) / 6
-        cell.backgroundColor = UIColor.assetColor(.shadowLightGray)
-        cell.layer.borderWidth = 0
+        cell.select = false
         
         if indexPath.section == 0 {
             cell.optionLabel.text = serviceCategoryData[indexPath.item]
@@ -130,10 +129,7 @@ extension CraftsmenFilterViewController: UICollectionViewDelegateFlowLayout, UIC
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? FilterCollectionViewCell else { return }
-        cell.backgroundColor = .white
-        cell.layer.borderWidth = 1
-        cell.layer.borderColor = UIColor.assetColor(.mainColor)?.cgColor
-        
+        cell.select = !cell.select
         if indexPath.section == 0 {
             conditionsArray =  conditionsArray.filter { element in
                 if element as? ServiceCategoryCondition == nil {
@@ -141,9 +137,18 @@ extension CraftsmenFilterViewController: UICollectionViewDelegateFlowLayout, UIC
                 }
                 return false
             }
-            guard let catText = cell.optionLabel.text else { return }
-            let catetory = ServiceCategoryCondition(conditionValue: catText)
-            conditionsArray.append(catetory)
+            if firstConditionCell.contains(cell) {
+                firstConditionCell.removeFirst()
+            } else {
+                firstConditionCell.append(cell)
+                guard let catText = cell.optionLabel.text else { return }
+                let catetory = ServiceCategoryCondition(conditionValue: catText)
+                conditionsArray.append(catetory)
+            }
+            if firstConditionCell.count > 1 {
+                firstConditionCell[0].select = !firstConditionCell[0].select
+                firstConditionCell.removeFirst()
+            }
         } else {
             conditionsArray =  conditionsArray.filter { element in
                 if element as? ServiceLocationCondition == nil {
@@ -151,16 +156,19 @@ extension CraftsmenFilterViewController: UICollectionViewDelegateFlowLayout, UIC
                 }
                 return false
             }
-            guard let locationText = cell.optionLabel.text else { return }
-            let location = ServiceLocationCondition(conditionValue: locationText)
-            conditionsArray.append(location)
+            if secondConditionCell.contains(cell) {
+                secondConditionCell.removeFirst()
+            } else {
+                secondConditionCell.append(cell)
+                guard let locationText = cell.optionLabel.text else { return }
+                let location = ServiceLocationCondition(conditionValue: locationText)
+                conditionsArray.append(location)
+            }
+            if secondConditionCell.count > 1 {
+                secondConditionCell[0].select = !secondConditionCell[0].select
+                secondConditionCell.removeFirst()
+            }
         }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? FilterCollectionViewCell else { return }
-        cell.backgroundColor = UIColor.assetColor(.shadowLightGray)
-        cell.layer.borderWidth = 0
     }
     
 //    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
