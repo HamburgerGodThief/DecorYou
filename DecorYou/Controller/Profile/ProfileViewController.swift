@@ -14,6 +14,7 @@ class ProfileViewController: UIViewController {
     
     @IBOutlet weak var yourPostContainerView: UIView!
     @IBOutlet weak var favoritePostContainerView: UIView!
+    @IBOutlet weak var profolioContainerView: UIView!
     @IBOutlet weak var backgroundImg: UIImageView!
     @IBOutlet weak var coverBackgroundView: UIView!
     @IBOutlet weak var profileImg: UIImageView!
@@ -30,8 +31,6 @@ class ProfileViewController: UIViewController {
     }
     @IBOutlet weak var editBtn: UIButton!
     @IBOutlet weak var logoutBtn: UIButton!
-    var yourPostVC: YourPostViewController!
-    var favoriteVC: FavoriteViewController!
     var user: User?
     let customerTabTitle: [String] = ["你的文章", "收藏文章"]
     let craftsmenTabTitle: [String] = ["你的文章", "收藏文章", "作品集"]
@@ -167,12 +166,23 @@ class ProfileViewController: UIViewController {
             
             favoritePostContainerView.alpha = 0
             
+            profolioContainerView.alpha = 0
+            
         } else if index == 1 {
             
             yourPostContainerView.alpha = 0
             
             favoritePostContainerView.alpha = 1
             
+            profolioContainerView.alpha = 0
+            
+        } else {
+            
+            yourPostContainerView.alpha = 0
+            
+            favoritePostContainerView.alpha = 0
+            
+            profolioContainerView.alpha = 1
         }
         
     }

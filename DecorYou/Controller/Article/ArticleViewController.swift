@@ -55,7 +55,7 @@ class ArticleViewController: UIViewController {
         group1.enter()
         group0.notify(queue: queue0) { [weak self] in
             guard let strongSelf = self else { return }
-            for order in 0...strongSelf.articlesData.count - 1 {
+            for order in 0..<strongSelf.articlesData.count {
                 group1.enter()
                 strongSelf.articlesData[order].author.getDocument(completion: { (document, error) in
                     if let error = error {
@@ -93,7 +93,6 @@ class ArticleViewController: UIViewController {
         searchBar.delegate = self
         searchBar.showsCancelButton = false
         searchBar.searchTextField.backgroundColor = UIColor.assetColor(.darkMainColor)
-        
     }
     
     func setNavBar() {
@@ -273,9 +272,9 @@ extension ArticleViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if isChangeLayout {
-            return 80
+            return tableView.frame.height / 10.5
         } else {
-            return 220
+            return tableView.frame.height / 3.5
         }
     }
     
@@ -290,29 +289,11 @@ extension ArticleViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let article = (searchController.searchBar.searchTextField.isEditing) ? searchResults[indexPath.row]: finalArticlesData[indexPath.row]
         guard let authorObject = article.authorObject else { return UITableViewCell() }
-        var intervalString: String {
-            let interval = Date().timeIntervalSince(article.createTime)
-            let days = Double(60 * 60 * 24)
-            let hours = Double(60 * 60)
-            let minutes = Double(60)
-            
-            if interval / days > 0 {
-                return "\(Int(interval / days))天前"
-            } else {
-                if interval / hours > 0 {
-                    return "\(Int(interval / hours))小時前"
-                } else {
-                    return "\(Int(interval / minutes))分前"
-                }
-            }
-            
-        }
-        
         if isChangeLayout == false {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ArticleTableViewCell.self), for: indexPath) as? ArticleTableViewCell else { return UITableViewCell() }
             cell.fillData(authorImgURLString: authorObject.img,
                           titleLabel: article.title,
-                          nameTimeLabel: "\(authorObject.name) ・ \(intervalString)",
+                          nameTimeLabel: "\(authorObject.name)・\(article.intervalString)",
                           contentLabel: article.content)
             cell.collectionView.delegate = self
             cell.collectionView.dataSource = self
@@ -324,7 +305,7 @@ extension ArticleViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ArticleListTableViewCell.self), for: indexPath) as? ArticleListTableViewCell else { return UITableViewCell() }
             cell.titleLabel.text = article.title
-            cell.nameAndCreateTime.text = "\(authorObject.name) ・ \(intervalString)"
+            cell.nameAndCreateTime.text = "\(authorObject.name)・\(article.intervalString)"
             cell.replyCount.text = "100"
             cell.loveCount.text = "\(article.loveCount)"
             return cell

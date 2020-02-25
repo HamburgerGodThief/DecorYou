@@ -43,7 +43,7 @@ class ReplyViewController: UIViewController {
         guard let uid = UserDefaults.standard.string(forKey: "UserToken") else { return }
         let authorRef = UserManager.shared.db.collection("users").document("\(uid)")
         let reply = Reply(author: authorRef, content: replyContentTextView.text, createTime: Date(), replyID: newReply.documentID)
-        ArticleManager.shared.replyPost(postID: mainArticle.postID, newReplyID: newReply.documentID, reply: reply)
+        ArticleManager.shared.replyPost(postID: mainArticle.postID, replyCount: mainArticle.replyCount + 1, newReplyID: newReply.documentID, reply: reply)
     }
     
     func setLayoutDefault() {

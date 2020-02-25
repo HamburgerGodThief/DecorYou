@@ -75,6 +75,7 @@ class NewPostViewController: UIViewController {
                               decorateStyle: decorateStyle,
                               location: location,
                               loveCount: 0,
+                              replyCount: 0,
                               postID: newPost.documentID,
                               size: size,
                               collaborator: collaboratorRefs,

@@ -19,9 +19,6 @@ class YourPostViewController: UIViewController {
         yourPostTableView.dataSource = self
         yourPostTableView.lk_registerCellWithNib(identifier: String(describing: YourPostTableViewCell.self), bundle: nil)
         yourPostTableView.separatorStyle = .none
-        yourPostTableView.estimatedRowHeight = 150
-        yourPostTableView.rowHeight = UITableView.automaticDimension
-        yourPostTableView.allowsSelection = false
     }
     
     func getSelfPost() {
@@ -49,6 +46,10 @@ class YourPostViewController: UIViewController {
 
 extension YourPostViewController: UITableViewDataSource, UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.frame.height / 5
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return yourPost.count
     }
@@ -59,5 +60,18 @@ extension YourPostViewController: UITableViewDataSource, UITableViewDelegate {
         cell.timeLabel.text = yourPost[indexPath.row].createTimeString
         cell.loveLabel.text = "\(yourPost[indexPath.row].loveCount)"
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let spring = UISpringTimingParameters(dampingRatio: 0.5, initialVelocity: CGVector(dx: 1.0, dy: 0.2))
+        let animator = UIViewPropertyAnimator(duration: 1.0, timingParameters: spring)
+        cell.alpha = 0
+        cell.transform = CGAffineTransform(translationX: 0, y: 100 * 0.6)
+        animator.addAnimations {
+            cell.alpha = 1
+            cell.transform = .identity
+            tableView.layoutIfNeeded()
+        }
+        animator.startAnimation(afterDelay: 0.1 * Double(indexPath.item))
     }
 }

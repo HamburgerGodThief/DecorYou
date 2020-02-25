@@ -21,15 +21,32 @@ struct Article: Codable {
     }
     let decorateStyle: [String]
     let location: String?
-    let loveCount: Int
+    var loveCount: Int
+    var replyCount: Int
     let postID: String
     let size: Int?
     let collaborator: [DocumentReference]
     let author: DocumentReference
     var authorObject: User?
+    var intervalString: String {
+        let interval = Date().timeIntervalSince(createTime)
+        let days = Double(60 * 60 * 24)
+        let hours = Double(60 * 60)
+        let minutes = Double(60)
+        
+        if interval / days >= 1 {
+            return "\(Int(interval / days))天前"
+        } else {
+            if interval / hours >= 1 {
+                return "\(Int(interval / hours))小時前"
+            } else {
+                return "\(Int(interval / minutes))分前"
+            }
+        }
+    }
     
     enum CodingKeys: String, CodingKey {
-        case author, title, postID, content, createTime, collaborator, size, loveCount, location, decorateStyle
+        case author, title, postID, content, createTime, collaborator, size, loveCount, replyCount, location, decorateStyle
     }
 }
 
@@ -45,6 +62,22 @@ struct Reply: Codable {
     }
     let replyID: String
     var comments: [Comment] = []
+    var intervalString: String {
+        let interval = Date().timeIntervalSince(createTime)
+        let days = Double(60 * 60 * 24)
+        let hours = Double(60 * 60)
+        let minutes = Double(60)
+        
+        if interval / days >= 1 {
+            return "\(Int(interval / days))天前"
+        } else {
+            if interval / hours >= 1 {
+                return "\(Int(interval / hours))小時前"
+            } else {
+                return "\(Int(interval / minutes))分前"
+            }
+        }
+    }
     
     enum CodingKeys: String, CodingKey {
         case author, content, createTime, replyID
@@ -63,6 +96,22 @@ struct Comment: Codable {
         return format.string(from: createTime)
     }
     let commentID: String
+    var intervalString: String {
+        let interval = Date().timeIntervalSince(createTime)
+        let days = Double(60 * 60 * 24)
+        let hours = Double(60 * 60)
+        let minutes = Double(60)
+        
+        if interval / days >= 1 {
+            return "\(Int(interval / days))天前"
+        } else {
+            if interval / hours >= 1 {
+                return "\(Int(interval / hours))小時前"
+            } else {
+                return "\(Int(interval / minutes))分前"
+            }
+        }
+    }
     
     enum CodingKeys: String, CodingKey {
         case author, content, createTime, commentID
@@ -129,32 +178,37 @@ class ArticleManager {
         }
     }
     
-    func fetchAllConditionPost(completion: @escaping (Result<[Article], Error>) -> Void) {
-        db.collection("article").order(by: "createTime", descending: true).getDocuments() { (querySnapshot, err) in
+    func fetchPostAuthorRef(authorRef: DocumentReference, completion: @escaping (Result<User, Error>) -> Void) {
+        
+        authorRef.getDocument(completion: { (document, err) in
+            
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
-                guard let querySnapShot = querySnapshot else { return }
-                var articles: [Article] = []
-                querySnapShot.documents.forEach { document in
-                    do {
-                        if let article = try document.data(as: Article.self, decoder: Firestore.Decoder()) {
-                            articles.append(article)
-                        }
-                    } catch{
-                        completion(.failure(error))
-                        return
+                guard let document = document else { return }
+                do {
+                    if let user = try document.data(as: User.self, decoder: Firestore.Decoder()) {
+                        completion(.success(user))
                     }
+                } catch {
+                    print(error)
+                    return
                 }
-                completion(.success(articles))
             }
-        }
+        })
     }
     
     //回覆文章
-    func replyPost(postID: String, newReplyID: String, reply: Reply) {
+    func replyPost(postID: String, replyCount: Int ,newReplyID: String, reply: Reply) {
         
         do { try db.collection("article").document("\(postID)").collection("replys").document(newReplyID).setData(from: reply)
+            db.collection("article").document(postID).setData(["replyCount": replyCount], merge: true) { err in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    print("Document successfully updated")
+                }
+            }
         } catch {
             print("Error writing city to Firestore: \(error)")
         }

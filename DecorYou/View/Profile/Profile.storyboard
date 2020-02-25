@@ -117,6 +117,12 @@
                                     <action selector="didTouchLogOut:" destination="Esd-sC-Sju" eventType="touchUpInside" id="zAh-LU-rYc"/>
                                 </connections>
                             </button>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ESw-eI-cvc">
+                                <rect key="frame" x="0.0" y="432.5" width="414" height="429.5"/>
+                                <connections>
+                                    <segue destination="F9a-YL-ECs" kind="embed" id="FAx-8d-9en"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -130,11 +136,14 @@
                             <constraint firstItem="h4F-dA-x1B" firstAttribute="centerX" secondItem="F0f-z3-ena" secondAttribute="centerX" id="GTi-fS-aiH"/>
                             <constraint firstItem="UCb-P0-GOm" firstAttribute="leading" secondItem="PhQ-eX-QJu" secondAttribute="trailing" id="Hxi-vk-h3a"/>
                             <constraint firstItem="lHK-qk-QnC" firstAttribute="width" secondItem="F0f-z3-ena" secondAttribute="width" multiplier="0.1" id="IoG-9K-zDn"/>
+                            <constraint firstItem="wEe-zI-0Ho" firstAttribute="bottom" secondItem="ESw-eI-cvc" secondAttribute="bottom" id="KTR-Lp-Flq"/>
                             <constraint firstItem="3gv-N6-SRD" firstAttribute="height" secondItem="F0f-z3-ena" secondAttribute="height" multiplier="0.065" id="OSS-s7-7Aw"/>
+                            <constraint firstItem="ESw-eI-cvc" firstAttribute="leading" secondItem="wEe-zI-0Ho" secondAttribute="leading" id="Oe0-3z-5GZ"/>
                             <constraint firstItem="wEe-zI-0Ho" firstAttribute="trailing" secondItem="irU-iZ-Ir1" secondAttribute="trailing" id="Q2l-QA-Pug"/>
                             <constraint firstItem="4X0-IW-Rba" firstAttribute="width" secondItem="F0f-z3-ena" secondAttribute="width" multiplier="2.5" id="Rjp-8q-ERM"/>
                             <constraint firstItem="irU-iZ-Ir1" firstAttribute="top" secondItem="3gv-N6-SRD" secondAttribute="bottom" id="SZ3-mR-6hy"/>
                             <constraint firstItem="wEe-zI-0Ho" firstAttribute="trailing" secondItem="9Wk-cn-O1x" secondAttribute="trailing" id="TV7-Ku-ck1"/>
+                            <constraint firstItem="ESw-eI-cvc" firstAttribute="top" secondItem="3gv-N6-SRD" secondAttribute="bottom" constant="3" id="We4-XL-Uxf"/>
                             <constraint firstItem="3gv-N6-SRD" firstAttribute="leading" secondItem="wEe-zI-0Ho" secondAttribute="leading" id="ZF6-qb-0cR"/>
                             <constraint firstItem="dO8-Bm-58D" firstAttribute="top" secondItem="F0f-z3-ena" secondAttribute="top" id="ZdS-6L-dfD"/>
                             <constraint firstItem="UCb-P0-GOm" firstAttribute="bottom" secondItem="lHK-qk-QnC" secondAttribute="bottom" id="b7v-MH-Tna"/>
@@ -144,6 +153,7 @@
                             <constraint firstItem="wEe-zI-0Ho" firstAttribute="trailing" secondItem="3gv-N6-SRD" secondAttribute="trailing" id="gVR-yi-0Yc"/>
                             <constraint firstItem="h4F-dA-x1B" firstAttribute="top" secondItem="UCb-P0-GOm" secondAttribute="bottom" constant="10" id="gis-Wg-18J"/>
                             <constraint firstItem="4X0-IW-Rba" firstAttribute="centerX" secondItem="F0f-z3-ena" secondAttribute="centerX" id="nM3-gY-BkL"/>
+                            <constraint firstItem="wEe-zI-0Ho" firstAttribute="trailing" secondItem="ESw-eI-cvc" secondAttribute="trailing" id="p7R-zi-lUj"/>
                             <constraint firstItem="9Wk-cn-O1x" firstAttribute="leading" secondItem="wEe-zI-0Ho" secondAttribute="leading" id="pqx-pJ-ZPu"/>
                             <constraint firstItem="wEe-zI-0Ho" firstAttribute="bottom" secondItem="irU-iZ-Ir1" secondAttribute="bottom" id="qhQ-RX-BKL"/>
                             <constraint firstItem="PhQ-eX-QJu" firstAttribute="width" secondItem="F0f-z3-ena" secondAttribute="width" multiplier="0.1" id="rZw-Ep-48F"/>
@@ -162,6 +172,7 @@
                         <outlet property="logoutBtn" destination="PhQ-eX-QJu" id="dHM-nn-1MU"/>
                         <outlet property="profileImg" destination="UCb-P0-GOm" id="2NH-az-5ak"/>
                         <outlet property="profileNameLabel" destination="h4F-dA-x1B" id="TO6-3m-OkU"/>
+                        <outlet property="profolioContainerView" destination="ESw-eI-cvc" id="7Yc-k0-oIf"/>
                         <outlet property="yourPostContainerView" destination="irU-iZ-Ir1" id="UPE-MY-3ch"/>
                     </connections>
                 </viewController>
@@ -174,11 +185,11 @@
             <objects>
                 <viewController storyboardIdentifier="CraftsmenResumeViewController" id="F9a-YL-ECs" customClass="CraftsmenResumeViewController" customModule="DecorYou" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fXs-dl-erp">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="432.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="PbZ-FI-yyo">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="388.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1fz-wF-ua4">
                                     <size key="itemSize" width="50" height="50"/>
@@ -189,11 +200,10 @@
                                 <cells/>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vbq-w8-cJS">
-                                <rect key="frame" x="338" y="786" width="60" height="60"/>
+                                <rect key="frame" x="336" y="354.5" width="62" height="62"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Vbq-w8-cJS" secondAttribute="height" multiplier="1:1" id="2Ga-bq-Xlb"/>
-                                    <constraint firstAttribute="height" constant="60" id="cyb-ck-269"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="42"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -205,13 +215,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上傳你的作品" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bXL-rz-vkD">
-                                <rect key="frame" x="108" y="394" width="198" height="46.5"/>
-                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="33"/>
+                                <rect key="frame" x="126" y="197.5" width="162" height="38"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="27"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上傳你的作品後，這些內容會顯示在你的個人檔案中" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tVp-p7-gfU">
-                                <rect key="frame" x="20" y="452.5" width="374" height="22.5"/>
+                                <rect key="frame" x="23" y="241.5" width="368" height="22.5"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -219,18 +229,17 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="VIk-Th-Nm6" firstAttribute="trailing" secondItem="tVp-p7-gfU" secondAttribute="trailing" constant="20" id="3IP-3T-5bB"/>
-                            <constraint firstItem="tVp-p7-gfU" firstAttribute="leading" secondItem="VIk-Th-Nm6" secondAttribute="leading" constant="20" id="Li6-fu-jXF"/>
-                            <constraint firstItem="tVp-p7-gfU" firstAttribute="centerX" secondItem="fXs-dl-erp" secondAttribute="centerX" id="MZp-qC-dQt"/>
-                            <constraint firstItem="tVp-p7-gfU" firstAttribute="top" secondItem="bXL-rz-vkD" secondAttribute="bottom" constant="12" id="RaX-qU-iex"/>
-                            <constraint firstItem="bXL-rz-vkD" firstAttribute="top" secondItem="VIk-Th-Nm6" secondAttribute="top" constant="350" id="aVn-Au-VtM"/>
-                            <constraint firstItem="VIk-Th-Nm6" firstAttribute="trailing" secondItem="Vbq-w8-cJS" secondAttribute="trailing" constant="16" id="eYX-if-lwP"/>
-                            <constraint firstItem="VIk-Th-Nm6" firstAttribute="bottom" secondItem="Vbq-w8-cJS" secondAttribute="bottom" constant="16" id="jFH-Yx-NYG"/>
-                            <constraint firstItem="VIk-Th-Nm6" firstAttribute="trailing" secondItem="PbZ-FI-yyo" secondAttribute="trailing" id="ntI-oU-wWf"/>
-                            <constraint firstItem="PbZ-FI-yyo" firstAttribute="leading" secondItem="VIk-Th-Nm6" secondAttribute="leading" id="pi2-rN-NXa"/>
-                            <constraint firstItem="bXL-rz-vkD" firstAttribute="centerX" secondItem="fXs-dl-erp" secondAttribute="centerX" id="qny-jb-BoP"/>
-                            <constraint firstItem="PbZ-FI-yyo" firstAttribute="top" secondItem="VIk-Th-Nm6" secondAttribute="top" id="udb-2Q-G3t"/>
-                            <constraint firstItem="VIk-Th-Nm6" firstAttribute="bottom" secondItem="PbZ-FI-yyo" secondAttribute="bottom" id="vhL-Kd-CqF"/>
+                            <constraint firstItem="tVp-p7-gfU" firstAttribute="centerX" secondItem="fXs-dl-erp" secondAttribute="centerX" id="38O-f6-iqS"/>
+                            <constraint firstItem="Vbq-w8-cJS" firstAttribute="width" secondItem="fXs-dl-erp" secondAttribute="width" multiplier="0.15" id="C20-Q8-GlR"/>
+                            <constraint firstItem="PbZ-FI-yyo" firstAttribute="trailing" secondItem="VIk-Th-Nm6" secondAttribute="trailing" id="KOm-yT-las"/>
+                            <constraint firstItem="PbZ-FI-yyo" firstAttribute="top" secondItem="VIk-Th-Nm6" secondAttribute="top" id="Xb0-cw-CoZ"/>
+                            <constraint firstItem="tVp-p7-gfU" firstAttribute="top" secondItem="bXL-rz-vkD" secondAttribute="bottom" constant="6" id="Zhg-Ab-d6m"/>
+                            <constraint firstItem="bXL-rz-vkD" firstAttribute="centerY" secondItem="fXs-dl-erp" secondAttribute="centerY" id="ZrU-lf-TtC"/>
+                            <constraint firstItem="PbZ-FI-yyo" firstAttribute="leading" secondItem="VIk-Th-Nm6" secondAttribute="leading" id="fQ0-Fn-nmv"/>
+                            <constraint firstItem="VIk-Th-Nm6" firstAttribute="trailing" secondItem="Vbq-w8-cJS" secondAttribute="trailing" constant="16" id="lN8-hL-rKf"/>
+                            <constraint firstItem="PbZ-FI-yyo" firstAttribute="bottom" secondItem="VIk-Th-Nm6" secondAttribute="bottom" id="q7y-d7-nZA"/>
+                            <constraint firstItem="VIk-Th-Nm6" firstAttribute="bottom" secondItem="Vbq-w8-cJS" secondAttribute="bottom" constant="16" id="qsm-GL-t78"/>
+                            <constraint firstItem="bXL-rz-vkD" firstAttribute="centerX" secondItem="fXs-dl-erp" secondAttribute="centerX" id="yOQ-86-tPm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VIk-Th-Nm6"/>
                     </view>
@@ -243,7 +252,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KOb-R8-hZS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2410" y="-216"/>
+            <point key="canvasLocation" x="2348" y="418"/>
         </scene>
         <!--Upload Profolio View Controller-->
         <scene sceneID="12a-ye-66e">
@@ -303,7 +312,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DAz-s8-cTw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1930" y="418"/>
+            <point key="canvasLocation" x="1614" y="418"/>
         </scene>
         <!--Your Post View Controller-->
         <scene sceneID="if9-XX-FH5">
@@ -333,7 +342,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="feX-td-fkb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1304" y="418"/>
+            <point key="canvasLocation" x="886" y="418"/>
         </scene>
         <!--Photos View Controller-->
         <scene sceneID="ZZX-4G-eFN">
