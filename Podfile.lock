@@ -261,6 +261,7 @@ PODS:
     - Kingfisher/Core (= 5.11.0)
   - Kingfisher/Core (5.11.0)
   - leveldb-library (1.22)
+  - lottie-ios (3.1.6)
   - nanopb (0.3.9011):
     - nanopb/decode (= 0.3.9011)
     - nanopb/encode (= 0.3.9011)
@@ -276,6 +277,7 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift
   - JGProgressHUD
   - Kingfisher (~> 5.0)
+  - lottie-ios
 
 SPEC REPOS:
   trunk:
@@ -301,6 +303,7 @@ SPEC REPOS:
     - JGProgressHUD
     - Kingfisher
     - leveldb-library
+    - lottie-ios
     - nanopb
 
 SPEC CHECKSUMS:
@@ -326,8 +329,9 @@ SPEC CHECKSUMS:
   JGProgressHUD: aa403e9a5b45cae98903c4600cccdd98c0c3ec90
   Kingfisher: 4569606189149e19c7d9439f47e885d0679b7a90
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
+  lottie-ios: 85ce835dd8c53e02509f20729fc7d6a4e6645a0a
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
 
-PODFILE CHECKSUM: def0893896c477e9b1e9c070c01c9d57f73e6545
+PODFILE CHECKSUM: 0c7822afb1da7365e4cd16986d6e9ef589a229a4
 
 COCOAPODS: 1.8.4

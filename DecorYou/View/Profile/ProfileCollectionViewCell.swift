@@ -1,5 +1,5 @@
 //
-//  NewProfileCollectionViewCell.swift
+//  ProfileCollectionViewCell.swift
 //  DecorYou
 //
 //  Created by Hamburger on 2020/2/24.
@@ -8,10 +8,8 @@
 
 import UIKit
 
-class NewProfileCollectionViewCell: UICollectionViewCell {
+class ProfileCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var tabTitleLabel: UILabel!
-    
-    var touchHandler: ((NewProfileCollectionViewCell) -> Void)?
-    
+        
 }

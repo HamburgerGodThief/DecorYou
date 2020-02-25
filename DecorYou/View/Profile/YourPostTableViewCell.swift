@@ -10,12 +10,17 @@ import UIKit
 
 class YourPostTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var collectionView: UICollectionView!
+    
+    @IBOutlet weak var backView: UIView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var replyLabel: UILabel!
+    @IBOutlet weak var loveLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        collectionView.layer.cornerRadius = 30
+        backView.layer.cornerRadius = backView.frame.height / 2
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

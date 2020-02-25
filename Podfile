@@ -14,4 +14,5 @@ target 'DecorYou' do
   pod 'IQKeyboardManagerSwift'
   pod 'Kingfisher', '~> 5.0'
   pod 'JGProgressHUD'
+  pod 'lottie-ios'
 end
