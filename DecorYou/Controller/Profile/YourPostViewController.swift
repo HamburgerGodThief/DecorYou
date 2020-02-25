@@ -12,6 +12,23 @@ class YourPostViewController: UIViewController {
     
     @IBOutlet weak var yourPostTableView: UITableView!
     var yourPost: [Article] = []
+    var user: User?
+    
+    func getSelfPost() {
+        guard let user = user else { return }
+        for selfPostRef in user.selfPost {
+            ArticleManager.shared.fetchPostRef(postRef: selfPostRef, completion: { [weak self] result in
+                guard let strongSelf = self else { return }
+                switch result {
+                case .success(let article):
+                    strongSelf.yourPost.append(article)
+                    strongSelf.yourPostTableView.reloadData()
+                case .failure(let error):
+                    print(error)
+                }
+            })
+        }
+    }
     
     func setTableView() {
         yourPostTableView.delegate = self
@@ -26,6 +43,7 @@ class YourPostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setTableView()
+        getSelfPost()
     }
 }
 

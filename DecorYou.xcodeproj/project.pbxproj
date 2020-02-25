@@ -79,6 +79,8 @@
 		64FA8E46240256CA000A1334 /* CraftsmenFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA8E45240256CA000A1334 /* CraftsmenFilterViewController.swift */; };
 		64FA8E4824025B3D000A1334 /* CraftsmenFilterCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA8E4724025B3D000A1334 /* CraftsmenFilterCondition.swift */; };
 		64FA8E4E2402660B000A1334 /* CraftsmenFilterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA8E4D2402660B000A1334 /* CraftsmenFilterCollectionReusableView.swift */; };
+		64FA8E502403BCEE000A1334 /* NewProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA8E4F2403BCEE000A1334 /* NewProfileViewController.swift */; };
+		64FA8E522403D488000A1334 /* NewProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA8E512403D488000A1334 /* NewProfileCollectionViewCell.swift */; };
 		64FAB11F23EC001A0073235C /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FAB11E23EC001A0073235C /* UserManager.swift */; };
 		64FAB12323ED36130073235C /* JGProgressWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FAB12223ED36130073235C /* JGProgressWrapper.swift */; };
 		64FAB12523ED49F70073235C /* ArticleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FAB12423ED49F70073235C /* ArticleManager.swift */; };
@@ -137,6 +139,7 @@
 		64FE4EE523EA643300A5D3EC /* YourPostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FE4EE323EA643300A5D3EC /* YourPostCollectionViewCell.swift */; };
 		64FE4EE623EA643300A5D3EC /* YourPostCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FE4EE423EA643300A5D3EC /* YourPostCollectionViewCell.xib */; };
 		64FE4EEA23EA72B900A5D3EC /* CraftsmenResumeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FE4EE923EA72B900A5D3EC /* CraftsmenResumeViewController.swift */; };
+		64FFF8512404A12D00CD7254 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FFF8502404A12D00CD7254 /* TestViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -216,6 +219,8 @@
 		64FA8E45240256CA000A1334 /* CraftsmenFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CraftsmenFilterViewController.swift; sourceTree = "<group>"; };
 		64FA8E4724025B3D000A1334 /* CraftsmenFilterCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CraftsmenFilterCondition.swift; sourceTree = "<group>"; };
 		64FA8E4D2402660B000A1334 /* CraftsmenFilterCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CraftsmenFilterCollectionReusableView.swift; sourceTree = "<group>"; };
+		64FA8E4F2403BCEE000A1334 /* NewProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProfileViewController.swift; sourceTree = "<group>"; };
+		64FA8E512403D488000A1334 /* NewProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		64FAB11E23EC001A0073235C /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		64FAB12223ED36130073235C /* JGProgressWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGProgressWrapper.swift; sourceTree = "<group>"; };
 		64FAB12423ED49F70073235C /* ArticleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleManager.swift; sourceTree = "<group>"; };
@@ -274,6 +279,7 @@
 		64FE4EE323EA643300A5D3EC /* YourPostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourPostCollectionViewCell.swift; sourceTree = "<group>"; };
 		64FE4EE423EA643300A5D3EC /* YourPostCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YourPostCollectionViewCell.xib; sourceTree = "<group>"; };
 		64FE4EE923EA72B900A5D3EC /* CraftsmenResumeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CraftsmenResumeViewController.swift; sourceTree = "<group>"; };
+		64FFF8502404A12D00CD7254 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -548,6 +554,7 @@
 			isa = PBXGroup;
 			children = (
 				647A7CC323D83B7F005D1946 /* Profile.storyboard */,
+				64FA8E512403D488000A1334 /* NewProfileCollectionViewCell.swift */,
 				64FE4EC923E918EA00A5D3EC /* ProfileTableViewCell.swift */,
 				64FE4ECA23E918EA00A5D3EC /* ProfileTableViewCell.xib */,
 				64FE4ED723E9875E00A5D3EC /* InfoTableViewCell.swift */,
@@ -570,12 +577,14 @@
 			isa = PBXGroup;
 			children = (
 				647A7CD823D83E5E005D1946 /* ProfileViewController.swift */,
+				64FA8E4F2403BCEE000A1334 /* NewProfileViewController.swift */,
 				64FE4EE923EA72B900A5D3EC /* CraftsmenResumeViewController.swift */,
 				64012B9F23F7F7ED001D20D0 /* UploadProfolioViewController.swift */,
 				64F9D89723F9239D00F28186 /* PhotosViewController.swift */,
 				64FE4ED123E9838B00A5D3EC /* InfoViewController.swift */,
 				64FE4ED323E983B200A5D3EC /* FavoriteViewController.swift */,
 				64FE4ED523E983D500A5D3EC /* YourPostViewController.swift */,
+				64FFF8502404A12D00CD7254 /* TestViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -788,6 +797,7 @@
 				64FC819923E7EE2D0027DDEE /* ChatRoomTableViewCell.swift in Sources */,
 				64FAB13523EE528E0073235C /* LocationViewController.swift in Sources */,
 				64FE4ED923E9875E00A5D3EC /* InfoTableViewCell.swift in Sources */,
+				64FA8E502403BCEE000A1334 /* NewProfileViewController.swift in Sources */,
 				64FA429A23E341440065DCEF /* ArticleTableViewCell.swift in Sources */,
 				64FA7CCA23F5511B00975B03 /* PickCraftsmenViewController.swift in Sources */,
 				64FA42B323E3C5CD0065DCEF /* ResumeViewController.swift in Sources */,
@@ -802,6 +812,7 @@
 				64FAB14B23EFF0CD0073235C /* CollaboratorLogoCollectionViewCell.swift in Sources */,
 				64FC72E623FD26FD004F2A07 /* PhotoPageContainerViewController.swift in Sources */,
 				64FAB13923EEB6E00073235C /* CollaboratorViewController.swift in Sources */,
+				64FFF8512404A12D00CD7254 /* TestViewController.swift in Sources */,
 				64FC72EC23FD296B004F2A07 /* ZoomDismissalInteractionController.swift in Sources */,
 				64FA429D23E347060065DCEF /* KingFisherWrapper.swift in Sources */,
 				64FE4EC423E824CD00A5D3EC /* PickCustomerViewController.swift in Sources */,
@@ -815,6 +826,7 @@
 				64FE4ED023E95CB200A5D3EC /* RoundCorner+Shadow.swift in Sources */,
 				64FC818923E7BF3F0027DDEE /* ProfolioCollectionViewCell.swift in Sources */,
 				64FC72EA23FD2962004F2A07 /* ZoomAnimator.swift in Sources */,
+				64FA8E522403D488000A1334 /* NewProfileCollectionViewCell.swift in Sources */,
 				64FC72E423FD26EC004F2A07 /* ProfolioTestViewController.swift in Sources */,
 				64FA429523DD3BD60065DCEF /* STBaseViewController.swift in Sources */,
 				647A7CD323D83E33005D1946 /* AuthViewController.swift in Sources */,
