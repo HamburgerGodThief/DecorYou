@@ -49,6 +49,7 @@ class AuthenticationViewController: UIViewController {
         GIDSignIn.sharedInstance()?.presentingViewController = self
         GIDSignIn.sharedInstance()?.delegate = self
         googleSignInTapGesture()
+        navigationController?.navigationBar.isHidden = true
     }
 
 }
@@ -75,6 +76,7 @@ extension AuthenticationViewController: GIDSignInDelegate {
                 print(error.localizedDescription)
             }
             
+            strongSelf.performSegue(withIdentifier: "IdentifyVC", sender: nil)
 //            //拿取User存放在Google的資料
 //            guard let name = Auth.auth().currentUser?.displayName,
 //                let email = Auth.auth().currentUser?.email,
@@ -93,12 +95,6 @@ extension AuthenticationViewController: GIDSignInDelegate {
 //                               serviceCategory: "",
 //                               select: false)
 //            UserManager.shared.addUserData(uid: uid, user: newUser)
-                        
-            let storyboard = UIStoryboard.init(name: "Auth", bundle: nil)
-            guard let identifyVC = storyboard.instantiateViewController(identifier: AuthViewControllers.identifyViewController.rawValue) as? IdentifyViewController else { return }
-            identifyVC.modalPresentationStyle = .overFullScreen
-            strongSelf.present(identifyVC, animated: true, completion: nil)
-            
         }
     }
     

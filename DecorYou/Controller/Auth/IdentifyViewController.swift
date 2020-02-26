@@ -55,6 +55,7 @@ class IdentifyViewController: UIViewController {
         super.viewDidLoad()
         customerViewAddTapGesture()
         craftsmenViewAddTapGesture()
+        navigationController?.navigationBar.isHidden = true
     }
 
 }

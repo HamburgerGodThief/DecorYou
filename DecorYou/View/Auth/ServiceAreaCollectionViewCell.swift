@@ -24,8 +24,6 @@ class ServiceAreaCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-        
     }
 
 }

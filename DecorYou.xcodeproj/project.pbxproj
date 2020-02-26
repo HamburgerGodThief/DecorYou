@@ -106,6 +106,8 @@
 		64FBDA8224065A0C0089D9EA /* IdentifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FBDA8124065A0C0089D9EA /* IdentifyViewController.swift */; };
 		64FBDA84240661AF0089D9EA /* AreaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FBDA83240661AF0089D9EA /* AreaViewController.swift */; };
 		64FBDA86240661CE0089D9EA /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FBDA85240661CE0089D9EA /* CategoryViewController.swift */; };
+		64FBDA8924066B930089D9EA /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FBDA8724066B930089D9EA /* CategoryTableViewCell.swift */; };
+		64FBDA8A24066B930089D9EA /* CategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FBDA8824066B930089D9EA /* CategoryTableViewCell.xib */; };
 		64FC72D423FBF0D2004F2A07 /* CircularTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC72D323FBF0D2004F2A07 /* CircularTransition.swift */; };
 		64FC72E423FD26EC004F2A07 /* ProfolioTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC72E323FD26EC004F2A07 /* ProfolioTestViewController.swift */; };
 		64FC72E623FD26FD004F2A07 /* PhotoPageContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC72E523FD26FD004F2A07 /* PhotoPageContainerViewController.swift */; };
@@ -246,6 +248,8 @@
 		64FBDA8124065A0C0089D9EA /* IdentifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifyViewController.swift; sourceTree = "<group>"; };
 		64FBDA83240661AF0089D9EA /* AreaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaViewController.swift; sourceTree = "<group>"; };
 		64FBDA85240661CE0089D9EA /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		64FBDA8724066B930089D9EA /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
+		64FBDA8824066B930089D9EA /* CategoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryTableViewCell.xib; sourceTree = "<group>"; };
 		64FC72D323FBF0D2004F2A07 /* CircularTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularTransition.swift; sourceTree = "<group>"; };
 		64FC72E323FD26EC004F2A07 /* ProfolioTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfolioTestViewController.swift; sourceTree = "<group>"; };
 		64FC72E523FD26FD004F2A07 /* PhotoPageContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPageContainerViewController.swift; sourceTree = "<group>"; };
@@ -331,6 +335,8 @@
 			isa = PBXGroup;
 			children = (
 				647A7CD023D83DCA005D1946 /* Auth.storyboard */,
+				64FBDA8724066B930089D9EA /* CategoryTableViewCell.swift */,
+				64FBDA8824066B930089D9EA /* CategoryTableViewCell.xib */,
 				64012B9923F67043001D20D0 /* ServiceAreaCollectionViewCell.swift */,
 				64012B9A23F67043001D20D0 /* ServiceAreaCollectionViewCell.xib */,
 			);
@@ -552,8 +558,8 @@
 				64FE4EC523E824D900A5D3EC /* LogInViewController.swift */,
 				64FBDA7F240641320089D9EA /* AuthenticationViewController.swift */,
 				64FBDA8124065A0C0089D9EA /* IdentifyViewController.swift */,
-				64FBDA83240661AF0089D9EA /* AreaViewController.swift */,
 				64FBDA85240661CE0089D9EA /* CategoryViewController.swift */,
+				64FBDA83240661AF0089D9EA /* AreaViewController.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -651,6 +657,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				64FA429B23E341440065DCEF /* ArticleTableViewCell.xib in Resources */,
+				64FBDA8A24066B930089D9EA /* CategoryTableViewCell.xib in Resources */,
 				64FAB14823EEB9FD0073235C /* CollaboratorTableViewCell.xib in Resources */,
 				647A7CD123D83DCA005D1946 /* Auth.storyboard in Resources */,
 				64FAB14C23EFF0CD0073235C /* CollaboratorLogoCollectionViewCell.xib in Resources */,
@@ -812,6 +819,7 @@
 				64FC818D23E7C26E0027DDEE /* ProfolioTableViewCell.swift in Sources */,
 				64FC72F023FD2C12004F2A07 /* ProfolioCollectionReusableView.swift in Sources */,
 				64FE4EC823E83E9400A5D3EC /* UITextField+Extension.swift in Sources */,
+				64FBDA8924066B930089D9EA /* CategoryTableViewCell.swift in Sources */,
 				64FC819923E7EE2D0027DDEE /* ChatRoomTableViewCell.swift in Sources */,
 				64FBDA7624050B590089D9EA /* UIViewController+Extension.swift in Sources */,
 				64FAB13523EE528E0073235C /* LocationViewController.swift in Sources */,

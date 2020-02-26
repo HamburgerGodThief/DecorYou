@@ -19,8 +19,7 @@ class PickCraftsmenViewController: UIViewController {
     @IBOutlet weak var serviceAreaCollectionView: UICollectionView!
     var picker = UIPickerView()
     var selectAreaCell: [ServiceAreaCollectionViewCell] = []
-    let pickerData: [String] = ["室內設計師", "木工師傅", "水電師傅",
-                                "油漆師傅", "弱電師傅", "園藝設計師", "其他"]
+    let pickerData: [String] = []
     
     func setIBOutlet() {
         signUPBtn.layer.cornerRadius = 15
