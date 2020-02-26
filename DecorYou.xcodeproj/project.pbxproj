@@ -102,6 +102,10 @@
 		64FBDA7A24050C340089D9EA /* LoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FBDA7824050C340089D9EA /* LoadingViewController.xib */; };
 		64FBDA7C24050EA80089D9EA /* loadingAnimate.json in Resources */ = {isa = PBXBuildFile; fileRef = 64FBDA7B24050EA80089D9EA /* loadingAnimate.json */; };
 		64FBDA7E24061C2B0089D9EA /* SwiftMessageWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FBDA7D24061C2B0089D9EA /* SwiftMessageWrapper.swift */; };
+		64FBDA80240641320089D9EA /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FBDA7F240641320089D9EA /* AuthenticationViewController.swift */; };
+		64FBDA8224065A0C0089D9EA /* IdentifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FBDA8124065A0C0089D9EA /* IdentifyViewController.swift */; };
+		64FBDA84240661AF0089D9EA /* AreaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FBDA83240661AF0089D9EA /* AreaViewController.swift */; };
+		64FBDA86240661CE0089D9EA /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FBDA85240661CE0089D9EA /* CategoryViewController.swift */; };
 		64FC72D423FBF0D2004F2A07 /* CircularTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC72D323FBF0D2004F2A07 /* CircularTransition.swift */; };
 		64FC72E423FD26EC004F2A07 /* ProfolioTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC72E323FD26EC004F2A07 /* ProfolioTestViewController.swift */; };
 		64FC72E623FD26FD004F2A07 /* PhotoPageContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC72E523FD26FD004F2A07 /* PhotoPageContainerViewController.swift */; };
@@ -238,6 +242,10 @@
 		64FBDA7824050C340089D9EA /* LoadingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingViewController.xib; sourceTree = "<group>"; };
 		64FBDA7B24050EA80089D9EA /* loadingAnimate.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = loadingAnimate.json; path = ../../../loadingAnimate.json; sourceTree = "<group>"; };
 		64FBDA7D24061C2B0089D9EA /* SwiftMessageWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftMessageWrapper.swift; sourceTree = "<group>"; };
+		64FBDA7F240641320089D9EA /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
+		64FBDA8124065A0C0089D9EA /* IdentifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifyViewController.swift; sourceTree = "<group>"; };
+		64FBDA83240661AF0089D9EA /* AreaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaViewController.swift; sourceTree = "<group>"; };
+		64FBDA85240661CE0089D9EA /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		64FC72D323FBF0D2004F2A07 /* CircularTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularTransition.swift; sourceTree = "<group>"; };
 		64FC72E323FD26EC004F2A07 /* ProfolioTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfolioTestViewController.swift; sourceTree = "<group>"; };
 		64FC72E523FD26FD004F2A07 /* PhotoPageContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPageContainerViewController.swift; sourceTree = "<group>"; };
@@ -542,6 +550,10 @@
 				64012B9723F67009001D20D0 /* ServiceAreaViewController.swift */,
 				64FE4EC323E824CD00A5D3EC /* PickCustomerViewController.swift */,
 				64FE4EC523E824D900A5D3EC /* LogInViewController.swift */,
+				64FBDA7F240641320089D9EA /* AuthenticationViewController.swift */,
+				64FBDA8124065A0C0089D9EA /* IdentifyViewController.swift */,
+				64FBDA83240661AF0089D9EA /* AreaViewController.swift */,
+				64FBDA85240661CE0089D9EA /* CategoryViewController.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -589,6 +601,7 @@
 				647A7CA523D83376005D1946 /* Frameworks */,
 				647A7CA623D83376005D1946 /* Resources */,
 				8F45C7CA5CC3F96C50562D4B /* [CP] Embed Pods Frameworks */,
+				DE550DE1A5D90E22666E4BA4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -722,6 +735,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DecorYou/Pods-DecorYou-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		DE550DE1A5D90E22666E4BA4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DecorYou/Pods-DecorYou-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DecorYou/Pods-DecorYou-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DecorYou/Pods-DecorYou-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -733,9 +763,11 @@
 				64F9D89823F9239D00F28186 /* PhotosViewController.swift in Sources */,
 				64FAB13723EEAA160073235C /* SizeViewController.swift in Sources */,
 				647A7CB023D83376005D1946 /* STTabBarViewController.swift in Sources */,
+				64FBDA84240661AF0089D9EA /* AreaViewController.swift in Sources */,
 				64012B9823F67009001D20D0 /* ServiceAreaViewController.swift in Sources */,
 				64FA8E4123FFC272000A1334 /* FilterPickerTableViewCell.swift in Sources */,
 				64FAB14723EEB9FD0073235C /* CollaboratorTableViewCell.swift in Sources */,
+				64FBDA86240661CE0089D9EA /* CategoryViewController.swift in Sources */,
 				64FAB13323EE4E5B0073235C /* DecorateStyleCollectionReusableView.swift in Sources */,
 				64F9D89B23F9379400F28186 /* PhotosCollectionViewCell.swift in Sources */,
 				64FA42B923E7B74E0065DCEF /* ProfolioViewController.swift in Sources */,
@@ -770,6 +802,7 @@
 				64FAB13123ED640A0073235C /* UIColor+Extension.swift in Sources */,
 				64FE4ED623E983D500A5D3EC /* YourPostViewController.swift in Sources */,
 				64FBDA7E24061C2B0089D9EA /* SwiftMessageWrapper.swift in Sources */,
+				64FBDA80240641320089D9EA /* AuthenticationViewController.swift in Sources */,
 				64FA8E4E2402660B000A1334 /* CraftsmenFilterCollectionReusableView.swift in Sources */,
 				64FC819623E7E9D70027DDEE /* ChatRoomViewController.swift in Sources */,
 				64FAB12723ED548A0073235C /* DecorateStyleViewController.swift in Sources */,
@@ -814,6 +847,7 @@
 				64FC72E423FD26EC004F2A07 /* ProfolioTestViewController.swift in Sources */,
 				64FA429523DD3BD60065DCEF /* STBaseViewController.swift in Sources */,
 				647A7CD323D83E33005D1946 /* AuthViewController.swift in Sources */,
+				64FBDA8224065A0C0089D9EA /* IdentifyViewController.swift in Sources */,
 				64FE4EE123EA55CB00A5D3EC /* YourPostTableViewCell.swift in Sources */,
 				647A7CAC23D83376005D1946 /* AppDelegate.swift in Sources */,
 				64FAB11F23EC001A0073235C /* UserManager.swift in Sources */,

@@ -3,9 +3,15 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Bold.ttf">
+            <string>Roboto-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Auth View Controller-->
         <scene sceneID="f5F-9i-Zz8">
@@ -98,7 +104,189 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TCW-DP-cT5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="818.84057971014499" y="97.767857142857139"/>
+            <point key="canvasLocation" x="626" y="98"/>
+        </scene>
+        <!--Identify View Controller-->
+        <scene sceneID="iGF-tH-X5R">
+            <objects>
+                <viewController storyboardIdentifier="IdentifyViewController" id="aZd-V5-9C9" customClass="IdentifyViewController" customModule="DecorYou" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qyD-mM-EUl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="請選擇你的身份" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6wc-So-L5Z">
+                                <rect key="frame" x="102" y="164" width="210" height="42"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="BpO-3d-9qI" userLabel="customerStackView">
+                                <rect key="frame" x="132" y="256" width="150" height="185.5"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icons_72px_Customer" translatesAutoresizingMaskIntoConstraints="NO" id="DeP-C8-Jup">
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="DeP-C8-Jup" secondAttribute="height" multiplier="1:1" id="E2t-hO-dpf"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="消費者" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RFP-e1-cxe">
+                                        <rect key="frame" x="0.0" y="160" width="150" height="25.5"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="DeP-C8-Jup" firstAttribute="leading" secondItem="BpO-3d-9qI" secondAttribute="leading" id="4gj-dh-Ng7"/>
+                                    <constraint firstAttribute="trailing" secondItem="DeP-C8-Jup" secondAttribute="trailing" id="BA8-gb-4eA"/>
+                                    <constraint firstItem="RFP-e1-cxe" firstAttribute="leading" secondItem="BpO-3d-9qI" secondAttribute="leading" id="BFo-fi-Tej"/>
+                                    <constraint firstAttribute="width" constant="150" id="Qhf-Dv-Zba"/>
+                                    <constraint firstItem="DeP-C8-Jup" firstAttribute="top" secondItem="BpO-3d-9qI" secondAttribute="top" id="XS9-om-zXj"/>
+                                    <constraint firstAttribute="bottom" secondItem="RFP-e1-cxe" secondAttribute="bottom" id="qQj-uW-dnL"/>
+                                    <constraint firstAttribute="trailing" secondItem="RFP-e1-cxe" secondAttribute="trailing" id="xao-cb-T2X"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="KA0-7r-ZiC" userLabel="craftsmenStackView">
+                                <rect key="frame" x="132" y="491.5" width="150" height="185.5"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icons_72px_CraftsmenToolBox" translatesAutoresizingMaskIntoConstraints="NO" id="ofU-Et-C6s">
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="ofU-Et-C6s" secondAttribute="height" multiplier="1:1" id="3Io-AC-Wlx"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="匠人" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zlF-JL-eUQ">
+                                        <rect key="frame" x="0.0" y="160" width="150" height="25.5"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="zlF-JL-eUQ" firstAttribute="leading" secondItem="KA0-7r-ZiC" secondAttribute="leading" id="1Wb-jn-H0b"/>
+                                    <constraint firstItem="ofU-Et-C6s" firstAttribute="leading" secondItem="KA0-7r-ZiC" secondAttribute="leading" id="KNk-Oe-OXX"/>
+                                    <constraint firstAttribute="bottom" secondItem="zlF-JL-eUQ" secondAttribute="bottom" id="P9W-e5-R9r"/>
+                                    <constraint firstAttribute="trailing" secondItem="ofU-Et-C6s" secondAttribute="trailing" id="RQc-MU-Paw"/>
+                                    <constraint firstAttribute="width" constant="150" id="hRB-cp-itj"/>
+                                    <constraint firstItem="ofU-Et-C6s" firstAttribute="top" secondItem="KA0-7r-ZiC" secondAttribute="top" id="tbt-wZ-xbI"/>
+                                    <constraint firstAttribute="trailing" secondItem="zlF-JL-eUQ" secondAttribute="trailing" id="yDz-lV-87U"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="KA0-7r-ZiC" firstAttribute="top" secondItem="BpO-3d-9qI" secondAttribute="bottom" constant="50" id="4CJ-Aw-fGi"/>
+                            <constraint firstItem="BpO-3d-9qI" firstAttribute="centerX" secondItem="qyD-mM-EUl" secondAttribute="centerX" id="R3V-t2-BN4"/>
+                            <constraint firstItem="KA0-7r-ZiC" firstAttribute="centerX" secondItem="qyD-mM-EUl" secondAttribute="centerX" id="XH4-si-ddV"/>
+                            <constraint firstItem="6wc-So-L5Z" firstAttribute="top" secondItem="w2X-Tg-jLE" secondAttribute="top" constant="120" id="Xkj-9U-bEg"/>
+                            <constraint firstItem="6wc-So-L5Z" firstAttribute="centerX" secondItem="qyD-mM-EUl" secondAttribute="centerX" id="ZOX-xE-UL5"/>
+                            <constraint firstItem="BpO-3d-9qI" firstAttribute="top" secondItem="6wc-So-L5Z" secondAttribute="bottom" constant="50" id="e0F-DI-6zx"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="w2X-Tg-jLE"/>
+                    </view>
+                    <connections>
+                        <outlet property="craftsmenStackView" destination="KA0-7r-ZiC" id="hKz-4P-5GU"/>
+                        <outlet property="customerStackView" destination="BpO-3d-9qI" id="z9k-PF-UUF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xqM-0s-wjg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1361" y="769"/>
+        </scene>
+        <!--Category View Controller-->
+        <scene sceneID="deV-0V-LCC">
+            <objects>
+                <viewController storyboardIdentifier="CategoryViewController" id="LQW-TJ-5ed" customClass="CategoryViewController" customModule="DecorYou" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fdr-SX-0mB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="請選擇你的職業種類" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EMq-Fu-Ojl">
+                                <rect key="frame" x="72" y="164" width="270" height="42"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TvY-MT-mn4">
+                                <rect key="frame" x="0.0" y="236" width="414" height="526"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="TvY-MT-mn4" firstAttribute="leading" secondItem="wDs-xt-7Hi" secondAttribute="leading" id="3dO-Ew-l9a"/>
+                            <constraint firstItem="TvY-MT-mn4" firstAttribute="top" secondItem="EMq-Fu-Ojl" secondAttribute="bottom" constant="30" id="GBK-AI-RVa"/>
+                            <constraint firstItem="wDs-xt-7Hi" firstAttribute="bottom" secondItem="TvY-MT-mn4" secondAttribute="bottom" constant="100" id="Vm8-DR-tHp"/>
+                            <constraint firstItem="EMq-Fu-Ojl" firstAttribute="top" secondItem="wDs-xt-7Hi" secondAttribute="top" constant="120" id="hAH-z5-Wju"/>
+                            <constraint firstItem="wDs-xt-7Hi" firstAttribute="trailing" secondItem="TvY-MT-mn4" secondAttribute="trailing" id="pG4-Rh-FBP"/>
+                            <constraint firstItem="EMq-Fu-Ojl" firstAttribute="centerX" secondItem="fdr-SX-0mB" secondAttribute="centerX" id="qFq-wC-e5C"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="wDs-xt-7Hi"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fAo-pZ-LKp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2090" y="769"/>
+        </scene>
+        <!--Authentication View Controller-->
+        <scene sceneID="DBx-fp-2fS">
+            <objects>
+                <viewController storyboardIdentifier="AuthenticationViewController" id="pOv-1k-rFw" customClass="AuthenticationViewController" customModule="DecorYou" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="N1v-RW-wGF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="請選擇登入的方式" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="90s-wF-Zah">
+                                <rect key="frame" x="87" y="208" width="240" height="42"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BbI-ay-l2T">
+                                <rect key="frame" x="86" y="350" width="242.5" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign in with Google" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y8z-6K-akc">
+                                        <rect key="frame" x="59" y="18.5" width="173.5" height="23.5"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="20"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="google.png" translatesAutoresizingMaskIntoConstraints="NO" id="sVe-DL-qgn">
+                                        <rect key="frame" x="8" y="12" width="36" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="36" id="4ao-w8-Lp5"/>
+                                            <constraint firstAttribute="width" secondItem="sVe-DL-qgn" secondAttribute="height" multiplier="1:1" id="7hE-Rh-3Q7"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="sVe-DL-qgn" firstAttribute="leading" secondItem="BbI-ay-l2T" secondAttribute="leading" constant="8" id="8bL-3h-imf"/>
+                                    <constraint firstAttribute="bottom" secondItem="sVe-DL-qgn" secondAttribute="bottom" constant="12" id="TJh-mq-AEc"/>
+                                    <constraint firstItem="y8z-6K-akc" firstAttribute="centerY" secondItem="sVe-DL-qgn" secondAttribute="centerY" id="e6B-aT-eFc"/>
+                                    <constraint firstItem="y8z-6K-akc" firstAttribute="leading" secondItem="sVe-DL-qgn" secondAttribute="trailing" constant="15" id="foM-SS-461"/>
+                                    <constraint firstItem="sVe-DL-qgn" firstAttribute="top" secondItem="BbI-ay-l2T" secondAttribute="top" constant="12" id="grc-9c-EOr"/>
+                                    <constraint firstAttribute="trailing" secondItem="y8z-6K-akc" secondAttribute="trailing" constant="10" id="nso-80-VJr"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="90s-wF-Zah" firstAttribute="centerX" secondItem="N1v-RW-wGF" secondAttribute="centerX" id="4w8-zw-kWr"/>
+                            <constraint firstItem="BbI-ay-l2T" firstAttribute="centerX" secondItem="N1v-RW-wGF" secondAttribute="centerX" id="CHj-56-A7X"/>
+                            <constraint firstItem="BbI-ay-l2T" firstAttribute="top" secondItem="90s-wF-Zah" secondAttribute="bottom" constant="100" id="Rih-vZ-k0d"/>
+                            <constraint firstItem="90s-wF-Zah" firstAttribute="top" secondItem="Lh3-SP-HO0" secondAttribute="top" constant="120" id="SqE-Vt-AZu"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Lh3-SP-HO0"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="64o-LG-VvR"/>
+                    <connections>
+                        <outlet property="googleSignInBtn" destination="BbI-ay-l2T" id="mEx-97-LfU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZiV-KL-l3Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="625" y="769"/>
         </scene>
         <!--Character Pick View Controller-->
         <scene sceneID="Zbp-0c-sTh">
@@ -180,7 +368,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gTE-23-Zfu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1460.8695652173915" y="97.767857142857139"/>
+            <point key="canvasLocation" x="1362" y="98"/>
         </scene>
         <!--Pick Customer View Controller-->
         <scene sceneID="RdV-3U-ULE">
@@ -289,7 +477,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PvC-rg-GZa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2112" y="-198"/>
+            <point key="canvasLocation" x="2091" y="-733"/>
         </scene>
         <!--Pick Craftsmen View Controller-->
         <scene sceneID="mgI-VI-ASw">
@@ -448,7 +636,49 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d7A-Vc-4Aa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2111.594202898551" y="472.09821428571428"/>
+            <point key="canvasLocation" x="2090" y="98"/>
+        </scene>
+        <!--Area View Controller-->
+        <scene sceneID="VSd-7N-VS1">
+            <objects>
+                <viewController storyboardIdentifier="AreaViewController" id="6d4-Cw-wg2" customClass="AreaViewController" customModule="DecorYou" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jdg-iT-lQL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="請選擇你的服務範圍" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0hf-Yw-Bly">
+                                <rect key="frame" x="72" y="164" width="270" height="42"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Nf1-C2-n7v">
+                                <rect key="frame" x="0.0" y="236" width="414" height="526"/>
+                                <color key="backgroundColor" name="favoriteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="BmK-ZC-wep">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Nf1-C2-n7v" firstAttribute="trailing" secondItem="z1i-WJ-yUN" secondAttribute="trailing" id="3Ai-Pb-Wih"/>
+                            <constraint firstItem="z1i-WJ-yUN" firstAttribute="bottom" secondItem="Nf1-C2-n7v" secondAttribute="bottom" constant="100" id="DKY-JU-Yma"/>
+                            <constraint firstItem="0hf-Yw-Bly" firstAttribute="centerX" secondItem="jdg-iT-lQL" secondAttribute="centerX" id="Eom-Ub-VIQ"/>
+                            <constraint firstItem="Nf1-C2-n7v" firstAttribute="top" secondItem="0hf-Yw-Bly" secondAttribute="bottom" constant="30" id="Gre-tc-m25"/>
+                            <constraint firstItem="0hf-Yw-Bly" firstAttribute="top" secondItem="z1i-WJ-yUN" secondAttribute="top" constant="120" id="jgj-jo-1Yc"/>
+                            <constraint firstItem="Nf1-C2-n7v" firstAttribute="leading" secondItem="z1i-WJ-yUN" secondAttribute="leading" id="lbo-Rv-6Pj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="z1i-WJ-yUN"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KxQ-Ta-3Je" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2832" y="769"/>
         </scene>
         <!--Service Area View Controller-->
         <scene sceneID="Z7p-N0-aJ3">
@@ -519,7 +749,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cdd-Ef-JwP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2830.434782608696" y="812.94642857142856"/>
+            <point key="canvasLocation" x="3506" y="98"/>
         </scene>
         <!--Log In View Controller-->
         <scene sceneID="xiS-XL-ng9">
@@ -631,8 +861,32 @@
             </objects>
             <point key="canvasLocation" x="-91.304347826086968" y="97.767857142857139"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="CKV-S6-A6G">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DrA-pd-CFJ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tGP-zC-Qx3">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="pOv-1k-rFw" kind="relationship" relationship="rootViewController" id="KUa-Mi-OVn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GGD-uy-d3x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-91.304347826086968" y="768.75"/>
+        </scene>
     </scenes>
     <resources>
         <image name="AuthBackground" width="467" height="700.5"/>
+        <image name="Icons_72px_CraftsmenToolBox" width="96" height="96"/>
+        <image name="Icons_72px_Customer" width="96" height="96"/>
+        <image name="google.png" width="18" height="18"/>
+        <namedColor name="favoriteColor">
+            <color red="0.76099997758865356" green="0.90200001001358032" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

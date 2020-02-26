@@ -7,6 +7,8 @@ target 'DecorYou' do
 
   # Pods for DecorYou
   pod 'Firebase/Auth'
+  pod 'Firebase/Core'
+  pod 'GoogleSignIn'
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift'
   pod 'Firebase/Storage'
