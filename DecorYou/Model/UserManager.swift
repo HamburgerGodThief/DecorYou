@@ -156,7 +156,7 @@ class UserManager {
             }
         }
     }
-    
+     
     func fetchSpecificCraftsmanProfolio(uid: String, completion: @escaping (Result<[Profolio], Error>) -> Void) {
         db.collection("users").document(uid).collection("Profolio").getDocuments() { (querySnapshot, err) in
             

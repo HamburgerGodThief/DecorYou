@@ -24,7 +24,6 @@ class MoreViewController: UIViewController {
         moreTBView.lk_registerCellWithNib(identifier: String(describing: ProfileTableViewCell.self), bundle: nil)
         moreTBView.layer.cornerRadius = 50
         moreTBView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        moreTBView.backgroundColor = .brown
         moreTBView.bounces = false
     }
     

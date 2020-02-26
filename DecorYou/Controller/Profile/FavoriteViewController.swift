@@ -90,6 +90,7 @@ extension FavoriteViewController: UITableViewDataSource, UITableViewDelegate {
         cell.titleLabel.text = lovePost[indexPath.row].title
         cell.timeLabel.text = "\(authorOBJ.name) | \(lovePost[indexPath.row].createTimeString)"
         cell.loveLabel.text = "\(lovePost[indexPath.row].loveCount)"
+        cell.replyLabel.text = "\(lovePost[indexPath.row].replyCount)"
         cell.backView.backgroundColor = UIColor.assetColor(.favoriteColor)
         return cell
     }

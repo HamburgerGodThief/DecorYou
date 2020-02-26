@@ -80,13 +80,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="irU-iZ-Ir1">
-                                <rect key="frame" x="0.0" y="346.5" width="414" height="515.5"/>
+                                <rect key="frame" x="0.0" y="352.5" width="414" height="509.5"/>
                                 <connections>
                                     <segue destination="ULg-Hd-dH1" kind="embed" id="YM2-Sb-y5H"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Wk-cn-O1x">
-                                <rect key="frame" x="0.0" y="346.5" width="414" height="515.5"/>
+                                <rect key="frame" x="0.0" y="352.5" width="414" height="509.5"/>
                                 <connections>
                                     <segue destination="OEk-2i-fcU" kind="embed" id="9du-5l-kME"/>
                                 </connections>
@@ -132,7 +132,7 @@
                             <constraint firstItem="UCb-P0-GOm" firstAttribute="bottom" secondItem="dO8-Bm-58D" secondAttribute="bottom" multiplier="0.6" id="8m5-fT-vfX"/>
                             <constraint firstItem="irU-iZ-Ir1" firstAttribute="leading" secondItem="wEe-zI-0Ho" secondAttribute="leading" id="A4h-jl-9x9"/>
                             <constraint firstItem="UCb-P0-GOm" firstAttribute="width" secondItem="F0f-z3-ena" secondAttribute="width" multiplier="0.434783" id="Cky-94-jlL"/>
-                            <constraint firstItem="9Wk-cn-O1x" firstAttribute="top" secondItem="3gv-N6-SRD" secondAttribute="bottom" id="DYj-J8-s6J"/>
+                            <constraint firstItem="9Wk-cn-O1x" firstAttribute="top" secondItem="3gv-N6-SRD" secondAttribute="bottom" constant="6" id="DYj-J8-s6J"/>
                             <constraint firstItem="h4F-dA-x1B" firstAttribute="centerX" secondItem="F0f-z3-ena" secondAttribute="centerX" id="GTi-fS-aiH"/>
                             <constraint firstItem="UCb-P0-GOm" firstAttribute="leading" secondItem="PhQ-eX-QJu" secondAttribute="trailing" id="Hxi-vk-h3a"/>
                             <constraint firstItem="lHK-qk-QnC" firstAttribute="width" secondItem="F0f-z3-ena" secondAttribute="width" multiplier="0.1" id="IoG-9K-zDn"/>
@@ -141,7 +141,7 @@
                             <constraint firstItem="ESw-eI-cvc" firstAttribute="leading" secondItem="wEe-zI-0Ho" secondAttribute="leading" id="Oe0-3z-5GZ"/>
                             <constraint firstItem="wEe-zI-0Ho" firstAttribute="trailing" secondItem="irU-iZ-Ir1" secondAttribute="trailing" id="Q2l-QA-Pug"/>
                             <constraint firstItem="4X0-IW-Rba" firstAttribute="width" secondItem="F0f-z3-ena" secondAttribute="width" multiplier="2.5" id="Rjp-8q-ERM"/>
-                            <constraint firstItem="irU-iZ-Ir1" firstAttribute="top" secondItem="3gv-N6-SRD" secondAttribute="bottom" id="SZ3-mR-6hy"/>
+                            <constraint firstItem="irU-iZ-Ir1" firstAttribute="top" secondItem="3gv-N6-SRD" secondAttribute="bottom" constant="6" id="SZ3-mR-6hy"/>
                             <constraint firstItem="wEe-zI-0Ho" firstAttribute="trailing" secondItem="9Wk-cn-O1x" secondAttribute="trailing" id="TV7-Ku-ck1"/>
                             <constraint firstItem="ESw-eI-cvc" firstAttribute="top" secondItem="3gv-N6-SRD" secondAttribute="bottom" constant="3" id="We4-XL-Uxf"/>
                             <constraint firstItem="3gv-N6-SRD" firstAttribute="leading" secondItem="wEe-zI-0Ho" secondAttribute="leading" id="ZF6-qb-0cR"/>
@@ -185,11 +185,11 @@
             <objects>
                 <viewController storyboardIdentifier="CraftsmenResumeViewController" id="F9a-YL-ECs" customClass="CraftsmenResumeViewController" customModule="DecorYou" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fXs-dl-erp">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="491.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="512.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="PbZ-FI-yyo">
-                                <rect key="frame" x="0.0" y="44" width="414" height="447.5"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="468.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1fz-wF-ua4">
                                     <size key="itemSize" width="50" height="50"/>
@@ -200,7 +200,7 @@
                                 <cells/>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vbq-w8-cJS">
-                                <rect key="frame" x="336" y="413.5" width="62" height="62"/>
+                                <rect key="frame" x="336" y="434.5" width="62" height="62"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Vbq-w8-cJS" secondAttribute="height" multiplier="1:1" id="2Ga-bq-Xlb"/>
@@ -215,13 +215,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上傳你的作品" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bXL-rz-vkD">
-                                <rect key="frame" x="126" y="227" width="162" height="38"/>
+                                <rect key="frame" x="126" y="237.5" width="162" height="38"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="27"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上傳你的作品後，這些內容會顯示在你的個人檔案中" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tVp-p7-gfU">
-                                <rect key="frame" x="23" y="271" width="368" height="22.5"/>
+                                <rect key="frame" x="23" y="281.5" width="368" height="22.5"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -289,11 +289,11 @@
             <objects>
                 <viewController storyboardIdentifier="FavoriteViewController" id="OEk-2i-fcU" customClass="FavoriteViewController" customModule="DecorYou" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ocW-bd-sRg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="494.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="515.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iLQ-4Y-5AH">
-                                <rect key="frame" x="0.0" y="44" width="414" height="450.5"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="471.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
                         </subviews>
@@ -319,11 +319,11 @@
             <objects>
                 <viewController storyboardIdentifier="YourPostViewController" id="ULg-Hd-dH1" customClass="YourPostViewController" customModule="DecorYou" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YSq-yA-8LS">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="494.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="515.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0Ei-6n-kAB">
-                                <rect key="frame" x="0.0" y="44" width="414" height="450.5"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="471.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>

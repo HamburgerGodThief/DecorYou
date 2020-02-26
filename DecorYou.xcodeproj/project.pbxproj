@@ -82,7 +82,6 @@
 		64FA8E502403BCEE000A1334 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA8E4F2403BCEE000A1334 /* ProfileViewController.swift */; };
 		64FA8E522403D488000A1334 /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA8E512403D488000A1334 /* ProfileCollectionViewCell.swift */; };
 		64FAB11F23EC001A0073235C /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FAB11E23EC001A0073235C /* UserManager.swift */; };
-		64FAB12323ED36130073235C /* JGProgressWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FAB12223ED36130073235C /* JGProgressWrapper.swift */; };
 		64FAB12523ED49F70073235C /* ArticleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FAB12423ED49F70073235C /* ArticleManager.swift */; };
 		64FAB12723ED548A0073235C /* DecorateStyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FAB12623ED548A0073235C /* DecorateStyleViewController.swift */; };
 		64FAB12E23ED57900073235C /* DecorateStyleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FAB12C23ED57900073235C /* DecorateStyleCollectionViewCell.swift */; };
@@ -219,7 +218,6 @@
 		64FA8E4F2403BCEE000A1334 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		64FA8E512403D488000A1334 /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		64FAB11E23EC001A0073235C /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
-		64FAB12223ED36130073235C /* JGProgressWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGProgressWrapper.swift; sourceTree = "<group>"; };
 		64FAB12423ED49F70073235C /* ArticleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleManager.swift; sourceTree = "<group>"; };
 		64FAB12623ED548A0073235C /* DecorateStyleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecorateStyleViewController.swift; sourceTree = "<group>"; };
 		64FAB12C23ED57900073235C /* DecorateStyleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecorateStyleCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -377,7 +375,6 @@
 				64FAB13023ED640A0073235C /* UIColor+Extension.swift */,
 				64FE4ECF23E95CB200A5D3EC /* RoundCorner+Shadow.swift */,
 				64FA429C23E347060065DCEF /* KingFisherWrapper.swift */,
-				64FAB12223ED36130073235C /* JGProgressWrapper.swift */,
 				64FBDA7524050B590089D9EA /* UIViewController+Extension.swift */,
 				64FBDA7724050C340089D9EA /* LoadingViewController.swift */,
 				64FBDA7824050C340089D9EA /* LoadingViewController.xib */,
@@ -778,7 +775,6 @@
 				64FAB12723ED548A0073235C /* DecorateStyleViewController.swift in Sources */,
 				64FA8E4824025B3D000A1334 /* CraftsmenFilterCondition.swift in Sources */,
 				64FA8E3E23FF90FE000A1334 /* FilterViewController.swift in Sources */,
-				64FAB12323ED36130073235C /* JGProgressWrapper.swift in Sources */,
 				64012BA323F7FA81001D20D0 /* UploadProfolioTableViewCell.swift in Sources */,
 				64FC818D23E7C26E0027DDEE /* ProfolioTableViewCell.swift in Sources */,
 				64FC72F023FD2C12004F2A07 /* ProfolioCollectionReusableView.swift in Sources */,

@@ -198,6 +198,19 @@ class ArticleManager {
         })
     }
     
+    //收藏文章
+    func addLovePostCount(postID: String, loveCount: Int) {
+        
+        db.collection("article").document(postID).setData(["loveCount": loveCount], merge: true) { err in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
+        
+    }
+    
     //回覆文章
     func replyPost(postID: String, replyCount: Int ,newReplyID: String, reply: Reply) {
         

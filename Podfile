@@ -13,7 +13,6 @@ target 'DecorYou' do
   pod 'Firebase/Database'
   pod 'IQKeyboardManagerSwift'
   pod 'Kingfisher', '~> 5.0'
-  pod 'JGProgressHUD'
   pod 'lottie-ios'
   pod 'SwiftMessages'
 end

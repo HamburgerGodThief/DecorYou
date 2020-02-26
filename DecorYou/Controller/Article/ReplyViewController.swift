@@ -34,7 +34,6 @@ class ReplyViewController: UIViewController {
     
     func setOutletContent() {
         logoImg.layer.cornerRadius = logoImg.frame.size.width / 2
-        nameLabel.text = "User name"
     }
     
     func sendPost() {

@@ -117,12 +117,14 @@ class ReadPostViewController: UIViewController {
             
             rightbtn.setImage(UIImage(systemName: "heart"), for: .normal)
             SwiftMes.shared.showSuccessMessage(title: "成功", body: "已取消收藏", seconds: 1.5)
+            ArticleManager.shared.addLovePostCount(postID: thisMainArticle.postID, loveCount: thisMainArticle.loveCount - 1)
             
         } else {
             
             user.lovePost.append(thisArticleRef)
             rightbtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             SwiftMes.shared.showSuccessMessage(title: "成功", body: "已收藏文章", seconds: 1.5)
+            ArticleManager.shared.addLovePostCount(postID: thisMainArticle.postID, loveCount: thisMainArticle.loveCount + 1)
         }
         
         UserManager.shared.updateUserLovePost(uid: user.uid, lovePost: user.lovePost)
@@ -345,6 +347,8 @@ class ReadPostViewController: UIViewController {
     }
     
     @objc func backToArticle() {
+        guard let articleVC = navigationController?.viewControllers[0] as? ArticleViewController else { return }
+        articleVC.getData()
         navigationController?.popViewController(animated: true)
         tabBarController?.tabBar.isHidden = false
     }

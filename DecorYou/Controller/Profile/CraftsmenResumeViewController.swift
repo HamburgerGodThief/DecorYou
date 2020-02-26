@@ -30,31 +30,6 @@ class CraftsmenResumeViewController: UIViewController {
         navigationController?.pushViewController(uploadProfolioViewController, animated: true)
     }
     
-    func setNavigationBar() {
-        navigationItem.title = "你的作品"
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white,
-                                                                   .font: UIFont(name: "PingFangTC-Medium", size: 18)!]
-        let leftbtn = UIButton()
-        leftbtn.tintColor = .white
-        leftbtn.setImage(UIImage.asset(.Icons_48px_Back01), for: .normal)
-        leftbtn.sizeToFit()
-        leftbtn.addTarget(self, action: #selector(backToProfile), for: .touchUpInside)
-        let rightbtn = UIButton()
-        rightbtn.tintColor = .white
-        rightbtn.setTitle("edit", for: .normal)
-        rightbtn.titleLabel?.attributedText = NSAttributedString(string: "edit",
-                                                                 attributes: [.foregroundColor: UIColor.white,
-                                                                              .font: UIFont(name: "PingFangTC-Medium", size: 14)!])
-        rightbtn.sizeToFit()
-        rightbtn.addTarget(self, action: #selector(editProfolio), for: .touchUpInside)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftbtn)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightbtn)
-    }
-    
-    func setCreateBtn() {
-        createNewProfolioBtn.layer.cornerRadius = createNewProfolioBtn.frame.width / 2
-    }
-    
     func fetchProfolio() {
         guard let uid = UserDefaults.standard.string(forKey: "UserToken") else { return }
         UserManager.shared.fetchSpecificCraftsmanProfolio(uid: uid, completion: { [weak self] result in
@@ -81,10 +56,6 @@ class CraftsmenResumeViewController: UIViewController {
         titleLabel.isHidden = !shouldShow
     }
     
-    @objc func editProfolio() {
-        
-    }
-    
     @objc func backToProfile() {
         navigationController?.popViewController(animated: true)
         tabBarController?.tabBar.isHidden = false
@@ -92,11 +63,14 @@ class CraftsmenResumeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setNavigationBar()
         setCollectionView()
-        setCreateBtn()
         labelShouldShow(shouldShow: false)
         fetchProfolio()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        createNewProfolioBtn.layer.cornerRadius = createNewProfolioBtn.frame.width / 2
     }
 }
 
@@ -127,10 +101,10 @@ extension CraftsmenResumeViewController: UICollectionViewDataSource, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "Craftsmen", bundle: nil)
-        guard let profolioViewController = storyboard.instantiateViewController(withIdentifier: "ProfolioViewController") as? ProfolioViewController else { return }
-        profolioViewController.profolio = profolio[indexPath.item]
-        navigationController?.pushViewController(profolioViewController, animated: true)
+//        let storyboard = UIStoryboard(name: "Craftsmen", bundle: nil)
+//        guard let profolioViewController = storyboard.instantiateViewController(withIdentifier: "ProfolioViewController") as? ProfolioViewController else { return }
+//        profolioViewController.profolio = profolio[indexPath.item]
+//        navigationController?.pushViewController(profolioViewController, animated: true)
     }
     
 }

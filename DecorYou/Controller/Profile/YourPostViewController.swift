@@ -61,6 +61,7 @@ extension YourPostViewController: UITableViewDataSource, UITableViewDelegate {
         cell.titleLabel.text = yourPost[indexPath.row].title
         cell.timeLabel.text = yourPost[indexPath.row].createTimeString
         cell.loveLabel.text = "\(yourPost[indexPath.row].loveCount)"
+        cell.replyLabel.text = "\(yourPost[indexPath.row].replyCount)"
         return cell
     }
     
