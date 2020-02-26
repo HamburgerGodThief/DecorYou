@@ -267,6 +267,9 @@ PODS:
     - nanopb/encode (= 0.3.9011)
   - nanopb/decode (0.3.9011)
   - nanopb/encode (0.3.9011)
+  - SwiftMessages (7.0.1):
+    - SwiftMessages/App (= 7.0.1)
+  - SwiftMessages/App (7.0.1)
 
 DEPENDENCIES:
   - Firebase/Auth
@@ -278,6 +281,7 @@ DEPENDENCIES:
   - JGProgressHUD
   - Kingfisher (~> 5.0)
   - lottie-ios
+  - SwiftMessages
 
 SPEC REPOS:
   trunk:
@@ -305,6 +309,7 @@ SPEC REPOS:
     - leveldb-library
     - lottie-ios
     - nanopb
+    - SwiftMessages
 
 SPEC CHECKSUMS:
   abseil: 18063d773f5366ff8736a050fe035a28f635fd27
@@ -331,7 +336,8 @@ SPEC CHECKSUMS:
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   lottie-ios: 85ce835dd8c53e02509f20729fc7d6a4e6645a0a
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
+  SwiftMessages: b577dc7043be8b299857ab35bb663dbff6483bd0
 
-PODFILE CHECKSUM: 0c7822afb1da7365e4cd16986d6e9ef589a229a4
+PODFILE CHECKSUM: d316a0b1d9f83520407faf5eb855bea023105c3f
 
 COCOAPODS: 1.8.4

@@ -47,7 +47,7 @@ class NewPostViewController: UIViewController {
     func setNavigationBar() {
         navigationItem.title = "發表文章"
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white,
-                                                                   .font: UIFont(name: "PingFangTC-Medium", size: 18)!]
+                                                                   .font: UIFont(name: "PingFangTC-Medium", size: 16)!]
         let rightBtn = UIBarButtonItem(title: "送出", style: .plain, target: self, action: #selector(createPost))
         let leftBtn = UIBarButtonItem(title: "取消", style: .plain, target: self, action: #selector(cancelPost))
         navigationItem.rightBarButtonItem = rightBtn

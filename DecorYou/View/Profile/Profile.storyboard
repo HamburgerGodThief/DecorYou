@@ -24,21 +24,21 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4X0-IW-Rba">
-                                <rect key="frame" x="-310.5" y="241" width="1035" height="1035"/>
+                                <rect key="frame" x="-310.5" y="158.5" width="1035" height="1035"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="4X0-IW-Rba" secondAttribute="height" multiplier="1:1" id="n9U-Nq-JQ3"/>
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UCb-P0-GOm">
-                                <rect key="frame" x="117" y="151" width="180" height="180"/>
+                                <rect key="frame" x="117" y="68.5" width="180" height="180"/>
                                 <color key="backgroundColor" name="mainColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="UCb-P0-GOm" secondAttribute="height" multiplier="1:1" id="AMF-91-hWx"/>
                                 </constraints>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3gv-N6-SRD">
-                                <rect key="frame" x="0.0" y="371" width="414" height="58.5"/>
+                                <rect key="frame" x="0.0" y="288.5" width="414" height="58"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lC5-w3-E5p">
                                     <size key="itemSize" width="210" height="50"/>
@@ -48,7 +48,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProfileCollectionViewCell" id="alX-yh-Q6n" customClass="ProfileCollectionViewCell" customModule="DecorYou" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="4.5" width="210" height="50"/>
+                                        <rect key="frame" x="0.0" y="4" width="210" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="N3P-6K-F8Q">
                                             <rect key="frame" x="0.0" y="0.0" width="210" height="50"/>
@@ -74,25 +74,25 @@
                                 </cells>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4F-dA-x1B">
-                                <rect key="frame" x="184.5" y="341" width="45.5" height="25.5"/>
+                                <rect key="frame" x="184.5" y="258.5" width="45.5" height="25.5"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="irU-iZ-Ir1">
-                                <rect key="frame" x="0.0" y="429.5" width="414" height="432.5"/>
+                                <rect key="frame" x="0.0" y="346.5" width="414" height="515.5"/>
                                 <connections>
                                     <segue destination="ULg-Hd-dH1" kind="embed" id="YM2-Sb-y5H"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Wk-cn-O1x">
-                                <rect key="frame" x="0.0" y="429.5" width="414" height="432.5"/>
+                                <rect key="frame" x="0.0" y="346.5" width="414" height="515.5"/>
                                 <connections>
                                     <segue destination="OEk-2i-fcU" kind="embed" id="9du-5l-kME"/>
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lHK-qk-QnC">
-                                <rect key="frame" x="297" y="290" width="41.5" height="41"/>
+                                <rect key="frame" x="297" y="207" width="41.5" height="41.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="lHK-qk-QnC" secondAttribute="height" multiplier="1:1" id="5tG-Nf-LmK"/>
                                 </constraints>
@@ -105,7 +105,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PhQ-eX-QJu">
-                                <rect key="frame" x="75.5" y="290" width="41.5" height="41"/>
+                                <rect key="frame" x="75.5" y="207" width="41.5" height="41.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="PhQ-eX-QJu" secondAttribute="height" multiplier="1:1" id="rk3-Bj-1rq"/>
                                 </constraints>
@@ -118,7 +118,7 @@
                                 </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ESw-eI-cvc">
-                                <rect key="frame" x="0.0" y="432.5" width="414" height="429.5"/>
+                                <rect key="frame" x="0.0" y="349.5" width="414" height="512.5"/>
                                 <connections>
                                     <segue destination="F9a-YL-ECs" kind="embed" id="FAx-8d-9en"/>
                                 </connections>
@@ -129,7 +129,7 @@
                             <constraint firstItem="lHK-qk-QnC" firstAttribute="leading" secondItem="UCb-P0-GOm" secondAttribute="trailing" id="16u-Zp-kZ8"/>
                             <constraint firstItem="wEe-zI-0Ho" firstAttribute="bottom" secondItem="9Wk-cn-O1x" secondAttribute="bottom" id="1Zr-59-Nvo"/>
                             <constraint firstItem="UCb-P0-GOm" firstAttribute="centerX" secondItem="F0f-z3-ena" secondAttribute="centerX" id="7te-S4-bg9"/>
-                            <constraint firstItem="UCb-P0-GOm" firstAttribute="bottom" secondItem="dO8-Bm-58D" secondAttribute="bottom" multiplier="0.8" id="8m5-fT-vfX"/>
+                            <constraint firstItem="UCb-P0-GOm" firstAttribute="bottom" secondItem="dO8-Bm-58D" secondAttribute="bottom" multiplier="0.6" id="8m5-fT-vfX"/>
                             <constraint firstItem="irU-iZ-Ir1" firstAttribute="leading" secondItem="wEe-zI-0Ho" secondAttribute="leading" id="A4h-jl-9x9"/>
                             <constraint firstItem="UCb-P0-GOm" firstAttribute="width" secondItem="F0f-z3-ena" secondAttribute="width" multiplier="0.434783" id="Cky-94-jlL"/>
                             <constraint firstItem="9Wk-cn-O1x" firstAttribute="top" secondItem="3gv-N6-SRD" secondAttribute="bottom" id="DYj-J8-s6J"/>
@@ -185,11 +185,11 @@
             <objects>
                 <viewController storyboardIdentifier="CraftsmenResumeViewController" id="F9a-YL-ECs" customClass="CraftsmenResumeViewController" customModule="DecorYou" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fXs-dl-erp">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="432.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="491.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="PbZ-FI-yyo">
-                                <rect key="frame" x="0.0" y="44" width="414" height="388.5"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="447.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1fz-wF-ua4">
                                     <size key="itemSize" width="50" height="50"/>
@@ -200,7 +200,7 @@
                                 <cells/>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vbq-w8-cJS">
-                                <rect key="frame" x="336" y="354.5" width="62" height="62"/>
+                                <rect key="frame" x="336" y="413.5" width="62" height="62"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Vbq-w8-cJS" secondAttribute="height" multiplier="1:1" id="2Ga-bq-Xlb"/>
@@ -215,13 +215,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上傳你的作品" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bXL-rz-vkD">
-                                <rect key="frame" x="126" y="197.5" width="162" height="38"/>
+                                <rect key="frame" x="126" y="227" width="162" height="38"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="27"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上傳你的作品後，這些內容會顯示在你的個人檔案中" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tVp-p7-gfU">
-                                <rect key="frame" x="23" y="241.5" width="368" height="22.5"/>
+                                <rect key="frame" x="23" y="271" width="368" height="22.5"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -289,11 +289,11 @@
             <objects>
                 <viewController storyboardIdentifier="FavoriteViewController" id="OEk-2i-fcU" customClass="FavoriteViewController" customModule="DecorYou" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ocW-bd-sRg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="432.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="494.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iLQ-4Y-5AH">
-                                <rect key="frame" x="0.0" y="44" width="414" height="388.5"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="450.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
                         </subviews>
@@ -319,11 +319,11 @@
             <objects>
                 <viewController storyboardIdentifier="YourPostViewController" id="ULg-Hd-dH1" customClass="YourPostViewController" customModule="DecorYou" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YSq-yA-8LS">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="432.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="494.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0Ei-6n-kAB">
-                                <rect key="frame" x="0.0" y="44" width="414" height="388.5"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="450.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -373,7 +373,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vF0-4h-u1i">
-                                        <rect key="frame" x="20" y="11" width="48" height="48"/>
+                                        <rect key="frame" x="20" y="23" width="24" height="24"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="Icons_24px_Close"/>
                                         <connections>

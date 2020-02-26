@@ -10,6 +10,7 @@ import UIKit
 
 class ReadPostTableViewFooterView: UIView {
     
+    @IBOutlet weak var textFieldBorderView: UIView!
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var sendBtn: UIButton!
@@ -17,8 +18,13 @@ class ReadPostTableViewFooterView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        commentTextField.layer.cornerRadius = 16
-        commentTextField.layer.borderColor = UIColor.assetColor(.mainColor)?.cgColor
-        commentTextField.layer.borderWidth = 2
+        
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        textFieldBorderView.layer.cornerRadius = textFieldBorderView.frame.height / 2
+        textFieldBorderView.layer.borderColor = UIColor.assetColor(.mainColor)?.cgColor
+        textFieldBorderView.layer.borderWidth = 2
     }
 }

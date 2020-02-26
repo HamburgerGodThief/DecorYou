@@ -19,6 +19,8 @@ class YourPostViewController: UIViewController {
         yourPostTableView.dataSource = self
         yourPostTableView.lk_registerCellWithNib(identifier: String(describing: YourPostTableViewCell.self), bundle: nil)
         yourPostTableView.separatorStyle = .none
+        yourPostTableView.estimatedRowHeight = 150
+        yourPostTableView.rowHeight = UITableView.automaticDimension
     }
     
     func getSelfPost() {
@@ -47,7 +49,7 @@ class YourPostViewController: UIViewController {
 extension YourPostViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableView.frame.height / 5
+        return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

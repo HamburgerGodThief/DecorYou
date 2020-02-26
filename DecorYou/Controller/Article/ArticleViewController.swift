@@ -147,6 +147,8 @@ class ArticleViewController: UIViewController {
         articleTableView.dataSource = self
         articleTableView.lk_registerCellWithNib(identifier: String(describing: ArticleTableViewCell.self), bundle: nil)
         articleTableView.lk_registerCellWithNib(identifier: String(describing: ArticleListTableViewCell.self), bundle: nil)
+        articleTableView.estimatedRowHeight = 180
+        articleTableView.rowHeight = UITableView.automaticDimension
     }
     
     func setNewPost() {
@@ -272,9 +274,9 @@ extension ArticleViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if isChangeLayout {
-            return tableView.frame.height / 10.5
+            return UITableView.automaticDimension
         } else {
-            return tableView.frame.height / 3.5
+            return tableView.frame.height / 2.5
         }
     }
     
@@ -299,14 +301,14 @@ extension ArticleViewController: UITableViewDelegate, UITableViewDataSource {
             cell.collectionView.dataSource = self
             cell.collectionView.lk_registerCellWithNib(identifier: "FilterCollectionViewCell", bundle: nil)
             cell.collectionView.tag = indexPath.row
-            cell.replyCount.text = "100"
+            cell.replyCount.text = "\(article.replyCount)"
             cell.loveCount.text = "\(article.loveCount)"
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ArticleListTableViewCell.self), for: indexPath) as? ArticleListTableViewCell else { return UITableViewCell() }
             cell.titleLabel.text = article.title
             cell.nameAndCreateTime.text = "\(authorObject.name)・\(article.intervalString)"
-            cell.replyCount.text = "100"
+            cell.replyCount.text = "\(article.replyCount)"
             cell.loveCount.text = "\(article.loveCount)"
             return cell
         }

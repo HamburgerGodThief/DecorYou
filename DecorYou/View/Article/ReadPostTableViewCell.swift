@@ -20,13 +20,18 @@ class ReadPostTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        logoImg.layer.cornerRadius = logoImg.frame.size.width / 2
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        logoImg.layer.cornerRadius = logoImg.frame.size.width / 2
     }
     
 }

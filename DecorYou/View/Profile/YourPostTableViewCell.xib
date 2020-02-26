@@ -10,50 +10,56 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="YourPostTableViewCell" rowHeight="68" id="KGk-i7-Jjw" customClass="YourPostTableViewCell" customModule="DecorYou" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="288" height="68"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="YourPostTableViewCell" rowHeight="76" id="KGk-i7-Jjw" customClass="YourPostTableViewCell" customModule="DecorYou" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="288" height="76"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="288" height="68"/>
+                <rect key="frame" x="0.0" y="0.0" width="288" height="76"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6sp-FR-MMV">
-                        <rect key="frame" x="20" y="6" width="248" height="56"/>
+                        <rect key="frame" x="20" y="6" width="248" height="64"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6gR-pj-nI3">
-                                <rect key="frame" x="25" y="10" width="40.5" height="22.5"/>
+                                <rect key="frame" x="25" y="10" width="40.5" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="hTu-o8-iWD"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I1Y-wJ-aEx">
-                                <rect key="frame" x="25" y="30" width="20.5" height="14"/>
+                                <rect key="frame" x="25" y="36" width="20.5" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="uA4-Gm-zXb"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="10"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kcd-MH-c5d">
-                                <rect key="frame" x="215.5" y="30" width="16.5" height="14"/>
+                                <rect key="frame" x="215.5" y="38" width="16.5" height="14"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="10"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble.left.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="8cU-CD-5C7">
-                                <rect key="frame" x="205" y="33.5" width="8.5" height="7.5"/>
+                                <rect key="frame" x="204" y="40.5" width="9.5" height="9.5"/>
                                 <color key="tintColor" name="mainColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="8cU-CD-5C7" secondAttribute="height" multiplier="1:1" id="peD-D0-M4M"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="TmW-v4-StE">
-                                <rect key="frame" x="186.5" y="34.5" width="8.5" height="5.5"/>
+                                <rect key="frame" x="184.5" y="41.5" width="9.5" height="7.5"/>
                                 <color key="tintColor" name="mainColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="TmW-v4-StE" secondAttribute="height" multiplier="1:1" id="gWq-nG-pMi"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nIL-0w-vkA">
-                                <rect key="frame" x="197" y="30" width="6" height="14"/>
+                                <rect key="frame" x="196" y="38" width="6" height="14"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="10"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -62,6 +68,7 @@
                         <color key="backgroundColor" name="shadowLightGray"/>
                         <constraints>
                             <constraint firstItem="6gR-pj-nI3" firstAttribute="leading" secondItem="6sp-FR-MMV" secondAttribute="leading" constant="25" id="0Zz-tG-vjx"/>
+                            <constraint firstItem="I1Y-wJ-aEx" firstAttribute="top" secondItem="6gR-pj-nI3" secondAttribute="bottom" constant="6" id="2dU-8B-NIN"/>
                             <constraint firstItem="nIL-0w-vkA" firstAttribute="leading" secondItem="TmW-v4-StE" secondAttribute="trailing" constant="2" id="BOB-Ey-iUl"/>
                             <constraint firstItem="6gR-pj-nI3" firstAttribute="top" secondItem="6sp-FR-MMV" secondAttribute="top" constant="10" id="BRW-CY-eFt"/>
                             <constraint firstItem="TmW-v4-StE" firstAttribute="centerY" secondItem="nIL-0w-vkA" secondAttribute="centerY" id="ECl-x0-ujA"/>
@@ -93,7 +100,7 @@
                 <outlet property="timeLabel" destination="I1Y-wJ-aEx" id="Q3m-dh-wNL"/>
                 <outlet property="titleLabel" destination="6gR-pj-nI3" id="wNb-lM-scX"/>
             </connections>
-            <point key="canvasLocation" x="85.507246376811594" y="136.60714285714286"/>
+            <point key="canvasLocation" x="85.507246376811594" y="139.28571428571428"/>
         </tableViewCell>
     </objects>
     <resources>

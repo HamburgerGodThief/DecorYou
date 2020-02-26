@@ -21,7 +21,7 @@ class ReplyViewController: UIViewController {
         navigationItem.title = "回覆文章"
         navigationController?.navigationBar.titleTextAttributes =
             [NSAttributedString.Key.foregroundColor: UIColor.white,
-             NSAttributedString.Key.font: UIFont(name: "PingFangTC-Semibold", size: 24)!]
+             NSAttributedString.Key.font: UIFont(name: "PingFangTC-Medium", size: 16)!]
         
         let rightBtn = UIBarButtonItem(title: "送出", style: .plain, target: self, action: #selector(createPost))
         let leftBtn = UIBarButtonItem(title: "取消", style: .plain, target: self, action: #selector(cancelPost))

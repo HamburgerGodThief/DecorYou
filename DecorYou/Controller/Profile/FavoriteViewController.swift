@@ -19,6 +19,8 @@ class FavoriteViewController: UIViewController {
         favoriteTableView.dataSource = self
         favoriteTableView.lk_registerCellWithNib(identifier: String(describing: YourPostTableViewCell.self), bundle: nil)
         favoriteTableView.separatorStyle = .none
+        favoriteTableView.estimatedRowHeight = 180
+        favoriteTableView.rowHeight = UITableView.automaticDimension
     }
     
     func getLovePost() {
@@ -75,7 +77,7 @@ class FavoriteViewController: UIViewController {
 extension FavoriteViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableView.frame.height / 5
+        return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -19,6 +19,8 @@ class CraftsmenViewController: UIViewController {
     var filterCraftsmen: [User] = []
     var finalData: [User] = []
     var isFilter: Bool = false
+    let itemSpace: CGFloat = 16
+    let columnCount: CGFloat = 2
     
     func getAllCraftsmen() {
         UserManager.shared.fetchAllCraftsmen(completion: { [weak self] result in
@@ -147,25 +149,25 @@ extension CraftsmenViewController: UICollectionViewDataSource, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = 180
-        let height = 270
+        let width = CGFloat((collectionView.frame.width - itemSpace * 3) / 2)
+        let height = CGFloat(270)
         return CGSize(width: width, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        let left = CGFloat(16)
-        let right = CGFloat(16)
-        let top = CGFloat(16)
-        let bottom = CGFloat(16)
+        let left = itemSpace
+        let right = itemSpace
+        let top = itemSpace
+        let bottom = itemSpace
         return UIEdgeInsets(top: top, left: left, bottom: bottom, right: right)
     }
     
     func collectionView(_: UICollectionView, layout: UICollectionViewLayout, minimumLineSpacingForSectionAt: Int) -> CGFloat {
-        return 16
+        return itemSpace
     }
     
     func collectionView(_: UICollectionView, layout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt: Int) -> CGFloat {
-        return 16
+        return itemSpace
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

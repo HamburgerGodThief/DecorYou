@@ -16,8 +16,8 @@ struct User: Codable {
     let email: String
     let name: String
     var img: String?
-    let lovePost: [DocumentReference]
-    let selfPost: [DocumentReference]
+    var lovePost: [DocumentReference]
+    var selfPost: [DocumentReference]
     let character: String
     let serviceLocation: [String]
     var serviceCategory: String?
@@ -57,12 +57,12 @@ struct Profolio: Codable {
     var dataSet: [PhotoSet] {
         
         return [
-            PhotoSet(name: "livingRoom", images: livingRoom),
-            PhotoSet(name: "dinningRoom", images: dinningRoom),
-            PhotoSet(name: "kitchen", images: kitchen),
-            PhotoSet(name: "mainRoom", images: mainRoom),
-            PhotoSet(name: "firstRoom", images: firstRoom),
-            PhotoSet(name: "bathRoom", images: bathRoom)
+            PhotoSet(name: "客廳", images: livingRoom),
+            PhotoSet(name: "餐廳", images: dinningRoom),
+            PhotoSet(name: "廚房", images: kitchen),
+            PhotoSet(name: "主臥室", images: mainRoom),
+            PhotoSet(name: "其他臥室", images: firstRoom),
+            PhotoSet(name: "浴室", images: bathRoom)
         ]
     }
 }

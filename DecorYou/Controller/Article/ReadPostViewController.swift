@@ -16,7 +16,10 @@ class ReadPostViewController: UIViewController {
     @IBOutlet weak var readPostTableView: UITableView!
     var article: Article?
     var replys: [Reply] = []
-    
+    let leftbtn = UIButton()
+    let rightbtn = UIButton()
+    var userLovePost: [Article] = []
+    var isLovePost: Bool = false
     let bottomView = UINib(nibName: "ReadPostBottomView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! ReadPostBottomView
     
     func setTableView() {
@@ -25,6 +28,9 @@ class ReadPostViewController: UIViewController {
         readPostTableView.lk_registerCellWithNib(identifier: String(describing: ReadPostTableViewCell.self), bundle: nil)
         readPostTableView.sectionHeaderHeight = UITableView.automaticDimension
         readPostTableView.estimatedSectionHeaderHeight = 250
+        
+        readPostTableView.estimatedRowHeight = 150
+        readPostTableView.rowHeight = UITableView.automaticDimension
     }
     
     func setBottomView() {
@@ -44,16 +50,85 @@ class ReadPostViewController: UIViewController {
         bottomView.replyBtn.addTarget(self, action: #selector(replyVC), for: .touchUpInside)
     }
     
-    func setNavigationBar() {
+    func setNavigationBar(isLovePost: Bool) {
         navigationItem.title = article?.title
         navigationController?.navigationBar.titleTextAttributes =
         [.foregroundColor: UIColor.white,
-         .font: UIFont(name: "PingFangTC-Medium", size: 18)!]
-        let btn = UIButton()
-        btn.setImage(UIImage.asset(.Icons_48px_Back01), for: .normal)
-        btn.tintColor = UIColor.white
-        btn.addTarget(self, action: #selector(backToArticle), for: .touchUpInside)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: btn)
+         .font: UIFont(name: "PingFangTC-Medium", size: 16)!]
+        
+        leftbtn.setImage(UIImage.asset(.Icons_48px_Back01), for: .normal)
+        leftbtn.tintColor = UIColor.white
+        leftbtn.addTarget(self, action: #selector(backToArticle), for: .touchUpInside)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftbtn)
+        
+        if isLovePost {
+            rightbtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        } else {
+            rightbtn.setImage(UIImage(systemName: "heart"), for: .normal)
+        }
+        
+        rightbtn.tintColor = UIColor.white
+        rightbtn.addTarget(self, action: #selector(addFavorite), for: .touchUpInside)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightbtn)
+    }
+    
+    func checkLovePost() {
+        
+        guard var user = UserManager.shared.user else { return }
+        guard let thisMainArticle = article else { return }
+        let thisArticleRef = ArticleManager.shared.db.collection("article").document(thisMainArticle.postID)
+                    
+        user.lovePost = user.lovePost.filter({ lovePostRef -> Bool in
+            
+            if lovePostRef == thisArticleRef {
+                return true
+            }
+            return false
+        })
+        
+        if user.lovePost.isEmpty {
+            
+            isLovePost = false
+            
+        } else {
+            
+            isLovePost = true
+            
+        }
+        
+        setNavigationBar(isLovePost: isLovePost)
+    }
+    
+    func addFavoriteAction() {
+        
+        guard var user = UserManager.shared.user else { return }
+        guard let thisMainArticle = article else { return }
+        let thisArticleRef = ArticleManager.shared.db.collection("article").document(thisMainArticle.postID)
+        
+        if isLovePost {
+            
+            user.lovePost = user.lovePost.filter({ lovePostRef -> Bool in
+                
+                if lovePostRef != thisArticleRef {
+                    return true
+                }
+                return false
+            })
+            
+            rightbtn.setImage(UIImage(systemName: "heart"), for: .normal)
+            SwiftMes.shared.showSuccessMessage(title: "成功", body: "已取消收藏", seconds: 1.5)
+            
+        } else {
+            
+            user.lovePost.append(thisArticleRef)
+            rightbtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            SwiftMes.shared.showSuccessMessage(title: "成功", body: "已收藏文章", seconds: 1.5)
+        }
+        
+        UserManager.shared.updateUserLovePost(uid: user.uid, lovePost: user.lovePost)
+        UserManager.shared.fetchCurrentUser(uid: user.uid)
+        isLovePost = !isLovePost
+        
     }
     
     func getArticleInfo() {
@@ -274,6 +349,12 @@ class ReadPostViewController: UIViewController {
         tabBarController?.tabBar.isHidden = false
     }
     
+    @objc func addFavorite() {
+        
+        addFavoriteAction()
+        
+    }
+    
     @objc func moreVC() {
         let storyboard = UIStoryboard(name: "Article", bundle: nil)
         guard let moreViewController = storyboard.instantiateViewController(withIdentifier: "MoreViewController") as? MoreViewController else { return }
@@ -327,22 +408,22 @@ class ReadPostViewController: UIViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setNavigationBar()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setTableView()
         setBottomView()
         setBottomViewAction()
         getArticleInfo()
+        checkLovePost()
     }
 }
 
 
 extension ReadPostViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         replys.count
@@ -371,7 +452,7 @@ extension ReadPostViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UINib(nibName: "ReadPostTableViewHeaderView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! ReadPostTableViewHeaderView
-        if section == 0{
+        if section == 0 {
             headerView.floorTimeLabel.text = "樓主 | \(replys[section].createTimeString)"
         } else {
             headerView.floorTimeLabel.text = "\(section)樓 | \(replys[section].createTimeString)"
@@ -395,6 +476,6 @@ extension ReadPostViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 60
+        return tableView.frame.height / 10
     }
 }

@@ -42,7 +42,7 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2da-j1-cpc">
-                    <rect key="frame" x="6" y="69" width="350" height="174"/>
+                    <rect key="frame" x="14" y="69" width="334" height="174"/>
                     <string key="text">版上的各位獵人大哥好，這裡是 手殘菜雞弓箭獵人
 
 玩弓箭有將近快2000場，全14種武器也只有玩弓箭的獵人
@@ -60,7 +60,7 @@
 達人II，劇情會給一顆 (我也就只用一顆)
 體術II，好刷
 屬性珠II，自從機率上調後，刷到會吼：把 「痛擊．體__珠」給我啊</string>
-                    <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="18"/>
+                    <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -76,10 +76,10 @@
                 <constraint firstItem="kzL-3V-rjM" firstAttribute="top" secondItem="SF6-sz-bfv" secondAttribute="top" constant="4" id="RfF-mo-1fJ"/>
                 <constraint firstItem="2da-j1-cpc" firstAttribute="top" secondItem="f7f-tQ-bwh" secondAttribute="bottom" constant="6" id="YOx-fr-ayu"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="2da-j1-cpc" secondAttribute="bottom" constant="6" id="Z6n-pS-T2g"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="2da-j1-cpc" secondAttribute="trailing" constant="6" id="ZSp-Zv-LgE"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="2da-j1-cpc" secondAttribute="trailing" constant="14" id="ZSp-Zv-LgE"/>
                 <constraint firstItem="f7f-tQ-bwh" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="6" id="ad4-4u-XLt"/>
                 <constraint firstItem="SF6-sz-bfv" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="cHd-6T-NwJ"/>
-                <constraint firstItem="2da-j1-cpc" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="6" id="deZ-Lz-2ck"/>
+                <constraint firstItem="2da-j1-cpc" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="14" id="deZ-Lz-2ck"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

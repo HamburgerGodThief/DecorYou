@@ -13,10 +13,10 @@ class MoreViewController: UIViewController {
     @IBOutlet weak var moreTBView: UITableView!
     var parentVC: ReadPostViewController?
     let titleArray = ["重新整理", "回覆文章", "收藏文章", "回文章列表"]
-    let iconArray = [UIImage.asset(.Icons_24px_Refresh),
-                     UIImage.asset(.Icons_24px_AwaitingReview),
-                     UIImage.asset(.Icons_24px_Favorite),
-                     UIImage.asset(.Icons_24px_Back03)]
+    let iconArray = [UIImage(systemName: "goforward"),
+                     UIImage(systemName: "text.bubble"),
+                     UIImage(systemName: "heart"),
+                     UIImage(systemName: "arrow.left")]
     
     func setTableView() {
         moreTBView.delegate = self
@@ -37,7 +37,7 @@ class MoreViewController: UIViewController {
 extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 75
+        return tableView.frame.height / 4
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -66,6 +66,7 @@ extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
             parentVC?.navigationController?.pushViewController(replyViewController, animated: true)
         case 2:
             dismiss(animated: true, completion: nil)
+            parentVC?.addFavoriteAction()
         default:
             dismiss(animated: true, completion: nil)
             

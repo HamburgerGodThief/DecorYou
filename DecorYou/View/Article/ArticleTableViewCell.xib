@@ -10,40 +10,40 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="KGk-i7-Jjw" customClass="ArticleTableViewCell" customModule="DecorYou" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="579" height="335"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="251" id="KGk-i7-Jjw" customClass="ArticleTableViewCell" customModule="DecorYou" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="527" height="251"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="579" height="335"/>
+                <rect key="frame" x="0.0" y="0.0" width="527" height="251"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0v8-07-bh3">
-                        <rect key="frame" x="16" y="16" width="547" height="319"/>
+                        <rect key="frame" x="16" y="16" width="495" height="235"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ERT-mr-Rga">
                                 <rect key="frame" x="8" y="8" width="48" height="48"/>
-                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ERT-mr-Rga" secondAttribute="height" multiplier="1:1" id="eBf-0P-6XL"/>
                                     <constraint firstAttribute="width" constant="48" id="wqv-ag-Rlp"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MHWI 非洲弓箭手的配裝分享" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVl-VA-mcg">
-                                <rect key="frame" x="60" y="12" width="471" height="28"/>
+                                <rect key="frame" x="62" y="12" width="313" height="22.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="地獄倒霉鬼 | 2020-02-05 13:35" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TVx-yI-EBt">
-                                <rect key="frame" x="60" y="40" width="471" height="14"/>
+                                <rect key="frame" x="62" y="34.5" width="417" height="14"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="10"/>
                                 <color key="textColor" red="0.66666666666666663" green="0.66666668653488159" blue="0.66666668653488159" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VBD-aO-DKY">
-                                <rect key="frame" x="12" y="60" width="519" height="199"/>
+                                <rect key="frame" x="12" y="60" width="467" height="115"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">版上的各位獵人大哥好，這裡是 手殘菜雞弓箭獵人
 玩弓箭有將近快2000場，全14種武器也只有玩弓箭的獵人
@@ -51,18 +51,13 @@
 此篇的心得，個人的主觀意識會很重
 畢竟獵人百百種，每種都不同，珠子有的也不同，配裝意識方面更不同
 尤其一些重點珠子的不同，會有很多不同的配裝
-對，我就是在說那該死的 「痛擊．體__珠」
-本篇分享文不會出現歐洲人才有的珠子
-都是平常走在路上低下頭都可以撿到的珠，像是
-達人II，劇情會給一顆 (我也就只用一顆)
-體術II，好刷
-屬性珠II，自從機率上調後，刷到會吼：把 「痛擊．體__珠」給我啊</string>
-                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="18"/>
+對，我就是在說那該死的 「痛擊．體__珠」</string>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="wqT-Sy-uTj">
-                                <rect key="frame" x="25" y="269" width="497" height="50"/>
+                                <rect key="frame" x="25" y="185" width="445" height="50"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8iq-mz-0g7">
                                     <size key="itemSize" width="50" height="50"/>
@@ -71,28 +66,28 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BvQ-11-iu8">
-                                <rect key="frame" x="508.5" y="16" width="22.5" height="20"/>
-                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble.left.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="QP2-Jz-Job">
-                                <rect key="frame" x="490.5" y="18.5" width="16" height="15.5"/>
+                                <rect key="frame" x="438.5" y="16" width="16" height="15.5"/>
                                 <color key="tintColor" name="mainColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="QP2-Jz-Job" secondAttribute="height" multiplier="1:1" id="BYt-A8-9Db"/>
                                     <constraint firstAttribute="height" constant="16" id="rqm-3G-AUQ"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BvQ-11-iu8">
+                                <rect key="frame" x="456.5" y="13.5" width="22.5" height="20"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="78A-7E-p71">
-                                <rect key="frame" x="471.5" y="16" width="17" height="20"/>
+                                <rect key="frame" x="419.5" y="13.5" width="17" height="20"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Wyo-pL-9E9">
-                                <rect key="frame" x="453.5" y="19.5" width="16" height="13.5"/>
+                                <rect key="frame" x="401.5" y="17" width="16" height="13.5"/>
                                 <color key="tintColor" name="mainColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Wyo-pL-9E9" secondAttribute="height" multiplier="1:1" id="OUB-t0-mae"/>
@@ -103,13 +98,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="QP2-Jz-Job" firstAttribute="leading" secondItem="78A-7E-p71" secondAttribute="trailing" constant="2" id="8iV-Au-h5A"/>
-                            <constraint firstAttribute="trailing" secondItem="YVl-VA-mcg" secondAttribute="trailing" constant="16" id="BYU-y8-cP7"/>
+                            <constraint firstAttribute="trailing" secondItem="YVl-VA-mcg" secondAttribute="trailing" constant="120" id="BYU-y8-cP7"/>
                             <constraint firstItem="BvQ-11-iu8" firstAttribute="leading" secondItem="QP2-Jz-Job" secondAttribute="trailing" constant="2" id="Buj-io-HIP"/>
                             <constraint firstItem="TVx-yI-EBt" firstAttribute="top" secondItem="YVl-VA-mcg" secondAttribute="bottom" id="GrG-2w-RHY"/>
                             <constraint firstItem="Wyo-pL-9E9" firstAttribute="centerY" secondItem="BvQ-11-iu8" secondAttribute="centerY" id="ORJ-sX-I6m"/>
                             <constraint firstAttribute="trailing" secondItem="BvQ-11-iu8" secondAttribute="trailing" constant="16" id="QbK-KF-80h"/>
                             <constraint firstItem="ERT-mr-Rga" firstAttribute="top" secondItem="0v8-07-bh3" secondAttribute="top" constant="8" id="T9n-Bg-MZj"/>
-                            <constraint firstItem="YVl-VA-mcg" firstAttribute="leading" secondItem="ERT-mr-Rga" secondAttribute="trailing" constant="4" id="VhR-mC-ecj"/>
+                            <constraint firstItem="YVl-VA-mcg" firstAttribute="leading" secondItem="ERT-mr-Rga" secondAttribute="trailing" constant="6" id="VhR-mC-ecj"/>
                             <constraint firstItem="78A-7E-p71" firstAttribute="leading" secondItem="Wyo-pL-9E9" secondAttribute="trailing" constant="2" id="VjQ-pH-rnV"/>
                             <constraint firstItem="ERT-mr-Rga" firstAttribute="leading" secondItem="0v8-07-bh3" secondAttribute="leading" constant="8" id="b0L-ec-YmI"/>
                             <constraint firstAttribute="trailing" secondItem="TVx-yI-EBt" secondAttribute="trailing" constant="16" id="b36-8e-Wzu"/>
@@ -120,7 +115,7 @@
                             <constraint firstItem="wqT-Sy-uTj" firstAttribute="top" secondItem="VBD-aO-DKY" secondAttribute="bottom" constant="10" id="hhk-Jt-8GH"/>
                             <constraint firstItem="78A-7E-p71" firstAttribute="centerY" secondItem="BvQ-11-iu8" secondAttribute="centerY" id="lit-BF-dBt"/>
                             <constraint firstAttribute="bottom" secondItem="VBD-aO-DKY" secondAttribute="bottom" constant="60" id="pTX-VM-WFU"/>
-                            <constraint firstItem="TVx-yI-EBt" firstAttribute="leading" secondItem="ERT-mr-Rga" secondAttribute="trailing" constant="4" id="pfm-ff-7WI"/>
+                            <constraint firstItem="TVx-yI-EBt" firstAttribute="leading" secondItem="ERT-mr-Rga" secondAttribute="trailing" constant="6" id="pfm-ff-7WI"/>
                             <constraint firstItem="wqT-Sy-uTj" firstAttribute="leading" secondItem="0v8-07-bh3" secondAttribute="leading" constant="25" id="px8-5J-7hN"/>
                             <constraint firstItem="QP2-Jz-Job" firstAttribute="centerY" secondItem="BvQ-11-iu8" secondAttribute="centerY" id="sDL-9H-RNG"/>
                             <constraint firstAttribute="trailing" secondItem="VBD-aO-DKY" secondAttribute="trailing" constant="16" id="sGd-kG-Ltq"/>
@@ -149,7 +144,7 @@
                 <outlet property="replyCount" destination="BvQ-11-iu8" id="XOn-45-Mus"/>
                 <outlet property="titleLabel" destination="YVl-VA-mcg" id="5dK-wi-W7X"/>
             </connections>
-            <point key="canvasLocation" x="176.08695652173915" y="101.45089285714285"/>
+            <point key="canvasLocation" x="138.40579710144928" y="72.65625"/>
         </tableViewCell>
     </objects>
     <resources>

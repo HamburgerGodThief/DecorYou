@@ -190,8 +190,6 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setIBOutlet()
-        
         getUserInfo()
         
         navigationController?.navigationBar.isTranslucent = true
@@ -202,6 +200,11 @@ class ProfileViewController: UIViewController {
         
         navigationController?.navigationBar.barStyle = .black
         
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        setIBOutlet()
     }
     
 }
