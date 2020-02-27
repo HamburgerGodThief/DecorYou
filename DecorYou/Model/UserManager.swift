@@ -16,6 +16,7 @@ struct User: Codable {
     let email: String
     let name: String
     var img: String?
+    var backgroundImg: String?
     var lovePost: [DocumentReference]
     var selfPost: [DocumentReference]
     let character: String
@@ -24,7 +25,7 @@ struct User: Codable {
     var select: Bool? = false
     
     enum CodingKeys: String, CodingKey {
-        case uid, email, name, img, lovePost, selfPost, character, serviceLocation, serviceCategory
+        case uid, email, name, img, backgroundImg, lovePost, selfPost, character, serviceLocation, serviceCategory
     }
 }
 
@@ -205,12 +206,24 @@ class UserManager {
         }
     }
     
-    func updateUserImage(uid: String, img: String) {
+    func updateUserImage(uid: String, img: String, completion: @escaping (() -> Void)) {
         db.collection("users").document(uid).setData(["img": img], merge: true) { err in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
                 print("Document successfully updated")
+                completion()
+            }
+        }
+    }
+    
+    func updateUserbackgroundImg(uid: String, backgroundImg: String, completion: @escaping (() -> Void) ) {
+        db.collection("users").document(uid).setData(["backgroundImg": backgroundImg], merge: true) { err in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                print("Document successfully updated")
+                completion()
             }
         }
     }
@@ -239,5 +252,27 @@ class UserManager {
         }
     }
     
+    func updateUserName(uid: String, name: String) {
+        db.collection("users").document(uid).updateData([
+            "name": name
+        ]) { err in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
+    }
     
+    func updateUserEmail(uid: String, email: String) {
+        db.collection("users").document(uid).updateData([
+            "email": email
+        ]) { err in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
+    }
 }

@@ -19,6 +19,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var coverBackgroundView: UIView!
     @IBOutlet weak var profileImg: UIImageView!
     @IBOutlet weak var profileNameLabel: UILabel!
+    @IBOutlet weak var profileEmailLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView! {
         
         didSet {
@@ -47,11 +48,39 @@ class ProfileViewController: UIViewController {
         // 委任代理
         imagePickerController.delegate = self
         
-        let editPickerAlertController = UIAlertController(title: "編輯圖片", message: "請選擇要編輯區域的圖片", preferredStyle: .actionSheet)
+        let editPickerAlertController = UIAlertController(title: "編輯個人資料", message: "請選擇要編輯的欄位", preferredStyle: .actionSheet)
 
-        // 建立三個 UIAlertAction 的實體
+        // 建立四個 UIAlertAction 的實體
         // 新增 UIAlertAction 在 UIAlertController actionSheet 的 動作 (action) 與標題
 
+        let editNameAction = UIAlertAction(title: "用戶名稱", style: .default) { [weak self] (Void) in
+            
+            guard let strongSelf = self else { return }
+            
+            let storyboard = UIStoryboard.init(name: "Profile", bundle: nil)
+            
+            guard let editVC = storyboard.instantiateViewController(identifier: "EditProfileViewController") as? EditProfileViewController else { return }
+            
+            editVC.updateTarget = "name"
+            
+            strongSelf.present(editVC, animated: true, completion: nil)
+            
+        }
+        
+        let editEmailAction = UIAlertAction(title: "用戶信箱", style: .default) { [weak self] (Void) in
+
+            guard let strongSelf = self else { return }
+            
+            let storyboard = UIStoryboard.init(name: "Profile", bundle: nil)
+            
+            guard let editVC = storyboard.instantiateViewController(identifier: "EditProfileViewController") as? EditProfileViewController else { return }
+            
+            editVC.updateTarget = "email"
+            
+            strongSelf.present(editVC, animated: true, completion: nil)
+            
+        }
+        
         let imageForProfileImgAction = UIAlertAction(title: "個人大頭貼", style: .default) { [weak self] (Void) in
 
             // 判斷是否可以從照片圖庫取得照片來源
@@ -79,12 +108,14 @@ class ProfileViewController: UIViewController {
             editPickerAlertController.dismiss(animated: true, completion: nil)
         }
 
-        // 將上面三個 UIAlertAction 動作加入 UIAlertController
+        // 將上面四個 UIAlertAction 動作加入 UIAlertController
+        editPickerAlertController.addAction(editNameAction)
+        editPickerAlertController.addAction(editEmailAction)
         editPickerAlertController.addAction(imageForProfileImgAction)
         editPickerAlertController.addAction(imageForBackImgAction)
         editPickerAlertController.addAction(cancelAction)
 
-        // 當使用者按下 uploadBtnAction 時會 present 剛剛建立好的三個 UIAlertAction 動作與
+        // 當使用者按下 uploadBtnAction 時會 present 剛剛建立好的四個 UIAlertAction 動作
         present(editPickerAlertController, animated: true, completion: nil)
 
     }
@@ -147,6 +178,7 @@ class ProfileViewController: UIViewController {
         profileImg.loadImage(user.img, placeHolder: UIImage(systemName: "person.crop.circle"))
         profileImg.tintColor = .lightGray
         profileNameLabel.text = user.name
+        profileEmailLabel.text = user.email
         if user.character == "craftsmen" {
             finalTabTitle = craftsmenTabTitle
             selectStatus = [true, false, false]
@@ -306,21 +338,26 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
                         guard let user = UserManager.shared.user else { return }
                         if strongSelf.editType {
                             
-                            UserManager.shared.updateUserImage(uid: user.uid, img: imgURL)
-                            strongSelf.profileImg.loadImage(imgURL, placeHolder: UIImage(systemName: "person.crop.circle"))
-                            strongSelf.profileImg.tintColor = .lightGray
-                            
+                            UserManager.shared.updateUserImage(uid: user.uid, img: imgURL, completion: {
+                                strongSelf.profileImg.loadImage(imgURL, placeHolder: UIImage(systemName: "person.crop.circle"))
+                                strongSelf.profileImg.tintColor = .lightGray
+                                strongSelf.dismiss(animated: true, completion: nil)
+                            })
                         } else {
                             
+                            UserManager.shared.updateUserbackgroundImg(uid: user.uid, backgroundImg: imgURL, completion: {
+                                strongSelf.backgroundImg.loadImage(imgURL, placeHolder: UIImage())
+                                strongSelf.backgroundImg.backgroundColor = .black
+                                strongSelf.dismiss(animated: true, completion: nil)
+                            })
                         }
-                        
-                        
-                        strongSelf.dismiss(animated: true, completion: nil)
                     })
                 })
             }
         }
 
         dismiss(animated: true, completion: nil)
+        
+        presentLoadingVC()
     }
 }
