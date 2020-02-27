@@ -33,4 +33,26 @@ class RoundCornerAndShadow: UIView {
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }
+    
+    func layoutView(_ view: UIView, radius: CGFloat, color: UIColor, offset: CGSize, opacity: Float) {
+
+        layer.shadowRadius = radius
+        layer.shadowColor = color.cgColor
+        layer.shadowOffset = offset
+        layer.shadowOpacity = opacity
+        
+        clipsToBounds = true
+        layer.masksToBounds = false
+        
+        view.clipsToBounds = true
+        addSubview(view)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            view.topAnchor.constraint(equalTo: topAnchor),
+            view.bottomAnchor.constraint(equalTo: bottomAnchor),
+            view.leftAnchor.constraint(equalTo: leftAnchor),
+            view.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
+    }
 }

@@ -348,7 +348,7 @@ class ReadPostViewController: UIViewController {
     
     @objc func backToArticle() {
         guard let articleVC = navigationController?.viewControllers[0] as? ArticleViewController else { return }
-        articleVC.getData()
+        articleVC.getData(shouldShowLoadingVC: true)
         navigationController?.popViewController(animated: true)
         tabBarController?.tabBar.isHidden = false
     }
@@ -441,12 +441,14 @@ extension ReadPostViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ReadPostTableViewCell.self), for: indexPath) as? ReadPostTableViewCell else { return UITableViewCell() }
         switch indexPath.row {
         case 0:
-            cell.logoImg.loadImage(replys[indexPath.section].comments[indexPath.row].authorObject?.img, placeHolder: UIImage(systemName: "person.circle"))
+            cell.logoImg.loadImage(replys[indexPath.section].comments[indexPath.row].authorObject?.img, placeHolder: UIImage(systemName: "person.crop.circle"))
+            cell.logoImg.tintColor = .lightGray
             cell.createTimeLabel.text = "\(replys[indexPath.section].comments[indexPath.row].createTimeString)"
             cell.contentLabel.text = replys[indexPath.section].comments[indexPath.row].content
             cell.authorNameLabel.text = replys[indexPath.section].comments[indexPath.row].authorObject?.name
         default:
-            cell.logoImg.loadImage(replys[indexPath.section].comments[indexPath.row].authorObject?.img, placeHolder: UIImage(systemName: "person.circle"))
+            cell.logoImg.loadImage(replys[indexPath.section].comments[indexPath.row].authorObject?.img, placeHolder: UIImage(systemName: "person.crop.circle"))
+            cell.tintColor = .lightGray
             cell.createTimeLabel.text = "\(replys[indexPath.section].comments[indexPath.row].createTimeString)"
             cell.contentLabel.text = replys[indexPath.section].comments[indexPath.row].content
             cell.authorNameLabel.text = replys[indexPath.section].comments[indexPath.row].authorObject?.name
@@ -462,7 +464,8 @@ extension ReadPostViewController: UITableViewDelegate, UITableViewDataSource {
             headerView.floorTimeLabel.text = "\(section)樓 | \(replys[section].createTimeString)"
         }
         headerView.authorName.text = replys[section].authorObject?.name
-        headerView.logoImg.loadImage(replys[section].authorObject?.img, placeHolder: UIImage(systemName: "person.circle"))
+        headerView.logoImg.loadImage(replys[section].authorObject?.img, placeHolder: UIImage(systemName: "person.crop.circle"))
+        headerView.logoImg.tintColor = .lightGray
         headerView.contentLabel.text = replys[section].content
         return headerView
     }

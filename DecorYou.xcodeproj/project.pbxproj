@@ -39,6 +39,7 @@
 		647A7CD523D83E49005D1946 /* CraftsmenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647A7CD423D83E49005D1946 /* CraftsmenViewController.swift */; };
 		647A7CD723D83E55005D1946 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647A7CD623D83E55005D1946 /* ChatViewController.swift */; };
 		647A7CD923D83E5E005D1946 /* OldProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647A7CD823D83E5E005D1946 /* OldProfileViewController.swift */; };
+		64F81E58240695B20020566C /* forestmorning.json in Resources */ = {isa = PBXBuildFile; fileRef = 64F81E57240695B20020566C /* forestmorning.json */; };
 		64F9D89823F9239D00F28186 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F9D89723F9239D00F28186 /* PhotosViewController.swift */; };
 		64F9D89B23F9379400F28186 /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F9D89923F9379400F28186 /* PhotosCollectionViewCell.swift */; };
 		64F9D89C23F9379400F28186 /* PhotosCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64F9D89A23F9379400F28186 /* PhotosCollectionViewCell.xib */; };
@@ -181,6 +182,8 @@
 		647A7CD423D83E49005D1946 /* CraftsmenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CraftsmenViewController.swift; sourceTree = "<group>"; };
 		647A7CD623D83E55005D1946 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		647A7CD823D83E5E005D1946 /* OldProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldProfileViewController.swift; sourceTree = "<group>"; };
+		64F81E57240695B20020566C /* forestmorning.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = forestmorning.json; path = ../../../forestmorning.json; sourceTree = "<group>"; };
+		64F81E5D2406A40C0020566C /* DecorYou.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DecorYou.entitlements; sourceTree = "<group>"; };
 		64F9D89723F9239D00F28186 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		64F9D89923F9379400F28186 /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
 		64F9D89A23F9379400F28186 /* PhotosCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotosCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -364,6 +367,7 @@
 		647A7CAA23D83376005D1946 /* DecorYou */ = {
 			isa = PBXGroup;
 			children = (
+				64F81E5D2406A40C0020566C /* DecorYou.entitlements */,
 				647A7CAB23D83376005D1946 /* AppDelegate.swift */,
 				647A7CB423D83377005D1946 /* Assets.xcassets */,
 				647A7CCF23D83C7C005D1946 /* Extension */,
@@ -381,6 +385,7 @@
 			isa = PBXGroup;
 			children = (
 				64FBDA7B24050EA80089D9EA /* loadingAnimate.json */,
+				64F81E57240695B20020566C /* forestmorning.json */,
 				647A7CCD23D83C61005D1946 /* UIImage+Extension.swift */,
 				647A7CCB23D83BCE005D1946 /* UIStoryboard+Extension.swift */,
 				64FA42AD23E3A7990065DCEF /* UICollectionView+Extension.swift */,
@@ -694,6 +699,7 @@
 				64FC819E23E7FC190027DDEE /* ChatRoomBottomView.xib in Resources */,
 				64FA42AB23E393280065DCEF /* CraftsmenCollectionViewCell.xib in Resources */,
 				647A7CB323D83376005D1946 /* Main.storyboard in Resources */,
+				64F81E58240695B20020566C /* forestmorning.json in Resources */,
 				64FC818E23E7C26E0027DDEE /* ProfolioTableViewCell.xib in Resources */,
 				64FA7CC223F2365800975B03 /* ReadPostTableViewFooterView.xib in Resources */,
 				64FA58C723FE852A003D7353 /* FilterTableViewCell.xib in Resources */,
@@ -1003,6 +1009,7 @@
 			baseConfigurationReference = 1F3011E028BC5AE10C835F5E /* Pods-DecorYou.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DecorYou/DecorYou.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2D5SP97CPJ;
 				INFOPLIST_FILE = DecorYou/Info.plist;
@@ -1023,6 +1030,7 @@
 			baseConfigurationReference = 16811DD988D5917B85CF4132 /* Pods-DecorYou.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DecorYou/DecorYou.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2D5SP97CPJ;
 				INFOPLIST_FILE = DecorYou/Info.plist;

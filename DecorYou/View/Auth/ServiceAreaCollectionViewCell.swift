@@ -16,8 +16,9 @@ class ServiceAreaCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         areaLabel.layer.cornerRadius = areaLabel.frame.size.height / 2
-        areaLabel.layer.borderColor = UIColor.assetColor(.shadowLightGray)?.cgColor
+        areaLabel.layer.borderColor = UIColor.assetColor(.mainColor)?.cgColor
         areaLabel.layer.borderWidth = 1
+        areaLabel.backgroundColor = .white
         areaLabel.clipsToBounds = true
     }
     

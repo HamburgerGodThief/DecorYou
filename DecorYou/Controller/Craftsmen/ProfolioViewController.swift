@@ -103,8 +103,8 @@ extension ProfolioViewController: UICollectionViewDataSource, UICollectionViewDe
             
             return UICollectionViewCell()
         }
-        cell.profolioImg.loadImage(photoSet[collectionView.tag].images[indexPath.item])
-        
+        cell.profolioImg.loadImage(photoSet[collectionView.tag].images[indexPath.item], placeHolder: UIImage(systemName: "person.crop.circle"))
+        cell.profolioImg.tintColor = .lightGray
         return cell
     }
 

@@ -17,7 +17,7 @@ class LoadingViewController: UIViewController {
         super.viewDidLoad()
         animationView.animation = Animation.named("loadingAnimate")
         animationView.loopMode = .loop
-        animationView.animationSpeed = 1.5
+        animationView.animationSpeed = 1.2
         animationView.play()
         // Do any additional setup after loading the view.
     }

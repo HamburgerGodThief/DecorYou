@@ -23,10 +23,12 @@ class CraftsmenViewController: UIViewController {
     let columnCount: CGFloat = 2
     
     func getAllCraftsmen() {
+        presentLoadingVC()
         UserManager.shared.fetchAllCraftsmen(completion: { [weak self] result in
             switch result {
             case .success(let allCraftsmen):
                 guard let strongSelf = self else { return }
+                strongSelf.dismiss(animated: true, completion: nil)
                 strongSelf.allCraftsmen = allCraftsmen
                 strongSelf.finalData = strongSelf.allCraftsmen
                 strongSelf.craftsmenCollectionView.reloadData()
@@ -141,7 +143,8 @@ extension CraftsmenViewController: UICollectionViewDataSource, UICollectionViewD
         let location = finalData[indexPath.item].serviceLocation.reduce("", { (sum, string) -> String in
             return sum + string + "、"
         })
-        cell.logoImg.loadImage(finalData[indexPath.item].img)
+        cell.logoImg.loadImage(finalData[indexPath.item].img, placeHolder: UIImage(systemName: "person.crop.circle"))
+        cell.logoImg.tintColor = .lightGray
         cell.nameLabel.text = finalData[indexPath.item].name
         cell.serviceLabel.text = finalData[indexPath.item].serviceCategory!
         cell.locationLabel.text = location

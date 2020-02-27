@@ -23,11 +23,11 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PsU-KR-IwC">
                                 <rect key="frame" x="118.5" y="21.5" width="35.5" height="20"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" name="mainColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" name="mainColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="PsU-KR-IwC" firstAttribute="centerX" secondItem="bM6-4t-7Bm" secondAttribute="centerX" id="FP8-ab-Un5"/>
                             <constraint firstItem="PsU-KR-IwC" firstAttribute="centerY" secondItem="bM6-4t-7Bm" secondAttribute="centerY" id="hj5-1W-FiE"/>

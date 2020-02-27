@@ -206,7 +206,8 @@ extension ProfolioTestViewController: UICollectionViewDataSource, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(ResumeCollectionViewCell.self)", for: indexPath) as! ResumeCollectionViewCell
-        cell.profolioImg.loadImage(photoSet[indexPath.section].images[indexPath.item])
+        cell.profolioImg.loadImage(photoSet[indexPath.section].images[indexPath.item], placeHolder: UIImage(systemName: "person.crop.circle"))
+        cell.profolioImg.tintColor = .lightGray
         return cell
     }
     

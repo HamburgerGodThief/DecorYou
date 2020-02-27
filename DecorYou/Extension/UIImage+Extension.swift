@@ -86,7 +86,8 @@ enum ImageAsset: String {
     case Icons_72px_CraftsmenToolBox
     
     //Sign In
-    case btn_google_light_normal_ios
+    case Icons_24px_Google
+    
 }
 
 // swiftlint:enable identifier_name

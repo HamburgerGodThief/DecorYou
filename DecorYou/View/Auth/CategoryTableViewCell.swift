@@ -12,6 +12,7 @@ class CategoryTableViewCell: UITableViewCell {
 
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var cateLabel: UILabel!
+    var select: Bool = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,6 +28,8 @@ class CategoryTableViewCell: UITableViewCell {
     override func layoutIfNeeded() {
         super.layoutIfNeeded()
         backView.layer.cornerRadius = backView.frame.height / 2
+        backView.layer.borderWidth = 1
+        backView.layer.borderColor = UIColor.assetColor(.mainColor)?.cgColor
     }
     
 }

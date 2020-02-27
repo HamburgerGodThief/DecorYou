@@ -28,8 +28,6 @@ class AuthViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Auth", bundle: nil)
         guard let authViewController = storyboard.instantiateViewController(withIdentifier: "AuthenticationViewController") as? AuthenticationViewController else { return }
         navigationController?.pushViewController(authViewController, animated: true)
-//        guard let logInViewController = storyboard.instantiateViewController(withIdentifier: "LogInViewController") as? LogInViewController else { return }
-//        navigationController?.pushViewController(logInViewController, animated: true)
     }
     
     func setting() {

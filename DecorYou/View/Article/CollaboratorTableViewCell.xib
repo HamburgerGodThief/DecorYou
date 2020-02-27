@@ -19,6 +19,7 @@
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iZc-CN-Qpc">
                         <rect key="frame" x="16" y="11.5" width="40" height="40"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="iZc-CN-Qpc" secondAttribute="height" multiplier="1:1" id="CHC-t7-eAQ"/>
                             <constraint firstAttribute="height" constant="40" id="uUj-1E-ZQS"/>

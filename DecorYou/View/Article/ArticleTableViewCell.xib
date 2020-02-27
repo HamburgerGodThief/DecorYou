@@ -22,7 +22,7 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ERT-mr-Rga">
                                 <rect key="frame" x="8" y="8" width="48" height="48"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ERT-mr-Rga" secondAttribute="height" multiplier="1:1" id="eBf-0P-6XL"/>
                                     <constraint firstAttribute="width" constant="48" id="wqv-ag-Rlp"/>

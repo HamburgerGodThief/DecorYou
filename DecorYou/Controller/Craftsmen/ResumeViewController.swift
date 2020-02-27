@@ -44,7 +44,8 @@ class ResumeViewController: UIViewController {
     
     func getDataAndShowIt() {
         guard let craftsman = craftsman else { return }
-        logoImg.loadImage(craftsman.img)
+        logoImg.loadImage(craftsman.img, placeHolder: UIImage(systemName: "person.crop.circle"))
+        logoImg.tintColor = .lightGray
         guard let serviceCat = craftsman.serviceCategory else { return }
         let location = craftsman.serviceLocation.reduce("", { (sum, string) -> String in
             return sum + string + "、"
@@ -102,7 +103,8 @@ extension ResumeViewController: UICollectionViewDataSource, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: ResumeCollectionViewCell.self), for: indexPath) as? ResumeCollectionViewCell else { return UICollectionViewCell() }
-        cell.profolioImg.loadImage(allProfolio[indexPath.item].coverImg)
+        cell.profolioImg.loadImage(allProfolio[indexPath.item].coverImg, placeHolder: UIImage(systemName: "person.crop.circle"))
+        cell.profolioImg.tintColor = .lightGray
         return cell
     }
     

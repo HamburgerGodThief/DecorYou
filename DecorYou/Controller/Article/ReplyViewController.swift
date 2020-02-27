@@ -49,7 +49,8 @@ class ReplyViewController: UIViewController {
         nameLabel.text = UserManager.shared.user?.name
         titleLabel.text = "Re: \(thisMainArticle!.title)"
         replyContentTextView.text = "引述 <()> 之銘言 \n)"
-        logoImg.loadImage(UserManager.shared.user?.img)
+        logoImg.loadImage(UserManager.shared.user?.img, placeHolder: UIImage(systemName: "person.crop.circle"))
+        logoImg.tintColor = .lightGray
     }
     
     @objc func createPost() {

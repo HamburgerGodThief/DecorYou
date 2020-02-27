@@ -21,5 +21,4 @@ extension UIViewController {
         present(loadingVC, animated: true, completion: nil)
         
     }
-    
 }

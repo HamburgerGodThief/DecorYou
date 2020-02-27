@@ -11,6 +11,8 @@ import UIKit
 class FavoriteViewController: UIViewController {
     
     @IBOutlet weak var favoriteTableView: UITableView!
+    @IBOutlet weak var noArticleLabel: UILabel!
+    
     var lovePost: [Article] = []
     var user: User?
     
@@ -63,6 +65,11 @@ class FavoriteViewController: UIViewController {
         
         group1.notify(queue: .main) { [weak self] in
             guard let strongSelf = self else { return }
+            if strongSelf.lovePost.isEmpty {
+                strongSelf.noArticleLabel.isHidden = false
+            } else {
+                strongSelf.noArticleLabel.isHidden = true
+            }
             strongSelf.favoriteTableView.reloadData()
         }
     }
@@ -71,6 +78,7 @@ class FavoriteViewController: UIViewController {
         super.viewDidLoad()
         setTableView()
         getLovePost()
+        noArticleLabel.isHidden = true
     }
 }
 
@@ -106,5 +114,13 @@ extension FavoriteViewController: UITableViewDataSource, UITableViewDelegate {
             tableView.layoutIfNeeded()
         }
         animator.startAnimation(afterDelay: 0.1 * Double(indexPath.item))
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard.init(name: "Article", bundle: nil)
+        guard let readPostVC = storyboard.instantiateViewController(identifier: "ReadPostViewController") as? ReadPostViewController else { return }
+        readPostVC.article = lovePost[indexPath.row]
+//        readPostVC.modalPresentationStyle = .overFullScreen
+        present(readPostVC, animated: true, completion: nil)
     }
 }

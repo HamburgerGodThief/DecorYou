@@ -31,7 +31,8 @@ class ArticleTableViewCell: UITableViewCell {
     
     func fillData(authorImgURLString: String?, titleLabel: String, nameTimeLabel: String, contentLabel: String) {
         
-        self.authorImgView.loadImage(authorImgURLString, placeHolder: UIImage(systemName: "person.circle"))
+        self.authorImgView.loadImage(authorImgURLString, placeHolder: UIImage(systemName: "person.crop.circle"))
+        self.authorImgView.tintColor = .lightGray
         self.titleLabel.text = titleLabel
         self.nameTimeLabel.text = nameTimeLabel
         self.contentLabel.text = contentLabel

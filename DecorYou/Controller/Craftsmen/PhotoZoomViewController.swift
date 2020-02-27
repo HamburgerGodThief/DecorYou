@@ -41,7 +41,8 @@ class PhotoZoomViewController: UIViewController {
         if #available(iOS 11, *) {
             self.scrollView.contentInsetAdjustmentBehavior = .never
         }
-        self.imageView.loadImage(imageURL)
+        self.imageView.loadImage(imageURL, placeHolder: UIImage(systemName: "person.crop.circle"))
+        self.imageView.tintColor = .lightGray
         self.imageView.frame = CGRect(x: self.imageView.frame.origin.x,
                                       y: self.imageView.frame.origin.y,
                                       width: self.imageView.frame.size.width,

@@ -115,7 +115,8 @@ class NewPostViewController: UIViewController {
     
     func getCurrentUser() {
         currentUser = UserManager.shared.user
-        authorImgView.loadImage(currentUser?.img)
+        authorImgView.loadImage(currentUser?.img, placeHolder: UIImage(systemName: "person.crop.circle"))
+        authorImgView.tintColor = .lightGray
         authorNameLabel.text = currentUser?.name
     }
     
@@ -192,7 +193,8 @@ extension NewPostViewController: UICollectionViewDataSource, UICollectionViewDel
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: CollaboratorLogoCollectionViewCell.self), for: indexPath) as? CollaboratorLogoCollectionViewCell else { return UICollectionViewCell() }
-        cell.logoImg.loadImage(collaborators[indexPath.item].img)
+        cell.logoImg.loadImage(collaborators[indexPath.item].img, placeHolder: UIImage(systemName: "person.crop.circle"))
+        cell.logoImg.tintColor = .lightGray
         return cell
     }
     

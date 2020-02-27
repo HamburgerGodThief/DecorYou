@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,7 +15,7 @@
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SF6-sz-bfv">
                     <rect key="frame" x="8" y="8" width="48" height="48"/>
-                    <color key="backgroundColor" name="mainColor"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="SF6-sz-bfv" secondAttribute="height" multiplier="1:1" id="C3h-b0-lAc"/>
                         <constraint firstAttribute="width" constant="48" id="NFL-v0-iNg"/>
@@ -92,9 +91,4 @@
             <point key="canvasLocation" x="-395.6521739130435" y="102.79017857142857"/>
         </view>
     </objects>
-    <resources>
-        <namedColor name="mainColor">
-            <color red="0.30199998617172241" green="0.6470000147819519" blue="0.65499997138977051" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-    </resources>
 </document>

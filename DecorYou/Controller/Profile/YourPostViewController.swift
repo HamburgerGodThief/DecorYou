@@ -11,6 +11,7 @@ import UIKit
 class YourPostViewController: UIViewController {
     
     @IBOutlet weak var yourPostTableView: UITableView!
+    @IBOutlet weak var noArticleLabel: UILabel!
     var yourPost: [Article] = []
     var user: User?
     
@@ -31,7 +32,15 @@ class YourPostViewController: UIViewController {
                 switch result {
                 case .success(let article):
                     strongSelf.yourPost.append(article)
+                    
+                    if strongSelf.yourPost.isEmpty {
+                        strongSelf.noArticleLabel.isHidden = false
+                    } else {
+                        strongSelf.noArticleLabel.isHidden = true
+                    }
+                    
                     strongSelf.yourPostTableView.reloadData()
+                    
                 case .failure(let error):
                     print(error)
                 }
@@ -41,8 +50,10 @@ class YourPostViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        noArticleLabel.isHidden = true
         setTableView()
         getSelfPost()
+        
     }
 }
 
@@ -76,5 +87,13 @@ extension YourPostViewController: UITableViewDataSource, UITableViewDelegate {
             tableView.layoutIfNeeded()
         }
         animator.startAnimation(afterDelay: 0.1 * Double(indexPath.item))
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard.init(name: "Article", bundle: nil)
+        guard let readPostVC = storyboard.instantiateViewController(identifier: "ReadPostViewController") as? ReadPostViewController else { return }
+        readPostVC.article = yourPost[indexPath.row]
+//        readPostVC.modalPresentationStyle = .overFullScreen
+        present(readPostVC, animated: true, completion: nil)
     }
 }

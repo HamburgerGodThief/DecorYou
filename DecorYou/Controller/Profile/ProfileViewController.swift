@@ -144,7 +144,8 @@ class ProfileViewController: UIViewController {
     
     func getUserInfo() {
         guard let user = UserManager.shared.user else { return }
-        profileImg.loadImage(user.img, placeHolder: UIImage())
+        profileImg.loadImage(user.img, placeHolder: UIImage(systemName: "person.crop.circle"))
+        profileImg.tintColor = .lightGray
         profileNameLabel.text = user.name
         if user.character == "craftsmen" {
             finalTabTitle = craftsmenTabTitle
@@ -189,9 +190,7 @@ class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        getUserInfo()
-        
+                
         navigationController?.navigationBar.isTranslucent = true
         
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -199,6 +198,13 @@ class ProfileViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         
         navigationController?.navigationBar.barStyle = .black
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        getUserInfo()
         
     }
     
@@ -301,7 +307,8 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
                         if strongSelf.editType {
                             
                             UserManager.shared.updateUserImage(uid: user.uid, img: imgURL)
-                            strongSelf.profileImg.loadImage(imgURL)
+                            strongSelf.profileImg.loadImage(imgURL, placeHolder: UIImage(systemName: "person.crop.circle"))
+                            strongSelf.profileImg.tintColor = .lightGray
                             
                         } else {
                             
@@ -317,4 +324,3 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         dismiss(animated: true, completion: nil)
     }
 }
-

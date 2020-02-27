@@ -34,7 +34,10 @@ class ArticleViewController: UIViewController {
     let columnCount: CGFloat = 4
     var collectionItem: [[String]] = []
     
-    func getData() {
+    func getData(shouldShowLoadingVC: Bool) {
+        if shouldShowLoadingVC {
+            presentLoadingVC()
+        }
         let group0 = DispatchGroup()
         let group1 = DispatchGroup()
         let queue0 = DispatchQueue(label: "queue0")
@@ -79,6 +82,9 @@ class ArticleViewController: UIViewController {
         }
         
         group1.notify(queue: .main) { [weak self] in
+            if shouldShowLoadingVC {
+                self?.dismiss(animated: true, completion: nil)
+            }
             self?.combineDataForCollectionItem()
             self?.refreshControl.endRefreshing()
             self?.articleTableView.reloadData()
@@ -199,7 +205,7 @@ class ArticleViewController: UIViewController {
     }
     
     @objc func refreshData() {
-        getData()
+        getData(shouldShowLoadingVC: false)
     }
     
     @objc func refreshContent() {
@@ -254,7 +260,7 @@ class ArticleViewController: UIViewController {
         setNewPost()
         getCurrentUser()
         addRefreshControl()
-        getData()
+        getData(shouldShowLoadingVC: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {

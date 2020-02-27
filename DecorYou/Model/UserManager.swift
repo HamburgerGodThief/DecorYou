@@ -94,6 +94,29 @@ class UserManager {
         }
     }
     
+    //讀取所有User
+    func fetchAllUser(completion: @escaping (Result<[User], Error>) -> Void) {
+        db.collection("users").getDocuments() {(querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                guard let querySnapShot = querySnapshot else { return }
+                var allUser: [User] = []
+                querySnapShot.documents.forEach { document in
+                    do {
+                        if let user = try document.data(as: User.self, decoder: Firestore.Decoder()) {
+                            allUser.append(user)
+                        }
+                    } catch{
+                        completion(.failure(error))
+                        return
+                    }
+                }
+                completion(.success(allUser))
+            }
+        }
+    }
+    
     //讀取所有匠人
     func fetchAllCraftsmen(completion: @escaping (Result<[User], Error>) -> Void) {
         db.collection("users").whereField("character", isEqualTo: "craftsmen").getDocuments() {(querySnapshot, err) in
@@ -127,6 +150,8 @@ class UserManager {
                 do {
                     if let user = try document.data(as: User.self, decoder: Firestore.Decoder()) {
                         UserManager.shared.user = user
+                        UserDefaults.standard.set(user.character, forKey: "UserCharacter")
+                        UserDefaults.standard.set(user.uid, forKey: "UserToken")
                     }
                 } catch {
                     print(error)

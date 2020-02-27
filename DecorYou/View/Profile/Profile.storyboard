@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -32,7 +31,7 @@
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UCb-P0-GOm">
                                 <rect key="frame" x="117" y="68.5" width="180" height="180"/>
-                                <color key="backgroundColor" name="mainColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="UCb-P0-GOm" secondAttribute="height" multiplier="1:1" id="AMF-91-hWx"/>
                                 </constraints>
@@ -252,7 +251,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KOb-R8-hZS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2348" y="418"/>
+            <point key="canvasLocation" x="2346" y="419"/>
         </scene>
         <!--Upload Profolio View Controller-->
         <scene sceneID="12a-ye-66e">
@@ -289,18 +288,26 @@
             <objects>
                 <viewController storyboardIdentifier="FavoriteViewController" id="OEk-2i-fcU" customClass="FavoriteViewController" customModule="DecorYou" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ocW-bd-sRg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="515.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="509.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iLQ-4Y-5AH">
-                                <rect key="frame" x="0.0" y="44" width="414" height="471.5"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="465.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您尚未收藏任何文章" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kM9-Vo-sIQ">
+                                <rect key="frame" x="126" y="242" width="162.5" height="25.5"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="kM9-Vo-sIQ" firstAttribute="centerY" secondItem="ocW-bd-sRg" secondAttribute="centerY" id="9Bh-Ph-Xep"/>
                             <constraint firstItem="iLQ-4Y-5AH" firstAttribute="leading" secondItem="0Tn-DB-Jnj" secondAttribute="leading" id="YPj-yO-XjY"/>
                             <constraint firstItem="iLQ-4Y-5AH" firstAttribute="top" secondItem="0Tn-DB-Jnj" secondAttribute="top" id="kNU-EW-jP2"/>
+                            <constraint firstItem="kM9-Vo-sIQ" firstAttribute="centerX" secondItem="ocW-bd-sRg" secondAttribute="centerX" id="oi6-DZ-gYm"/>
                             <constraint firstItem="0Tn-DB-Jnj" firstAttribute="trailing" secondItem="iLQ-4Y-5AH" secondAttribute="trailing" id="spy-iy-LtH"/>
                             <constraint firstItem="0Tn-DB-Jnj" firstAttribute="bottom" secondItem="iLQ-4Y-5AH" secondAttribute="bottom" id="yjy-bI-44h"/>
                         </constraints>
@@ -308,6 +315,7 @@
                     </view>
                     <connections>
                         <outlet property="favoriteTableView" destination="iLQ-4Y-5AH" id="zQw-ww-3Qa"/>
+                        <outlet property="noArticleLabel" destination="kM9-Vo-sIQ" id="VSf-Mb-Cbo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DAz-s8-cTw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -319,24 +327,33 @@
             <objects>
                 <viewController storyboardIdentifier="YourPostViewController" id="ULg-Hd-dH1" customClass="YourPostViewController" customModule="DecorYou" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YSq-yA-8LS">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="515.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="509.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0Ei-6n-kAB">
-                                <rect key="frame" x="0.0" y="44" width="414" height="471.5"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="465.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您尚未發表任何文章" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9B-jX-QvF">
+                                <rect key="frame" x="126" y="242" width="162.5" height="25.5"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="l9B-jX-QvF" firstAttribute="centerX" secondItem="YSq-yA-8LS" secondAttribute="centerX" id="3Be-4U-OWg"/>
                             <constraint firstItem="0Ei-6n-kAB" firstAttribute="leading" secondItem="9qz-OI-Pl6" secondAttribute="leading" id="AWT-GN-rsL"/>
                             <constraint firstItem="0Ei-6n-kAB" firstAttribute="top" secondItem="9qz-OI-Pl6" secondAttribute="top" id="BkC-YN-uzU"/>
+                            <constraint firstItem="l9B-jX-QvF" firstAttribute="centerY" secondItem="YSq-yA-8LS" secondAttribute="centerY" id="OCS-Cc-WA7"/>
                             <constraint firstItem="9qz-OI-Pl6" firstAttribute="bottom" secondItem="0Ei-6n-kAB" secondAttribute="bottom" id="mNW-ew-fWn"/>
                             <constraint firstItem="9qz-OI-Pl6" firstAttribute="trailing" secondItem="0Ei-6n-kAB" secondAttribute="trailing" id="wC0-pa-cWe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9qz-OI-Pl6"/>
                     </view>
                     <connections>
+                        <outlet property="noArticleLabel" destination="l9B-jX-QvF" id="lxB-yx-g25"/>
                         <outlet property="yourPostTableView" destination="0Ei-6n-kAB" id="Eif-dl-UsM"/>
                     </connections>
                 </viewController>
@@ -410,7 +427,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CzE-wV-bpf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2111.594202898551" y="1309.8214285714284"/>
+            <point key="canvasLocation" x="2346" y="978"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PEq-yA-zO1">
@@ -436,8 +453,5 @@
         <image name="Icons_24px_Close" width="24" height="24"/>
         <image name="square.and.pencil" catalog="system" width="64" height="58"/>
         <image name="zzz" catalog="system" width="60" height="64"/>
-        <namedColor name="mainColor">
-            <color red="0.30199998617172241" green="0.6470000147819519" blue="0.65499997138977051" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
 </document>
