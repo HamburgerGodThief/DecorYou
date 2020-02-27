@@ -176,6 +176,8 @@ class ProfileViewController: UIViewController {
     func getUserInfo() {
         guard let user = UserManager.shared.user else { return }
         profileImg.loadImage(user.img, placeHolder: UIImage(systemName: "person.crop.circle"))
+        backgroundImg.loadImage(user.backgroundImg)
+        backgroundImg.backgroundColor = .black
         profileImg.tintColor = .lightGray
         profileNameLabel.text = user.name
         profileEmailLabel.text = user.email

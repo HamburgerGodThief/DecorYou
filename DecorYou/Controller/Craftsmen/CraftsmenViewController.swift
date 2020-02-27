@@ -156,9 +156,7 @@ extension CraftsmenViewController: UICollectionViewDataSource, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: CraftsmenCollectionViewCell.self), for: indexPath) as? CraftsmenCollectionViewCell else { return UICollectionViewCell() }
         cell.layoutIfNeeded()
-        let location = finalResult[indexPath.item].serviceLocation.reduce("", { (sum, string) -> String in
-            return sum + string + "、"
-        })
+        let location = finalResult[indexPath.item].serviceLocation.joined(separator: "、")
         cell.logoImg.loadImage(finalResult[indexPath.item].img, placeHolder: UIImage(systemName: "person.crop.circle"))
         cell.logoImg.tintColor = .lightGray
         cell.nameLabel.text = finalResult[indexPath.item].name
