@@ -38,8 +38,8 @@ class CraftsmenFilterViewController: UIViewController {
             fitlerCraftsmen = condition.filter(data: fitlerCraftsmen)
         }
         
-        craftsmenVC.filterCraftsmen = fitlerCraftsmen
-        craftsmenVC.finalData = craftsmenVC.filterCraftsmen
+        craftsmenVC.filterResult = fitlerCraftsmen
+        craftsmenVC.finalResult = craftsmenVC.filterResult
         if conditionsArray.isEmpty {
             craftsmenVC.isFilter = false
         } else {
@@ -54,12 +54,12 @@ class CraftsmenFilterViewController: UIViewController {
         guard let tabVC = self.presentingViewController as? STTabBarViewController else { return }
         guard let navVC = tabVC.selectedViewController as? UINavigationController else { return }
         guard let craftsmenVC = navVC.topViewController as? CraftsmenViewController else { return }
-        craftsmenVC.finalData = craftsmenVC.allCraftsmen
+        craftsmenVC.finalResult = craftsmenVC.allCraftsmen
         
         conditionsArray = []
         firstConditionCell = []
         secondConditionCell = []
-        collectionView.reloadData()
+        craftsmenVC.craftsmenCollectionView.reloadData()
     }
     
     func viewAddTapGesture() {
@@ -182,15 +182,24 @@ extension CraftsmenFilterViewController: UICollectionViewDelegateFlowLayout, UIC
                 return false
             }
             if secondConditionCell.contains(cell) {
-                secondConditionCell.removeFirst()
+                
+                let index = secondConditionCell.firstIndex(of: cell)
+                
+                secondConditionCell.remove(at: index!)
+                
             } else {
+                
                 secondConditionCell.append(cell)
                 guard let locationText = cell.optionLabel.text else { return }
                 let location = ServiceLocationCondition(conditionValue: locationText)
                 conditionsArray.append(location)
+                
             }
-            if secondConditionCell.count > 1 {
+            
+            if secondConditionCell.count > 2 {
+                
                 secondConditionCell[0].select = !secondConditionCell[0].select
+                
                 secondConditionCell.removeFirst()
             }
         }

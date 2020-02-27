@@ -112,7 +112,7 @@ class STTabBarViewController: UITabBarController, UITabBarControllerDelegate {
     // MARK: - UITabBarControllerDelegate
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        
+        //當User點擊到個人頁面時，檢查Token，沒有就跳出登入頁面
         guard let navVC = viewController as? UINavigationController,
             navVC.viewControllers.first is ProfileViewController
             else { return true }

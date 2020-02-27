@@ -96,13 +96,14 @@ class FilterViewController: UIViewController {
         guard let tabVC = self.presentingViewController as? STTabBarViewController else { return }
         guard let navVC = tabVC.selectedViewController as? UINavigationController else { return }
         guard let articleVC = navVC.topViewController as? ArticleViewController else { return }
-        var fitlerArticles = articleVC.articlesData
+        var filterArticles = articleVC.allArticle
         
         for condition in conditionsArray {
-            fitlerArticles = condition.filter(data: fitlerArticles)
+            filterArticles = condition.filter(data: filterArticles)
         }
         
-        articleVC.finalArticlesData = fitlerArticles
+        articleVC.filterResults = filterArticles
+        articleVC.finalArticles = filterArticles
         if conditionsArray.isEmpty {
             articleVC.isFilter = false
         } else {
@@ -120,7 +121,7 @@ class FilterViewController: UIViewController {
     
         articleVC.isFilter = false
         articleVC.showNavRightButton(shouldShow: true)
-        articleVC.finalArticlesData = articleVC.articlesData
+        articleVC.finalArticles = articleVC.allArticle
         conditionsArray = []
         firstSelected = ""
         secondSelected = ""
