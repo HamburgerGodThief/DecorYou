@@ -14,14 +14,27 @@ class CreatePostViewController: UIViewController {
     @IBOutlet weak var articleCatBtn: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var titleTextField: UITextField!
-    var currentUser: User?
+    @IBOutlet weak var unboxHeight: NSLayoutConstraint!
+    @IBOutlet weak var unboxVC: UIView!
     
-    @IBAction func nextVC(_ sender: Any) {
+    var currentUser: User?
+    var articleType: String = "" {
         
-        let storyboard = UIStoryboard(name: "Article", bundle: nil)
-        guard let readViewController = storyboard.instantiateViewController(withIdentifier: "ReadViewController") as? ReadViewController else { return }
-        present(readViewController, animated: true, completion: nil)
+        willSet {
+            
+            if newValue == "開箱" {
+                unboxHeight.constant = 150
+                unboxVC.alpha = 1
+            } else {
+                unboxHeight.constant = 0
+                unboxVC.alpha = 0
+            }
+            view.layoutIfNeeded()
+            
+        }
+        
     }
+    
     @IBAction func touchArticleCat(_ sender: Any) {
         let storyboard = UIStoryboard.init(name: "Article", bundle: nil)
         guard let articleTypeVC = storyboard.instantiateViewController(identifier: "ArticleTypeViewController") as? ArticleTypeViewController else { return }

@@ -16,6 +16,7 @@ class TextViewController: UIViewController {
     @IBOutlet var toolbarView: UIView!
     @IBOutlet weak var textView: UITextView!
     var content: String = ""
+    
     @IBAction func touchImg(_ sender: Any) {
         //IImagePickerController 的實體
         let imagePickerController = UIImagePickerController()
@@ -32,112 +33,15 @@ class TextViewController: UIViewController {
             present(imagePickerController, animated: true, completion: nil)
         }
     }
-    @IBAction func nextVC(_ sender: Any) {
-        
-    }
     
     @IBAction func sendBtn(_ sender: Any) {
         
-        if let attributedText = textView.attributedText {
-            let documentAttributes: [NSAttributedString.DocumentAttributeKey: Any] = [.documentType: NSAttributedString.DocumentType.html]
-            do {
-                
-                var newPostID: String = "newPostID"
-                //轉成htmlData
-                let htmlData = try attributedText.data(from: NSRange(location: 0, length: attributedText.length), documentAttributes: documentAttributes)
-                
-                let storageRef = Storage.storage().reference().child("article").child("test.html")
-                storageRef.putData(htmlData, metadata: nil, completion: { (data, error) in
-                    if error != nil {
-
-                        // 若有接收到錯誤，我們就直接印在 Console 就好，在這邊就不另外做處理。
-                        print("Error: \(error!.localizedDescription)")
-                        return
-                    }
-                    
-                    storageRef.downloadURL(completion: { (url, error) in
-                        guard let htmlURL = url?.absoluteString else { return }
-//                        let newPost = ArticleManager.shared.db.collection("article").document()
-//                        guard let uid = UserDefaults.standard.string(forKey: "UserToken") else { return }
-//                        let author = UserManager.shared.db.collection("users").document(uid)
-                    ArticleManager.shared.db.collection("test").document(newPostID).setData([
-                            "htmlURL": htmlURL
-                        ])
-                        
-                    })
-                })
-                
-                var imgURLAry: [String] = []
-                textView.attributedText.enumerateAttributes(in: NSRange(location: 0, length: textView.attributedText.length), options: [], using: { (data, using, _) in
-                    if let attachment = data[.attachment] as? NSTextAttachment {
-                        
-                        //取出附件中的圖片
-                        let image = (attachment.image)!
-                        
-                        //縮放
-                        let scale = (textView.frame.width - 2 * 5 ) / image.size.width
-                        
-                        //設定大小
-                        attachment.bounds = CGRect(x: 0, y: 0, width: image.size.width * scale, height: image.size.height * scale)
-                        
-                        let uniqueString = NSUUID().uuidString
-                        let selectImg = image.jpegData(compressionQuality: 0.5)
-                        
-                        let storageRef = Storage.storage().reference().child("article").child("\(uniqueString).jpeg")
-                        storageRef.putData(selectImg!, metadata: nil, completion: { (data, error) in
-                            if error != nil {
-
-                                // 若有接收到錯誤，我們就直接印在 Console 就好，在這邊就不另外做處理。
-                                print("Error: \(error!.localizedDescription)")
-                                return
-                            }
-                            
-                            storageRef.downloadURL(completion: { (url, error) in
-                                guard let imgURL = url?.absoluteString else { return }
-                                imgURLAry.append(imgURL)
-//                                ArticleManager.shared.db.collection("test").document(newPostID).setData([
-//                                    "image": imgURLAry
-//                                ])
-                                
-                            })
-                        })
-                    }
-                })
-                
-                
-                
-                
-                
-//                if let attributedString = try? NSAttributedString(data: htmlData, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil) {
-//                    // use your attributed string somehow
-//                    print(attributedString)
-//                }
-                
-            } catch {
-                print(error)
-            }
-        }
     }
     
     func setTextView() {
         textView.font = UIFont.systemFont(ofSize: 12)
     }
-    
-    
-    
     /*
-     
-     This is text
-     
-     
-     ===//
-     http://kldjflwkjef
-     ===//
-     
-     This is next line
-     
-     */
-    
     func putImg(inputImg: UIImage) {
         
         let attachment = NSTextAttachment()
@@ -179,10 +83,11 @@ class TextViewController: UIViewController {
         //恢復游標的位置(上面一句程式碼執行之後,游標會移到最後面)
         textView.selectedRange = newSelectedRange
     }
-    
+    */
     override func viewDidLoad() {
         super.viewDidLoad()
         setTextView()
+        textView.text = "請先選擇主題"
         textView.inputAccessoryView = toolbarView
         // Do any additional setup after loading the view.
     }
@@ -199,8 +104,6 @@ extension TextViewController: UIImagePickerControllerDelegate, UINavigationContr
         if let pickedImage = info[.originalImage] as? UIImage {
             selectedImageFromPicker = pickedImage
         }
-                
-        putImg(inputImg: selectedImageFromPicker!)
         
         dismiss(animated: true, completion: nil)
     }

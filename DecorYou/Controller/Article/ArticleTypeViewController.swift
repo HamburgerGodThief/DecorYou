@@ -24,8 +24,7 @@ class ArticleTypeViewController: UIViewController {
     }
     var parentVC: CreatePostViewController!
     
-    let typeAry: [String] = ["北部房產", "中部房產", "南部房產", "東部房產",
-                             "居家修繕", "設計與裝潢", "開箱", "廣告宣傳"]
+    let typeAry: [String] = ["房地產相關", "居家修繕", "設計與裝潢", "開箱", "廣告宣傳"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +58,8 @@ extension ArticleTypeViewController: UITableViewDelegate, UITableViewDataSource 
         parentVC.articleCatBtn.titleLabel?.font = UIFont(name: "PingFangTC-Medium", size: 10)
         
         parentVC.articleCatBtn.setImage(nil, for: .normal)
+        
+        parentVC.articleType = typeAry[indexPath.row]
         
         dismiss(animated: false, completion: nil)
     }
