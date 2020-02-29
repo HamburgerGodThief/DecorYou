@@ -276,13 +276,22 @@ class ArticleViewController: UIViewController {
             return 
         }
         let storyboard = UIStoryboard(name: "Article", bundle: nil)
-        guard let newPostViewController = storyboard.instantiateViewController(withIdentifier: "NewPostViewController") as? NewPostViewController else { return }
+        guard let newPostViewController = storyboard.instantiateViewController(withIdentifier: "CreatePostViewController") as? CreatePostViewController else { return }
         navigationItem.titleView = nil
+        newPostViewController.currentUser = UserManager.shared.user
         newPostViewController.transitioningDelegate = self
         newPostViewController.modalPresentationStyle = .custom
 //        present(newPostViewController, animated: true, completion: nil)
         navigationController?.pushViewController(newPostViewController, animated: true)
         tabBarController?.tabBar.isHidden = true
+//        let storyboard = UIStoryboard(name: "Article", bundle: nil)
+//        guard let newPostViewController = storyboard.instantiateViewController(withIdentifier: "NewPostViewController") as? NewPostViewController else { return }
+//        navigationItem.titleView = nil
+//        newPostViewController.transitioningDelegate = self
+//        newPostViewController.modalPresentationStyle = .custom
+////        present(newPostViewController, animated: true, completion: nil)
+//        navigationController?.pushViewController(newPostViewController, animated: true)
+//        tabBarController?.tabBar.isHidden = true
         
     }
     

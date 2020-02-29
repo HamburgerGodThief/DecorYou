@@ -345,6 +345,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
                                 strongSelf.profileImg.tintColor = .lightGray
                                 strongSelf.dismiss(animated: true, completion: nil)
                             })
+                            
                         } else {
                             
                             UserManager.shared.updateUserbackgroundImg(uid: user.uid, backgroundImg: imgURL, completion: {

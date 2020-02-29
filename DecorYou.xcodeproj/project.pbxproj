@@ -83,6 +83,10 @@
 		64FA8E4E2402660B000A1334 /* CraftsmenFilterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA8E4D2402660B000A1334 /* CraftsmenFilterCollectionReusableView.swift */; };
 		64FA8E502403BCEE000A1334 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA8E4F2403BCEE000A1334 /* ProfileViewController.swift */; };
 		64FA8E522403D488000A1334 /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA8E512403D488000A1334 /* ProfileCollectionViewCell.swift */; };
+		64FAAE402407C4AD00C35210 /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FAAE3F2407C4AD00C35210 /* CreatePostViewController.swift */; };
+		64FAAE422407D68900C35210 /* ArticleTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FAAE412407D68900C35210 /* ArticleTypeViewController.swift */; };
+		64FAAE442407D70600C35210 /* ArticleTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FAAE432407D70600C35210 /* ArticleTypeTableViewCell.swift */; };
+		64FAAE462407EBE500C35210 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FAAE452407EBE500C35210 /* TextViewController.swift */; };
 		64FAB11F23EC001A0073235C /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FAB11E23EC001A0073235C /* UserManager.swift */; };
 		64FAB12523ED49F70073235C /* ArticleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FAB12423ED49F70073235C /* ArticleManager.swift */; };
 		64FAB12723ED548A0073235C /* DecorateStyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FAB12623ED548A0073235C /* DecorateStyleViewController.swift */; };
@@ -131,6 +135,7 @@
 		64FC819A23E7EE2D0027DDEE /* ChatRoomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FC819823E7EE2D0027DDEE /* ChatRoomTableViewCell.xib */; };
 		64FC819E23E7FC190027DDEE /* ChatRoomBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FC819D23E7FC190027DDEE /* ChatRoomBottomView.xib */; };
 		64FC81A023E7FC9A0027DDEE /* ChatRoomBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC819F23E7FC9A0027DDEE /* ChatRoomBottomView.swift */; };
+		64FD1C33240A34B500148E00 /* ReadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FD1C32240A34B500148E00 /* ReadViewController.swift */; };
 		64FE4EC023E8091800A5D3EC /* ChatRoomSelfTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FE4EBE23E8091800A5D3EC /* ChatRoomSelfTableViewCell.swift */; };
 		64FE4EC123E8091800A5D3EC /* ChatRoomSelfTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FE4EBF23E8091800A5D3EC /* ChatRoomSelfTableViewCell.xib */; };
 		64FE4EC423E824CD00A5D3EC /* PickCustomerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FE4EC323E824CD00A5D3EC /* PickCustomerViewController.swift */; };
@@ -228,6 +233,10 @@
 		64FA8E4D2402660B000A1334 /* CraftsmenFilterCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CraftsmenFilterCollectionReusableView.swift; sourceTree = "<group>"; };
 		64FA8E4F2403BCEE000A1334 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		64FA8E512403D488000A1334 /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
+		64FAAE3F2407C4AD00C35210 /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
+		64FAAE412407D68900C35210 /* ArticleTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTypeViewController.swift; sourceTree = "<group>"; };
+		64FAAE432407D70600C35210 /* ArticleTypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTypeTableViewCell.swift; sourceTree = "<group>"; };
+		64FAAE452407EBE500C35210 /* TextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
 		64FAB11E23EC001A0073235C /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		64FAB12423ED49F70073235C /* ArticleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleManager.swift; sourceTree = "<group>"; };
 		64FAB12623ED548A0073235C /* DecorateStyleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecorateStyleViewController.swift; sourceTree = "<group>"; };
@@ -276,6 +285,7 @@
 		64FC819823E7EE2D0027DDEE /* ChatRoomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatRoomTableViewCell.xib; sourceTree = "<group>"; };
 		64FC819D23E7FC190027DDEE /* ChatRoomBottomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatRoomBottomView.xib; sourceTree = "<group>"; };
 		64FC819F23E7FC9A0027DDEE /* ChatRoomBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomBottomView.swift; sourceTree = "<group>"; };
+		64FD1C32240A34B500148E00 /* ReadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadViewController.swift; sourceTree = "<group>"; };
 		64FE4EBE23E8091800A5D3EC /* ChatRoomSelfTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomSelfTableViewCell.swift; sourceTree = "<group>"; };
 		64FE4EBF23E8091800A5D3EC /* ChatRoomSelfTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatRoomSelfTableViewCell.xib; sourceTree = "<group>"; };
 		64FE4EC323E824CD00A5D3EC /* PickCustomerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickCustomerViewController.swift; sourceTree = "<group>"; };
@@ -459,6 +469,7 @@
 				64FC72F223FD3BD6004F2A07 /* ArticleListTableViewCell.xib */,
 				64FA42A423E382DF0065DCEF /* NewPostTableViewCell.swift */,
 				64FA42A523E382DF0065DCEF /* NewPostTableViewCell.xib */,
+				64FAAE432407D70600C35210 /* ArticleTypeTableViewCell.swift */,
 				6406275D23EA942900086434 /* ReadPostTableViewHeaderView.swift */,
 				64FA7CBF23F148D800975B03 /* ReadPostTableViewHeaderView.xib */,
 				64FA7CBB23F1483D00975B03 /* ReadPostTableViewCell.swift */,
@@ -486,6 +497,10 @@
 				647A7CC123D83718005D1946 /* ArticleViewController.swift */,
 				64FA8E3D23FF90FE000A1334 /* FilterViewController.swift */,
 				64FA42A123E35F2D0065DCEF /* NewPostViewController.swift */,
+				64FAAE3F2407C4AD00C35210 /* CreatePostViewController.swift */,
+				64FAAE452407EBE500C35210 /* TextViewController.swift */,
+				64FD1C32240A34B500148E00 /* ReadViewController.swift */,
+				64FAAE412407D68900C35210 /* ArticleTypeViewController.swift */,
 				6406275B23EA936700086434 /* ReadPostViewController.swift */,
 				6406276523EAAD1200086434 /* MoreViewController.swift */,
 				6406276723EAB4B200086434 /* ReplyViewController.swift */,
@@ -805,6 +820,7 @@
 				64FA58CA23FE86E5003D7353 /* FilterCollectionTableViewCell.swift in Sources */,
 				64FE4EC023E8091800A5D3EC /* ChatRoomSelfTableViewCell.swift in Sources */,
 				64FAB12523ED49F70073235C /* ArticleManager.swift in Sources */,
+				64FAAE402407C4AD00C35210 /* CreatePostViewController.swift in Sources */,
 				64FA8E46240256CA000A1334 /* CraftsmenFilterViewController.swift in Sources */,
 				64FC819323E7E4D70027DDEE /* ChatListTableViewCell.swift in Sources */,
 				64FE4ED423E983B200A5D3EC /* FavoriteViewController.swift in Sources */,
@@ -828,15 +844,18 @@
 				64012BA323F7FA81001D20D0 /* UploadProfolioTableViewCell.swift in Sources */,
 				64FC818D23E7C26E0027DDEE /* ProfolioTableViewCell.swift in Sources */,
 				64FC72F023FD2C12004F2A07 /* ProfolioCollectionReusableView.swift in Sources */,
+				64FAAE462407EBE500C35210 /* TextViewController.swift in Sources */,
 				64FE4EC823E83E9400A5D3EC /* UITextField+Extension.swift in Sources */,
 				64FBDA8924066B930089D9EA /* CategoryTableViewCell.swift in Sources */,
 				64FC819923E7EE2D0027DDEE /* ChatRoomTableViewCell.swift in Sources */,
+				64FD1C33240A34B500148E00 /* ReadViewController.swift in Sources */,
 				64FBDA7624050B590089D9EA /* UIViewController+Extension.swift in Sources */,
 				64FAB13523EE528E0073235C /* LocationViewController.swift in Sources */,
 				64FA8E502403BCEE000A1334 /* ProfileViewController.swift in Sources */,
 				64FA429A23E341440065DCEF /* ArticleTableViewCell.swift in Sources */,
 				64FA7CCA23F5511B00975B03 /* PickCraftsmenViewController.swift in Sources */,
 				64FBDA7924050C340089D9EA /* LoadingViewController.swift in Sources */,
+				64FAAE422407D68900C35210 /* ArticleTypeViewController.swift in Sources */,
 				64FA42B323E3C5CD0065DCEF /* ResumeViewController.swift in Sources */,
 				647A7CCE23D83C61005D1946 /* UIImage+Extension.swift in Sources */,
 				64012B9B23F67043001D20D0 /* ServiceAreaCollectionViewCell.swift in Sources */,
@@ -844,6 +863,7 @@
 				64FE4EC623E824D900A5D3EC /* LogInViewController.swift in Sources */,
 				647A7CCC23D83BCE005D1946 /* UIStoryboard+Extension.swift in Sources */,
 				64FAB14323EEB8C30073235C /* CollaboratorCollectionViewCell.swift in Sources */,
+				64FAAE442407D70600C35210 /* ArticleTypeTableViewCell.swift in Sources */,
 				64FAB12E23ED57900073235C /* DecorateStyleCollectionViewCell.swift in Sources */,
 				64FAB14B23EFF0CD0073235C /* CollaboratorLogoCollectionViewCell.swift in Sources */,
 				64FC72E623FD26FD004F2A07 /* PhotoPageContainerViewController.swift in Sources */,
