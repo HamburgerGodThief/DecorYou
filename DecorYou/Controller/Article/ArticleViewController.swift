@@ -228,6 +228,7 @@ class ArticleViewController: UIViewController {
     }
     
     func combineDataForCollectionItem () {
+        collectionItem = []
         for index in 0..<finalArticles.count {
             collectionItem.append([])
             if finalArticles[index].location != nil {

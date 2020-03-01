@@ -53,6 +53,8 @@ class EditProfileViewController: UIViewController {
             
             SwiftMes.shared.showSuccessMessage(title: "成功", body: "更改成功", seconds: 1.5)
             
+            UserManager.shared.fetchCurrentUser(uid: uid)
+            
             dismiss(animated: true, completion: nil)
             
         }
@@ -83,6 +85,10 @@ class EditProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        confirmBtn.layer.borderColor = UIColor.lightGray.cgColor
+        confirmBtn.layer.borderWidth = 1
+        cancelBtn.layer.borderColor = UIColor.lightGray.cgColor
+        cancelBtn.layer.borderWidth = 1
         // Do any additional setup after loading the view.
     }
     

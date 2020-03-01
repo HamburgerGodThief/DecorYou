@@ -322,9 +322,9 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         // 當判斷有 selectedImage 時，我們會在 if 判斷式裡將圖片上傳
         if let selectedImage = selectedImageFromPicker {
 
-            let storageRef = Storage.storage().reference().child("ProfileUpload").child("\(uniqueString).png")
+            let storageRef = Storage.storage().reference().child("ProfileUpload").child("\(uniqueString).jpeg")
 
-            if let uploadData = selectedImage.pngData() {
+            if let uploadData = selectedImage.jpegData(compressionQuality: 1) {
                 // 這行就是 FirebaseStorage 關鍵的存取方法。
                 storageRef.putData(uploadData, metadata: nil, completion: { (data, error) in
 
@@ -347,6 +347,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
                                 strongSelf.profileImg.tintColor = .lightGray
                                 loadingVC!.dismiss(animated: true, completion: nil)
                                 SwiftMes.shared.showSuccessMessage(title: "成功", body: "更改成功", seconds: 1.5)
+                                UserManager.shared.fetchCurrentUser(uid: user.uid)
                             })
                             
                         } else {
@@ -356,6 +357,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
                                 strongSelf.backgroundImg.backgroundColor = .black
                                 loadingVC!.dismiss(animated: true, completion: nil)
                                 SwiftMes.shared.showSuccessMessage(title: "成功", body: "更改成功", seconds: 1.5)
+                                UserManager.shared.fetchCurrentUser(uid: user.uid)
                             })
                         }
                     })
