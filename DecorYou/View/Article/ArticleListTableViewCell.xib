@@ -24,7 +24,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Jade.F ・ 54分鐘前" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qOU-fA-fuF">
-                        <rect key="frame" x="20" y="51" width="89.5" height="14"/>
+                        <rect key="frame" x="52" y="51" width="89.5" height="14"/>
                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="10"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -57,14 +57,22 @@
                             <constraint firstAttribute="height" constant="16" id="4nO-rZ-3SU"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Szc-aP-fwt">
+                        <rect key="frame" x="20" y="51" width="26" height="14"/>
+                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="10"/>
+                        <color key="textColor" name="darkMainColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="xMn-8j-xzh" firstAttribute="bottom" secondItem="qOU-fA-fuF" secondAttribute="bottom" id="CvE-MG-183"/>
                     <constraint firstItem="qOU-fA-fuF" firstAttribute="top" secondItem="ZJr-ox-7ex" secondAttribute="bottom" constant="4" id="DCh-OB-Wdf"/>
                     <constraint firstItem="ZJr-ox-7ex" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="Dqr-kr-AEh"/>
                     <constraint firstItem="Brg-Kt-B9o" firstAttribute="leading" secondItem="Abz-ju-Ptw" secondAttribute="trailing" constant="6" id="Fnj-Bi-Wav"/>
+                    <constraint firstItem="Szc-aP-fwt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="IeI-DG-gu5"/>
                     <constraint firstAttribute="trailing" secondItem="ZJr-ox-7ex" secondAttribute="trailing" constant="25" id="JEf-8Y-du4"/>
-                    <constraint firstItem="qOU-fA-fuF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="WEF-HN-1uK"/>
+                    <constraint firstItem="Szc-aP-fwt" firstAttribute="centerY" secondItem="qOU-fA-fuF" secondAttribute="centerY" id="QQq-kB-HpB"/>
+                    <constraint firstItem="qOU-fA-fuF" firstAttribute="leading" secondItem="Szc-aP-fwt" secondAttribute="trailing" constant="6" id="WEF-HN-1uK"/>
                     <constraint firstItem="Abz-ju-Ptw" firstAttribute="leading" secondItem="R1O-nK-Tgw" secondAttribute="trailing" constant="2" id="ZiC-NN-i5f"/>
                     <constraint firstItem="ZJr-ox-7ex" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="asz-SD-3cv"/>
                     <constraint firstItem="R1O-nK-Tgw" firstAttribute="bottom" secondItem="Abz-ju-Ptw" secondAttribute="bottom" constant="1" id="bKs-Xz-I16"/>
@@ -81,6 +89,7 @@
                 <outlet property="nameAndCreateTime" destination="qOU-fA-fuF" id="xVJ-Ru-evR"/>
                 <outlet property="replyCount" destination="xMn-8j-xzh" id="mdF-aC-e9M"/>
                 <outlet property="titleLabel" destination="ZJr-ox-7ex" id="tWb-Fb-wK4"/>
+                <outlet property="typeLabel" destination="Szc-aP-fwt" id="cBe-pX-yfw"/>
             </connections>
             <point key="canvasLocation" x="35.507246376811594" y="145.64732142857142"/>
         </tableViewCell>
@@ -88,6 +97,9 @@
     <resources>
         <image name="bubble.left.fill" catalog="system" width="64" height="54"/>
         <image name="heart.fill" catalog="system" width="64" height="54"/>
+        <namedColor name="darkMainColor">
+            <color red="0.20000000298023224" green="0.42399999499320984" blue="0.45899999141693115" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="mainColor">
             <color red="0.30199998617172241" green="0.6470000147819519" blue="0.65499997138977051" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

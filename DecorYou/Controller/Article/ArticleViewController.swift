@@ -342,6 +342,12 @@ extension ArticleViewController: UITableViewDelegate, UITableViewDataSource {
             cell.collectionView.tag = indexPath.row
             cell.replyCount.text = "\(article.replyCount)"
             cell.loveCount.text = "\(article.loveCount)"
+            cell.typeLabel.text = article.type
+            if article.type == "廣告宣傳" {
+                cell.typeLabel.backgroundColor = UIColor.assetColor(.advertise)
+                cell.backView.layer.borderColor = UIColor.assetColor(.advertise)?.cgColor
+                cell.backView.layer.borderWidth = 2
+            }
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ArticleListTableViewCell.self), for: indexPath) as? ArticleListTableViewCell else { return UITableViewCell() }
@@ -349,6 +355,10 @@ extension ArticleViewController: UITableViewDelegate, UITableViewDataSource {
             cell.nameAndCreateTime.text = "\(authorObject.name)・\(article.intervalString)"
             cell.replyCount.text = "\(article.replyCount)"
             cell.loveCount.text = "\(article.loveCount)"
+            cell.typeLabel.text = "[\(article.type)]"
+            if article.type == "廣告宣傳" {
+                cell.typeLabel.textColor = UIColor.assetColor(.advertise)
+            }
             return cell
         }
     }

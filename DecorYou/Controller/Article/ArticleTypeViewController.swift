@@ -26,6 +26,10 @@ class ArticleTypeViewController: UIViewController {
     
     let typeAry: [String] = ["房地產相關", "居家修繕", "設計與裝潢", "開箱", "廣告宣傳"]
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

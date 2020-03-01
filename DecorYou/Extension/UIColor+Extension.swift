@@ -17,6 +17,7 @@ enum STColor: String {
     case darkMainColor
     case favoriteColor
     case readPostColor
+    case advertise
 }
 
 extension UIColor {

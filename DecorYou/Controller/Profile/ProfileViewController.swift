@@ -344,6 +344,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
                                 strongSelf.profileImg.loadImage(imgURL, placeHolder: UIImage(systemName: "person.crop.circle"))
                                 strongSelf.profileImg.tintColor = .lightGray
                                 strongSelf.dismiss(animated: true, completion: nil)
+                                SwiftMes.shared.showSuccessMessage(title: "成功", body: "更改成功", seconds: 1.5)
                             })
                             
                         } else {
@@ -352,6 +353,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
                                 strongSelf.backgroundImg.loadImage(imgURL, placeHolder: UIImage())
                                 strongSelf.backgroundImg.backgroundColor = .black
                                 strongSelf.dismiss(animated: true, completion: nil)
+                                SwiftMes.shared.showSuccessMessage(title: "成功", body: "更改成功", seconds: 1.5)
                             })
                         }
                     })

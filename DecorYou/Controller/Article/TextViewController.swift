@@ -69,7 +69,7 @@ class TextViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setTextView()
-        textView.text = "請先選擇主題"
+        textView.text = "請先選擇主題，再編輯內容"
         // Do any additional setup after loading the view.
     }
 

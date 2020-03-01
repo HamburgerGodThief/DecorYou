@@ -18,19 +18,20 @@ class ArticleTableViewCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var replyCount: UILabel!
     @IBOutlet weak var loveCount: UILabel!
+    @IBOutlet weak var typeLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         backView.layer.cornerRadius = 25
         authorImgView.layer.cornerRadius = authorImgView.frame.size.width / 2
+        typeLabel.layer.cornerRadius = typeLabel.frame.height / 2
+        typeLabel.clipsToBounds = true
     }
-
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
     func fillData(authorImgURLString: String?, titleLabel: String, nameTimeLabel: String, contentLabel: String) {
-        
         self.authorImgView.loadImage(authorImgURLString, placeHolder: UIImage(systemName: "person.crop.circle"))
         self.authorImgView.tintColor = .lightGray
         self.titleLabel.text = titleLabel

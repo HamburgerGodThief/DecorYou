@@ -219,6 +219,8 @@ class CreatePostViewController: UIViewController {
         super.viewDidLoad()
         setIBOutlet()
         setNavigationBar()
+        unboxHeight.constant = 0
+        unboxVC.alpha = 0
     }
     
 }

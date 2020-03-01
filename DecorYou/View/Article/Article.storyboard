@@ -830,12 +830,19 @@
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="BJl-GE-E5j">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="587"/>
-                                <color key="backgroundColor" systemColor="systemBrownColor" red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gyL-df-frE">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="1"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="sxz-HS-qWg"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -843,6 +850,9 @@
                             <constraint firstAttribute="bottom" secondItem="BJl-GE-E5j" secondAttribute="bottom" id="7iS-dr-BWG"/>
                             <constraint firstItem="BJl-GE-E5j" firstAttribute="top" secondItem="gqi-B0-Vhm" secondAttribute="top" id="QoC-VJ-obl"/>
                             <constraint firstAttribute="trailing" secondItem="BJl-GE-E5j" secondAttribute="trailing" id="Qv5-i3-bzw"/>
+                            <constraint firstItem="gyL-df-frE" firstAttribute="top" secondItem="gqi-B0-Vhm" secondAttribute="top" id="bmc-ao-lEe"/>
+                            <constraint firstItem="gyL-df-frE" firstAttribute="leading" secondItem="1Nu-X6-yp1" secondAttribute="leading" id="ouj-FM-JLE"/>
+                            <constraint firstItem="1Nu-X6-yp1" firstAttribute="trailing" secondItem="gyL-df-frE" secondAttribute="trailing" id="wq9-Rt-qjh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1Nu-X6-yp1"/>
                     </view>
@@ -852,7 +862,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yie-yw-meW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2128" y="-759"/>
+            <point key="canvasLocation" x="2128" y="-847"/>
         </scene>
         <!--Unboxing View Controller-->
         <scene sceneID="kZP-5Y-85J">
@@ -864,7 +874,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dzR-ss-a9a">
                                 <rect key="frame" x="0.0" y="60" width="414" height="90"/>
-                                <color key="backgroundColor" red="0.29785584240000001" green="0.75686274509999996" blue="0.54783142330000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="YMU-P7-tjT">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -892,7 +902,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="d5U-uo-x4W" firstAttribute="centerY" secondItem="n6M-Ss-4D2" secondAttribute="centerY" id="1zB-C9-fdD"/>
                                     <constraint firstItem="Hv4-ca-MmV" firstAttribute="centerX" secondItem="n6M-Ss-4D2" secondAttribute="centerX" id="4kh-4f-Ieq"/>
@@ -903,7 +913,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="dzR-ss-a9a" secondAttribute="trailing" id="Ivk-sX-k57"/>
                             <constraint firstItem="dzR-ss-a9a" firstAttribute="top" secondItem="n6M-Ss-4D2" secondAttribute="bottom" id="Noq-ju-aX3"/>

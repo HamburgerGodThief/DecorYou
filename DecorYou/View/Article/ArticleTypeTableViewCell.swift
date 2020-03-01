@@ -13,15 +13,14 @@ class ArticleTypeTableViewCell: UITableViewCell {
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var typeLabel: UILabel!
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-//        backView.layer.cornerRadius = backView.frame.height / 2
+    override func layoutIfNeeded() {
+        super.layoutIfNeeded()
+        backView.layer.cornerRadius = backView.frame.height / 2
     }
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        backView.layer.cornerRadius = backView.frame.height / 2
         // Initialization code
     }
 

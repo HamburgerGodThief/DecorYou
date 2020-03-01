@@ -14,6 +14,8 @@ class ArticleListTableViewCell: UITableViewCell {
     @IBOutlet weak var nameAndCreateTime: UILabel!
     @IBOutlet weak var replyCount: UILabel!
     @IBOutlet weak var loveCount: UILabel!
+    @IBOutlet weak var typeLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

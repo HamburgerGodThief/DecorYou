@@ -28,8 +28,8 @@
                                     <constraint firstAttribute="width" constant="48" id="wqv-ag-Rlp"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MHWI 非洲弓箭手的配裝分享" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVl-VA-mcg">
-                                <rect key="frame" x="62" y="12" width="313" height="22.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="MHWI 非洲弓箭手的配裝分享" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVl-VA-mcg">
+                                <rect key="frame" x="126" y="12" width="265.5" height="22.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
                                 <nil key="textColor"/>
@@ -94,17 +94,29 @@
                                     <constraint firstAttribute="height" constant="16" id="uDi-fL-BYF"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lAd-xM-3vj">
+                                <rect key="frame" x="62" y="15" width="60" height="17"/>
+                                <color key="backgroundColor" name="highlightColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="2Ac-hd-mFR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="12"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="QP2-Jz-Job" firstAttribute="leading" secondItem="78A-7E-p71" secondAttribute="trailing" constant="2" id="8iV-Au-h5A"/>
-                            <constraint firstAttribute="trailing" secondItem="YVl-VA-mcg" secondAttribute="trailing" constant="120" id="BYU-y8-cP7"/>
                             <constraint firstItem="BvQ-11-iu8" firstAttribute="leading" secondItem="QP2-Jz-Job" secondAttribute="trailing" constant="2" id="Buj-io-HIP"/>
+                            <constraint firstItem="lAd-xM-3vj" firstAttribute="centerY" secondItem="BvQ-11-iu8" secondAttribute="centerY" id="CxS-d8-t9y"/>
+                            <constraint firstItem="YVl-VA-mcg" firstAttribute="leading" secondItem="lAd-xM-3vj" secondAttribute="trailing" constant="4" id="EzC-B3-ggp"/>
                             <constraint firstItem="TVx-yI-EBt" firstAttribute="top" secondItem="YVl-VA-mcg" secondAttribute="bottom" id="GrG-2w-RHY"/>
                             <constraint firstItem="Wyo-pL-9E9" firstAttribute="centerY" secondItem="BvQ-11-iu8" secondAttribute="centerY" id="ORJ-sX-I6m"/>
+                            <constraint firstItem="Wyo-pL-9E9" firstAttribute="leading" secondItem="YVl-VA-mcg" secondAttribute="trailing" constant="10" id="PKr-ay-dkd"/>
+                            <constraint firstItem="lAd-xM-3vj" firstAttribute="leading" secondItem="ERT-mr-Rga" secondAttribute="trailing" constant="6" id="QFt-jW-Mjf"/>
                             <constraint firstAttribute="trailing" secondItem="BvQ-11-iu8" secondAttribute="trailing" constant="16" id="QbK-KF-80h"/>
                             <constraint firstItem="ERT-mr-Rga" firstAttribute="top" secondItem="0v8-07-bh3" secondAttribute="top" constant="8" id="T9n-Bg-MZj"/>
-                            <constraint firstItem="YVl-VA-mcg" firstAttribute="leading" secondItem="ERT-mr-Rga" secondAttribute="trailing" constant="6" id="VhR-mC-ecj"/>
                             <constraint firstItem="78A-7E-p71" firstAttribute="leading" secondItem="Wyo-pL-9E9" secondAttribute="trailing" constant="2" id="VjQ-pH-rnV"/>
                             <constraint firstItem="ERT-mr-Rga" firstAttribute="leading" secondItem="0v8-07-bh3" secondAttribute="leading" constant="8" id="b0L-ec-YmI"/>
                             <constraint firstAttribute="trailing" secondItem="TVx-yI-EBt" secondAttribute="trailing" constant="16" id="b36-8e-Wzu"/>
@@ -143,6 +155,7 @@
                 <outlet property="nameTimeLabel" destination="TVx-yI-EBt" id="nJh-0i-cqZ"/>
                 <outlet property="replyCount" destination="BvQ-11-iu8" id="XOn-45-Mus"/>
                 <outlet property="titleLabel" destination="YVl-VA-mcg" id="5dK-wi-W7X"/>
+                <outlet property="typeLabel" destination="lAd-xM-3vj" id="dSz-33-P6X"/>
             </connections>
             <point key="canvasLocation" x="138.40579710144928" y="72.65625"/>
         </tableViewCell>
@@ -150,6 +163,9 @@
     <resources>
         <image name="bubble.left.fill" catalog="system" width="64" height="54"/>
         <image name="heart.fill" catalog="system" width="64" height="54"/>
+        <namedColor name="highlightColor">
+            <color red="0.21799999475479126" green="0.4699999988079071" blue="0.4830000102519989" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <namedColor name="mainColor">
             <color red="0.30199998617172241" green="0.6470000147819519" blue="0.65499997138977051" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
