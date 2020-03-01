@@ -10,15 +10,17 @@ import UIKit
 
 extension UIViewController {
     
-    func presentLoadingVC() {
+    func presentLoadingVC() -> LoadingViewController {
         
         let loadingVC = LoadingViewController()
         
         loadingVC.modalPresentationStyle = .overFullScreen
         
-        loadingVC.modalTransitionStyle = .crossDissolve
+//        loadingVC.modalTransitionStyle = .crossDissolve
         
-        present(loadingVC, animated: true, completion: nil)
+        present(loadingVC, animated: false, completion: nil)
+        
+        return loadingVC
         
     }
 }

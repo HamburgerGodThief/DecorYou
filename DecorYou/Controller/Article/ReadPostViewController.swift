@@ -463,10 +463,25 @@ extension ReadPostViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             headerView.floorTimeLabel.text = "\(section)樓 | \(replys[section].createTimeString)"
         }
+        
         headerView.authorName.text = replys[section].authorObject?.name
         headerView.logoImg.loadImage(replys[section].authorObject?.img, placeHolder: UIImage(systemName: "person.crop.circle"))
         headerView.logoImg.tintColor = .lightGray
         headerView.contentLabel.text = replys[section].content
+        
+        if article?.type == "開箱" && section == 0 {
+            headerView.collectionView.dataSource = self
+            headerView.collectionView.delegate = self
+            headerView.collectionView.lk_registerCellWithNib(identifier: "ResumeCollectionViewCell", bundle: nil)
+            headerView.height.isActive = false
+        } else {
+            
+            headerView.trailing.isActive = false
+            headerView.leading.isActive = false
+            headerView.height.constant = 0
+            headerView.height.isActive = true
+        }
+        
         return headerView
     }
     
@@ -484,5 +499,36 @@ extension ReadPostViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return tableView.frame.height / 10
+    }
+}
+
+extension ReadPostViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return article!.imgAry.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: ResumeCollectionViewCell.self), for: indexPath) as? ResumeCollectionViewCell else { return UICollectionViewCell() }
+        cell.profolioImg.loadImage(article!.imgAry[indexPath.item])
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.bounds.width - 20
+        let height = width
+        return CGSize(width: width, height: height)
+    }
+    
+    func collectionView(_: UICollectionView, layout: UICollectionViewLayout, minimumLineSpacingForSectionAt: Int) -> CGFloat {
+        return 20
+    }
+    
+    func collectionView(_: UICollectionView, layout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
     }
 }

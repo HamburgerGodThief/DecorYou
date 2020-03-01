@@ -64,6 +64,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2rn-WW-B78">
+                                <rect key="frame" x="69.5" y="8.5" width="41" height="23"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" name="shadowLightGray"/>
                         <constraints>
@@ -76,8 +82,10 @@
                             <constraint firstItem="nIL-0w-vkA" firstAttribute="bottom" secondItem="I1Y-wJ-aEx" secondAttribute="bottom" id="NAW-F0-2XA"/>
                             <constraint firstItem="kcd-MH-c5d" firstAttribute="leading" secondItem="8cU-CD-5C7" secondAttribute="trailing" constant="2" id="OL4-1p-jkI"/>
                             <constraint firstAttribute="bottom" secondItem="I1Y-wJ-aEx" secondAttribute="bottom" constant="12" id="Rb9-iD-ClL"/>
+                            <constraint firstItem="2rn-WW-B78" firstAttribute="centerY" secondItem="6gR-pj-nI3" secondAttribute="centerY" id="RgD-SD-U68"/>
                             <constraint firstItem="I1Y-wJ-aEx" firstAttribute="leading" secondItem="6sp-FR-MMV" secondAttribute="leading" constant="25" id="VSh-hZ-RRp"/>
                             <constraint firstItem="8cU-CD-5C7" firstAttribute="centerY" secondItem="kcd-MH-c5d" secondAttribute="centerY" id="Y2w-b9-mb6"/>
+                            <constraint firstItem="2rn-WW-B78" firstAttribute="leading" secondItem="6gR-pj-nI3" secondAttribute="trailing" constant="4" id="gDl-T2-T2A"/>
                             <constraint firstItem="TmW-v4-StE" firstAttribute="height" secondItem="6sp-FR-MMV" secondAttribute="height" multiplier="0.15" id="k1f-Yr-zPn"/>
                             <constraint firstItem="8cU-CD-5C7" firstAttribute="leading" secondItem="nIL-0w-vkA" secondAttribute="trailing" constant="2" id="k4l-iZ-etw"/>
                             <constraint firstAttribute="trailing" secondItem="kcd-MH-c5d" secondAttribute="trailing" constant="16" id="mwL-tk-fFk"/>
@@ -98,7 +106,8 @@
                 <outlet property="loveLabel" destination="nIL-0w-vkA" id="X2M-gw-swK"/>
                 <outlet property="replyLabel" destination="kcd-MH-c5d" id="kl3-sV-3A3"/>
                 <outlet property="timeLabel" destination="I1Y-wJ-aEx" id="Q3m-dh-wNL"/>
-                <outlet property="titleLabel" destination="6gR-pj-nI3" id="wNb-lM-scX"/>
+                <outlet property="titleLabel" destination="2rn-WW-B78" id="GTC-uf-EKu"/>
+                <outlet property="typeLabel" destination="6gR-pj-nI3" id="wNb-lM-scX"/>
             </connections>
             <point key="canvasLocation" x="85.507246376811594" y="139.28571428571428"/>
         </tableViewCell>

@@ -45,6 +45,9 @@ class CraftsmenFilterViewController: UIViewController {
         } else {
             craftsmenVC.isFilter = true
         }
+        if craftsmenVC.finalResult.isEmpty {
+            craftsmenVC.searchResultLabel.isHidden = false
+        }
         craftsmenVC.showNavRightButton(shouldShow: true)
         craftsmenVC.craftsmenCollectionView.reloadData()
         dismiss(animated: false, completion: nil)
@@ -59,6 +62,8 @@ class CraftsmenFilterViewController: UIViewController {
         conditionsArray = []
         firstConditionCell = []
         secondConditionCell = []
+        collectionView.reloadData()
+        craftsmenVC.searchResultLabel.isHidden = true
         craftsmenVC.craftsmenCollectionView.reloadData()
     }
     
@@ -196,7 +201,7 @@ extension CraftsmenFilterViewController: UICollectionViewDelegateFlowLayout, UIC
                 
             }
             
-            if secondConditionCell.count > 2 {
+            if secondConditionCell.count > 1 {
                 
                 secondConditionCell[0].select = !secondConditionCell[0].select
                 

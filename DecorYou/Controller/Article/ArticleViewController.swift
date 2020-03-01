@@ -16,6 +16,8 @@ class ArticleViewController: UIViewController {
     
     @IBOutlet weak var articleTableView: UITableView!
     @IBOutlet weak var newPostBtn: UIButton!
+    @IBOutlet weak var searchResultLabel: UILabel!
+    
     let transition: CircularTransition = CircularTransition()
     var searchController = UISearchController(searchResultsController: nil)
     var refreshControl = UIRefreshControl()
@@ -44,8 +46,9 @@ class ArticleViewController: UIViewController {
     var collectionItem: [[String]] = []
     
     func getData(shouldShowLoadingVC: Bool) {
+        var loadingVC: LoadingViewController?
         if shouldShowLoadingVC {
-            presentLoadingVC()
+            loadingVC = presentLoadingVC()
         }
         let group0 = DispatchGroup()
         let group1 = DispatchGroup()
@@ -92,7 +95,7 @@ class ArticleViewController: UIViewController {
         
         group1.notify(queue: .main) { [weak self] in
             if shouldShowLoadingVC {
-                self?.dismiss(animated: true, completion: nil)
+                loadingVC!.dismiss(animated: false, completion: nil)
             }
             self?.combineDataForCollectionItem()
             self?.refreshControl.endRefreshing()
@@ -103,11 +106,10 @@ class ArticleViewController: UIViewController {
     func configureSearchController() {
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.obscuresBackgroundDuringPresentation = false
-        let searchBar = searchController.searchBar
-        searchBar.sizeToFit()
-        searchBar.delegate = self
-        searchBar.showsCancelButton = false
-        searchBar.searchTextField.backgroundColor = UIColor.assetColor(.darkMainColor)
+        searchController.searchBar.sizeToFit()
+        searchController.searchBar.delegate = self
+        searchController.searchBar.showsCancelButton = false
+        searchController.searchBar.searchTextField.backgroundColor = UIColor.assetColor(.darkMainColor)
     }
     
     func setNavBar() {
@@ -116,7 +118,7 @@ class ArticleViewController: UIViewController {
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.barStyle = .black
-        showNavRightButton(shouldShow: true)
+        
     }
     
     func showNavRightButton(shouldShow: Bool) {
@@ -210,6 +212,12 @@ class ArticleViewController: UIViewController {
         
         finalArticles = searchResults
         
+        if finalArticles.isEmpty {
+            searchResultLabel.isHidden = false
+        } else {
+            searchResultLabel.isHidden = true
+        }
+        
         articleTableView.reloadData()
         
     }
@@ -256,6 +264,7 @@ class ArticleViewController: UIViewController {
     }
     
     @objc func configureSlideInFilter() {
+        searchResultLabel.isHidden = true
         guard let tabBarController = tabBarController as? STTabBarViewController else { return }
         present(tabBarController.filterVC, animated: false, completion: nil)
     }
@@ -302,11 +311,14 @@ class ArticleViewController: UIViewController {
         getData(shouldShowLoadingVC: true)
         configureSearchController()
         setNavBar()
+        showNavRightButton(shouldShow: true)
+        searchResultLabel.isHidden = true
         self.definesPresentationContext = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setNavBar()
         searchController.searchBar.searchTextField.attributedPlaceholder = NSAttributedString(string: "想找的關鍵字",
         attributes: [.foregroundColor: UIColor(red: 187, green: 208, blue: 211, alpha: 1)])
         
@@ -410,6 +422,7 @@ extension ArticleViewController: UICollectionViewDataSource, UICollectionViewDel
 extension ArticleViewController: UISearchBarDelegate {
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        
         isSearching = true
         searchBar.searchTextField.textColor = .black
         
@@ -432,6 +445,12 @@ extension ArticleViewController: UISearchBarDelegate {
             
             finalArticles = allArticle
             
+        }
+        
+        if finalArticles.isEmpty {
+            searchResultLabel.isHidden = false
+        } else {
+            searchResultLabel.isHidden = true
         }
         
         articleTableView.reloadData()

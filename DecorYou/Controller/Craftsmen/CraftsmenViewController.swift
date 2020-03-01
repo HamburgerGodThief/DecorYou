@@ -32,12 +32,12 @@ class CraftsmenViewController: UIViewController {
     let columnCount: CGFloat = 2
     
     func getAllCraftsmen() {
-        presentLoadingVC()
+        let loadingVC = presentLoadingVC()
         UserManager.shared.fetchAllCraftsmen(completion: { [weak self] result in
             switch result {
             case .success(let allCraftsmen):
                 guard let strongSelf = self else { return }
-                strongSelf.dismiss(animated: true, completion: nil)
+                loadingVC.dismiss(animated: false, completion: nil)
                 strongSelf.allCraftsmen = allCraftsmen
                 strongSelf.finalResult = strongSelf.allCraftsmen
                 strongSelf.craftsmenCollectionView.reloadData()
@@ -64,7 +64,6 @@ class CraftsmenViewController: UIViewController {
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.barStyle = .black
-        showNavRightButton(shouldShow: true)
     }
     
     func showNavRightButton(shouldShow: Bool) {
@@ -120,10 +119,17 @@ class CraftsmenViewController: UIViewController {
             
         }
         
+        if finalResult.isEmpty {
+            searchResultLabel.isHidden = false
+        } else {
+            searchResultLabel.isHidden = true
+        }
+        
         craftsmenCollectionView.reloadData()
     }
     
     @objc func configureSlideInFilter() {
+        searchResultLabel.isHidden = true
         guard let tabBarController = tabBarController as? STTabBarViewController else { return }
         present(tabBarController.craftsmenFilterVC , animated: false, completion: nil)
     }
@@ -137,11 +143,13 @@ class CraftsmenViewController: UIViewController {
         getAllCraftsmen()
         configureSearchController()
         setNavBar()
+        showNavRightButton(shouldShow: true)
         self.definesPresentationContext = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setNavBar()
         searchController.searchBar.searchTextField.attributedPlaceholder = NSAttributedString(string: "想找哪位匠人",
         attributes: [.foregroundColor: UIColor(red: 187, green: 208, blue: 211, alpha: 1)])
     }
@@ -201,6 +209,7 @@ extension CraftsmenViewController: UISearchBarDelegate {
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         print("Start editing")
+        searchResultLabel.isHidden = true
         isSearching = true
         searchBar.searchTextField.textColor = .black
         
@@ -226,6 +235,12 @@ extension CraftsmenViewController: UISearchBarDelegate {
             
             finalResult = allCraftsmen
             
+        }
+        
+        if finalResult.isEmpty {
+            searchResultLabel.isHidden = false
+        } else {
+            searchResultLabel.isHidden = true
         }
         
         craftsmenCollectionView.reloadData()

@@ -95,6 +95,7 @@ extension FavoriteViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: YourPostTableViewCell.self), for: indexPath) as? YourPostTableViewCell else { return UITableViewCell() }
         guard let authorOBJ = lovePost[indexPath.row].authorObject else { return UITableViewCell() }
+        cell.typeLabel.text = "[\(lovePost[indexPath.row].type)]"
         cell.titleLabel.text = lovePost[indexPath.row].title
         cell.timeLabel.text = "\(authorOBJ.name) | \(lovePost[indexPath.row].createTimeString)"
         cell.loveLabel.text = "\(lovePost[indexPath.row].loveCount)"
@@ -120,7 +121,6 @@ extension FavoriteViewController: UITableViewDataSource, UITableViewDelegate {
         let storyboard = UIStoryboard.init(name: "Article", bundle: nil)
         guard let readPostVC = storyboard.instantiateViewController(identifier: "ReadPostViewController") as? ReadPostViewController else { return }
         readPostVC.article = lovePost[indexPath.row]
-//        readPostVC.modalPresentationStyle = .overFullScreen
         present(readPostVC, animated: true, completion: nil)
     }
 }
