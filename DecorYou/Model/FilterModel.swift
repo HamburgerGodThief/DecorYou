@@ -20,9 +20,7 @@ struct StyleCondition: ConditionDelegate {
     var conditionValue: String
     
     func filter(data: [Article]) -> [Article] {
-        let filterData = data.filter({ article in
-            article.decorateStyle.contains(where: { $0 == conditionValue})
-        })
+        let filterData = data.filter({ $0.decorateStyle == conditionValue })
         return filterData
     }
 }

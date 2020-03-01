@@ -12,14 +12,10 @@ import FirebaseFirestoreSwift
 
 struct Article: Codable {
     let title: String
+    let type: String
     let content: String
     let createTime: Date
-    var createTimeString: String {
-        let format = DateFormatter()
-        format.dateFormat = "YYYY-MM-dd HH:mm"
-        return format.string(from: createTime)
-    }
-    let decorateStyle: [String]
+    let decorateStyle: String?
     let location: String?
     var loveCount: Int
     var replyCount: Int
@@ -28,6 +24,7 @@ struct Article: Codable {
     let collaborator: [DocumentReference]
     let author: DocumentReference
     var authorObject: User?
+    var imgAry: [String]
     var intervalString: String {
         let interval = Date().timeIntervalSince(createTime)
         let days = Double(60 * 60 * 24)
@@ -44,9 +41,14 @@ struct Article: Codable {
             }
         }
     }
+    var createTimeString: String {
+        let format = DateFormatter()
+        format.dateFormat = "YYYY-MM-dd HH:mm"
+        return format.string(from: createTime)
+    }
     
     enum CodingKeys: String, CodingKey {
-        case author, title, postID, content, createTime, collaborator, size, loveCount, replyCount, location, decorateStyle
+        case author, title, type, postID, content, createTime, collaborator, size, loveCount, replyCount, location, decorateStyle, imgAry
     }
 }
 

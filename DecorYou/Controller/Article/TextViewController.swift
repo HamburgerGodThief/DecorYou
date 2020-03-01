@@ -7,40 +7,22 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseStorage
-import FirebaseDatabase
+
+protocol TextViewControllerDelegate: AnyObject {
+    func passToCreateVC(_ textViewController: TextViewController)
+}
 
 class TextViewController: UIViewController {
 
-    @IBOutlet var toolbarView: UIView!
     @IBOutlet weak var textView: UITextView!
+    weak var delegate: TextViewControllerDelegate?
     var content: String = ""
-    
-    @IBAction func touchImg(_ sender: Any) {
-        //IImagePickerController 的實體
-        let imagePickerController = UIImagePickerController()
-        
-        // 委任代理
-        imagePickerController.delegate = self
-        
-        // 判斷是否可以從照片圖庫取得照片來源
-        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-
-            // 如果可以，指定 UIImagePickerController 的照片來源為 照片圖庫 (.photoLibrary)，並 present UIImagePickerController
-            imagePickerController.sourceType = .photoLibrary
-            
-            present(imagePickerController, animated: true, completion: nil)
-        }
-    }
-    
-    @IBAction func sendBtn(_ sender: Any) {
-        
-    }
     
     func setTextView() {
         textView.font = UIFont.systemFont(ofSize: 12)
+        textView.delegate = self
     }
+    
     /*
     func putImg(inputImg: UIImage) {
         
@@ -88,23 +70,16 @@ class TextViewController: UIViewController {
         super.viewDidLoad()
         setTextView()
         textView.text = "請先選擇主題"
-        textView.inputAccessoryView = toolbarView
         // Do any additional setup after loading the view.
     }
-    
+
 }
 
-extension TextViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-
-        var selectedImageFromPicker: UIImage?
-
-        // 取得從 UIImagePickerController 選擇的檔案
-        if let pickedImage = info[.originalImage] as? UIImage {
-            selectedImageFromPicker = pickedImage
-        }
-        
-        dismiss(animated: true, completion: nil)
+extension TextViewController: UITextViewDelegate {
+    
+    func textViewDidChange(_ textView: UITextView) {
+        content = textView.text
+        delegate?.passToCreateVC(self)
     }
+    
 }

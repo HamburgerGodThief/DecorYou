@@ -228,10 +228,8 @@ class ArticleViewController: UIViewController {
             if finalArticles[index].size != nil {
                 collectionItem[index].append(String(finalArticles[index].size!))
             }
-            if finalArticles[index].decorateStyle.count != 0 {
-                for style in finalArticles[index].decorateStyle {
-                    collectionItem[index].append(style)
-                }
+            if finalArticles[index].decorateStyle != nil {
+                collectionItem[index].append(finalArticles[index].decorateStyle!)
             }
         }
     }

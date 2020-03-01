@@ -610,7 +610,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pWE-6s-3xO">
                                 <rect key="frame" x="0.0" y="275" width="414" height="587"/>
                                 <connections>
-                                    <segue destination="7JC-Pp-nB1" kind="embed" id="ity-4L-jw2"/>
+                                    <segue destination="7JC-Pp-nB1" kind="embed" identifier="TextViewController" id="ity-4L-jw2"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VPy-HX-VRa">
@@ -619,7 +619,7 @@
                                     <constraint firstAttribute="height" constant="150" id="pcX-el-dKT"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="rWS-Tp-Knl" kind="embed" id="3Vo-Pm-Jsi"/>
+                                    <segue destination="rWS-Tp-Knl" kind="embed" identifier="UnboxingViewController" id="3Vo-Pm-Jsi"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -848,41 +848,9 @@
                     </view>
                     <connections>
                         <outlet property="textView" destination="BJl-GE-E5j" id="QKE-5d-pfY"/>
-                        <outlet property="toolbarView" destination="rMA-sS-kvJ" id="hds-Qw-5lh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yie-yw-meW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" id="rMA-sS-kvJ">
-                    <rect key="frame" x="0.0" y="0.0" width="415" height="56"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JZm-5k-NRN">
-                            <rect key="frame" x="375" y="16" width="24" height="24"/>
-                            <constraints>
-                                <constraint firstAttribute="width" secondItem="JZm-5k-NRN" secondAttribute="height" multiplier="1:1" id="O0I-NP-JEF"/>
-                            </constraints>
-                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <state key="normal" image="photo" catalog="system"/>
-                            <connections>
-                                <action selector="touchImg:" destination="7JC-Pp-nB1" eventType="touchUpInside" id="H5g-XT-an7"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Adt-ME-cIa">
-                            <rect key="frame" x="28" y="14" width="46" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Button"/>
-                            <connections>
-                                <action selector="sendBtn:" destination="7JC-Pp-nB1" eventType="touchUpInside" id="18Y-dS-nOH"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <color key="backgroundColor" name="darkMainColor"/>
-                    <constraints>
-                        <constraint firstItem="JJX-7J-90y" firstAttribute="trailing" secondItem="JZm-5k-NRN" secondAttribute="trailing" constant="16" id="JAr-or-wjB"/>
-                        <constraint firstItem="JZm-5k-NRN" firstAttribute="centerY" secondItem="rMA-sS-kvJ" secondAttribute="centerY" id="QvP-JX-n4S"/>
-                    </constraints>
-                    <viewLayoutGuide key="safeArea" id="JJX-7J-90y"/>
-                </view>
             </objects>
             <point key="canvasLocation" x="2128" y="-759"/>
         </scene>
@@ -962,10 +930,6 @@
     <resources>
         <image name="chevron.down" catalog="system" width="64" height="36"/>
         <image name="person.crop.circle" catalog="system" width="64" height="60"/>
-        <image name="photo" catalog="system" width="64" height="46"/>
-        <namedColor name="darkMainColor">
-            <color red="0.20000000298023224" green="0.42399999499320984" blue="0.45899999141693115" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="mainColor">
             <color red="0.30199998617172241" green="0.6470000147819519" blue="0.65499997138977051" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

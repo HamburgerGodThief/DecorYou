@@ -8,6 +8,13 @@
 
 import UIKit
 
+struct UnboxTag {
+    var size: Int
+    var location: String
+    var style: String
+    var img: [UIImage]
+}
+
 protocol UnboxingViewControllerDelegate: AnyObject {
     func passDataToCreatePost(unboxingVC: UnboxingViewController)
 }
@@ -48,6 +55,7 @@ class UnboxingViewController: UIViewController {
                       "地中海", "美式", "東方", "無特定"]
     var locationSelected: String = ""
     var styleSelected: String = ""
+    var size: Int = 0
     var imgAry: [UIImage] = [] {
         didSet {
             collectionView.reloadData()
@@ -107,9 +115,13 @@ extension UnboxingViewController: UIPickerViewDelegate, UIPickerViewDataSource {
 extension UnboxingViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == sizeTextField {
+            guard let text = textField.text else { return }
+            size = Int(text) ?? 0
+        }
         delegate?.passDataToCreatePost(unboxingVC: self)
     }
-    
+        
 }
 
 extension UnboxingViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
@@ -157,6 +169,7 @@ extension UnboxingViewController: UICollectionViewDelegateFlowLayout, UICollecti
             present(imagePickerController, animated: true, completion: nil)
         } else {
             imgAry.remove(at: indexPath.item - 1)
+            delegate?.passDataToCreatePost(unboxingVC: self)
         }
     }
     
@@ -170,6 +183,7 @@ extension UnboxingViewController: UIImagePickerControllerDelegate, UINavigationC
         if let pickedImage = info[.originalImage] as? UIImage {
             imgAry.append(pickedImage)
         }
+        delegate?.passDataToCreatePost(unboxingVC: self)
         
         dismiss(animated: true, completion: nil)
     }
