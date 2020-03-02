@@ -46,6 +46,8 @@ class ArticleViewController: UIViewController {
     var collectionItem: [[String]] = []
     
     func getData(shouldShowLoadingVC: Bool) {
+        allArticle = []
+        finalArticles = []
         var loadingVC: LoadingViewController?
         if shouldShowLoadingVC {
             loadingVC = presentLoadingVC()
@@ -360,6 +362,10 @@ extension ArticleViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.typeLabel.backgroundColor = UIColor.assetColor(.advertise)
                 cell.backView.layer.borderColor = UIColor.assetColor(.advertise)?.cgColor
                 cell.backView.layer.borderWidth = 2
+            } else {
+                cell.typeLabel.backgroundColor = UIColor.assetColor(.darkMainColor)
+                cell.backView.layer.borderColor = nil
+                cell.backView.layer.borderWidth = 0
             }
             return cell
         } else {

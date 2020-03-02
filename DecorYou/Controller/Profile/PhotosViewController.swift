@@ -41,7 +41,20 @@ class PhotosViewController: UIViewController {
             
         if fetchResult.count > 0 {
             
-            for order in 0..<fetchResult.count {
+//            for order in 0..<fetchResult.count {
+//                imgManager.requestImage(for: fetchResult.object(at: order) ,
+//                                        targetSize: CGSize(width: 200, height: 200),
+//                                        contentMode: .aspectFill,
+//                                        options: imgRequestOption,
+//                                        resultHandler: { [weak self] (img, err) in
+//                                            guard let strongSelf = self else { return }
+//                                            guard let img = img else { return }
+//                                            strongSelf.photoArray.append(img)
+//                                            
+//                })
+//            }
+            
+            for order in 0..<40 {
                 imgManager.requestImage(for: fetchResult.object(at: order) ,
                                         targetSize: CGSize(width: 200, height: 200),
                                         contentMode: .aspectFill,
@@ -50,8 +63,8 @@ class PhotosViewController: UIViewController {
                                             guard let strongSelf = self else { return }
                                             guard let img = img else { return }
                                             strongSelf.photoArray.append(img)
-                                            
                 })
+                
             }
             
             

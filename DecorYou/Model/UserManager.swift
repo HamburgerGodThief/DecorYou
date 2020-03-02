@@ -151,6 +151,7 @@ class UserManager {
                 do {
                     if let user = try document.data(as: User.self, decoder: Firestore.Decoder()) {
                         UserManager.shared.user = user
+                        NotificationCenter.default.post(name: Notification.Name("UpdateUserManager"), object: nil)
                         UserDefaults.standard.set(user.character, forKey: "UserCharacter")
                         UserDefaults.standard.set(user.uid, forKey: "UserToken")
                     }

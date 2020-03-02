@@ -203,6 +203,7 @@
                         <viewLayoutGuide key="safeArea" id="4Ov-OE-fKC"/>
                     </view>
                     <connections>
+                        <outlet property="bottomConstraint" destination="0Kk-jD-vHz" id="zJQ-cE-eoZ"/>
                         <outlet property="readPostTableView" destination="Oa4-JC-f3S" id="zVX-QG-xek"/>
                     </connections>
                 </viewController>

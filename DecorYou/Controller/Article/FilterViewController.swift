@@ -64,6 +64,7 @@ class FilterViewController: UIViewController {
         }
         articleVC.showNavRightButton(shouldShow: true)
         articleVC.articleTableView.reloadData()
+        
         dismiss(animated: false, completion: nil)
     }
     

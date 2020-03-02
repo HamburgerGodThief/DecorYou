@@ -14,6 +14,8 @@ import FirebaseFirestoreSwift
 class ReadPostViewController: UIViewController {
     
     @IBOutlet weak var readPostTableView: UITableView!
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    
     var article: Article?
     var replys: [Reply] = []
     let leftbtn = UIButton()
@@ -34,6 +36,8 @@ class ReadPostViewController: UIViewController {
     }
     
     func setBottomView() {
+        readPostTableView.translatesAutoresizingMaskIntoConstraints = false
+        
         view.addSubview(bottomView)
         bottomView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -43,6 +47,10 @@ class ReadPostViewController: UIViewController {
             bottomView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             bottomView.heightAnchor.constraint(equalToConstant: 65)
         ])
+        
+        bottomConstraint.isActive = false
+        
+        readPostTableView.bottomAnchor.constraint(equalTo: bottomView.topAnchor).isActive = true
     }
     
     func setBottomViewAction() {

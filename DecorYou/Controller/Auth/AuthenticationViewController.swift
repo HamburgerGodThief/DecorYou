@@ -30,6 +30,8 @@ class AuthenticationViewController: UIViewController {
         
     @IBOutlet weak var appleSignInBtn: UIView!
     
+    @IBOutlet weak var visitorBtn: UIButton!
+    
     var appleIDFamilyName: String = ""
     
     var appleIDFirstName: String = ""
@@ -63,6 +65,15 @@ class AuthenticationViewController: UIViewController {
         authorizationButton.leadingAnchor.constraint(equalTo: appleSignInBtn.leadingAnchor).isActive = true
         authorizationButton.trailingAnchor.constraint(equalTo: appleSignInBtn.trailingAnchor).isActive = true
         
+    }
+    
+    @IBAction func visitorLogIn(_ sender: Any) {
+        
+        guard let tabVC = presentingViewController as? STTabBarViewController else { return }
+        
+        tabVC.selectedIndex = 0
+        
+        dismiss(animated: true, completion: nil)
     }
     
     @objc private func handleLogInWithAppleIDButtonPress() {
@@ -111,6 +122,11 @@ class AuthenticationViewController: UIViewController {
         
         appleSignInBtn.layer.cornerRadius = appleSignInBtn.frame.height / 2
         appleSignInBtn.clipsToBounds = true
+        
+        visitorBtn.layer.cornerRadius = visitorBtn.frame.height / 2
+        visitorBtn.layer.borderWidth = 1
+        visitorBtn.layer.borderColor = UIColor.darkGray.cgColor
+        visitorBtn.clipsToBounds = true
         
         GIDSignIn.sharedInstance()?.presentingViewController = self
         GIDSignIn.sharedInstance()?.delegate = self

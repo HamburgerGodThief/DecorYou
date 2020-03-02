@@ -24,7 +24,8 @@ class YourPostViewController: UIViewController {
         yourPostTableView.rowHeight = UITableView.automaticDimension
     }
     
-    func getSelfPost() {
+    @objc func getSelfPost() {
+        yourPost = []
         guard let user = UserManager.shared.user else { return }
         for selfPostRef in user.selfPost {
             ArticleManager.shared.fetchPostRef(postRef: selfPostRef, completion: { [weak self] result in
@@ -52,8 +53,8 @@ class YourPostViewController: UIViewController {
         super.viewDidLoad()
         noArticleLabel.isHidden = true
         setTableView()
-        getSelfPost()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(getSelfPost), name: NSNotification.Name("UpdateUserManager") , object: nil)
     }
 }
 

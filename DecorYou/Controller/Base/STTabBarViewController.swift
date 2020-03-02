@@ -117,7 +117,7 @@ class STTabBarViewController: UITabBarController, UITabBarControllerDelegate {
             navVC.viewControllers.first is ProfileViewController
             else { return true }
         
-        let userToken = UserDefaults.standard.value(forKey: "UserToken")
+        let userToken = UserDefaults.standard.value(forKey: "UserToken") as? String
         
         guard userToken != nil else {
 
@@ -130,6 +130,8 @@ class STTabBarViewController: UITabBarController, UITabBarControllerDelegate {
             
             return false
         }
+        
+        UserManager.shared.fetchCurrentUser(uid: userToken!)
         
         return true
     }

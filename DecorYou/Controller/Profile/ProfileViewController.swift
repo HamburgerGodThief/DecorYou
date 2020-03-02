@@ -39,6 +39,7 @@ class ProfileViewController: UIViewController {
     var selectStatus: [Bool] = []
     let indicator = UIView()
     var editType: Bool = true
+    var indicatorSizeConstraint: NSLayoutConstraint = NSLayoutConstraint()
     
     @IBAction func didTouchEditBtn(_ sender: Any) {
         
@@ -156,7 +157,7 @@ class ProfileViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             NSLayoutConstraint(item: lightGrayIndicator, attribute: .width, relatedBy: .equal, toItem: collectionView, attribute: .width, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: lightGrayIndicator, attribute: .height, relatedBy: .equal, toItem: view, attribute: .width, multiplier: 0, constant: 1),
+            NSLayoutConstraint(item: lightGrayIndicator, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 1),
             NSLayoutConstraint(item: lightGrayIndicator, attribute: .bottom, relatedBy: .equal, toItem: collectionView, attribute: .bottom, multiplier: 1, constant: 0),
             NSLayoutConstraint(item: lightGrayIndicator, attribute: .leading, relatedBy: .equal, toItem: collectionView, attribute: .leading, multiplier: 1, constant: 0)
         ])
@@ -166,14 +167,13 @@ class ProfileViewController: UIViewController {
         indicator.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            NSLayoutConstraint(item: indicator, attribute: .width, relatedBy: .equal, toItem: collectionView, attribute: .width, multiplier: 1 / CGFloat(finalTabTitle.count), constant: 0),
-            NSLayoutConstraint(item: indicator, attribute: .height, relatedBy: .equal, toItem: view, attribute: .width, multiplier: 0, constant: 3),
+            NSLayoutConstraint(item: indicator, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 3),
             NSLayoutConstraint(item: indicator, attribute: .bottom, relatedBy: .equal, toItem: collectionView, attribute: .bottom, multiplier: 1, constant: 0),
             NSLayoutConstraint(item: indicator, attribute: .leading, relatedBy: .equal, toItem: collectionView, attribute: .leading, multiplier: 1, constant: 0)
         ])
     }
     
-    func getUserInfo() {
+    @objc func getUserInfo() {
         guard let user = UserManager.shared.user else { return }
         profileImg.loadImage(user.img, placeHolder: UIImage(systemName: "person.crop.circle"))
         backgroundImg.loadImage(user.backgroundImg)
@@ -181,6 +181,7 @@ class ProfileViewController: UIViewController {
         profileImg.tintColor = .lightGray
         profileNameLabel.text = user.name
         profileEmailLabel.text = user.email
+        
         if user.character == "craftsmen" {
             finalTabTitle = craftsmenTabTitle
             selectStatus = [true, false, false]
@@ -188,7 +189,12 @@ class ProfileViewController: UIViewController {
             finalTabTitle = customerTabTitle
             selectStatus = [true, false]
         }
-        indicatorUnderCollection()
+        
+        indicatorSizeConstraint.isActive = false
+        indicatorSizeConstraint = NSLayoutConstraint(item: indicator, attribute: .width, relatedBy: .equal, toItem: collectionView, attribute: .width, multiplier: 1 / CGFloat(selectStatus.count), constant: 0)
+        indicatorSizeConstraint.isActive = true
+        
+        
         whichVCShouldShow(index: 0)
         collectionView.reloadData()
     }
@@ -233,20 +239,15 @@ class ProfileViewController: UIViewController {
         
         navigationController?.navigationBar.barStyle = .black
         
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(getUserInfo), name: NSNotification.Name("UpdateUserManager") , object: nil)
         
-        getUserInfo()
-        
+        indicatorUnderCollection()
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         setIBOutlet()
     }
-    
 }
 
 extension ProfileViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -261,12 +262,12 @@ extension ProfileViewController: UICollectionViewDataSource, UICollectionViewDel
         cell.tabTitleLabel.text = finalTabTitle[indexPath.item]
 
         cell.tabTitleLabel.textColor = selectStatus[indexPath.item] ? .black : .lightGray
-            
+                
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = CGFloat(floor((collectionView.bounds.width / CGFloat(finalTabTitle.count))))
+        let width = CGFloat(floor((collectionView.frame.width / CGFloat(selectStatus.count))))
         let height = collectionView.frame.height
         return CGSize(width: width, height: height)
     }

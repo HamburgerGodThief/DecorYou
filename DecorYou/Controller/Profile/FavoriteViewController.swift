@@ -25,7 +25,8 @@ class FavoriteViewController: UIViewController {
         favoriteTableView.rowHeight = UITableView.automaticDimension
     }
     
-    func getLovePost() {
+    @objc func getLovePost() {
+        lovePost = []
         let group0 = DispatchGroup()
         let group1 = DispatchGroup()
         let queue0 = DispatchQueue(label: "queue0")
@@ -77,8 +78,9 @@ class FavoriteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setTableView()
-        getLovePost()
         noArticleLabel.isHidden = true
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(getLovePost), name: NSNotification.Name("UpdateUserManager") , object: nil)
     }
 }
 
