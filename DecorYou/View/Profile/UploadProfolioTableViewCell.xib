@@ -18,7 +18,7 @@
                 <subviews>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="isD-eA-fFg">
                         <rect key="frame" x="14" y="55" width="345" height="128"/>
-                        <color key="backgroundColor" red="0.29785584240000001" green="0.75686274509999996" blue="0.54783142330000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="XEf-mS-rXJ">
                             <size key="itemSize" width="50" height="50"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -32,7 +32,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m71-De-shs">
+                    <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m71-De-shs">
                         <rect key="frame" x="112" y="9" width="61" height="34"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
@@ -45,24 +45,42 @@
                         <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <state key="normal" image="Icons_24px_Close"/>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PGh-ia-AbB">
+                        <rect key="frame" x="14" y="55" width="345" height="128"/>
+                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <state key="normal" title="   新增該區域照片" image="Icons_24px_AddPhoto">
+                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                        <connections>
+                            <action selector="addPhoto:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="DDa-ds-LAm"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="BoR-IR-HDl" secondAttribute="trailing" constant="14" id="92B-pb-Pao"/>
                     <constraint firstAttribute="bottom" secondItem="isD-eA-fFg" secondAttribute="bottom" constant="12" id="9HD-S6-CLW"/>
+                    <constraint firstItem="PGh-ia-AbB" firstAttribute="top" secondItem="isD-eA-fFg" secondAttribute="top" id="E1E-bS-gTl"/>
                     <constraint firstItem="BoR-IR-HDl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="E22-KK-hTN"/>
+                    <constraint firstItem="PGh-ia-AbB" firstAttribute="trailing" secondItem="isD-eA-fFg" secondAttribute="trailing" id="U3p-l3-m6e"/>
                     <constraint firstItem="isD-eA-fFg" firstAttribute="top" secondItem="m71-De-shs" secondAttribute="bottom" constant="12" id="Vbn-Oi-N2Z"/>
                     <constraint firstItem="Bx4-O5-Du8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="XxK-kr-dqz"/>
                     <constraint firstAttribute="trailing" secondItem="m71-De-shs" secondAttribute="trailing" constant="200" id="aNd-tX-9Tx"/>
                     <constraint firstAttribute="trailing" secondItem="isD-eA-fFg" secondAttribute="trailing" constant="14" id="bzJ-Er-14o"/>
+                    <constraint firstItem="PGh-ia-AbB" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="d7I-ij-THs"/>
+                    <constraint firstItem="PGh-ia-AbB" firstAttribute="leading" secondItem="isD-eA-fFg" secondAttribute="leading" id="g7b-lZ-7bA"/>
                     <constraint firstItem="Bx4-O5-Du8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="gmJ-im-GIH"/>
+                    <constraint firstItem="PGh-ia-AbB" firstAttribute="bottom" secondItem="isD-eA-fFg" secondAttribute="bottom" id="iuG-6Z-ZfO"/>
                     <constraint firstItem="m71-De-shs" firstAttribute="leading" secondItem="Bx4-O5-Du8" secondAttribute="trailing" constant="4" id="j4C-M0-QIF"/>
                     <constraint firstItem="m71-De-shs" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="9" id="v6P-PQ-bcu"/>
+                    <constraint firstItem="PGh-ia-AbB" firstAttribute="centerY" secondItem="isD-eA-fFg" secondAttribute="centerY" id="wKB-hO-Zah"/>
                     <constraint firstItem="isD-eA-fFg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="14" id="xrv-fr-HqA"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="areaTextField" destination="m71-De-shs" id="3Ih-z8-RdP"/>
+                <outlet property="newPhotoBtn" destination="PGh-ia-AbB" id="z3b-O5-qa3"/>
                 <outlet property="newPhotoCollectionView" destination="isD-eA-fFg" id="aPH-kk-rPw"/>
                 <outlet property="removeBtn" destination="BoR-IR-HDl" id="fCh-Z9-uLb"/>
             </connections>
@@ -70,6 +88,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="Icons_24px_AddPhoto" width="18" height="18"/>
         <image name="Icons_24px_Close" width="24" height="24"/>
     </resources>
 </document>

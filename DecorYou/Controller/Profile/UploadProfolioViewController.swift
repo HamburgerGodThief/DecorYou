@@ -60,23 +60,6 @@ class UploadProfolioViewController: UIViewController {
         newProfolioTableView.delegate = self
         newProfolioTableView.dataSource = self
         newProfolioTableView.lk_registerCellWithNib(identifier: String(describing: UploadProfolioTableViewCell.self), bundle: nil)
-        
-        let customView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
-        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
-        button.setTitle("＋ 新增區域", for: .normal)
-        button.setAttributedTitle(NSAttributedString(string: "＋ 新增區域", attributes: [
-        .foregroundColor: UIColor.black,
-        .font: UIFont(name: "PingFangTC-Medium", size: 24)!]), for: .normal)
-        button.addTarget(self, action: #selector(newArea), for: .touchUpInside)
-        
-        customView.addSubview(button)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.centerXAnchor.constraint(equalTo: customView.centerXAnchor).isActive = true
-        button.centerYAnchor.constraint(equalTo: customView.centerYAnchor).isActive = true
-        newProfolioTableView.tableFooterView = customView
-        
-        customView.layer.borderColor = UIColor.lightGray.cgColor
-        customView.layer.borderWidth = 1
     }
     
     func setTableHeaderView() {
@@ -112,6 +95,30 @@ class UploadProfolioViewController: UIViewController {
         containerView.heightAnchor.constraint(equalTo: containerView.widthAnchor).isActive = true
         containerView.topAnchor.constraint(equalTo: newProfolioTableView.topAnchor).isActive = true
         containerView.layoutIfNeeded()
+    }
+    
+    func setTableFooterView() {
+        //customView是footerView
+        let customView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
+        
+        //button設定 & 放進去customView
+        button.setTitle("＋ 新增區域", for: .normal)
+        button.setAttributedTitle(NSAttributedString(string: "＋ 新增區域", attributes: [
+        .foregroundColor: UIColor.black,
+        .font: UIFont(name: "PingFangTC-Medium", size: 14)!]), for: .normal)
+        button.addTarget(self, action: #selector(newArea), for: .touchUpInside)
+        
+        customView.addSubview(button)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.centerXAnchor.constraint(equalTo: customView.centerXAnchor).isActive = true
+        button.centerYAnchor.constraint(equalTo: customView.centerYAnchor).isActive = true
+        newProfolioTableView.tableFooterView = customView
+        
+        customView.layer.borderColor = UIColor.lightGray.cgColor
+        customView.layer.borderWidth = 1
+        
+        newProfolioTableView.tableFooterView?.alpha = 0
     }
     
     @objc func createProfolio() {
@@ -266,6 +273,7 @@ class UploadProfolioViewController: UIViewController {
         setNav()
         setTableView()
         setTableHeaderView()
+        setTableFooterView()
     }
 }
 
@@ -302,8 +310,10 @@ extension UploadProfolioViewController: UIImagePickerControllerDelegate, UINavig
         if let pickedImage = info[.originalImage] as? UIImage {
             selectedImageFromPicker = pickedImage
             profolioMainImg.image = selectedImageFromPicker
+            newProfolioTableView.tableFooterView?.alpha = 1
         }
         
         dismiss(animated: true, completion: nil)
+        
     }
 }

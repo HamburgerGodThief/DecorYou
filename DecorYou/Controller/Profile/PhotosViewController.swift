@@ -54,7 +54,7 @@ class PhotosViewController: UIViewController {
 //                })
 //            }
             
-            for order in 0..<40 {
+            for order in 0..<fetchResult.count {
                 imgManager.requestImage(for: fetchResult.object(at: order) ,
                                         targetSize: CGSize(width: 200, height: 200),
                                         contentMode: .aspectFill,

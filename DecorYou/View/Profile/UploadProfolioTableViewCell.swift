@@ -13,6 +13,8 @@ class UploadProfolioTableViewCell: UITableViewCell {
     @IBOutlet weak var newPhotoCollectionView: UICollectionView!
     @IBOutlet weak var areaTextField: UITextField!
     @IBOutlet weak var removeBtn: UIButton!
+    @IBOutlet weak var newPhotoBtn: UIButton!
+    
     let pickerView = UIPickerView()
     let areaData: [String] = ["客廳", "餐廳", "主臥室", "房間一", "廚房", "浴廁"]
     var selectedPhotos: [UIImage] = []
@@ -21,12 +23,21 @@ class UploadProfolioTableViewCell: UITableViewCell {
     var cellVC: UploadProfolioViewController?
     var indexPathRow: Int?
     
+    @IBAction func addPhoto(_ sender: Any) {
+        
+        let storyboard = UIStoryboard(name: "Profile", bundle: nil)
+        guard let photosViewController = storyboard.instantiateViewController(withIdentifier: "PhotosViewController") as? PhotosViewController else { return }
+        guard let uploadProfolioVC = cellVC else { return }
+        photosViewController.indexPathRow = indexPathRow
+        photosViewController.parentVC = uploadProfolioVC
+        uploadProfolioVC.present(photosViewController, animated: true, completion: nil)
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         areaTextField.inputView = pickerView
         pickerView.delegate = self
         pickerView.dataSource = self
-        // Initialization code
         newPhotoCollectionView.lk_registerCellWithNib(identifier: String(describing: ProfolioCollectionViewCell.self), bundle: nil)
         newPhotoCollectionView.delegate = self
         newPhotoCollectionView.dataSource = self
@@ -34,9 +45,9 @@ class UploadProfolioTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
+    
+    
     
 }
 
@@ -64,19 +75,14 @@ extension UploadProfolioTableViewCell: UIPickerViewDelegate, UIPickerViewDataSou
 extension UploadProfolioTableViewCell: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return selectedPhotos.count + 1
+        return selectedPhotos.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: ProfolioCollectionViewCell.self), for: indexPath) as? ProfolioCollectionViewCell else { return UICollectionViewCell() }
-        if indexPath.item == 0 {
-            cell.profolioImg.contentMode = .scaleAspectFill
-            cell.profolioImg.image = UIImage.asset(.Icons_24px_AddPhoto)
-        } else {
-            cell.profolioImg.image = selectedPhotos[indexPath.item - 1]
-        }
-        cell.profolioImg.backgroundColor = .lightGray
+        cell.profolioImg.contentMode = .scaleAspectFill
+        cell.profolioImg.image = selectedPhotos[indexPath.item]
         return cell
     }
 
@@ -93,14 +99,5 @@ extension UploadProfolioTableViewCell: UICollectionViewDataSource, UICollectionV
     func collectionView(_: UICollectionView, layout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt: Int) -> CGFloat {
         return itemSpace
     }
-
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "Profile", bundle: nil)
-        guard let photosViewController = storyboard.instantiateViewController(withIdentifier: "PhotosViewController") as? PhotosViewController else { return }
-        guard let uploadProfolioVC = cellVC else { return }
-        photosViewController.indexPathRow = indexPathRow
-        photosViewController.parentVC = uploadProfolioVC
-        uploadProfolioVC.present(photosViewController, animated: true, completion: nil)
-    }
-
+    
 }
