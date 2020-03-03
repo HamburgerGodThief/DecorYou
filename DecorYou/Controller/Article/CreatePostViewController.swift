@@ -59,12 +59,16 @@ class CreatePostViewController: UIViewController {
         articleCatBtn.layer.borderWidth = 1
     }
     
-    func setNavigationBar() {
+    func setNavigationBar() {        
         navigationItem.title = "發表文章"
+        navigationController?.navigationBar.barTintColor = UIColor.assetColor(.mainColor)
+        navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white,
                                                                    .font: UIFont(name: "PingFangTC-Medium", size: 18)!]
         let rightBtn = UIBarButtonItem(title: "送出", style: .plain, target: self, action: #selector(createPost))
         let leftBtn = UIBarButtonItem(title: "取消", style: .plain, target: self, action: #selector(cancelPost))
+        rightBtn.tintColor = .white
+        leftBtn.tintColor = .white
         navigationItem.rightBarButtonItem = rightBtn
         navigationItem.leftBarButtonItem = leftBtn
     }
@@ -196,12 +200,12 @@ class CreatePostViewController: UIViewController {
         var updateSelfPost = currentSelfPost
         updateSelfPost.append(newPostRef)
         UserManager.shared.updateUserSelfPost(uid: uid, selfPost: updateSelfPost)
-        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
         tabBarController?.tabBar.isHidden = false
     }
     
     @objc func cancelPost() {
-        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
         tabBarController?.tabBar.isHidden = false
     }
     
@@ -222,7 +226,6 @@ class CreatePostViewController: UIViewController {
         unboxHeight.constant = 0
         unboxVC.alpha = 0
     }
-    
 }
 
 extension CreatePostViewController: UnboxingViewControllerDelegate {

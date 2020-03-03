@@ -12,90 +12,88 @@ class CircularTransition: NSObject {
     
     var circle: UIView = UIView()
     
-    var startingPoint = CGPoint.zero {
-        didSet {
-            circle.center = startingPoint
-        }
+    var startingPoint = CGPoint.zero
+    
+    var circleColor: UIColor?
+    
+    var duration = 1.0
+    
+    enum PresentMode: Int {
+        case present, dismiss
     }
     
-    var circleColor: UIColor = .white
-    
-    var duration = 0.3
-    
-    enum CircularTransitionMode: Int {
-        case present, dismiss, pop
-    }
-    
-    var transitionMode: CircularTransitionMode = .present
+    var transitionMode: PresentMode = .present
 }
 
+
 extension CircularTransition: UIViewControllerAnimatedTransitioning {
+ 
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+        
         return duration
+        
     }
-    
+ 
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         
         let containerView = transitionContext.containerView
+        
         if transitionMode == .present {
-            if let presentedView = transitionContext.view(forKey: UITransitionContextViewKey.to) {
-                let viewCenter = presentedView.center
-                let viewSize = presentedView.frame.size
-                
-                circle = UIView()
-                
-                circle.frame = frameForCircle(withViewCenter: viewCenter, size: viewSize, startPoint: startingPoint)
-                circle.layer.cornerRadius = circle.frame.size.width / 2
-                circle.center = startingPoint
-                circle.backgroundColor = circleColor
-                circle.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
-                containerView.addSubview(circle)
-                
-                presentedView.center = startingPoint
-                presentedView.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
-                presentedView.alpha = 0
-                containerView.addSubview(presentedView)
-                
-                UIView.animate(withDuration: duration, delay: 0, options: .curveEaseInOut, animations: {
-                    self.circle.transform = CGAffineTransform.identity
-                    presentedView.transform = CGAffineTransform.identity
-                    presentedView.alpha = 1
-                    presentedView.center = viewCenter
-                }, completion: { success in
-                    transitionContext.completeTransition(success)
-                })
+            guard let toVC = transitionContext.viewController(forKey: .to) else {
+                    transitionContext.completeTransition(false)
+                    return
             }
-        } else {
-            let transitionModeKey = (transitionMode == .pop) ? UITransitionContextViewKey.to : UITransitionContextViewKey.from
+        
+            let viewCenter = toVC.view.center
+            let viewSize = toVC.view.frame.size
             
-            if let returningView = transitionContext.view(forKey: transitionModeKey) {
-                let viewCenter = returningView.center
-                let viewSize = returningView.frame.size
+            circle.frame = frameForCircle(withViewCenter: viewCenter, size: viewSize, startPoint: startingPoint)
+            circle.layer.cornerRadius = circle.frame.size.width / 2
+            circle.center = startingPoint
+            circle.backgroundColor = circleColor
+            circle.alpha = 1
+            circle.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
+            containerView.addSubview(circle)
+            
+            
+            
+            toVC.view.center = startingPoint
+            toVC.view.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
+            toVC.view.alpha = 0
+            containerView.addSubview(toVC.view)
+            
+            
+            UIView.animate(withDuration: duration, delay: 0, options: .curveEaseInOut, animations: {
+                self.circle.transform = CGAffineTransform.identity
+                toVC.view.transform = CGAffineTransform.identity
+                toVC.view.alpha = 1
+                toVC.view.center = viewCenter
                 
-                circle = UIView()
-                
-                circle.frame = frameForCircle(withViewCenter: viewCenter, size: viewSize, startPoint: startingPoint)
-                circle.layer.cornerRadius = circle.frame.size.width / 2
-                circle.center = startingPoint
-                UIView.animate(withDuration: duration, delay: 0, options: .curveEaseInOut, animations: {
-                    self.circle.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
-                    returningView.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
-                    returningView.alpha = 0
-                    returningView.center = self.startingPoint
-                    
-                    if self.transitionMode == .pop {
-                        containerView.insertSubview(returningView, belowSubview: returningView)
-                        containerView.insertSubview(self.circle, belowSubview: returningView)
-                    }
-                }, completion: {success in
-                    returningView.center = viewCenter
-                    returningView.removeFromSuperview()
-                    
-                    self.circle.removeFromSuperview()
-                    
-                    transitionContext.completeTransition(success)
-                })
+            }, completion: { success in
+                transitionContext.completeTransition(success)
+            })
+        } else {
+            guard let returningVC = transitionContext.viewController(forKey: .from) else {
+                transitionContext.completeTransition(false)
+                return
             }
+            
+            let viewCenter = returningVC.view.center
+            
+            circle.alpha = 0
+            
+            UIView.animate(withDuration: duration, delay: 0, options: .curveEaseInOut, animations: {
+                
+                returningVC.view.center = CGPoint(x: returningVC.view.center.x, y: returningVC.view.center.y * 3)
+                
+            }, completion: { (success: Bool) in
+                returningVC.view.center = viewCenter
+                returningVC.view.removeFromSuperview()
+                
+                self.circle.removeFromSuperview()
+                
+                transitionContext.completeTransition(success)
+            })
         }
     }
     
@@ -108,4 +106,5 @@ extension CircularTransition: UIViewControllerAnimatedTransitioning {
         
         return CGRect(origin: CGPoint.zero, size: size)
     }
+ 
 }

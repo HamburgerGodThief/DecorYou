@@ -121,12 +121,4 @@ extension ProfolioViewController: UICollectionViewDataSource, UICollectionViewDe
     func collectionView(_: UICollectionView, layout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt: Int) -> CGFloat {
         return itemSpace
     }
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let storyboard = UIStoryboard(name: "Craftsmen", bundle: nil)
-//        guard let fullScreenViewController = storyboard.instantiateViewController(withIdentifier: "FullScreenViewController") as? FullScreenViewController else { return }
-//        fullScreenViewController.modalPresentationStyle = .custom
-//        fullScreenViewController.modalTransitionStyle = .crossDissolve
-//        fullScreenViewController.imgSet = photoSet[collectionView.tag].images
-//        navigationController?.pushViewController(fullScreenViewController, animated: true)
-//    }
 }

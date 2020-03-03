@@ -160,11 +160,11 @@
                         <constraints>
                             <constraint firstItem="4sn-Gg-jbO" firstAttribute="leading" secondItem="N9o-Df-qc3" secondAttribute="leading" id="5zo-hE-J0g"/>
                             <constraint firstItem="4sn-Gg-jbO" firstAttribute="trailing" secondItem="N9o-Df-qc3" secondAttribute="trailing" id="7QY-XC-TMb"/>
-                            <constraint firstItem="N9o-Df-qc3" firstAttribute="bottom" secondItem="d8U-xu-8yG" secondAttribute="bottom" constant="16" id="AZy-2I-3Qd"/>
+                            <constraint firstItem="d8U-xu-8yG" firstAttribute="bottom" secondItem="4sn-Gg-jbO" secondAttribute="bottom" constant="-16" id="AZy-2I-3Qd"/>
                             <constraint firstItem="N9o-Df-qc3" firstAttribute="bottom" secondItem="4sn-Gg-jbO" secondAttribute="bottom" id="Lgs-8e-K6G"/>
                             <constraint firstItem="XRy-7g-21a" firstAttribute="centerX" secondItem="v7g-Rg-UK4" secondAttribute="centerX" id="Qhr-WY-cV8"/>
                             <constraint firstItem="4sn-Gg-jbO" firstAttribute="top" secondItem="N9o-Df-qc3" secondAttribute="top" id="RFG-9r-Fuy"/>
-                            <constraint firstItem="N9o-Df-qc3" firstAttribute="trailing" secondItem="d8U-xu-8yG" secondAttribute="trailing" constant="16" id="SQo-F5-Dop"/>
+                            <constraint firstItem="d8U-xu-8yG" firstAttribute="trailing" secondItem="4sn-Gg-jbO" secondAttribute="trailing" constant="-16" id="SQo-F5-Dop"/>
                             <constraint firstItem="XRy-7g-21a" firstAttribute="centerY" secondItem="v7g-Rg-UK4" secondAttribute="centerY" id="kdL-pQ-ban"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="N9o-Df-qc3"/>
@@ -944,6 +944,7 @@
                             <constraint firstItem="n6M-Ss-4D2" firstAttribute="top" secondItem="b9e-bx-yLm" secondAttribute="top" id="wjJ-Gu-6fr"/>
                             <constraint firstItem="dzR-ss-a9a" firstAttribute="leading" secondItem="b9e-bx-yLm" secondAttribute="leading" id="wzX-Fw-hyd"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="B0v-qa-cRX"/>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="dzR-ss-a9a" id="vXL-tV-Nou"/>
