@@ -44,8 +44,14 @@ class UploadProfolioViewController: UIViewController {
     
     func setNav() {
         navigationItem.title = "新增作品"
+        navigationController?.navigationBar.barTintColor = UIColor.assetColor(.mainColor)
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white,
+                                                                   .font: UIFont(name: "PingFangTC-Medium", size: 18)!]
         let rightBtn = UIBarButtonItem(title: "送出", style: .plain, target: self, action: #selector(createProfolio))
         let leftBtn = UIBarButtonItem(title: "取消", style: .plain, target: self, action: #selector(cancel))
+        rightBtn.tintColor = .white
+        leftBtn.tintColor = .white
         navigationItem.rightBarButtonItem = rightBtn
         navigationItem.leftBarButtonItem = leftBtn
     }
@@ -208,14 +214,15 @@ class UploadProfolioViewController: UIViewController {
             }
             
         }
-        areaGroup.notify(queue: .main) {
-            UserManager.shared.addProfolio(profolio: self.profolio)
-            self.navigationController?.popViewController(animated: true)
+        areaGroup.notify(queue: .main) { [weak self] in
+            guard let strongSelf = self else { return }
+            UserManager.shared.addProfolio(profolio: strongSelf.profolio)
+            strongSelf.dismiss(animated: true, completion: nil)
         }
     }
     
     @objc func cancel() {
-        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
     }
     
     @objc func newArea() {

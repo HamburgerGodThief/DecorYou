@@ -126,7 +126,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ESw-eI-cvc">
                                 <rect key="frame" x="0.0" y="349.5" width="414" height="512.5"/>
                                 <connections>
-                                    <segue destination="F9a-YL-ECs" kind="embed" id="FAx-8d-9en"/>
+                                    <segue destination="F9a-YL-ECs" kind="embed" identifier="CraftsmenResumeViewController" id="FAx-8d-9en"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -254,7 +254,7 @@
                     </view>
                     <connections>
                         <outlet property="contentLabel" destination="tVp-p7-gfU" id="enB-xK-ndR"/>
-                        <outlet property="createNewProfolioBtn" destination="Vbq-w8-cJS" id="xHl-PU-Ied"/>
+                        <outlet property="newProfolioBtn" destination="Vbq-w8-cJS" id="xHl-PU-Ied"/>
                         <outlet property="profolioCollectionView" destination="PbZ-FI-yyo" id="WOD-Uj-g6y"/>
                         <outlet property="titleLabel" destination="bXL-rz-vkD" id="nMA-dc-caA"/>
                     </connections>

@@ -150,6 +150,7 @@ class ProfileViewController: UIViewController {
     }
     
     func indicatorUnderCollection() {
+        
         let lightGrayIndicator = UIView()
         lightGrayIndicator.backgroundColor = .lightGray
         view.addSubview(lightGrayIndicator)
@@ -227,7 +228,14 @@ class ProfileViewController: UIViewController {
         }
         
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "CraftsmenResumeViewController" {
+            guard let desVC = segue.destination as? CraftsmenResumeViewController else { return }
+            desVC.containerY = profolioContainerView.frame.origin.y
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
                 

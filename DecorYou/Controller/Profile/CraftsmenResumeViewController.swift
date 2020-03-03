@@ -13,7 +13,9 @@ class CraftsmenResumeViewController: UIViewController {
     @IBOutlet weak var profolioCollectionView: UICollectionView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
-    @IBOutlet weak var createNewProfolioBtn: UIButton!
+    @IBOutlet weak var newProfolioBtn: UIButton!
+    let transition = CircularTransition()
+    var containerY: CGFloat = 0
     let itemSpace: CGFloat = 3
     let columnCount: CGFloat = 3
     var profolio: [Profolio] = []
@@ -27,7 +29,11 @@ class CraftsmenResumeViewController: UIViewController {
     @IBAction func didTouchCreate(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Profile", bundle: nil)
         guard let uploadProfolioViewController = storyboard.instantiateViewController(identifier: "UploadProfolioViewController") as? UploadProfolioViewController else { return }
-        navigationController?.pushViewController(uploadProfolioViewController, animated: true)
+        let nav = UINavigationController(rootViewController: uploadProfolioViewController)
+        nav.transitioningDelegate = self
+        nav.modalPresentationStyle = .custom
+        present(nav, animated: true, completion: nil)
+//        navigationController?.pushViewController(uploadProfolioViewController, animated: true)
     }
     
     func fetchProfolio() {
@@ -70,7 +76,7 @@ class CraftsmenResumeViewController: UIViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        createNewProfolioBtn.layer.cornerRadius = createNewProfolioBtn.frame.width / 2
+        newProfolioBtn.layer.cornerRadius = newProfolioBtn.frame.width / 2
     }
 }
 
@@ -100,12 +106,24 @@ extension CraftsmenResumeViewController: UICollectionViewDataSource, UICollectio
     func collectionView(_: UICollectionView, layout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt: Int) -> CGFloat {
         return itemSpace
     }
+}
+
+extension CraftsmenResumeViewController: UIViewControllerTransitioningDelegate {
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let storyboard = UIStoryboard(name: "Craftsmen", bundle: nil)
-//        guard let profolioViewController = storyboard.instantiateViewController(withIdentifier: "ProfolioViewController") as? ProfolioViewController else { return }
-//        profolioViewController.profolio = profolio[indexPath.item]
-//        navigationController?.pushViewController(profolioViewController, animated: true)
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        transition.transitionMode = .present
+        transition.circle.center = CGPoint(x: newProfolioBtn.center.x, y: newProfolioBtn.center.y + containerY)
+        transition.startingPoint = transition.circle.center
+        transition.circleColor = .white
+        
+        return transition
     }
     
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        transition.transitionMode = .dismiss
+        
+        return transition
+    }
 }
