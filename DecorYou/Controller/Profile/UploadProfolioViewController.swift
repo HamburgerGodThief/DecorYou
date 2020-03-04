@@ -224,6 +224,7 @@ class UploadProfolioViewController: UIViewController {
         areaGroup.notify(queue: .main) { [weak self] in
             guard let strongSelf = self else { return }
             UserManager.shared.addProfolio(profolio: strongSelf.profolio)
+            NotificationCenter.default.post(name: Notification.Name("UpdateProfolio"), object: nil)
             strongSelf.dismiss(animated: true, completion: nil)
         }
     }

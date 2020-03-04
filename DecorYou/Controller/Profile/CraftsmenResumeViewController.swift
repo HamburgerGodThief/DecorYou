@@ -36,7 +36,7 @@ class CraftsmenResumeViewController: UIViewController {
 //        navigationController?.pushViewController(uploadProfolioViewController, animated: true)
     }
     
-    func fetchProfolio() {
+    @objc func fetchProfolio() {
         guard let uid = UserDefaults.standard.string(forKey: "UserToken") else { return }
         UserManager.shared.fetchSpecificCraftsmanProfolio(uid: uid, completion: { [weak self] result in
             guard let strongSelf = self else { return }
@@ -69,9 +69,15 @@ class CraftsmenResumeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setCollectionView()
+        
         labelShouldShow(shouldShow: false)
+        
         fetchProfolio()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(fetchProfolio), name: NSNotification.Name("UpdateProfolio") , object: nil)
+    
     }
     
     override func viewWillLayoutSubviews() {

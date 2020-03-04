@@ -17,7 +17,15 @@ class UploadProfolioTableViewCell: UITableViewCell {
     
     let pickerView = UIPickerView()
     let areaData: [String] = ["客廳", "餐廳", "主臥室", "房間一", "廚房", "浴廁"]
-    var selectedPhotos: [UIImage] = []
+    var selectedPhotos: [UIImage] = [] {
+        didSet {
+            if selectedPhotos.isEmpty {
+                shouldShowNewPhotoBtn(shouldShow: true)
+            } else {
+                shouldShowNewPhotoBtn(shouldShow: false)
+            }
+        }
+    }
     let itemSpace = CGFloat(4)
     let columnCount = CGFloat(4)
     var cellVC: UploadProfolioViewController?
@@ -31,6 +39,19 @@ class UploadProfolioTableViewCell: UITableViewCell {
         photosViewController.indexPathRow = indexPathRow
         photosViewController.parentVC = uploadProfolioVC
         uploadProfolioVC.present(photosViewController, animated: true, completion: nil)
+        
+    }
+    
+    func shouldShowNewPhotoBtn(shouldShow: Bool) {
+        if shouldShow {
+            newPhotoBtn.tintColor = .black
+            newPhotoBtn.setTitle("新增該區域照片", for: .normal)
+            newPhotoBtn.setImage(UIImage.asset(.Icons_24px_AddPhoto), for: .normal)
+        } else {
+            newPhotoBtn.tintColor = .black
+            newPhotoBtn.setTitle("", for: .normal)
+            newPhotoBtn.setImage(nil, for: .normal)
+        }
     }
     
     override func awakeFromNib() {
@@ -41,13 +62,12 @@ class UploadProfolioTableViewCell: UITableViewCell {
         newPhotoCollectionView.lk_registerCellWithNib(identifier: String(describing: ProfolioCollectionViewCell.self), bundle: nil)
         newPhotoCollectionView.delegate = self
         newPhotoCollectionView.dataSource = self
+        shouldShowNewPhotoBtn(shouldShow: true)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-    
-    
     
 }
 

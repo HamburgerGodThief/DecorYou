@@ -246,7 +246,7 @@ class ProfileViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         
         navigationController?.navigationBar.barStyle = .black
-        
+                
         NotificationCenter.default.addObserver(self, selector: #selector(getUserInfo), name: NSNotification.Name("UpdateUserManager") , object: nil)
         
         indicatorUnderCollection()
