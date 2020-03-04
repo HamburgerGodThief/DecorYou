@@ -11,6 +11,7 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 struct Article: Codable {
+    
     let title: String
     let type: String
     let content: String
@@ -57,11 +58,6 @@ struct Reply: Codable {
     var authorObject: User?
     let content: String
     let createTime: Date
-    var createTimeString: String {
-        let format = DateFormatter()
-        format.dateFormat = "YYYY-MM-dd HH:mm"
-        return format.string(from: createTime)
-    }
     let replyID: String
     var comments: [Comment] = []
     var intervalString: String {
@@ -80,6 +76,11 @@ struct Reply: Codable {
             }
         }
     }
+    var createTimeString: String {
+        let format = DateFormatter()
+        format.dateFormat = "YYYY-MM-dd HH:mm"
+        return format.string(from: createTime)
+    }
     
     enum CodingKeys: String, CodingKey {
         case author, content, createTime, replyID
@@ -92,11 +93,6 @@ struct Comment: Codable {
     var authorObject: User?
     let content: String
     let createTime: Date
-    var createTimeString: String {
-        let format = DateFormatter()
-        format.dateFormat = "YYYY-MM-dd HH:mm"
-        return format.string(from: createTime)
-    }
     let commentID: String
     var intervalString: String {
         let interval = Date().timeIntervalSince(createTime)
@@ -113,6 +109,11 @@ struct Comment: Codable {
                 return "\(Int(interval / minutes))分前"
             }
         }
+    }
+    var createTimeString: String {
+        let format = DateFormatter()
+        format.dateFormat = "YYYY-MM-dd HH:mm"
+        return format.string(from: createTime)
     }
     
     enum CodingKeys: String, CodingKey {
@@ -156,7 +157,7 @@ class ArticleManager {
         })
     }
     
-    //讀取貼文
+    //fetch所有文章
     func fetchAllPost(completion: @escaping (Result<[Article], Error>) -> Void) {
         
         db.collection("article").order(by: "createTime", descending: true).getDocuments() { (querySnapshot, err) in
@@ -180,6 +181,7 @@ class ArticleManager {
         }
     }
     
+    //fetch所有文章的作者
     func fetchPostAuthorRef(authorRef: DocumentReference, completion: @escaping (Result<User, Error>) -> Void) {
         
         authorRef.getDocument(completion: { (document, err) in
@@ -198,6 +200,18 @@ class ArticleManager {
                 }
             }
         })
+    }
+    
+    //剔除文章作者是當前user的黑名單
+    func hideBlockUserPost(nonBlock: [Article]) -> [Article] {
+        
+        guard let user = UserManager.shared.user else { return [] }
+        
+        var articles: [Article] = []
+        
+        articles = nonBlock.filter({ !user.blockUser.contains($0.authorObject!.uid) })
+        
+        return articles
     }
     
     //收藏文章

@@ -46,6 +46,7 @@ class ArticleViewController: UIViewController {
     var collectionItem: [[String]] = []
     
     func getData(shouldShowLoadingVC: Bool) {
+        
         allArticle = []
         finalArticles = []
         var loadingVC: LoadingViewController?
@@ -62,7 +63,6 @@ class ArticleViewController: UIViewController {
             switch result {
             case .success(let articles):
                 strongSelf.allArticle = articles
-                strongSelf.finalArticles = strongSelf.allArticle
                 group0.leave()
             case .failure(let error):
                 print(error)
@@ -74,34 +74,33 @@ class ArticleViewController: UIViewController {
             guard let strongSelf = self else { return }
             for order in 0..<strongSelf.allArticle.count {
                 group1.enter()
-                strongSelf.allArticle[order].author.getDocument(completion: { (document, error) in
-                    if let error = error {
+                ArticleManager.shared.fetchPostAuthorRef(authorRef: strongSelf.allArticle[order].author, completion: {
+                    result in
+                    switch result {
+                    case .success(let authorOBJ):
+                        strongSelf.allArticle[order].authorObject = authorOBJ
+                        group1.leave()
+                    case .failure(let error):
                         print(error)
-                    } else {
-                        guard let document = document else { return }
-                        do {
-                            if let author = try document.data(as: User.self, decoder: Firestore.Decoder()) {
-                                strongSelf.allArticle[order].authorObject = author
-                                strongSelf.finalArticles[order].authorObject = strongSelf.allArticle[order].authorObject
-                                group1.leave()
-                            }
-                        } catch{
-                            print(error)
-                            return
-                        }
+                        group1.leave()
+                        return
                     }
                 })
             }
             group1.leave()
         }
         
+        //剔除文章作者是當前user的黑名單
         group1.notify(queue: .main) { [weak self] in
             if shouldShowLoadingVC {
                 loadingVC!.dismiss(animated: false, completion: nil)
             }
-            self?.combineDataForCollectionItem()
-            self?.refreshControl.endRefreshing()
-            self?.articleTableView.reloadData()
+            guard let strongSelf = self else { return }
+            strongSelf.allArticle = ArticleManager.shared.hideBlockUserPost(nonBlock: strongSelf.allArticle)
+            strongSelf.finalArticles = strongSelf.allArticle
+            strongSelf.combineDataForCollectionItem()
+            strongSelf.refreshControl.endRefreshing()
+            strongSelf.articleTableView.reloadData()
         }
     }
     
