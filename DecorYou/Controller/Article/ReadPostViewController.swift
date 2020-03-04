@@ -420,6 +420,49 @@ class ReadPostViewController: UIViewController {
         }
     }
     
+    @objc func presentReportAlert(_ sender: UIButton) {
+        
+        guard var user = UserManager.shared.user else {
+            
+            SwiftMes.shared.showVistorRelated(title: "訪客無法使用此功能", body: "請先登入才能檢舉或封鎖", seconds: 1.5)
+            return
+            
+        }
+        
+        let reportAlertController = UIAlertController(title: "封鎖或檢舉此用戶", message: "請選擇要執行的項目", preferredStyle: .actionSheet)
+        
+        // 建立3個 UIAlertAction 的實體
+        // 新增 UIAlertAction 在 UIAlertController actionSheet 的 動作 (action) 與標題
+
+        let reportUserAction = UIAlertAction(title: "檢舉", style: .default) { (Void) in
+            SwiftMes.shared.showSuccessMessage(title: "已成功檢舉該用戶", body: "我們會將此用戶放入觀察名單", seconds: 1.5)
+        }
+        
+        //拿取user現有封鎖清單
+        
+        
+        let blockUserAction = UIAlertAction(title: "封鎖", style: .default) { [weak self] (Void) in
+            
+            guard let strongSelf = self else { return }
+            user.blockUser.append(strongSelf.replys[sender.tag].authorObject!.uid)
+            UserManager.shared.updateBlockUser(blockUser: user.blockUser)
+            SwiftMes.shared.showSuccessMessage(title: "已成功封鎖該用戶", body: "以後都看不到該用戶發布的內容囉", seconds: 1.5)
+            
+        }
+        
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel) { (Void) in
+            reportAlertController.dismiss(animated: true, completion: nil)
+        }
+
+        // 將上面四個 UIAlertAction 動作加入 UIAlertController
+        reportAlertController.addAction(reportUserAction)
+        reportAlertController.addAction(blockUserAction)
+        reportAlertController.addAction(cancelAction)
+
+        // 當使用者按下 uploadBtnAction 時會 present 剛剛建立好的四個 UIAlertAction 動作
+        present(reportAlertController, animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setTableView()
@@ -476,12 +519,16 @@ extension ReadPostViewController: UITableViewDelegate, UITableViewDataSource {
         headerView.logoImg.loadImage(replys[section].authorObject?.img, placeHolder: UIImage(systemName: "person.crop.circle"))
         headerView.logoImg.tintColor = .lightGray
         headerView.contentLabel.text = replys[section].content
+        headerView.reportBtn.tag = section
+        headerView.reportBtn.addTarget(self, action: #selector(presentReportAlert), for: .touchUpInside)
         
         if article?.type == "開箱" && section == 0 {
+            
             headerView.collectionView.dataSource = self
             headerView.collectionView.delegate = self
             headerView.collectionView.lk_registerCellWithNib(identifier: "ResumeCollectionViewCell", bundle: nil)
             headerView.height.isActive = false
+            
         } else {
             
             headerView.trailing.isActive = false

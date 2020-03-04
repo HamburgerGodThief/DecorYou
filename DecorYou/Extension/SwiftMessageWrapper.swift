@@ -40,4 +40,18 @@ class SwiftMes {
         config.preferredStatusBarStyle = .lightContent
         SwiftMessages.show(config: config, view: view)
     }
+    
+    func showVistorRelated(title: String, body: String, seconds: Double) {
+        let view = MessageView.viewFromNib(layout: .cardView)
+        view.configureContent(title: title, body: body)
+        view.button?.isHidden = true
+        view.configureTheme(.warning)
+        view.configureDropShadow()
+        var config = SwiftMessages.Config()
+        config.presentationStyle = .center
+        config.duration = .seconds(seconds: seconds)
+        config.interactiveHide = false
+        config.preferredStatusBarStyle = .lightContent
+        SwiftMessages.show(config: config, view: view)
+    }
 }

@@ -69,6 +69,7 @@ class CollaboratorViewController: UIViewController {
                                     img: craftmen.img,
                                     lovePost: craftmen.lovePost,
                                     selfPost: craftmen.selfPost,
+                                    blockUser: craftmen.blockUser,
                                     character: craftmen.character,
                                     serviceLocation: craftmen.serviceLocation,
                                     serviceCategory: craftmen.serviceCategory,

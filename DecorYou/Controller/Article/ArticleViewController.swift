@@ -313,7 +313,7 @@ class ArticleViewController: UIViewController {
         setNavBar()
         searchController.searchBar.searchTextField.attributedPlaceholder = NSAttributedString(string: "想找的關鍵字",
         attributes: [.foregroundColor: UIColor(red: 187, green: 208, blue: 211, alpha: 1)])
-        
+        tabBarController?.tabBar.isHidden = false
     }
 }
 

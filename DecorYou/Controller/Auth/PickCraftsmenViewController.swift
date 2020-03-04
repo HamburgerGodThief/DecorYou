@@ -73,6 +73,7 @@ class PickCraftsmenViewController: UIViewController {
                                        img: nil,
                                        lovePost: [],
                                        selfPost: [],
+                                       blockUser: [],
                                        character: "craftsmen",
                                        serviceLocation: location,
                                        serviceCategory: serviceCategory,

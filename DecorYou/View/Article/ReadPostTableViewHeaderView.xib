@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -77,6 +78,11 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2SF-Ji-t9E">
+                    <rect key="frame" x="491" y="8" width="20" height="22"/>
+                    <color key="tintColor" name="mainColor"/>
+                    <state key="normal" image="flag.fill" catalog="system"/>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -91,11 +97,13 @@
                 <constraint firstItem="kzL-3V-rjM" firstAttribute="top" secondItem="SF6-sz-bfv" secondAttribute="top" constant="4" id="RfF-mo-1fJ"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="2da-j1-cpc" secondAttribute="bottom" constant="6" id="Z6n-pS-T2g"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="2da-j1-cpc" secondAttribute="trailing" constant="14" id="ZSp-Zv-LgE"/>
+                <constraint firstItem="2SF-Ji-t9E" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="Ztz-Dl-ai3"/>
                 <constraint firstItem="f7f-tQ-bwh" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="6" id="ad4-4u-XLt"/>
                 <constraint firstItem="SF6-sz-bfv" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="cHd-6T-NwJ"/>
                 <constraint firstItem="2da-j1-cpc" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="14" id="deZ-Lz-2ck"/>
                 <constraint firstItem="2da-j1-cpc" firstAttribute="top" secondItem="3rY-vu-s80" secondAttribute="bottom" constant="14" id="kpZ-ZY-zxv"/>
                 <constraint firstItem="3rY-vu-s80" firstAttribute="top" secondItem="f7f-tQ-bwh" secondAttribute="bottom" constant="8" id="n3e-8T-kNX"/>
+                <constraint firstAttribute="trailing" secondItem="2SF-Ji-t9E" secondAttribute="trailing" constant="8" id="oew-C8-NLa"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
@@ -107,9 +115,16 @@
                 <outlet property="height" destination="1uh-rn-UTe" id="2cH-wV-ccE"/>
                 <outlet property="leading" destination="CDl-Sd-zRw" id="jN5-dl-Cng"/>
                 <outlet property="logoImg" destination="SF6-sz-bfv" id="jRe-Mq-FmR"/>
+                <outlet property="reportBtn" destination="2SF-Ji-t9E" id="OVd-FC-Tpt"/>
                 <outlet property="trailing" destination="8Hi-aY-243" id="HMg-en-e0I"/>
             </connections>
             <point key="canvasLocation" x="-509.4202898550725" y="274.55357142857139"/>
         </view>
     </objects>
+    <resources>
+        <image name="flag.fill" catalog="system" width="64" height="60"/>
+        <namedColor name="mainColor">
+            <color red="0.30199998617172241" green="0.6470000147819519" blue="0.65499997138977051" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

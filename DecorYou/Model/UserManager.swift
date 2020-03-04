@@ -19,13 +19,14 @@ struct User: Codable {
     var backgroundImg: String?
     var lovePost: [DocumentReference]
     var selfPost: [DocumentReference]
+    var blockUser: [String]
     let character: String
     let serviceLocation: [String]
     var serviceCategory: String?
     var select: Bool? = false
     
     enum CodingKeys: String, CodingKey {
-        case uid, email, name, img, backgroundImg, lovePost, selfPost, character, serviceLocation, serviceCategory
+        case uid, email, name, img, backgroundImg, lovePost, selfPost, blockUser, character, serviceLocation, serviceCategory
     }
 }
 
@@ -207,6 +208,7 @@ class UserManager {
         }
     }
     
+    //更新用戶大頭貼
     func updateUserImage(uid: String, img: String, completion: @escaping (() -> Void)) {
         db.collection("users").document(uid).setData(["img": img], merge: true) { err in
             if let err = err {
@@ -218,6 +220,7 @@ class UserManager {
         }
     }
     
+    //更新用戶背景照片
     func updateUserbackgroundImg(uid: String, backgroundImg: String, completion: @escaping (() -> Void) ) {
         db.collection("users").document(uid).setData(["backgroundImg": backgroundImg], merge: true) { err in
             if let err = err {
@@ -229,6 +232,7 @@ class UserManager {
         }
     }
     
+    //更新用戶自己貼文
     func updateUserSelfPost(uid: String, selfPost: [DocumentReference]) {
         db.collection("users").document(uid).updateData([
             "selfPost": selfPost
@@ -241,6 +245,7 @@ class UserManager {
         }
     }
     
+    //更新用戶收藏貼文
     func updateUserLovePost(uid: String, lovePost: [DocumentReference]) {
         db.collection("users").document(uid).updateData([
             "lovePost": lovePost
@@ -253,6 +258,7 @@ class UserManager {
         }
     }
     
+    //更新用戶名稱
     func updateUserName(uid: String, name: String) {
         db.collection("users").document(uid).updateData([
             "name": name
@@ -265,6 +271,7 @@ class UserManager {
         }
     }
     
+    //更新用戶信箱
     func updateUserEmail(uid: String, email: String) {
         db.collection("users").document(uid).updateData([
             "email": email
@@ -273,6 +280,21 @@ class UserManager {
                 print("Error getting documents: \(err)")
             } else {
                 print("Document successfully updated")
+            }
+        }
+    }
+    
+    //更新用戶封鎖者名單
+    func updateBlockUser(blockUser: [String]) {
+        guard let user = UserManager.shared.user else { return }
+        db.collection("users").document(user.uid).updateData([
+            "blockUser": blockUser
+        ]) { err in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                print("Document successfully updated")
+                self.fetchCurrentUser(uid: user.uid)
             }
         }
     }

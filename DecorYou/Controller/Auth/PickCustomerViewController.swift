@@ -44,6 +44,7 @@ class PickCustomerViewController: UIViewController, UITextFieldDelegate {
                                        img: nil,
                                        lovePost: [],
                                        selfPost: [],
+                                       blockUser: [],
                                        character: "customer",
                                        serviceLocation: [],
                                        serviceCategory: nil,
