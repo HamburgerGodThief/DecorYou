@@ -329,7 +329,6 @@ class ReadPostViewController: UIViewController {
                                 do {
                                     if let author = try document.data(as: User.self, decoder: Firestore.Decoder()) {
                                         strongSelf.replys[order].comments[commentOrder].authorObject = author
-                                        
                                     }
                                 } catch {
                                     print(error)
@@ -346,9 +345,10 @@ class ReadPostViewController: UIViewController {
             }
         }
         
-        
         group6.notify(queue: DispatchQueue.main) { [weak self] in
             guard let strongSelf = self else { return }
+            strongSelf.replys = ArticleManager.shared.hideBlockUserReplys(allReply: strongSelf.replys)
+            strongSelf.replys = ArticleManager.shared.hideBlockUserComments(allReply: strongSelf.replys)
             strongSelf.readPostTableView.reloadData()
         }
         
@@ -437,8 +437,6 @@ class ReadPostViewController: UIViewController {
         let reportUserAction = UIAlertAction(title: "檢舉", style: .default) { (Void) in
             SwiftMes.shared.showSuccessMessage(title: "已成功檢舉該用戶", body: "我們會將此用戶放入觀察名單", seconds: 1.5)
         }
-        
-        
         
         //先判斷按鈕是來自文章的旗子還是留言區的旗子，再拿取user現有封鎖清單，把被封鎖人的uid append進去再上傳
         let blockUserAction = UIAlertAction(title: "封鎖", style: .default) { [weak self] (Void) in

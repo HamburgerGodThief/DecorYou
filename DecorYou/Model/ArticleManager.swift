@@ -14,7 +14,7 @@ struct Article: Codable {
     
     let title: String
     let type: String
-    let content: String
+    var content: String
     let createTime: Date
     let decorateStyle: String?
     let location: String?
@@ -56,7 +56,7 @@ struct Article: Codable {
 struct Reply: Codable {
     let author: DocumentReference
     var authorObject: User?
-    let content: String
+    var content: String
     let createTime: Date
     let replyID: String
     var comments: [Comment] = []
@@ -91,7 +91,7 @@ struct Comment: Codable {
     
     let author: DocumentReference
     var authorObject: User?
-    let content: String
+    var content: String
     let createTime: Date
     let commentID: String
     var intervalString: String {
@@ -208,10 +208,75 @@ class ArticleManager {
         guard let user = UserManager.shared.user else { return [] }
         
         var articles: [Article] = []
-        
-        articles = nonBlock.filter({ !user.blockUser.contains($0.authorObject!.uid) })
+                
+        articles = nonBlock.map({
+            
+            var article = $0
+            
+            if user.blockUser.contains(article.authorObject!.uid) {
+                
+                article.content = "該用戶已被你封鎖，你看不見該用戶的訊息"
+                
+            }
+            
+            return article
+            
+        })
         
         return articles
+    }
+    
+    //若回文作者是當前user的黑名單，則替換文字
+    func hideBlockUserReplys(allReply: [Reply]) -> [Reply] {
+        
+        guard let user = UserManager.shared.user else { return [] }
+        
+        var replys: [Reply] = []
+        
+        replys = allReply.map({
+            
+            var reply = $0
+            
+            if user.blockUser.contains(reply.authorObject!.uid) {
+                
+                reply.content = "該用戶已被你封鎖，你看不見該用戶的訊息"
+                
+            }
+            
+            return reply
+            
+        })
+        
+        return replys
+    }
+    
+    
+    //若留言作者是當前user的黑名單，則替換文字
+    func hideBlockUserComments(allReply: [Reply]) -> [Reply] {
+        
+        guard let user = UserManager.shared.user else { return [] }
+        
+        var replys: [Reply] = []
+        
+        replys = allReply.map({
+            
+            var reply = $0
+            
+            for index in 0..<reply.comments.count {
+                
+                if user.blockUser.contains(reply.comments[index].authorObject!.uid) {
+                    
+                    reply.comments[index].content = "該用戶已被你封鎖，你看不見該用戶的訊息"
+                    
+                }
+                
+            }
+            
+            return reply
+            
+        })
+        
+        return replys
     }
     
     //收藏文章
