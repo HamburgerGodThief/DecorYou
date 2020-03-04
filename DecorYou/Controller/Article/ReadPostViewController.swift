@@ -444,8 +444,18 @@ class ReadPostViewController: UIViewController {
         let blockUserAction = UIAlertAction(title: "封鎖", style: .default) { [weak self] (Void) in
             
             guard let strongSelf = self else { return }
-            user.blockUser.append(strongSelf.replys[sender.tag].authorObject!.uid)
-            UserManager.shared.updateBlockUser(blockUser: user.blockUser)
+            
+            if let cell = sender.superview?.superview as? ReadPostTableViewCell {
+                guard let indexPath = strongSelf.readPostTableView.indexPath(for: cell) else { return }
+                user.blockUser.append(strongSelf.replys[indexPath.section].comments[indexPath.row].authorObject!.uid)
+                UserManager.shared.updateBlockUser(blockUser: user.blockUser)
+            } else {
+                
+                user.blockUser.append(strongSelf.replys[sender.tag].authorObject!.uid)
+                UserManager.shared.updateBlockUser(blockUser: user.blockUser)
+                
+            }
+            
             SwiftMes.shared.showSuccessMessage(title: "已成功封鎖該用戶", body: "以後都看不到該用戶發布的內容囉", seconds: 1.5)
             
         }
@@ -490,20 +500,12 @@ extension ReadPostViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ReadPostTableViewCell.self), for: indexPath) as? ReadPostTableViewCell else { return UITableViewCell() }
-        switch indexPath.row {
-        case 0:
-            cell.logoImg.loadImage(replys[indexPath.section].comments[indexPath.row].authorObject?.img, placeHolder: UIImage(systemName: "person.crop.circle"))
-            cell.logoImg.tintColor = .lightGray
-            cell.createTimeLabel.text = "\(replys[indexPath.section].comments[indexPath.row].createTimeString)"
-            cell.contentLabel.text = replys[indexPath.section].comments[indexPath.row].content
-            cell.authorNameLabel.text = replys[indexPath.section].comments[indexPath.row].authorObject?.name
-        default:
-            cell.logoImg.loadImage(replys[indexPath.section].comments[indexPath.row].authorObject?.img, placeHolder: UIImage(systemName: "person.crop.circle"))
-            cell.tintColor = .lightGray
-            cell.createTimeLabel.text = "\(replys[indexPath.section].comments[indexPath.row].createTimeString)"
-            cell.contentLabel.text = replys[indexPath.section].comments[indexPath.row].content
-            cell.authorNameLabel.text = replys[indexPath.section].comments[indexPath.row].authorObject?.name
-        }
+        cell.logoImg.loadImage(replys[indexPath.section].comments[indexPath.row].authorObject?.img, placeHolder: UIImage(systemName: "person.crop.circle"))
+        cell.tintColor = .lightGray
+        cell.createTimeLabel.text = "\(replys[indexPath.section].comments[indexPath.row].createTimeString)"
+        cell.contentLabel.text = replys[indexPath.section].comments[indexPath.row].content
+        cell.authorNameLabel.text = replys[indexPath.section].comments[indexPath.row].authorObject?.name
+        cell.reportBtn.addTarget(self, action: #selector(presentReportAlert), for: .touchUpInside)
         return cell
     }
     

@@ -15,8 +15,11 @@ class ReadPostTableViewCell: UITableViewCell {
     @IBOutlet weak var reportBtn: UIButton!
     @IBOutlet weak var createTimeLabel: UILabel!
     @IBOutlet weak var logoImg: UIImageView!
+    
     @IBAction func didTouchReport(_ sender: Any) {
+        
     }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
