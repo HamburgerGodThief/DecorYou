@@ -252,6 +252,25 @@
                                     <action selector="visitorLogIn:" destination="pOv-1k-rFw" eventType="touchUpInside" id="2Kl-2R-33E"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Erv-OZ-kWX">
+                                <rect key="frame" x="123" y="486" width="168" height="26"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="註冊或登入即代表你同意" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k66-pw-lGu">
+                                        <rect key="frame" x="0.0" y="0.0" width="110" height="26"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="10"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yVp-2B-HJk">
+                                        <rect key="frame" x="118" y="0.0" width="50" height="26"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="10"/>
+                                        <state key="normal" title="隱私權政策"/>
+                                        <connections>
+                                            <action selector="presentPrivacyVC:" destination="pOv-1k-rFw" eventType="touchUpInside" id="xci-aM-tNN"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -265,10 +284,12 @@
                             <constraint firstItem="BbI-ay-l2T" firstAttribute="top" secondItem="90s-wF-Zah" secondAttribute="bottom" constant="50" id="Rih-vZ-k0d"/>
                             <constraint firstItem="90s-wF-Zah" firstAttribute="top" secondItem="Lh3-SP-HO0" secondAttribute="top" constant="120" id="SqE-Vt-AZu"/>
                             <constraint firstItem="Lh3-SP-HO0" firstAttribute="trailing" secondItem="v1a-fM-ME0" secondAttribute="trailing" id="Taw-hD-RjP"/>
+                            <constraint firstItem="Erv-OZ-kWX" firstAttribute="top" secondItem="642-ee-x9O" secondAttribute="bottom" constant="10" id="YWu-9K-VYC"/>
                             <constraint firstItem="owX-2x-tw1" firstAttribute="centerX" secondItem="N1v-RW-wGF" secondAttribute="centerX" id="aIP-Kb-F9U"/>
                             <constraint firstItem="owX-2x-tw1" firstAttribute="leading" secondItem="BbI-ay-l2T" secondAttribute="leading" id="eYn-3p-mQA"/>
                             <constraint firstItem="owX-2x-tw1" firstAttribute="trailing" secondItem="BbI-ay-l2T" secondAttribute="trailing" id="fCE-Cl-xmJ"/>
                             <constraint firstAttribute="bottom" secondItem="v1a-fM-ME0" secondAttribute="bottom" id="gU5-Xz-4kS"/>
+                            <constraint firstItem="Erv-OZ-kWX" firstAttribute="centerX" secondItem="N1v-RW-wGF" secondAttribute="centerX" id="uaE-8K-ah0"/>
                             <constraint firstItem="v1a-fM-ME0" firstAttribute="leading" secondItem="Lh3-SP-HO0" secondAttribute="leading" id="zpB-oq-inR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Lh3-SP-HO0"/>
@@ -277,6 +298,7 @@
                     <connections>
                         <outlet property="appleSignInBtn" destination="owX-2x-tw1" id="FKX-GB-62u"/>
                         <outlet property="googleSignInBtn" destination="BbI-ay-l2T" id="mEx-97-LfU"/>
+                        <outlet property="privacyBtn" destination="yVp-2B-HJk" id="9V7-gV-xyQ"/>
                         <outlet property="visitorBtn" destination="642-ee-x9O" id="JSy-Rm-T9P"/>
                         <segue destination="64I-gC-pcR" kind="presentation" identifier="IdentifyVC" modalPresentationStyle="fullScreen" id="DFx-Tb-nEc"/>
                     </connections>
@@ -284,6 +306,40 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZiV-KL-l3Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="789.85507246376812" y="768.75"/>
+        </scene>
+        <!--Privacy View Controller-->
+        <scene sceneID="j18-RH-ty5">
+            <objects>
+                <viewController storyboardIdentifier="PrivacyViewController" id="REV-FN-Ts6" customClass="PrivacyViewController" customModule="DecorYou" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="547-He-Nvi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rvb-na-2Hb">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="rvb-na-2Hb" firstAttribute="top" secondItem="IP1-DU-qVC" secondAttribute="top" id="NgT-24-PQF"/>
+                            <constraint firstItem="IP1-DU-qVC" firstAttribute="bottom" secondItem="rvb-na-2Hb" secondAttribute="bottom" id="VC3-6O-Zae"/>
+                            <constraint firstItem="rvb-na-2Hb" firstAttribute="leading" secondItem="IP1-DU-qVC" secondAttribute="leading" id="cYB-0n-Hua"/>
+                            <constraint firstItem="IP1-DU-qVC" firstAttribute="trailing" secondItem="rvb-na-2Hb" secondAttribute="trailing" id="loy-Np-fQc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="IP1-DU-qVC"/>
+                    </view>
+                    <connections>
+                        <outlet property="wkWebView" destination="rvb-na-2Hb" id="kvb-uP-4iB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XTL-qL-tsb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="790" y="1434"/>
         </scene>
         <!--Area View Controller-->
         <scene sceneID="VSd-7N-VS1">

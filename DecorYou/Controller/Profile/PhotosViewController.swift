@@ -20,6 +20,10 @@ class PhotosViewController: UIViewController {
     var parentVC: UploadProfolioViewController?
     var selectedPhotos: [UIImage] = []
     var indexPathRow: Int?
+    var photoStartIndex: Int = 0
+    var photoRange: Int = 20
+    var photoEndIndex: Int = 20
+    var photoFetchedPage: Int = 1
     
     @IBAction func closePhotosVC(_ sender: Any) {
         
@@ -38,25 +42,13 @@ class PhotosViewController: UIViewController {
         fetchOption.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         
         let fetchResult: PHFetchResult = PHAsset.fetchAssets(with: .image, options: fetchOption)
-            
+        
         if fetchResult.count > 0 {
             
-//            for order in 0..<fetchResult.count {
-//                imgManager.requestImage(for: fetchResult.object(at: order) ,
-//                                        targetSize: CGSize(width: 200, height: 200),
-//                                        contentMode: .aspectFill,
-//                                        options: imgRequestOption,
-//                                        resultHandler: { [weak self] (img, err) in
-//                                            guard let strongSelf = self else { return }
-//                                            guard let img = img else { return }
-//                                            strongSelf.photoArray.append(img)
-//                                            
-//                })
-//            }
-            
-            for order in 0..<fetchResult.count {
-                imgManager.requestImage(for: fetchResult.object(at: order) ,
-                                        targetSize: CGSize(width: 200, height: 200),
+            for index in photoStartIndex...photoEndIndex {
+                
+                imgManager.requestImage(for: fetchResult.object(at: index) ,
+                                        targetSize: CGSize(width: 500, height: 500),
                                         contentMode: .aspectFill,
                                         options: imgRequestOption,
                                         resultHandler: { [weak self] (img, err) in
@@ -67,13 +59,21 @@ class PhotosViewController: UIViewController {
                 
             }
             
+            photoFetchedPage = photoEndIndex / photoRange
+            
+            photoStartIndex = photoEndIndex
+            
+            photoEndIndex = photoStartIndex + photoRange
+            
+            photoCollectionView.reloadData()
             
         } else {
+            
             print("You don't pick any photo.")
+            
             photoCollectionView.reloadData()
         }
             
-        
     }
     
     override func viewDidLoad() {
@@ -81,6 +81,7 @@ class PhotosViewController: UIViewController {
         photoCollectionView.delegate = self
         photoCollectionView.dataSource = self
         photoCollectionView.lk_registerCellWithNib(identifier: String(describing: PhotosCollectionViewCell.self), bundle: nil)
+        fetchPhotosFromGallery()
         fetchPhotosFromGallery()
     }
     
@@ -142,5 +143,21 @@ extension PhotosViewController: UICollectionViewDataSource, UICollectionViewDele
         }
         collectionView.reloadData()
     }
+}
+
+extension PhotosViewController: UICollectionViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        let page = Int(scrollView.contentOffset.y / scrollView.frame.height)
+        
+        if page >= photoFetchedPage {
+            
+            fetchPhotosFromGallery()
+            
+        }
+        
+    }
+    
 }
 

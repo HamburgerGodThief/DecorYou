@@ -57,6 +57,7 @@
 		64FA42B623E7B3800065DCEF /* ResumeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA42B423E7B3800065DCEF /* ResumeCollectionViewCell.swift */; };
 		64FA42B723E7B3800065DCEF /* ResumeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FA42B523E7B3800065DCEF /* ResumeCollectionViewCell.xib */; };
 		64FA42B923E7B74E0065DCEF /* ProfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA42B823E7B74E0065DCEF /* ProfolioViewController.swift */; };
+		64FA55A624109F400026CBAF /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA55A524109F400026CBAF /* PrivacyViewController.swift */; };
 		64FA58C623FE852A003D7353 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA58C423FE852A003D7353 /* FilterTableViewCell.swift */; };
 		64FA58C723FE852A003D7353 /* FilterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FA58C523FE852A003D7353 /* FilterTableViewCell.xib */; };
 		64FA58CA23FE86E5003D7353 /* FilterCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA58C823FE86E5003D7353 /* FilterCollectionTableViewCell.swift */; };
@@ -207,6 +208,7 @@
 		64FA42B423E7B3800065DCEF /* ResumeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeCollectionViewCell.swift; sourceTree = "<group>"; };
 		64FA42B523E7B3800065DCEF /* ResumeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResumeCollectionViewCell.xib; sourceTree = "<group>"; };
 		64FA42B823E7B74E0065DCEF /* ProfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfolioViewController.swift; sourceTree = "<group>"; };
+		64FA55A524109F400026CBAF /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
 		64FA58C423FE852A003D7353 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
 		64FA58C523FE852A003D7353 /* FilterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterTableViewCell.xib; sourceTree = "<group>"; };
 		64FA58C823FE86E5003D7353 /* FilterCollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionTableViewCell.swift; sourceTree = "<group>"; };
@@ -580,6 +582,7 @@
 				64FE4EC323E824CD00A5D3EC /* PickCustomerViewController.swift */,
 				64FE4EC523E824D900A5D3EC /* LogInViewController.swift */,
 				64FBDA7F240641320089D9EA /* AuthenticationViewController.swift */,
+				64FA55A524109F400026CBAF /* PrivacyViewController.swift */,
 				64FBDA8124065A0C0089D9EA /* IdentifyViewController.swift */,
 				64FBDA85240661CE0089D9EA /* CategoryViewController.swift */,
 				64FBDA83240661AF0089D9EA /* AreaViewController.swift */,
@@ -868,6 +871,7 @@
 				64FAB14B23EFF0CD0073235C /* CollaboratorLogoCollectionViewCell.swift in Sources */,
 				64FC72E623FD26FD004F2A07 /* PhotoPageContainerViewController.swift in Sources */,
 				64FAB13923EEB6E00073235C /* CollaboratorViewController.swift in Sources */,
+				64FA55A624109F400026CBAF /* PrivacyViewController.swift in Sources */,
 				64FC72EC23FD296B004F2A07 /* ZoomDismissalInteractionController.swift in Sources */,
 				64FA429D23E347060065DCEF /* KingFisherWrapper.swift in Sources */,
 				64FE4EC423E824CD00A5D3EC /* PickCustomerViewController.swift in Sources */,
@@ -1035,13 +1039,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DecorYou/DecorYou.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 2D5SP97CPJ;
 				INFOPLIST_FILE = DecorYou/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hamburger.DecorYou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1056,13 +1062,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DecorYou/DecorYou.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 2D5SP97CPJ;
 				INFOPLIST_FILE = DecorYou/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hamburger.DecorYou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

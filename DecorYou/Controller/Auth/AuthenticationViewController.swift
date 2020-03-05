@@ -32,6 +32,8 @@ class AuthenticationViewController: UIViewController {
     
     @IBOutlet weak var visitorBtn: UIButton!
     
+    @IBOutlet weak var privacyBtn: UIButton!
+    
     var appleIDFamilyName: String = ""
     
     var appleIDFirstName: String = ""
@@ -74,6 +76,14 @@ class AuthenticationViewController: UIViewController {
         tabVC.selectedIndex = 0
         
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func presentPrivacyVC(_ sender: Any) {
+        
+        let storyboard = UIStoryboard.init(name: "Auth", bundle: nil)
+        guard let privacyVC = storyboard.instantiateViewController(identifier: "PrivacyViewController") as? PrivacyViewController else { return }
+        present(privacyVC, animated: true, completion: nil)
+        
     }
     
     @objc private func handleLogInWithAppleIDButtonPress() {
