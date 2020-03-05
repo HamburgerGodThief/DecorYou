@@ -16,7 +16,7 @@ class CircularTransition: NSObject {
     
     var circleColor: UIColor?
     
-    var duration = 1.0
+    var duration = 0.6
     
     enum PresentMode: Int {
         case present, dismiss

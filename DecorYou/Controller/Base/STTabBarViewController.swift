@@ -14,7 +14,7 @@ private enum Tab {
     
     case craftsmen
     
-//    case chat
+    case chat
     
     case profile
     
@@ -28,7 +28,7 @@ private enum Tab {
             
         case .craftsmen: controller = UIStoryboard.craftsmen.instantiateInitialViewController()!
             
-//        case .chat: controller = UIStoryboard.chat.instantiateInitialViewController()!
+        case .chat: controller = UIStoryboard.chat.instantiateInitialViewController()!
             
         case .profile: controller = UIStoryboard.profile.instantiateInitialViewController()!
             
@@ -59,12 +59,12 @@ private enum Tab {
                 selectedImage: UIImage.asset(.Icons_36px_Tool_Selected)
             )
             
-//        case .chat:
-//            return UITabBarItem(
-//                title: nil,
-//                image: UIImage.asset(.Icons_36px_Chat_Normal),
-//                selectedImage: UIImage.asset(.Icons_36px_Chat_Selected)
-//            )
+        case .chat:
+            return UITabBarItem(
+                title: nil,
+                image: UIImage.asset(.Icons_36px_Chat_Normal),
+                selectedImage: UIImage.asset(.Icons_36px_Chat_Selected)
+            )
             
         case .profile:
             return UITabBarItem(
@@ -80,8 +80,8 @@ private enum Tab {
 
 class STTabBarViewController: UITabBarController, UITabBarControllerDelegate {
     
-//    private let tabs: [Tab] = [.article, .craftsmen, .chat, .profile]
-    private let tabs: [Tab] = [.article, .craftsmen, .profile]
+    private let tabs: [Tab] = [.article, .craftsmen, .chat, .profile]
+//    private let tabs: [Tab] = [.article, .craftsmen, .profile]
     
 //    var chatTabBarItem: UITabBarItem!
     

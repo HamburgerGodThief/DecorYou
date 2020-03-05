@@ -40,11 +40,13 @@ class CreatePostViewController: UIViewController {
     var articleContent: String?
     
     @IBAction func touchArticleCat(_ sender: Any) {
+        
         let storyboard = UIStoryboard.init(name: "Article", bundle: nil)
         guard let articleTypeVC = storyboard.instantiateViewController(identifier: "ArticleTypeViewController") as? ArticleTypeViewController else { return }
         articleTypeVC.modalPresentationStyle = .overFullScreen
         articleTypeVC.parentVC = self
         present(articleTypeVC, animated: false, completion: nil)
+        
     }
     
     func setIBOutlet() {
@@ -73,13 +75,15 @@ class CreatePostViewController: UIViewController {
         navigationItem.leftBarButtonItem = leftBtn
     }
     
-    func alert(title: String, message: String) {
+    func configureAlertController(title: String, message: String) {
+        
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(defaultAction)
         
         present(alertController, animated: true, completion: nil)
+        
     }
     
     func uploadImgStorage(postID: String,
@@ -112,18 +116,18 @@ class CreatePostViewController: UIViewController {
     @objc func createPost() {
         //檢查貼文標題有無值
         guard let title = titleTextField.text else {
-            alert(title: "錯誤", message: "標題不可空白")
+            configureAlertController(title: "錯誤", message: "標題不可空白")
             return
         }
         
         //檢查貼文類別有無值
         guard let type = articleType else {
-            alert(title: "錯誤", message: "請選擇文章主題")
+            configureAlertController(title: "錯誤", message: "請選擇文章主題")
             return
         }
         
         guard let content = articleContent else {
-            alert(title: "錯誤", message: "內容不可空白")
+            configureAlertController(title: "錯誤", message: "內容不可空白")
             return
         }
         
@@ -135,7 +139,7 @@ class CreatePostViewController: UIViewController {
         //檢查貼文類別，產生相對應的article物件
         if type == "開箱" {
             guard let unboxTag = unboxTag else {
-                alert(title: "錯誤", message: "坪數/地區/風格/照片不可空白")
+                configureAlertController(title: "錯誤", message: "坪數/地區/風格/照片不可空白")
                 return
             }
             //先上傳照片到firebase
@@ -205,11 +209,14 @@ class CreatePostViewController: UIViewController {
     }
     
     @objc func cancelPost() {
+        
         dismiss(animated: true, completion: nil)
         tabBarController?.tabBar.isHidden = false
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if segue.identifier == "UnboxingViewController" {
             guard let unboxVC = segue.destination as? UnboxingViewController else { return }
             unboxVC.delegate = self
@@ -217,6 +224,7 @@ class CreatePostViewController: UIViewController {
             guard let textViewVC = segue.destination as? TextViewController else { return }
             textViewVC.delegate = self
         }
+        
     }
     
     override func viewDidLoad() {
