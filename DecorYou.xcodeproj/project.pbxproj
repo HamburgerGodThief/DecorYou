@@ -36,6 +36,9 @@
 		647A7CD123D83DCA005D1946 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 647A7CD023D83DCA005D1946 /* Auth.storyboard */; };
 		647A7CD523D83E49005D1946 /* CraftsmenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647A7CD423D83E49005D1946 /* CraftsmenViewController.swift */; };
 		647A7CD723D83E55005D1946 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647A7CD623D83E55005D1946 /* ChatViewController.swift */; };
+		64B7078324123423001248B6 /* ImageViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B7078224123423001248B6 /* ImageViewTableViewCell.swift */; };
+		64B7078524123430001248B6 /* TextViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B7078424123430001248B6 /* TextViewTableViewCell.swift */; };
+		64B7078724123772001248B6 /* NewPostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B7078624123772001248B6 /* NewPostModel.swift */; };
 		64F81E58240695B20020566C /* forestmorning.json in Resources */ = {isa = PBXBuildFile; fileRef = 64F81E57240695B20020566C /* forestmorning.json */; };
 		64F81E5F240783FE0020566C /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F81E5E240783FE0020566C /* EditProfileViewController.swift */; };
 		64F9D89823F9239D00F28186 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F9D89723F9239D00F28186 /* PhotosViewController.swift */; };
@@ -54,7 +57,6 @@
 		64FA42B723E7B3800065DCEF /* ResumeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FA42B523E7B3800065DCEF /* ResumeCollectionViewCell.xib */; };
 		64FA42B923E7B74E0065DCEF /* ProfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA42B823E7B74E0065DCEF /* ProfolioViewController.swift */; };
 		64FA55A624109F400026CBAF /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA55A524109F400026CBAF /* PrivacyViewController.swift */; };
-		64FA55A82410A8DD0026CBAF /* TextViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA55A72410A8DD0026CBAF /* TextViewViewController.swift */; };
 		64FA58C623FE852A003D7353 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA58C423FE852A003D7353 /* FilterTableViewCell.swift */; };
 		64FA58C723FE852A003D7353 /* FilterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FA58C523FE852A003D7353 /* FilterTableViewCell.xib */; };
 		64FA58CA23FE86E5003D7353 /* FilterCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA58C823FE86E5003D7353 /* FilterCollectionTableViewCell.swift */; };
@@ -173,6 +175,9 @@
 		647A7CD023D83DCA005D1946 /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		647A7CD423D83E49005D1946 /* CraftsmenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CraftsmenViewController.swift; sourceTree = "<group>"; };
 		647A7CD623D83E55005D1946 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		64B7078224123423001248B6 /* ImageViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewTableViewCell.swift; sourceTree = "<group>"; };
+		64B7078424123430001248B6 /* TextViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewTableViewCell.swift; sourceTree = "<group>"; };
+		64B7078624123772001248B6 /* NewPostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostModel.swift; sourceTree = "<group>"; };
 		64F81E57240695B20020566C /* forestmorning.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = forestmorning.json; path = ../../../forestmorning.json; sourceTree = "<group>"; };
 		64F81E5D2406A40C0020566C /* DecorYou.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DecorYou.entitlements; sourceTree = "<group>"; };
 		64F81E5E240783FE0020566C /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
@@ -192,7 +197,6 @@
 		64FA42B523E7B3800065DCEF /* ResumeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResumeCollectionViewCell.xib; sourceTree = "<group>"; };
 		64FA42B823E7B74E0065DCEF /* ProfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfolioViewController.swift; sourceTree = "<group>"; };
 		64FA55A524109F400026CBAF /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
-		64FA55A72410A8DD0026CBAF /* TextViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewViewController.swift; sourceTree = "<group>"; };
 		64FA58C423FE852A003D7353 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
 		64FA58C523FE852A003D7353 /* FilterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterTableViewCell.xib; sourceTree = "<group>"; };
 		64FA58C823FE86E5003D7353 /* FilterCollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionTableViewCell.swift; sourceTree = "<group>"; };
@@ -318,6 +322,7 @@
 				64FAB12423ED49F70073235C /* ArticleManager.swift */,
 				64FA8E4724025B3D000A1334 /* CraftsmenFilterCondition.swift */,
 				64FA8E432400F479000A1334 /* FilterModel.swift */,
+				64B7078624123772001248B6 /* NewPostModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -460,6 +465,8 @@
 				64FAB14A23EFF0CD0073235C /* CollaboratorLogoCollectionViewCell.xib */,
 				64FD1C36240AB9C500148E00 /* UnboxCollectionViewCell.swift */,
 				64FD1C37240AB9C500148E00 /* UnboxCollectionViewCell.xib */,
+				64B7078224123423001248B6 /* ImageViewTableViewCell.swift */,
+				64B7078424123430001248B6 /* TextViewTableViewCell.swift */,
 			);
 			path = Article;
 			sourceTree = "<group>";
@@ -534,7 +541,6 @@
 			children = (
 				647A7CD623D83E55005D1946 /* ChatViewController.swift */,
 				64FC819523E7E9D70027DDEE /* ChatRoomViewController.swift */,
-				64FA55A72410A8DD0026CBAF /* TextViewViewController.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -753,13 +759,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64B7078324123423001248B6 /* ImageViewTableViewCell.swift in Sources */,
 				6406276623EAAD1200086434 /* MoreViewController.swift in Sources */,
 				64F9D89823F9239D00F28186 /* PhotosViewController.swift in Sources */,
 				64F81E5F240783FE0020566C /* EditProfileViewController.swift in Sources */,
 				647A7CB023D83376005D1946 /* STTabBarViewController.swift in Sources */,
 				64FBDA84240661AF0089D9EA /* AreaViewController.swift in Sources */,
 				64FA8E4123FFC272000A1334 /* FilterPickerTableViewCell.swift in Sources */,
-				64FA55A82410A8DD0026CBAF /* TextViewViewController.swift in Sources */,
+				64B7078524123430001248B6 /* TextViewTableViewCell.swift in Sources */,
 				64FAB14723EEB9FD0073235C /* CollaboratorTableViewCell.swift in Sources */,
 				64FBDA86240661CE0089D9EA /* CategoryViewController.swift in Sources */,
 				64F9D89B23F9379400F28186 /* PhotosCollectionViewCell.swift in Sources */,
@@ -840,6 +847,7 @@
 				64FBDA8224065A0C0089D9EA /* IdentifyViewController.swift in Sources */,
 				64FE4EE123EA55CB00A5D3EC /* YourPostTableViewCell.swift in Sources */,
 				647A7CAC23D83376005D1946 /* AppDelegate.swift in Sources */,
+				64B7078724123772001248B6 /* NewPostModel.swift in Sources */,
 				64FAB11F23EC001A0073235C /* UserManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

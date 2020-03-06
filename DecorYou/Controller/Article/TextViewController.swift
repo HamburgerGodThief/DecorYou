@@ -8,78 +8,219 @@
 
 import UIKit
 
+
+
 protocol TextViewControllerDelegate: AnyObject {
     func passToCreateVC(_ textViewController: TextViewController)
 }
 
 class TextViewController: UIViewController {
 
-    @IBOutlet weak var textView: UITextView!
-    weak var delegate: TextViewControllerDelegate?
-    var content: String = ""
-    
-    func setTextView() {
-        textView.font = UIFont.systemFont(ofSize: 12)
-        textView.delegate = self
+    @IBOutlet weak var tableView: UITableView! {
+        
+        didSet {
+            
+            tableView.delegate = self
+            
+            tableView.dataSource = self
+            
+            tableView.separatorStyle = .none
+            
+            tableView.estimatedRowHeight = 150
+            
+            tableView.rowHeight = UITableView.automaticDimension
+            
+        }
+        
     }
     
-    /*
-    func putImg(inputImg: UIImage) {
+    @IBOutlet var toolBarView: UIView!
+    
+    var content: [NewPostData] = [NewPostTextView(text: "")]
+    
+    var currentIndexPath = IndexPath(row: 0, section: 0)
+    
+    @IBAction func addPhoto(_ sender: Any) {
         
-        let attachment = NSTextAttachment()
+        let imagePickerController = UIImagePickerController()
+            
+        imagePickerController.delegate = self
         
-        //將附件的圖片屬性設定為需要插入的圖片,並將附件轉化為屬性化文字,並設定附件的大小
-        //設定附件的照片
-        attachment.image = inputImg
+        imagePickerController.sourceType = .photoLibrary
+
+        present(imagePickerController, animated: true, completion: nil)
         
-        //調整圖片大小，讓圖片等比例縮放到符合螢幕寬
-        let oldWidth = inputImg.size.width
-        let scaleFactor = (textView.frame.size.width - 10) / oldWidth
-        let newSize = CGSize(width: view.frame.width - 10, height: scaleFactor * inputImg.size.height)
-        
-        //設定附件的大小(-4這個數字可以根據實際情況除錯,寬高也可以自己設定,這裡用字型大小做參照)
-        attachment.bounds = CGRect(origin: CGPoint(x: 0, y: -20), size: newSize)
-        
-        //將附件轉成NSAttributedString型別的屬性化文字
-        let attStr = NSAttributedString(attachment: attachment)
-        
-        //獲取目前textView中的文字,轉成可變的文字,記錄游標的位置,並插入上一步中的屬性化的文字
-        //獲取textView的所有文字,轉成可變的文字
-        let mutableStr = NSMutableAttributedString(attributedString: textView.attributedText)
-        
-        //獲得目前游標的位置
-        let selectedRange = textView.selectedRange
-        
-        //插入文字
-        mutableStr.insert(attStr, at: selectedRange.location)
-        
-        //設定新的可變文字的屬性,並計算新的游標位置
-        //設定可變文字的字型屬性
-        mutableStr.addAttribute(.font, value: UIFont.systemFont(ofSize: 12), range: NSMakeRange(0, mutableStr.length))
-        //再次記住新的游標的位置
-        let newSelectedRange = NSMakeRange(selectedRange.location + 1, 60)
-        
-        //將新文字賦值給textView,並恢復游標的位置
-        //重新給文字賦值
-        textView.attributedText = mutableStr
-        //恢復游標的位置(上面一句程式碼執行之後,游標會移到最後面)
-        textView.selectedRange = newSelectedRange
     }
-    */
+    
+    @objc func removeImgCell(_ sender: UIButton) {
+        
+        guard let cell = sender.superview?.superview as? ImageViewTableViewCell else { return }
+        
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        
+        content.remove(at: indexPath.row)
+        
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setTextView()
-        textView.text = "請先選擇主題，再編輯內容"
+        
         // Do any additional setup after loading the view.
     }
 
 }
 
-extension TextViewController: UITextViewDelegate {
+extension TextViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func textViewDidChange(_ textView: UITextView) {
-        content = textView.text
-        delegate?.passToCreateVC(self)
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return content.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        var global = UITableViewCell()
+        
+        if content[indexPath.row].cellType == .textView {
+            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TextViewTableViewCell", for: indexPath) as? TextViewTableViewCell else { return UITableViewCell() }
+            
+            cell.textView.delegate = self
+            
+            toolBarView.sizeToFit()
+            
+            cell.textView.inputAccessoryView = toolBarView
+            
+            cell.textView.isScrollEnabled = false
+            
+            global = cell
+            
+        } else {
+            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ImageViewTableViewCell", for: indexPath) as? ImageViewTableViewCell else { return UITableViewCell() }
+            
+            if let image = content[indexPath.row] as? NewPostImage {
+                
+                cell.photoImg.image = image.image
+                
+                cell.photoImg.layer.borderColor = UIColor.assetColor(.mainColor)?.cgColor
+                
+                cell.photoImg.layer.borderWidth = 5
+                
+                cell.removeBtn.imageView?.contentMode = .scaleAspectFill
+                
+                cell.removeBtn.addTarget(self, action: #selector(removeImgCell), for: .touchUpInside)
+                
+            }
+            
+            global = cell
+            
+        }
+        
+        return global
+    }
+    
+    
+}
+
+extension TextViewController: UITextViewDelegate {
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        //改變textView高度
+        let frame = textView.frame
+        
+        let constrainSize = CGSize(width:frame.size.width, height: CGFloat(MAXFLOAT))
+        
+        let size = textView.sizeThatFits(constrainSize)
+        
+        textView.frame.size.height = size.height
+        
+        //拿到現在這個textView的Cell
+        guard let cell = textView.superview?.superview as? TextViewTableViewCell else { return true }
+        
+        //拿其他visible cell
+        let visibleCells = tableView.visibleCells
+        
+        guard let indexPath = tableView.indexPath(for: cell) else { return true }
+        
+        if cell.frame.size.height < textView.frame.size.height {
+            
+            //其他visible cell所要增加Y位置的幅度
+            let diff = textView.frame.size.height - cell.frame.size.height
+            
+            //改變現在這個textView的Cell的高度
+            cell.frame.size.height = textView.frame.size.height
+            
+            //改變其他visible cell的高度
+            for order in 1..<visibleCells.count {
+                            
+                if visibleCells[order] != cell && order > indexPath.row {
+                    
+                    visibleCells[order].frame.origin.y = visibleCells[order].frame.origin.y + diff
+                    
+                }
+                
+            }
+            
+        }
+        
+        return true
+        
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        
+        //Pass TextView indexPath row for inserting image cell into correct position
+        guard let cell = textView.superview?.superview as? TextViewTableViewCell else { return }
+        
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        
+        currentIndexPath = indexPath
+        
+    }
+    
+    
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        
+        guard let cell = textView.superview?.superview as? TextViewTableViewCell else { return }
+        
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        
+        content[indexPath.row] = NewPostTextView(text: textView.text)
+        
+    }
+    
+}
+
+extension TextViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+                
+        // 取得從 UIImagePickerController 選擇的檔案
+        if let pickedImage = info[.originalImage] as? UIImage {
+            
+            let newPostImage = NewPostImage(image: pickedImage)
+            
+            content.insert(newPostImage, at: currentIndexPath.row + 1)
+            
+            if content.last is NewPostImage {
+                
+                content.append(NewPostTextView(text: ""))
+                
+            }
+            
+            tableView.reloadData()
+            
+        }
+                        
+        dismiss(animated: true, completion: nil)
+        
+    }
 }

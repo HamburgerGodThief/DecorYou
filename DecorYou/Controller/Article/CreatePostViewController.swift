@@ -222,7 +222,7 @@ class CreatePostViewController: UIViewController {
             unboxVC.delegate = self
         } else {
             guard let textViewVC = segue.destination as? TextViewController else { return }
-            textViewVC.delegate = self
+            
         }
         
     }
@@ -251,7 +251,7 @@ extension CreatePostViewController: UnboxingViewControllerDelegate {
 extension CreatePostViewController: TextViewControllerDelegate {
     
     func passToCreateVC(_ textViewController: TextViewController) {
-        articleContent = textViewController.content
+//        articleContent = textViewController.content
     }
     
 }

@@ -1,79 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="y8r-6G-AnU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="e7E-gt-Z60">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Text View View Controller-->
-        <scene sceneID="opq-xZ-9At">
-            <objects>
-                <viewController storyboardIdentifier="Chat" id="0nn-td-Iwe" customClass="TextViewViewController" customModule="DecorYou" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Auy-te-ahF">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="test" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mCI-xg-aNX">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
-                                <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="mCI-xg-aNX" firstAttribute="top" secondItem="gse-41-OOM" secondAttribute="top" id="CGU-N1-71G"/>
-                            <constraint firstItem="gse-41-OOM" firstAttribute="trailing" secondItem="mCI-xg-aNX" secondAttribute="trailing" id="T9t-6J-RPS"/>
-                            <constraint firstItem="mCI-xg-aNX" firstAttribute="leading" secondItem="gse-41-OOM" secondAttribute="leading" id="Z7T-mq-D6Q"/>
-                            <constraint firstItem="gse-41-OOM" firstAttribute="bottom" secondItem="mCI-xg-aNX" secondAttribute="bottom" id="zJK-Fz-5QC"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="gse-41-OOM"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="zuJ-vu-ecu"/>
-                    <connections>
-                        <outlet property="addPhotoBtn" destination="0gH-UV-lA6" id="cIM-OC-Tak"/>
-                        <outlet property="textView" destination="mCI-xg-aNX" id="ajK-dj-cuY"/>
-                        <outlet property="toolBarView" destination="qwD-mP-hjU" id="Efs-Ml-PXg"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vUl-MA-2nA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" id="qwD-mP-hjU">
-                    <rect key="frame" x="0.0" y="0.0" width="409" height="56"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0gH-UV-lA6">
-                            <rect key="frame" x="365" y="17" width="24" height="22"/>
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <state key="normal" image="photo" catalog="system"/>
-                            <connections>
-                                <action selector="addPhoto:" destination="0nn-td-Iwe" eventType="touchUpInside" id="FRe-WC-cg8"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <color key="backgroundColor" name="darkMainColor"/>
-                    <constraints>
-                        <constraint firstItem="0Cj-9Q-i2V" firstAttribute="trailing" secondItem="0gH-UV-lA6" secondAttribute="trailing" constant="20" id="02s-cY-tbg"/>
-                        <constraint firstItem="0gH-UV-lA6" firstAttribute="centerY" secondItem="qwD-mP-hjU" secondAttribute="centerY" id="oeO-bH-oPq"/>
-                    </constraints>
-                    <viewLayoutGuide key="safeArea" id="0Cj-9Q-i2V"/>
-                </view>
-            </objects>
-            <point key="canvasLocation" x="1084" y="112"/>
-        </scene>
         <!--Chat View Controller-->
         <scene sceneID="2py-j8-j1H">
             <objects>
-                <viewController storyboardIdentifier="Chat1" useStoryboardIdentifierAsRestorationIdentifier="YES" id="a77-dx-ZXz" customClass="ChatViewController" customModule="DecorYou" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Chat" useStoryboardIdentifierAsRestorationIdentifier="YES" id="a77-dx-ZXz" customClass="ChatViewController" customModule="DecorYou" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WcW-qV-BD6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XO1-JI-u9Y">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
                         </subviews>
@@ -93,7 +36,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="soa-Mc-UPe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1857.9710144927537" y="111.83035714285714"/>
+            <point key="canvasLocation" x="2768.1159420289855" y="111.83035714285714"/>
         </scene>
         <!--Chat Room View Controller-->
         <scene sceneID="in9-6R-Tma">
@@ -123,31 +66,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3QC-oy-EcH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2605.7971014492755" y="112.5"/>
+            <point key="canvasLocation" x="3515.9420289855075" y="112.5"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="6Kw-58-gau">
+        <scene sceneID="eEq-tm-tMI">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="y8r-6G-AnU" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="e7E-gt-Z60" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NU9-rQ-JQw">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="RVG-Mh-0bY">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="0nn-td-Iwe" kind="relationship" relationship="rootViewController" id="OSa-c1-1QL"/>
+                        <segue destination="a77-dx-ZXz" kind="relationship" relationship="rootViewController" id="fJK-rE-Hoa"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qcG-3X-gFA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xXv-EZ-pEq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="297.10144927536237" y="111.83035714285714"/>
+            <point key="canvasLocation" x="1857.9710144927537" y="111.83035714285714"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="photo" catalog="system" width="64" height="46"/>
-        <namedColor name="darkMainColor">
-            <color red="0.20000000298023224" green="0.42399999499320984" blue="0.45899999141693115" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-    </resources>
 </document>
