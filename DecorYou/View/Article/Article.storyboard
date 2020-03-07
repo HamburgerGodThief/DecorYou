@@ -664,17 +664,27 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wM2-ys-LdC">
-                            <rect key="frame" x="371" y="9" width="24" height="22"/>
+                            <rect key="frame" x="20" y="9" width="24" height="22"/>
                             <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" image="photo" catalog="system"/>
                             <connections>
                                 <action selector="addPhoto:" destination="7JC-Pp-nB1" eventType="touchUpInside" id="SWQ-HW-5Mh"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9nO-bI-IZ1">
+                            <rect key="frame" x="365" y="4" width="35" height="32"/>
+                            <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="14"/>
+                            <state key="normal" title="Done"/>
+                            <connections>
+                                <action selector="endEditing:" destination="7JC-Pp-nB1" eventType="touchUpInside" id="p1m-n1-rtU"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="wM2-ys-LdC" secondAttribute="trailing" constant="20" id="JCu-Zg-nSy"/>
+                        <constraint firstItem="wM2-ys-LdC" firstAttribute="leading" secondItem="HpV-kI-Sd1" secondAttribute="leading" constant="20" id="Dmj-it-Gdx"/>
+                        <constraint firstItem="9nO-bI-IZ1" firstAttribute="centerY" secondItem="cRh-Tu-V6E" secondAttribute="centerY" id="RGI-M0-HZY"/>
+                        <constraint firstItem="HpV-kI-Sd1" firstAttribute="trailing" secondItem="9nO-bI-IZ1" secondAttribute="trailing" constant="15" id="qHG-7z-Ikk"/>
                         <constraint firstItem="wM2-ys-LdC" firstAttribute="centerY" secondItem="cRh-Tu-V6E" secondAttribute="centerY" id="rE1-hM-IDl"/>
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="HpV-kI-Sd1"/>

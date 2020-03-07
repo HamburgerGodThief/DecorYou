@@ -52,6 +52,12 @@ class TextViewController: UIViewController {
         
     }
     
+    @IBAction func endEditing(_ sender: Any) {
+        
+        view.endEditing(true)
+        
+    }
+    
     @objc func removeImgCell(_ sender: UIButton) {
         
         guard let cell = sender.superview?.superview as? ImageViewTableViewCell else { return }
@@ -149,9 +155,10 @@ extension TextViewController: UITextViewDelegate {
         
         guard let indexPath = tableView.indexPath(for: cell) else { return true }
         
-        if cell.frame.size.height < textView.frame.size.height {
+        //如果現在的cell高度 != textView的高度的話， 幫現在cell增高/縮減，並增加/縮減等幅度其他visible cell的Y位置
+        if cell.frame.size.height != textView.frame.size.height {
             
-            //其他visible cell所要增加Y位置的幅度
+            //其他visible cell所要增加/減少Y位置的幅度
             let diff = textView.frame.size.height - cell.frame.size.height
             
             //改變現在這個textView的Cell的高度
