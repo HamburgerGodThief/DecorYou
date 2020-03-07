@@ -8,10 +8,10 @@
 
 import UIKit
 
-
-
 protocol TextViewControllerDelegate: AnyObject {
+    
     func passToCreateVC(_ textViewController: TextViewController)
+    
 }
 
 class TextViewController: UIViewController {
@@ -35,6 +35,8 @@ class TextViewController: UIViewController {
     }
     
     @IBOutlet var toolBarView: UIView!
+    
+    weak var delegate: TextViewControllerDelegate?
     
     var content: [NewPostData] = [NewPostTextView(text: "")]
     
@@ -192,8 +194,6 @@ extension TextViewController: UITextViewDelegate {
         
     }
     
-    
-    
     func textViewDidEndEditing(_ textView: UITextView) {
         
         guard let cell = textView.superview?.superview as? TextViewTableViewCell else { return }
@@ -201,6 +201,8 @@ extension TextViewController: UITextViewDelegate {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         
         content[indexPath.row] = NewPostTextView(text: textView.text)
+        
+        delegate?.passToCreateVC(self)
         
     }
     
@@ -226,6 +228,8 @@ extension TextViewController: UIImagePickerControllerDelegate, UINavigationContr
             tableView.reloadData()
             
         }
+        
+        delegate?.passToCreateVC(self)
                         
         dismiss(animated: true, completion: nil)
         

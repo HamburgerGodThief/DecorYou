@@ -25,7 +25,7 @@ class CreatePostViewController: UIViewController {
         willSet {
             
             if newValue == "開箱" {
-                unboxHeight.constant = 150
+                unboxHeight.constant = 50
                 unboxVC.alpha = 1
             } else {
                 unboxHeight.constant = 0
@@ -37,7 +37,7 @@ class CreatePostViewController: UIViewController {
         
     }
     var unboxTag: UnboxTag?
-    var articleContent: String?
+    var articleContent: [NewPostData] = []
     
     @IBAction func touchArticleCat(_ sender: Any) {
         
@@ -126,9 +126,20 @@ class CreatePostViewController: UIViewController {
             return
         }
         
-        guard let content = articleContent else {
+        //檢查內容是不是空的
+        if articleContent.isEmpty {
             configureAlertController(title: "錯誤", message: "內容不可空白")
             return
+        }
+        
+        //檢查tag是不是空的
+        if type == "開箱" {
+        
+            guard unboxTag != nil else {
+                configureAlertController(title: "錯誤", message: "坪數/地區/風格不可空白")
+                return
+            }
+            
         }
         
         //建立新貼文
@@ -136,76 +147,103 @@ class CreatePostViewController: UIViewController {
         guard let uid = UserDefaults.standard.string(forKey: "UserToken") else { return }
         let author = UserManager.shared.db.collection("users").document(uid)
         
+        var content: [String] = []
+        
+        //將文字與圖片依序放入content array，若遇到圖片則先插入空白文字
+        for order in 0..<articleContent.count {
+        
+            guard let newPostText = articleContent[order] as? NewPostTextView else {
+                
+                content.append("")
+                
+                continue
+                
+            }
+            
+            content.append(newPostText.text)
+        }
+        
+        //圖片網址依序放入content array
+        let group = DispatchGroup()
+        
+        for order in 0..<articleContent.count {
+            
+            //檢查articleContent的element是屬於圖片還是文字資料
+            guard let newPostImage = articleContent[order] as? NewPostImage else {
+                
+                continue
+                
+            }
+            
+            //上傳圖片至firebase Storage，並取回網址
+            group.enter()
+            uploadImgStorage(postID: newPost.documentID,
+                             img: newPostImage.image,
+                             index: order,
+                             completion: { result in
+                                switch result {
+                                case.success(let url):
+                                    content[order] = url
+                                    group.leave()
+                                case.failure(let error):
+                                    print(error)
+                                    group.leave()
+                                }
+            })
+            
+        }
+        
         //檢查貼文類別，產生相對應的article物件
-        if type == "開箱" {
-            guard let unboxTag = unboxTag else {
-                configureAlertController(title: "錯誤", message: "坪數/地區/風格/照片不可空白")
-                return
-            }
-            //先上傳照片到firebase
-            let group = DispatchGroup()
+        group.notify(queue: .main) { [weak self] in
             
-            var imgURL: [String] = []
-            for index in 0..<unboxTag.img.count {
-                group.enter()
-                uploadImgStorage(postID: newPost.documentID, img: unboxTag.img[index], index: index, completion: {
-                                    result in
-                                    switch result {
-                                    case.success(let url):
-                                        imgURL.append(url)
-                                        group.leave()
-                                    case.failure(let err):
-                                        print(err)
-                                    }
-                })
-            }
+            guard let strongSelf = self else { return }
             
-            group.notify(queue: .main) {
+            if type == "開箱" {
+                
                 let article = Article(title: title,
                                       type: type,
                                       content: content,
                                       createTime: Date(),
-                                      decorateStyle: unboxTag.style,
-                                      location: unboxTag.location,
+                                      decorateStyle: strongSelf.unboxTag!.style,
+                                      location: strongSelf.unboxTag!.location,
                                       loveCount: 0,
                                       replyCount: 0,
                                       postID: newPost.documentID,
-                                      size: unboxTag.size,
+                                      size: strongSelf.unboxTag!.size,
                                       collaborator: [],
-                                      author: author,
-                                      imgAry: imgURL)
+                                      author: author)
                 ArticleManager.shared.addPost(newPostID: newPost.documentID, article: article)
+                
+            } else {
+                
+                let article = Article(title: title,
+                                      type: type,
+                                      content: content,
+                                      createTime: Date(),
+                                      decorateStyle: nil,
+                                      location: nil,
+                                      loveCount: 0,
+                                      replyCount: 0,
+                                      postID: newPost.documentID,
+                                      size: nil,
+                                      collaborator: [],
+                                      author: author)
+                ArticleManager.shared.addPost(newPostID: newPost.documentID, article: article)
+                
             }
             
-            
-        } else {
-            
-            let article = Article(title: title,
-                                  type: type,
-                                  content: content,
-                                  createTime: Date(),
-                                  decorateStyle: nil,
-                                  location: nil,
-                                  loveCount: 0,
-                                  replyCount: 0,
-                                  postID: newPost.documentID,
-                                  size: nil,
-                                  collaborator: [],
-                                  author: author,
-                                  imgAry: [])
-            ArticleManager.shared.addPost(newPostID: newPost.documentID, article: article)
-            
+            //先讀取User現有的selfPost，再更新User的selfPost
+            guard let user = UserManager.shared.user else { return }
+            let currentSelfPost = user.selfPost
+            let newPostRef = ArticleManager.shared.db.collection("article").document(newPost.documentID)
+            var updateSelfPost = currentSelfPost
+            updateSelfPost.append(newPostRef)
+            UserManager.shared.updateUserSelfPost(uid: uid, selfPost: updateSelfPost)
+            strongSelf.dismiss(animated: true, completion: nil)
+            strongSelf.tabBarController?.tabBar.isHidden = false
         }
         
-        //先讀取User現有的selfPost，再更新User的selfPost
-        guard let user = UserManager.shared.user else { return }
-        let currentSelfPost = user.selfPost
-        let newPostRef = ArticleManager.shared.db.collection("article").document(newPost.documentID)
-        var updateSelfPost = currentSelfPost
-        updateSelfPost.append(newPostRef)
-        UserManager.shared.updateUserSelfPost(uid: uid, selfPost: updateSelfPost)
-        dismiss(animated: true, completion: nil)
-        tabBarController?.tabBar.isHidden = false
+        
     }
     
     @objc func cancelPost() {
@@ -222,7 +260,7 @@ class CreatePostViewController: UIViewController {
             unboxVC.delegate = self
         } else {
             guard let textViewVC = segue.destination as? TextViewController else { return }
-            
+            textViewVC.delegate = self
         }
         
     }
@@ -241,8 +279,7 @@ extension CreatePostViewController: UnboxingViewControllerDelegate {
     func passDataToCreatePost(unboxingVC: UnboxingViewController) {
         let unboxTagFromVC: UnboxTag = UnboxTag(size: unboxingVC.size,
                                                 location: unboxingVC.locationSelected,
-                                                style: unboxingVC.styleSelected,
-                                                img: unboxingVC.imgAry)
+                                                style: unboxingVC.styleSelected)
         unboxTag = unboxTagFromVC
     }
     
@@ -251,7 +288,9 @@ extension CreatePostViewController: UnboxingViewControllerDelegate {
 extension CreatePostViewController: TextViewControllerDelegate {
     
     func passToCreateVC(_ textViewController: TextViewController) {
-//        articleContent = textViewController.content
+        articleContent = textViewController.content
     }
     
 }
+
+

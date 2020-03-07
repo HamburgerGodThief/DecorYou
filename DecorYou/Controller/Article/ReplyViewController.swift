@@ -41,7 +41,10 @@ class ReplyViewController: UIViewController {
         let newReply = ArticleManager.shared.db.collection("article").document("\(mainArticle.postID)").collection("replys").document()
         guard let uid = UserDefaults.standard.string(forKey: "UserToken") else { return }
         let authorRef = UserManager.shared.db.collection("users").document("\(uid)")
-        let reply = Reply(author: authorRef, content: replyContentTextView.text, createTime: Date(), replyID: newReply.documentID)
+        let reply = Reply(author: authorRef,
+                          content: [replyContentTextView.text],
+                          createTime: Date(),
+                          replyID: newReply.documentID)
         ArticleManager.shared.replyPost(postID: mainArticle.postID, replyCount: mainArticle.replyCount + 1, newReplyID: newReply.documentID, reply: reply)
     }
     

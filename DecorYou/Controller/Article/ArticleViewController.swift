@@ -338,7 +338,7 @@ extension ArticleViewController: UITableViewDelegate, UITableViewDataSource {
             cell.fillData(authorImgURLString: authorObject.img,
                           titleLabel: article.title,
                           nameTimeLabel: "\(authorObject.name)・\(article.intervalString)",
-                          contentLabel: article.content)
+                          contentLabel: article.content[0])
             cell.collectionView.delegate = self
             cell.collectionView.dataSource = self
             cell.collectionView.lk_registerCellWithNib(identifier: "FilterCollectionViewCell", bundle: nil)

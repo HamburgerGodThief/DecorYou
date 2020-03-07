@@ -14,7 +14,7 @@ struct Article: Codable {
     
     let title: String
     let type: String
-    var content: String
+    var content: [String]
     let createTime: Date
     let decorateStyle: String?
     let location: String?
@@ -25,7 +25,6 @@ struct Article: Codable {
     let collaborator: [DocumentReference]
     let author: DocumentReference
     var authorObject: User?
-    var imgAry: [String]
     var intervalString: String {
         let interval = Date().timeIntervalSince(createTime)
         let days = Double(60 * 60 * 24)
@@ -49,14 +48,14 @@ struct Article: Codable {
     }
     
     enum CodingKeys: String, CodingKey {
-        case author, title, type, postID, content, createTime, collaborator, size, loveCount, replyCount, location, decorateStyle, imgAry
+        case author, title, type, postID, content, createTime, collaborator, size, loveCount, replyCount, location, decorateStyle
     }
 }
 
 struct Reply: Codable {
     let author: DocumentReference
     var authorObject: User?
-    var content: String
+    var content: [String]
     let createTime: Date
     let replyID: String
     var comments: [Comment] = []
@@ -215,7 +214,13 @@ class ArticleManager {
             
             if user.blockUser.contains(article.authorObject!.uid) {
                 
-                article.content = "該用戶已被你封鎖，你看不見該用戶的訊息"
+                for var element in article.content {
+                    
+                    element = ""
+                    
+                }
+                
+                article.content[0] = "該用戶已被你封鎖，你看不見該用戶的訊息"
                 
             }
             
@@ -239,7 +244,7 @@ class ArticleManager {
             
             if user.blockUser.contains(reply.authorObject!.uid) {
                 
-                reply.content = "該用戶已被你封鎖，你看不見該用戶的訊息"
+                reply.content = ["該用戶已被你封鎖，你看不見該用戶的訊息"]
                 
             }
             

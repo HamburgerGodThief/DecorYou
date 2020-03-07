@@ -12,11 +12,12 @@ struct UnboxTag {
     var size: Int
     var location: String
     var style: String
-    var img: [UIImage]
 }
 
 protocol UnboxingViewControllerDelegate: AnyObject {
+    
     func passDataToCreatePost(unboxingVC: UnboxingViewController)
+    
 }
 
 class UnboxingViewController: UIViewController {
@@ -30,13 +31,6 @@ class UnboxingViewController: UIViewController {
     @IBOutlet weak var styleTextView: UITextField! {
         didSet {
             styleTextView.inputView = stylePickerView
-        }
-    }
-    @IBOutlet weak var collectionView: UICollectionView! {
-        didSet {
-            collectionView.delegate = self
-            collectionView.dataSource = self
-            collectionView.lk_registerCellWithNib(identifier: "UnboxCollectionViewCell", bundle: nil)
         }
     }
     
@@ -56,11 +50,6 @@ class UnboxingViewController: UIViewController {
     var locationSelected: String = ""
     var styleSelected: String = ""
     var size: Int = 0
-    var imgAry: [UIImage] = [] {
-        didSet {
-            collectionView.reloadData()
-        }
-    }
     let itemSpace: CGFloat = 16
 
     override func viewDidLoad() {
@@ -122,69 +111,4 @@ extension UnboxingViewController: UITextFieldDelegate {
         delegate?.passDataToCreatePost(unboxingVC: self)
     }
         
-}
-
-extension UnboxingViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imgAry.count + 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UnboxCollectionViewCell", for: indexPath) as? UnboxCollectionViewCell else { return UICollectionViewCell() }
-        
-        if indexPath.item == 0 {
-            cell.unboxImg.contentMode = .center
-            cell.cancelImg.isHidden = true
-            cell.unboxImg.image = UIImage(systemName: "photo")
-        } else {
-            cell.unboxView.layer.borderWidth = 0
-            cell.unboxImg.image = imgAry[indexPath.item - 1]
-        }
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let height = collectionView.frame.height
-        let width = height
-        return CGSize(width: width, height: height)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-    }
-    
-    func collectionView(_: UICollectionView, layout: UICollectionViewLayout, minimumLineSpacingForSectionAt: Int) -> CGFloat {
-        return itemSpace
-    }
-    
-    func collectionView(_: UICollectionView, layout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt: Int) -> CGFloat {
-        return itemSpace
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.item == 0 {
-            let imagePickerController = UIImagePickerController()
-            imagePickerController.delegate = self
-            present(imagePickerController, animated: true, completion: nil)
-        } else {
-            imgAry.remove(at: indexPath.item - 1)
-            delegate?.passDataToCreatePost(unboxingVC: self)
-        }
-    }
-    
-}
-
-extension UnboxingViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-
-        // 取得從 UIImagePickerController 選擇的檔案
-        if let pickedImage = info[.originalImage] as? UIImage {
-            imgAry.append(pickedImage)
-        }
-        delegate?.passDataToCreatePost(unboxingVC: self)
-        
-        dismiss(animated: true, completion: nil)
-    }
 }

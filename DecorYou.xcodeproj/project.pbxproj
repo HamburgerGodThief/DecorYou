@@ -126,8 +126,6 @@
 		64FC819E23E7FC190027DDEE /* ChatRoomBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FC819D23E7FC190027DDEE /* ChatRoomBottomView.xib */; };
 		64FC81A023E7FC9A0027DDEE /* ChatRoomBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC819F23E7FC9A0027DDEE /* ChatRoomBottomView.swift */; };
 		64FD1C35240A4C5700148E00 /* UnboxingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FD1C34240A4C5700148E00 /* UnboxingViewController.swift */; };
-		64FD1C38240AB9C500148E00 /* UnboxCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FD1C36240AB9C500148E00 /* UnboxCollectionViewCell.swift */; };
-		64FD1C39240AB9C500148E00 /* UnboxCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FD1C37240AB9C500148E00 /* UnboxCollectionViewCell.xib */; };
 		64FE4EC023E8091800A5D3EC /* ChatRoomSelfTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FE4EBE23E8091800A5D3EC /* ChatRoomSelfTableViewCell.swift */; };
 		64FE4EC123E8091800A5D3EC /* ChatRoomSelfTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FE4EBF23E8091800A5D3EC /* ChatRoomSelfTableViewCell.xib */; };
 		64FE4EC823E83E9400A5D3EC /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FE4EC723E83E9400A5D3EC /* UITextField+Extension.swift */; };
@@ -266,8 +264,6 @@
 		64FC819D23E7FC190027DDEE /* ChatRoomBottomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatRoomBottomView.xib; sourceTree = "<group>"; };
 		64FC819F23E7FC9A0027DDEE /* ChatRoomBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomBottomView.swift; sourceTree = "<group>"; };
 		64FD1C34240A4C5700148E00 /* UnboxingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnboxingViewController.swift; sourceTree = "<group>"; };
-		64FD1C36240AB9C500148E00 /* UnboxCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnboxCollectionViewCell.swift; sourceTree = "<group>"; };
-		64FD1C37240AB9C500148E00 /* UnboxCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UnboxCollectionViewCell.xib; sourceTree = "<group>"; };
 		64FE4EBE23E8091800A5D3EC /* ChatRoomSelfTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomSelfTableViewCell.swift; sourceTree = "<group>"; };
 		64FE4EBF23E8091800A5D3EC /* ChatRoomSelfTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatRoomSelfTableViewCell.xib; sourceTree = "<group>"; };
 		64FE4EC723E83E9400A5D3EC /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
@@ -463,8 +459,6 @@
 				64FAB14623EEB9FD0073235C /* CollaboratorTableViewCell.xib */,
 				64FAB14923EFF0CD0073235C /* CollaboratorLogoCollectionViewCell.swift */,
 				64FAB14A23EFF0CD0073235C /* CollaboratorLogoCollectionViewCell.xib */,
-				64FD1C36240AB9C500148E00 /* UnboxCollectionViewCell.swift */,
-				64FD1C37240AB9C500148E00 /* UnboxCollectionViewCell.xib */,
 				64B7078224123423001248B6 /* ImageViewTableViewCell.swift */,
 				64B7078424123430001248B6 /* TextViewTableViewCell.swift */,
 			);
@@ -674,7 +668,6 @@
 				64FC819423E7E4D70027DDEE /* ChatListTableViewCell.xib in Resources */,
 				64FBDA7A24050C340089D9EA /* LoadingViewController.xib in Resources */,
 				647A7CCA23D83BB0005D1946 /* Article.storyboard in Resources */,
-				64FD1C39240AB9C500148E00 /* UnboxCollectionViewCell.xib in Resources */,
 				64FA7CBE23F1483D00975B03 /* ReadPostTableViewCell.xib in Resources */,
 				64F9D89C23F9379400F28186 /* PhotosCollectionViewCell.xib in Resources */,
 				64FE4EC123E8091800A5D3EC /* ChatRoomSelfTableViewCell.xib in Resources */,
@@ -819,7 +812,6 @@
 				64FAAE422407D68900C35210 /* ArticleTypeViewController.swift in Sources */,
 				64FA42B323E3C5CD0065DCEF /* ResumeViewController.swift in Sources */,
 				647A7CCE23D83C61005D1946 /* UIImage+Extension.swift in Sources */,
-				64FD1C38240AB9C500148E00 /* UnboxCollectionViewCell.swift in Sources */,
 				64012B9B23F67043001D20D0 /* ServiceAreaCollectionViewCell.swift in Sources */,
 				64FA42AA23E393280065DCEF /* CraftsmenCollectionViewCell.swift in Sources */,
 				647A7CCC23D83BCE005D1946 /* UIStoryboard+Extension.swift in Sources */,

@@ -428,15 +428,15 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pWE-6s-3xO">
-                                <rect key="frame" x="0.0" y="275" width="414" height="587"/>
+                                <rect key="frame" x="0.0" y="180" width="414" height="682"/>
                                 <connections>
                                     <segue destination="7JC-Pp-nB1" kind="embed" identifier="TextViewController" id="ity-4L-jw2"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VPy-HX-VRa">
-                                <rect key="frame" x="0.0" y="125" width="414" height="150"/>
+                                <rect key="frame" x="0.0" y="130" width="414" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="pcX-el-dKT"/>
+                                    <constraint firstAttribute="height" constant="50" id="pcX-el-dKT"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="rWS-Tp-Knl" kind="embed" identifier="UnboxingViewController" id="3Vo-Pm-Jsi"/>
@@ -446,7 +446,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="VPy-HX-VRa" firstAttribute="trailing" secondItem="ome-VY-LWB" secondAttribute="trailing" id="2Lu-na-1Dg"/>
-                            <constraint firstItem="VPy-HX-VRa" firstAttribute="top" secondItem="SQ0-Rh-DDj" secondAttribute="bottom" constant="5" id="7ZU-Qw-MTJ"/>
+                            <constraint firstItem="VPy-HX-VRa" firstAttribute="top" secondItem="SQ0-Rh-DDj" secondAttribute="bottom" constant="10" id="7ZU-Qw-MTJ"/>
                             <constraint firstItem="Jwf-SW-1PM" firstAttribute="leading" secondItem="SQ0-Rh-DDj" secondAttribute="trailing" constant="8" id="7mx-BN-OFv"/>
                             <constraint firstItem="pWE-6s-3xO" firstAttribute="top" secondItem="VPy-HX-VRa" secondAttribute="bottom" id="9Br-rI-VHU"/>
                             <constraint firstItem="pdz-Lu-yeh" firstAttribute="top" secondItem="ome-VY-LWB" secondAttribute="top" constant="20" id="AO0-JV-9Fi"/>
@@ -570,11 +570,11 @@
             <objects>
                 <viewController storyboardIdentifier="TextViewController" id="7JC-Pp-nB1" customClass="TextViewController" customModule="DecorYou" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gqi-B0-Vhm">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="587"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="682"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oCd-2U-pGh">
-                                <rect key="frame" x="0.0" y="44" width="414" height="543"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="638"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TextViewTableViewCell" rowHeight="186" id="UuH-kk-Qsk" customClass="TextViewTableViewCell" customModule="DecorYou" customModuleProvider="target">
@@ -697,20 +697,9 @@
             <objects>
                 <viewController storyboardIdentifier="UnboxingViewController" id="rWS-Tp-Knl" customClass="UnboxingViewController" customModule="DecorYou" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="b9e-bx-yLm">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dzR-ss-a9a">
-                                <rect key="frame" x="0.0" y="50" width="414" height="100"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="YMU-P7-tjT">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells/>
-                            </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n6M-Ss-4D2">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                 <subviews>
@@ -736,6 +725,13 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qzq-Ou-7jv">
+                                        <rect key="frame" x="0.0" y="49" width="414" height="1"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="HLu-my-rKL"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -743,29 +739,27 @@
                                     <constraint firstItem="Hv4-ca-MmV" firstAttribute="centerX" secondItem="n6M-Ss-4D2" secondAttribute="centerX" id="4kh-4f-Ieq"/>
                                     <constraint firstItem="Hv4-ca-MmV" firstAttribute="centerY" secondItem="n6M-Ss-4D2" secondAttribute="centerY" id="7D8-LT-Xae"/>
                                     <constraint firstItem="M6n-Oh-iec" firstAttribute="centerY" secondItem="n6M-Ss-4D2" secondAttribute="centerY" id="7HO-LO-Wai"/>
+                                    <constraint firstAttribute="bottom" secondItem="qzq-Ou-7jv" secondAttribute="bottom" id="G5h-ca-TMX"/>
                                     <constraint firstItem="Hv4-ca-MmV" firstAttribute="leading" secondItem="d5U-uo-x4W" secondAttribute="trailing" constant="40" id="JRf-kD-tzd"/>
                                     <constraint firstItem="M6n-Oh-iec" firstAttribute="leading" secondItem="Hv4-ca-MmV" secondAttribute="trailing" constant="40" id="Wo8-Ac-su7"/>
+                                    <constraint firstAttribute="trailing" secondItem="qzq-Ou-7jv" secondAttribute="trailing" id="ZUY-d0-OC6"/>
                                     <constraint firstItem="oar-5M-XGn" firstAttribute="leading" secondItem="n6M-Ss-4D2" secondAttribute="leading" id="fVt-w1-arr"/>
                                     <constraint firstItem="oar-5M-XGn" firstAttribute="top" secondItem="n6M-Ss-4D2" secondAttribute="top" id="jHL-Et-HCq"/>
+                                    <constraint firstItem="qzq-Ou-7jv" firstAttribute="leading" secondItem="n6M-Ss-4D2" secondAttribute="leading" id="mEW-zR-j4q"/>
                                     <constraint firstAttribute="trailing" secondItem="oar-5M-XGn" secondAttribute="trailing" id="vUd-gE-9kg"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="dzR-ss-a9a" secondAttribute="trailing" id="Ivk-sX-k57"/>
-                            <constraint firstItem="dzR-ss-a9a" firstAttribute="top" secondItem="n6M-Ss-4D2" secondAttribute="bottom" id="Noq-ju-aX3"/>
                             <constraint firstAttribute="trailing" secondItem="n6M-Ss-4D2" secondAttribute="trailing" id="PFr-eX-JfF"/>
                             <constraint firstItem="n6M-Ss-4D2" firstAttribute="leading" secondItem="b9e-bx-yLm" secondAttribute="leading" id="Zqx-CV-es3"/>
-                            <constraint firstAttribute="bottom" secondItem="dzR-ss-a9a" secondAttribute="bottom" id="aMD-C1-BYz"/>
-                            <constraint firstItem="dzR-ss-a9a" firstAttribute="top" secondItem="b9e-bx-yLm" secondAttribute="top" constant="50" id="rtI-4v-SmQ"/>
+                            <constraint firstItem="B0v-qa-cRX" firstAttribute="bottom" secondItem="n6M-Ss-4D2" secondAttribute="bottom" id="f3i-7a-v2I"/>
                             <constraint firstItem="n6M-Ss-4D2" firstAttribute="top" secondItem="b9e-bx-yLm" secondAttribute="top" id="wjJ-Gu-6fr"/>
-                            <constraint firstItem="dzR-ss-a9a" firstAttribute="leading" secondItem="b9e-bx-yLm" secondAttribute="leading" id="wzX-Fw-hyd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="B0v-qa-cRX"/>
                     </view>
                     <connections>
-                        <outlet property="collectionView" destination="dzR-ss-a9a" id="vXL-tV-Nou"/>
                         <outlet property="locationTextView" destination="d5U-uo-x4W" id="c8L-6f-WA6"/>
                         <outlet property="sizeTextField" destination="Hv4-ca-MmV" id="UZH-Oa-lBK"/>
                         <outlet property="styleTextView" destination="M6n-Oh-iec" id="hyT-H7-c9w"/>
@@ -773,7 +767,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oHs-eD-LTj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2432" y="383"/>
+            <point key="canvasLocation" x="2428" y="349"/>
         </scene>
     </scenes>
     <resources>
