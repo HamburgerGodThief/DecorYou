@@ -36,9 +36,11 @@
 		647A7CD123D83DCA005D1946 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 647A7CD023D83DCA005D1946 /* Auth.storyboard */; };
 		647A7CD523D83E49005D1946 /* CraftsmenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647A7CD423D83E49005D1946 /* CraftsmenViewController.swift */; };
 		647A7CD723D83E55005D1946 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647A7CD623D83E55005D1946 /* ChatViewController.swift */; };
-		64B7078324123423001248B6 /* ImageViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B7078224123423001248B6 /* ImageViewTableViewCell.swift */; };
-		64B7078524123430001248B6 /* TextViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B7078424123430001248B6 /* TextViewTableViewCell.swift */; };
 		64B7078724123772001248B6 /* NewPostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B7078624123772001248B6 /* NewPostModel.swift */; };
+		64B7078A24147AD3001248B6 /* TextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B7078824147AD3001248B6 /* TextTableViewCell.swift */; };
+		64B7078B24147AD3001248B6 /* TextTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64B7078924147AD3001248B6 /* TextTableViewCell.xib */; };
+		64B7078E24147AE3001248B6 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B7078C24147AE3001248B6 /* ImageTableViewCell.swift */; };
+		64B7078F24147AE3001248B6 /* ImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64B7078D24147AE3001248B6 /* ImageTableViewCell.xib */; };
 		64F81E58240695B20020566C /* forestmorning.json in Resources */ = {isa = PBXBuildFile; fileRef = 64F81E57240695B20020566C /* forestmorning.json */; };
 		64F81E5F240783FE0020566C /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F81E5E240783FE0020566C /* EditProfileViewController.swift */; };
 		64F9D89823F9239D00F28186 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F9D89723F9239D00F28186 /* PhotosViewController.swift */; };
@@ -173,9 +175,11 @@
 		647A7CD023D83DCA005D1946 /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		647A7CD423D83E49005D1946 /* CraftsmenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CraftsmenViewController.swift; sourceTree = "<group>"; };
 		647A7CD623D83E55005D1946 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		64B7078224123423001248B6 /* ImageViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewTableViewCell.swift; sourceTree = "<group>"; };
-		64B7078424123430001248B6 /* TextViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewTableViewCell.swift; sourceTree = "<group>"; };
 		64B7078624123772001248B6 /* NewPostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostModel.swift; sourceTree = "<group>"; };
+		64B7078824147AD3001248B6 /* TextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTableViewCell.swift; sourceTree = "<group>"; };
+		64B7078924147AD3001248B6 /* TextTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextTableViewCell.xib; sourceTree = "<group>"; };
+		64B7078C24147AE3001248B6 /* ImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
+		64B7078D24147AE3001248B6 /* ImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageTableViewCell.xib; sourceTree = "<group>"; };
 		64F81E57240695B20020566C /* forestmorning.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = forestmorning.json; path = ../../../forestmorning.json; sourceTree = "<group>"; };
 		64F81E5D2406A40C0020566C /* DecorYou.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DecorYou.entitlements; sourceTree = "<group>"; };
 		64F81E5E240783FE0020566C /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
@@ -447,6 +451,10 @@
 				64FAAE432407D70600C35210 /* ArticleTypeTableViewCell.swift */,
 				6406275D23EA942900086434 /* ReadPostTableViewHeaderView.swift */,
 				64FA7CBF23F148D800975B03 /* ReadPostTableViewHeaderView.xib */,
+				64B7078824147AD3001248B6 /* TextTableViewCell.swift */,
+				64B7078924147AD3001248B6 /* TextTableViewCell.xib */,
+				64B7078C24147AE3001248B6 /* ImageTableViewCell.swift */,
+				64B7078D24147AE3001248B6 /* ImageTableViewCell.xib */,
 				64FA7CBB23F1483D00975B03 /* ReadPostTableViewCell.swift */,
 				64FA7CBC23F1483D00975B03 /* ReadPostTableViewCell.xib */,
 				64FA7CC323F2366A00975B03 /* ReadPostTableViewFooterView.swift */,
@@ -459,8 +467,6 @@
 				64FAB14623EEB9FD0073235C /* CollaboratorTableViewCell.xib */,
 				64FAB14923EFF0CD0073235C /* CollaboratorLogoCollectionViewCell.swift */,
 				64FAB14A23EFF0CD0073235C /* CollaboratorLogoCollectionViewCell.xib */,
-				64B7078224123423001248B6 /* ImageViewTableViewCell.swift */,
-				64B7078424123430001248B6 /* TextViewTableViewCell.swift */,
 			);
 			path = Article;
 			sourceTree = "<group>";
@@ -646,6 +652,7 @@
 				64FA429B23E341440065DCEF /* ArticleTableViewCell.xib in Resources */,
 				64FBDA8A24066B930089D9EA /* CategoryTableViewCell.xib in Resources */,
 				64FAB14823EEB9FD0073235C /* CollaboratorTableViewCell.xib in Resources */,
+				64B7078B24147AD3001248B6 /* TextTableViewCell.xib in Resources */,
 				647A7CD123D83DCA005D1946 /* Auth.storyboard in Resources */,
 				64FAB14C23EFF0CD0073235C /* CollaboratorLogoCollectionViewCell.xib in Resources */,
 				647A7CC623D83B92005D1946 /* Chat.storyboard in Resources */,
@@ -663,6 +670,7 @@
 				64FA8E4223FFC272000A1334 /* FilterPickerTableViewCell.xib in Resources */,
 				64FE4ECC23E918EA00A5D3EC /* ProfileTableViewCell.xib in Resources */,
 				64FC72F423FD3BD6004F2A07 /* ArticleListTableViewCell.xib in Resources */,
+				64B7078F24147AE3001248B6 /* ImageTableViewCell.xib in Resources */,
 				64FA42B723E7B3800065DCEF /* ResumeCollectionViewCell.xib in Resources */,
 				64FE4EE223EA55CB00A5D3EC /* YourPostTableViewCell.xib in Resources */,
 				64FC819423E7E4D70027DDEE /* ChatListTableViewCell.xib in Resources */,
@@ -752,14 +760,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64B7078324123423001248B6 /* ImageViewTableViewCell.swift in Sources */,
 				6406276623EAAD1200086434 /* MoreViewController.swift in Sources */,
 				64F9D89823F9239D00F28186 /* PhotosViewController.swift in Sources */,
 				64F81E5F240783FE0020566C /* EditProfileViewController.swift in Sources */,
 				647A7CB023D83376005D1946 /* STTabBarViewController.swift in Sources */,
 				64FBDA84240661AF0089D9EA /* AreaViewController.swift in Sources */,
 				64FA8E4123FFC272000A1334 /* FilterPickerTableViewCell.swift in Sources */,
-				64B7078524123430001248B6 /* TextViewTableViewCell.swift in Sources */,
 				64FAB14723EEB9FD0073235C /* CollaboratorTableViewCell.swift in Sources */,
 				64FBDA86240661CE0089D9EA /* CategoryViewController.swift in Sources */,
 				64F9D89B23F9379400F28186 /* PhotosCollectionViewCell.swift in Sources */,
@@ -773,6 +779,7 @@
 				64FA42B623E7B3800065DCEF /* ResumeCollectionViewCell.swift in Sources */,
 				64FA7CBD23F1483D00975B03 /* ReadPostTableViewCell.swift in Sources */,
 				64FC72D423FBF0D2004F2A07 /* CircularTransition.swift in Sources */,
+				64B7078E24147AE3001248B6 /* ImageTableViewCell.swift in Sources */,
 				64FA58D223FE91F0003D7353 /* FilterCollectionViewCell.swift in Sources */,
 				64FA58CD23FE8C48003D7353 /* FilterTableViewHeaderView.swift in Sources */,
 				6406275C23EA936700086434 /* ReadPostViewController.swift in Sources */,
@@ -806,6 +813,7 @@
 				64FBDA8924066B930089D9EA /* CategoryTableViewCell.swift in Sources */,
 				64FC819923E7EE2D0027DDEE /* ChatRoomTableViewCell.swift in Sources */,
 				64FBDA7624050B590089D9EA /* UIViewController+Extension.swift in Sources */,
+				64B7078A24147AD3001248B6 /* TextTableViewCell.swift in Sources */,
 				64FA8E502403BCEE000A1334 /* ProfileViewController.swift in Sources */,
 				64FA429A23E341440065DCEF /* ArticleTableViewCell.swift in Sources */,
 				64FBDA7924050C340089D9EA /* LoadingViewController.swift in Sources */,

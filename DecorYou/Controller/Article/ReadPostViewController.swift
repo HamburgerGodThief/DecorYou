@@ -13,9 +13,30 @@ import FirebaseFirestoreSwift
 
 class ReadPostViewController: UIViewController {
     
-    @IBOutlet weak var readPostTableView: UITableView!
+    @IBOutlet weak var tableView: UITableView! {
+        
+        didSet {
+            
+            tableView.delegate = self
+            
+            tableView.dataSource = self
+            
+            tableView.sectionHeaderHeight = 80
+            
+            tableView.estimatedRowHeight = 150
+            
+            tableView.rowHeight = UITableView.automaticDimension
+            
+            tableView.lk_registerCellWithNib(identifier: "TextTableViewCell", bundle: nil)
+            
+            tableView.lk_registerCellWithNib(identifier: "ImageTableViewCell", bundle: nil)
+            
+            tableView.separatorStyle = .none
+            
+        }
+        
+    }
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
-    
     var article: Article?
     var replys: [Reply] = []
     let leftbtn = UIButton()
@@ -24,19 +45,8 @@ class ReadPostViewController: UIViewController {
     var isLovePost: Bool = false
     let bottomView = UINib(nibName: "ReadPostBottomView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! ReadPostBottomView
     
-    func setTableView() {
-        readPostTableView.delegate = self
-        readPostTableView.dataSource = self
-        readPostTableView.lk_registerCellWithNib(identifier: String(describing: ReadPostTableViewCell.self), bundle: nil)
-        readPostTableView.sectionHeaderHeight = UITableView.automaticDimension
-        readPostTableView.estimatedSectionHeaderHeight = 250
-        
-        readPostTableView.estimatedRowHeight = 150
-        readPostTableView.rowHeight = UITableView.automaticDimension
-    }
-    
     func setBottomView() {
-        readPostTableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(bottomView)
         bottomView.translatesAutoresizingMaskIntoConstraints = false
@@ -50,7 +60,7 @@ class ReadPostViewController: UIViewController {
         
         bottomConstraint.isActive = false
         
-        readPostTableView.bottomAnchor.constraint(equalTo: bottomView.topAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: bottomView.topAnchor).isActive = true
     }
     
     func setBottomViewAction() {
@@ -140,7 +150,7 @@ class ReadPostViewController: UIViewController {
         isLovePost = !isLovePost
         
     }
-    
+    /*
     func getArticleInfo() {
         replys = []
         let group0 = DispatchGroup()
@@ -354,9 +364,165 @@ class ReadPostViewController: UIViewController {
             guard let strongSelf = self else { return }
             strongSelf.replys = ArticleManager.shared.hideBlockUserReplys(allReply: strongSelf.replys)
             strongSelf.replys = ArticleManager.shared.hideBlockUserComments(allReply: strongSelf.replys)
-            strongSelf.readPostTableView.reloadData()
+            strongSelf.tableView.reloadData()
         }
         
+    }
+    */
+    func getReplys() {
+        
+        //每次呼叫都先清空舊資料
+        replys = []
+        
+        let group0 = DispatchGroup()
+        let group1 = DispatchGroup()
+        let group2 = DispatchGroup()
+        let group3 = DispatchGroup()
+        let group4 = DispatchGroup()
+        let queue0 = DispatchQueue(label: "queue0")
+        let queue1 = DispatchQueue(label: "queue1")
+        let queue2 = DispatchQueue(label: "queue2")
+        let queue3 = DispatchQueue(label: "queue3")
+        
+        //由上一頁傳來的文章(樓主部分)，replys第0個永遠是樓主的
+        guard let article = article else { return }
+        
+        replys.append(Reply(author: article.author,
+                            authorObject: article.authorObject,
+                            content: article.content,
+                            createTime: article.createTime,
+                            replyID: article.postID,
+                            comments: []))
+        
+        //拿樓主的留言
+        group0.enter()
+        ArticleManager.shared.db.collection("article").document(article.postID).collection("comments").order(by: "createTime", descending: true).getDocuments(completion: { [weak self] (querySnapshot, err) in
+            guard let strongSelf = self else { return }
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                guard let querySnapShot = querySnapshot else { return }
+                
+                for document in querySnapShot.documents {
+                    do {
+                        if let comment = try document.data(as: Comment.self, decoder: Firestore.Decoder()) {
+                            strongSelf.replys[0].comments.append(comment)
+                        }
+                    } catch {
+                        print(error)
+                    }
+                }
+            }
+            group0.leave()
+        })
+        
+        //MARK: -- 拿樓主個人資訊
+        group1.enter()
+        group0.notify(queue: queue0) {
+            article.author.getDocument(completion: { [weak self] (document, err) in
+                guard let strongSelf = self else { return }
+                guard let document = document else { return }
+                do {
+                    if let authorOBJ = try document.data(as: User.self, decoder: Firestore.Decoder()) {
+                        strongSelf.replys[0].authorObject = authorOBJ
+                        group1.leave()
+                    }
+                } catch {
+                    print(error)
+                    return
+                }
+            })
+        }
+        
+        //MARK: -- 拿全部回覆
+        group2.enter()
+        group1.notify(queue: queue1) {
+            ArticleManager.shared.db.collection("article").document(article.postID).collection("replys").order(by: "createTime", descending: false).getDocuments(completion: { [weak self] (querySnapshot, err) in
+                guard let strongSelf = self else { return }
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    guard let querySnapShot = querySnapshot else { return }
+                    
+                    for document in querySnapShot.documents {
+                        do {
+                            
+                            if let reply = try document.data(as: Reply.self, decoder: Firestore.Decoder()) {
+                                strongSelf.replys.append(reply)
+                            }
+                        } catch {
+                            print(error)
+                            return
+                        }
+                    }
+                }
+                group2.leave()
+            })
+        }
+        
+        //MARK: -- 拿每一個回覆的作者資訊
+        group3.enter()
+        group2.notify(queue: queue2) {
+            if self.replys.count > 1 {
+                for count in 1..<self.replys.count {
+                    group3.enter()
+                    self.replys[count].author.getDocument(completion: { [weak self] (document, err) in
+                        guard let strongSelf = self else { return }
+                        guard let document = document else { return }
+                        do {
+                            if let replyAuthor = try document.data(as: User.self, decoder: Firestore.Decoder()) {
+                                strongSelf.replys[count].authorObject = replyAuthor
+                                group3.leave()
+                            }
+                        } catch {
+                            print(error)
+                            return
+                        }
+                    })
+                }
+            }
+            group3.leave()
+        }
+        
+        //MARK: -- 拿回覆的留言
+        group4.enter()
+        group3.notify(queue: queue3) { [weak self] in
+            guard let strongSelf = self else { return }
+            
+            if strongSelf.replys.count > 1 {
+                for order in 1..<strongSelf.replys.count {
+                    group4.enter()
+                    ArticleManager.shared.db.collection("article").document(article.postID).collection("replys").document(strongSelf.replys[order].replyID).collection("comments").order(by: "createTime", descending: true).getDocuments(completion: { (querySnapShot, err) in
+                        if let err = err {
+                            print("Error getting documents: \(err)")
+                        } else {
+                            guard let querySnapShot = querySnapShot else { return }
+                            for document in querySnapShot.documents {
+                                do {
+                                    if let comment = try document.data(as: Comment.self, decoder: Firestore.Decoder()) {
+                                        strongSelf.replys[order].comments.append(comment)
+                                        
+                                    }
+                                } catch {
+                                    print(error)
+                                    return
+                                }
+                            }
+                        }
+                        group4.leave()
+                    })
+                }
+            }
+            group4.leave()
+            
+        }
+        
+        group4.notify(queue: DispatchQueue.main) { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.replys = ArticleManager.shared.hideBlockUserReplys(allReply: strongSelf.replys)
+//            strongSelf.replys = ArticleManager.shared.hideBlockUserComments(allReply: strongSelf.replys)
+            strongSelf.tableView.reloadData()
+        }
     }
     
     @objc func backToArticle() {
@@ -388,41 +554,41 @@ class ReadPostViewController: UIViewController {
     }
     
     @objc func sendCommentBelowMain(_ sender: UIButton) {
-        guard let footer = sender.superview?.superview as? ReadPostTableViewFooterView else { return }
-        if footer.commentTextField.text != nil {
-            guard let mainArticle = article else { return }
-            let newComment = ArticleManager.shared.db.collection("article").document("\(mainArticle.postID)").collection("comments").document()
-            guard let uid = UserDefaults.standard.string(forKey: "UserToken") else { return }
-            let authorRef = UserManager.shared.db.collection("users").document("\(uid)")
-            let comment = Comment(author: authorRef,
-                                  content: footer.commentTextField.text!,
-                                  createTime: Date(),
-                                  commentID: newComment.documentID)
-            ArticleManager.shared.commentMainPost(postID: mainArticle.postID, newCommentID: newComment.documentID, comment: comment)
-            getArticleInfo()
-            readPostTableView.reloadData()
-        }
+//        guard let footer = sender.superview?.superview as? ReadPostTableViewFooterView else { return }
+//        if footer.commentTextField.text != nil {
+//            guard let mainArticle = article else { return }
+//            let newComment = ArticleManager.shared.db.collection("article").document("\(mainArticle.postID)").collection("comments").document()
+//            guard let uid = UserDefaults.standard.string(forKey: "UserToken") else { return }
+//            let authorRef = UserManager.shared.db.collection("users").document("\(uid)")
+//            let comment = Comment(author: authorRef,
+//                                  content: footer.commentTextField.text!,
+//                                  createTime: Date(),
+//                                  commentID: newComment.documentID)
+//            ArticleManager.shared.commentMainPost(postID: mainArticle.postID, newCommentID: newComment.documentID, comment: comment)
+//            getArticleInfo()
+//            tableView.reloadData()
+//        }
     }
     
     @objc func sendCommentBelowReply(_ sender: UIButton) {
-        guard let footer = sender.superview?.superview as? ReadPostTableViewFooterView else { return }
-        guard let order = footer.order else { return }
-        if footer.commentTextField.text != nil {
-            guard let mainArticle = article else { return }
-            let newComment = ArticleManager.shared.db.collection("article").document("\(mainArticle.postID)").collection("replys").document("\(replys[order].replyID)").collection("comments").document()
-            guard let uid = UserDefaults.standard.string(forKey: "UserToken") else { return }
-            let authorRef = UserManager.shared.db.collection("users").document("\(uid)")
-            let comment = Comment(author: authorRef,
-                                  content: footer.commentTextField.text!,
-                                  createTime: Date(),
-                                  commentID: newComment.documentID)
-            ArticleManager.shared.commentReplyPost(postID: mainArticle.postID,
-                                                   replyID: replys[order].replyID,
-                                                   newCommentID: newComment.documentID,
-                                                   comment: comment)
-            getArticleInfo()
-            readPostTableView.reloadData()
-        }
+//        guard let footer = sender.superview?.superview as? ReadPostTableViewFooterView else { return }
+//        guard let order = footer.order else { return }
+//        if footer.commentTextField.text != nil {
+//            guard let mainArticle = article else { return }
+//            let newComment = ArticleManager.shared.db.collection("article").document("\(mainArticle.postID)").collection("replys").document("\(replys[order].replyID)").collection("comments").document()
+//            guard let uid = UserDefaults.standard.string(forKey: "UserToken") else { return }
+//            let authorRef = UserManager.shared.db.collection("users").document("\(uid)")
+//            let comment = Comment(author: authorRef,
+//                                  content: footer.commentTextField.text!,
+//                                  createTime: Date(),
+//                                  commentID: newComment.documentID)
+//            ArticleManager.shared.commentReplyPost(postID: mainArticle.postID,
+//                                                   replyID: replys[order].replyID,
+//                                                   newCommentID: newComment.documentID,
+//                                                   comment: comment)
+//            getArticleInfo()
+//            tableView.reloadData()
+//        }
     }
     
     @objc func presentReportAlert(_ sender: UIButton) {
@@ -449,7 +615,7 @@ class ReadPostViewController: UIViewController {
             guard let strongSelf = self else { return }
             
             if let cell = sender.superview?.superview as? ReadPostTableViewCell {
-                guard let indexPath = strongSelf.readPostTableView.indexPath(for: cell) else { return }
+                guard let indexPath = strongSelf.tableView.indexPath(for: cell) else { return }
                 user.blockUser.append(strongSelf.replys[indexPath.section].comments[indexPath.row].authorObject!.uid)
                 UserManager.shared.updateBlockUser(blockUser: user.blockUser)
             } else {
@@ -478,10 +644,10 @@ class ReadPostViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setTableView()
         setBottomView()
         setBottomViewAction()
-        getArticleInfo()
+//        getArticleInfo()
+        getReplys()
         checkLovePost()
     }
 }
@@ -498,38 +664,67 @@ extension ReadPostViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return replys[section].comments.count
+        return replys[section].content.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ReadPostTableViewCell.self), for: indexPath) as? ReadPostTableViewCell else { return UITableViewCell() }
-        cell.logoImg.loadImage(replys[indexPath.section].comments[indexPath.row].authorObject?.img, placeHolder: UIImage(systemName: "person.crop.circle"))
-        cell.tintColor = .lightGray
-        cell.createTimeLabel.text = "\(replys[indexPath.section].comments[indexPath.row].createTimeString)"
-        cell.contentLabel.text = replys[indexPath.section].comments[indexPath.row].content
-        cell.authorNameLabel.text = replys[indexPath.section].comments[indexPath.row].authorObject?.name
-        cell.reportBtn.addTarget(self, action: #selector(presentReportAlert), for: .touchUpInside)
-        return cell
+                
+        if replys[indexPath.section].content[indexPath.row].contains("https://firebasestorage.googleapis") {
+            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ImageTableViewCell", for: indexPath) as? ImageTableViewCell else { return UITableViewCell() }
+            
+            cell.photoImg.loadImage(replys[indexPath.section].content[indexPath.row], placeHolder: UIImage())
+            
+            return cell
+            
+        } else {
+            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TextTableViewCell", for: indexPath) as? TextTableViewCell else { return UITableViewCell() }
+            
+            cell.textView.text = replys[indexPath.section].content[indexPath.row]
+            
+            cell.textView.isScrollEnabled = false
+            
+            cell.textView.isUserInteractionEnabled = false
+            
+            return cell
+            
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UINib(nibName: "ReadPostTableViewHeaderView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! ReadPostTableViewHeaderView
+        
         if section == 0 {
+            
             headerView.floorTimeLabel.text = "樓主 | \(replys[section].createTimeString)"
+            
         } else {
+            
             headerView.floorTimeLabel.text = "\(section)樓 | \(replys[section].createTimeString)"
+            
         }
         
         headerView.authorName.text = replys[section].authorObject?.name
+        
         headerView.logoImg.loadImage(replys[section].authorObject?.img, placeHolder: UIImage(systemName: "person.crop.circle"))
+        
         headerView.logoImg.tintColor = .lightGray
-//        headerView.contentLabel.text = replys[section].content
+        
         headerView.reportBtn.tag = section
+        
         headerView.reportBtn.addTarget(self, action: #selector(presentReportAlert), for: .touchUpInside)
         
         return headerView
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        return 70
+        
+    }
+    /*
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footerView = UINib(nibName: "ReadPostTableViewFooterView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! ReadPostTableViewFooterView
         footerView.order = section
@@ -545,4 +740,5 @@ extension ReadPostViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return tableView.frame.height / 10
     }
+    */
 }

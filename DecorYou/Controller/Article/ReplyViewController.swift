@@ -58,8 +58,8 @@ class ReplyViewController: UIViewController {
     
     @objc func createPost() {
         sendPost()
-        parentVC?.getArticleInfo()
-        parentVC?.readPostTableView.reloadData()
+        parentVC?.getReplys()
+        parentVC?.tableView.reloadData()
         navigationController?.popViewController(animated: true)
     }
     

@@ -30,6 +30,10 @@ class TextViewController: UIViewController {
             
             tableView.rowHeight = UITableView.automaticDimension
             
+            tableView.lk_registerCellWithNib(identifier: "TextTableViewCell", bundle: nil)
+            
+            tableView.lk_registerCellWithNib(identifier: "ImageTableViewCell", bundle: nil)
+            
         }
         
     }
@@ -62,7 +66,7 @@ class TextViewController: UIViewController {
     
     @objc func removeImgCell(_ sender: UIButton) {
         
-        guard let cell = sender.superview?.superview as? ImageViewTableViewCell else { return }
+        guard let cell = sender.superview?.superview as? ImageTableViewCell else { return }
         
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         
@@ -96,7 +100,7 @@ extension TextViewController: UITableViewDelegate, UITableViewDataSource {
         
         if content[indexPath.row].cellType == .textView {
             
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TextViewTableViewCell", for: indexPath) as? TextViewTableViewCell else { return UITableViewCell() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TextTableViewCell", for: indexPath) as? TextTableViewCell else { return UITableViewCell() }
             
             cell.textView.delegate = self
             
@@ -110,7 +114,7 @@ extension TextViewController: UITableViewDelegate, UITableViewDataSource {
             
         } else {
             
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ImageViewTableViewCell", for: indexPath) as? ImageViewTableViewCell else { return UITableViewCell() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ImageTableViewCell", for: indexPath) as? ImageTableViewCell else { return UITableViewCell() }
             
             if let image = content[indexPath.row] as? NewPostImage {
                 
@@ -150,7 +154,7 @@ extension TextViewController: UITextViewDelegate {
         textView.frame.size.height = size.height
         
         //拿到現在這個textView的Cell
-        guard let cell = textView.superview?.superview as? TextViewTableViewCell else { return true }
+        guard let cell = textView.superview?.superview as? TextTableViewCell else { return true }
         
         //拿其他visible cell
         let visibleCells = tableView.visibleCells
@@ -186,7 +190,7 @@ extension TextViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         
         //Pass TextView indexPath row for inserting image cell into correct position
-        guard let cell = textView.superview?.superview as? TextViewTableViewCell else { return }
+        guard let cell = textView.superview?.superview as? TextTableViewCell else { return }
         
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         
@@ -196,7 +200,7 @@ extension TextViewController: UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         
-        guard let cell = textView.superview?.superview as? TextViewTableViewCell else { return }
+        guard let cell = textView.superview?.superview as? TextTableViewCell else { return }
         
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         

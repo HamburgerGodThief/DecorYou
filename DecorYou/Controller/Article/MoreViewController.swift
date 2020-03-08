@@ -53,8 +53,8 @@ extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            parentVC?.getArticleInfo()
-            parentVC?.readPostTableView.reloadData()
+            parentVC?.getReplys()
+            parentVC?.tableView.reloadData()
             dismiss(animated: true, completion: nil)
         case 1:
             dismiss(animated: true, completion: nil)
