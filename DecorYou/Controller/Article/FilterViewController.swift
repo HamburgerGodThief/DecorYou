@@ -133,6 +133,7 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
         let headerView = UINib(nibName: "FilterTableViewHeaderView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! FilterTableViewHeaderView
         headerView.sectionTitleLabel.text = sectionHeaderTitle[section]
         return headerView
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

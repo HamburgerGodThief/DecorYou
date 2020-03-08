@@ -642,6 +642,11 @@ class ReadPostViewController: UIViewController {
         present(reportAlertController, animated: true, completion: nil)
     }
     
+    @objc func presentCommentVC(_ sender: UIButton) {
+        
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setBottomView()
@@ -674,6 +679,8 @@ extension ReadPostViewController: UITableViewDelegate, UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ImageTableViewCell", for: indexPath) as? ImageTableViewCell else { return UITableViewCell() }
             
             cell.photoImg.loadImage(replys[indexPath.section].content[indexPath.row], placeHolder: UIImage())
+            
+            cell.removeBtn.isHidden = true
             
             return cell
             
@@ -724,21 +731,20 @@ extension ReadPostViewController: UITableViewDelegate, UITableViewDataSource {
         return 70
         
     }
-    /*
+    
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        
         let footerView = UINib(nibName: "ReadPostTableViewFooterView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! ReadPostTableViewFooterView
-        footerView.order = section
-        switch section {
-        case 0:
-            footerView.sendBtn.addTarget(self, action: #selector(sendCommentBelowMain), for: .touchUpInside)
-        default:
-            footerView.sendBtn.addTarget(self, action: #selector(sendCommentBelowReply), for: .touchUpInside)
-        }
+        
+        footerView.moreCommentBtn.addTarget(self, action: #selector(presentCommentVC), for: .touchUpInside)
+        
+        footerView.moreCommentBtn.setTitle("還有\(replys[section].comments.count)則留言", for: .normal)
+                        
         return footerView
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return tableView.frame.height / 10
+        return 40
     }
-    */
+    
 }
