@@ -257,31 +257,27 @@ class ArticleManager {
     
     
     //若留言作者是當前user的黑名單，則替換文字
-    func hideBlockUserComments(allReply: [Reply]) -> [Reply] {
+    func hideBlockUserComments(allComments: [Comment]) -> [Comment] {
         
         guard let user = UserManager.shared.user else { return [] }
         
-        var replys: [Reply] = []
+        var comments: [Comment] = []
         
-        replys = allReply.map({
+        comments = allComments.map({
             
-            var reply = $0
-            
-            for index in 0..<reply.comments.count {
+            var comment = $0
+                            
+            if user.blockUser.contains(comment.authorObject!.uid) {
                 
-                if user.blockUser.contains(reply.comments[index].authorObject!.uid) {
-                    
-                    reply.comments[index].content = "該用戶已被你封鎖，你看不見該用戶的訊息"
-                    
-                }
+                comment.content = "該用戶已被你封鎖，你看不見該用戶的訊息"
                 
             }
             
-            return reply
+            return comment
             
         })
         
-        return replys
+        return comments
     }
     
     //收藏文章

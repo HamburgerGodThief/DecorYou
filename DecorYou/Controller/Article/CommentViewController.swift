@@ -127,9 +127,14 @@ class CommentViewController: UIViewController {
                                       createTime: Date(),
                                       commentID: newCommentRef!.documentID)
                 
+                
                 ArticleManager.shared.commentMainPost(postID: mainArticleID,
                                                       newCommentID: newCommentRef!.documentID,
                                                       comment: comment)
+                
+                comments.insert(comment, at: 0)
+                
+                comments[0].authorObject = UserManager.shared.user
                 
             } else {
                 
@@ -144,7 +149,22 @@ class CommentViewController: UIViewController {
                                                        replyID: replyID,
                                                        newCommentID: newCommentRef!.documentID,
                                                        comment: comment)
+                
+                comments.insert(comment, at: 0)
+                
+                comments[0].authorObject = UserManager.shared.user
+                
             }
+            
+            //過濾掉黑名單訊息
+            comments = ArticleManager.shared.hideBlockUserComments(allComments: comments)
+            
+            //讓鍵盤下去，並且清空textField裡面文字
+            view.endEditing(true)
+            
+            textField.text = nil
+            
+            tableView.reloadData()
             
         }
         
@@ -197,6 +217,14 @@ class CommentViewController: UIViewController {
     
     @objc func dismissCommentVC(_ sender: UIButton) {
         
+        guard let tab = presentingViewController as? STTabBarViewController else { return }
+        
+        guard let nav = tab.selectedViewController as? UINavigationController else { return }
+        
+        guard let readVC = nav.viewControllers[1] as? ReadPostViewController else { return }
+        
+        readVC.getReplys()
+        
         dismiss(animated: true, completion: nil)
         
     }
@@ -212,7 +240,6 @@ class CommentViewController: UIViewController {
         
         tableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
 
-        // Do any additional setup after loading the view.
     }
     
 }
