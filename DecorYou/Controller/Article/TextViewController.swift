@@ -10,8 +10,8 @@ import UIKit
 
 protocol TextViewControllerDelegate: AnyObject {
     
-    func passToCreateVC(_ textViewController: TextViewController)
-    
+    func passToParentVC(_ textViewController: TextViewController)
+        
 }
 
 class TextViewController: UIViewController {
@@ -206,7 +206,7 @@ extension TextViewController: UITextViewDelegate {
         
         content[indexPath.row] = NewPostTextView(text: textView.text)
         
-        delegate?.passToCreateVC(self)
+        delegate?.passToParentVC(self)
         
     }
     
@@ -233,7 +233,7 @@ extension TextViewController: UIImagePickerControllerDelegate, UINavigationContr
             
         }
         
-        delegate?.passToCreateVC(self)
+        delegate?.passToParentVC(self)
                         
         dismiss(animated: true, completion: nil)
         

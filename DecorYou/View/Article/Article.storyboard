@@ -209,7 +209,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xsg-C0-XvD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="403" y="750"/>
+            <point key="canvasLocation" x="403" y="597"/>
         </scene>
         <!--More View Controller-->
         <scene sceneID="8AE-3c-mxP">
@@ -239,7 +239,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FAI-DY-3VB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1067" y="750"/>
+            <point key="canvasLocation" x="1067" y="597"/>
         </scene>
         <!--Comment View Controller-->
         <scene sceneID="19c-N1-qT5">
@@ -321,7 +321,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e1U-8v-POY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1769.5652173913045" y="750"/>
+            <point key="canvasLocation" x="1770" y="597"/>
         </scene>
         <!--Reply View Controller-->
         <scene sceneID="gs5-yG-zO7">
@@ -332,59 +332,66 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iE2-Ls-Bz9">
-                                <rect key="frame" x="20" y="52" width="54" height="54"/>
-                                <color key="backgroundColor" red="0.75686274509999996" green="0.63137254899999995" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <rect key="frame" x="12" y="56" width="54" height="54"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="54" id="GiV-ZF-0rp"/>
                                     <constraint firstAttribute="width" secondItem="iE2-Ls-Bz9" secondAttribute="height" multiplier="1:1" id="cmv-pr-roa"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fGu-fD-RVJ">
-                                <rect key="frame" x="82" y="56" width="47" height="25.5"/>
+                                <rect key="frame" x="74" y="60" width="47" height="25.5"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="R3g-5y-0Qh">
-                                <rect key="frame" x="0.0" y="116" width="414" height="337"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RE: 開箱工業宅輕裝潢" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lrf-xa-DSw">
-                                <rect key="frame" x="82" y="83" width="159" height="22.5"/>
+                                <rect key="frame" x="74" y="87" width="159" height="22.5"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gQY-Q5-wtS">
+                                <rect key="frame" x="0.0" y="129" width="414" height="733"/>
+                                <connections>
+                                    <segue destination="7JC-Pp-nB1" kind="embed" id="Fqi-LZ-f4K"/>
+                                </connections>
+                            </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t1o-50-Pyn">
+                                <rect key="frame" x="0.0" y="122" width="414" height="1"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="Hd8-wV-aWF"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Lrf-xa-DSw" firstAttribute="leading" secondItem="iE2-Ls-Bz9" secondAttribute="trailing" constant="8" id="3RA-pV-a9F"/>
+                            <constraint firstItem="gQY-Q5-wtS" firstAttribute="top" secondItem="t1o-50-Pyn" secondAttribute="bottom" constant="6" id="4vX-HB-Ffj"/>
+                            <constraint firstItem="gQY-Q5-wtS" firstAttribute="trailing" secondItem="DcS-CT-of1" secondAttribute="trailing" id="9uP-2m-T6Y"/>
                             <constraint firstItem="Lrf-xa-DSw" firstAttribute="top" secondItem="fGu-fD-RVJ" secondAttribute="bottom" constant="1.5" id="AYd-Jk-99i"/>
-                            <constraint firstItem="R3g-5y-0Qh" firstAttribute="top" secondItem="iE2-Ls-Bz9" secondAttribute="bottom" constant="10" id="CjX-hf-ypC"/>
-                            <constraint firstItem="R3g-5y-0Qh" firstAttribute="leading" secondItem="DcS-CT-of1" secondAttribute="leading" id="QpD-dz-R29"/>
-                            <constraint firstItem="iE2-Ls-Bz9" firstAttribute="leading" secondItem="DcS-CT-of1" secondAttribute="leading" constant="20" id="UT4-o4-O7o"/>
+                            <constraint firstItem="DcS-CT-of1" firstAttribute="trailing" secondItem="t1o-50-Pyn" secondAttribute="trailing" id="HPp-Ib-SyN"/>
+                            <constraint firstItem="t1o-50-Pyn" firstAttribute="top" secondItem="iE2-Ls-Bz9" secondAttribute="bottom" constant="12" id="Q61-kb-MTw"/>
+                            <constraint firstItem="iE2-Ls-Bz9" firstAttribute="leading" secondItem="DcS-CT-of1" secondAttribute="leading" constant="12" id="UT4-o4-O7o"/>
+                            <constraint firstItem="t1o-50-Pyn" firstAttribute="leading" secondItem="DcS-CT-of1" secondAttribute="leading" id="Uh9-GJ-Eum"/>
                             <constraint firstItem="fGu-fD-RVJ" firstAttribute="leading" secondItem="iE2-Ls-Bz9" secondAttribute="trailing" constant="8" id="Wbb-Zy-XI7"/>
-                            <constraint firstItem="DcS-CT-of1" firstAttribute="trailing" secondItem="R3g-5y-0Qh" secondAttribute="trailing" id="Zfw-jw-anH"/>
+                            <constraint firstItem="gQY-Q5-wtS" firstAttribute="leading" secondItem="DcS-CT-of1" secondAttribute="leading" id="cCG-dr-R0D"/>
+                            <constraint firstItem="gQY-Q5-wtS" firstAttribute="bottom" secondItem="DcS-CT-of1" secondAttribute="bottom" id="haw-zR-KGE"/>
                             <constraint firstItem="fGu-fD-RVJ" firstAttribute="top" secondItem="iE2-Ls-Bz9" secondAttribute="top" constant="4" id="hlO-5t-rq8"/>
-                            <constraint firstItem="R3g-5y-0Qh" firstAttribute="bottom" secondItem="DcS-CT-of1" secondAttribute="centerY" id="jPl-n0-c4G"/>
-                            <constraint firstItem="iE2-Ls-Bz9" firstAttribute="top" secondItem="DcS-CT-of1" secondAttribute="top" constant="8" id="y18-V5-mVB"/>
+                            <constraint firstItem="iE2-Ls-Bz9" firstAttribute="top" secondItem="DcS-CT-of1" secondAttribute="top" constant="12" id="y18-V5-mVB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DcS-CT-of1"/>
                     </view>
                     <connections>
                         <outlet property="logoImg" destination="iE2-Ls-Bz9" id="iNq-yI-xWM"/>
                         <outlet property="nameLabel" destination="fGu-fD-RVJ" id="1WG-ps-EJM"/>
-                        <outlet property="replyContentTextView" destination="R3g-5y-0Qh" id="EGt-q4-5Av"/>
                         <outlet property="titleLabel" destination="Lrf-xa-DSw" id="VFH-zL-O04"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YTY-cK-wK2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2654" y="68"/>
+            <point key="canvasLocation" x="1829" y="-81"/>
         </scene>
         <!--Create Post View Controller-->
         <scene sceneID="HUZ-vC-p9z">
@@ -477,7 +484,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T9Q-94-iZ2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1830" y="-632"/>
+            <point key="canvasLocation" x="1829" y="-915"/>
         </scene>
         <!--Article Type View Controller-->
         <scene sceneID="0pc-NS-UZk">
@@ -572,11 +579,11 @@
             <objects>
                 <viewController storyboardIdentifier="TextViewController" id="7JC-Pp-nB1" customClass="TextViewController" customModule="DecorYou" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gqi-B0-Vhm">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="682"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="733"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oCd-2U-pGh">
-                                <rect key="frame" x="0.0" y="44" width="414" height="638"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="689"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -626,7 +633,7 @@
                     <viewLayoutGuide key="safeArea" id="HpV-kI-Sd1"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="2606" y="-632"/>
+            <point key="canvasLocation" x="2613" y="-479"/>
         </scene>
         <!--Unboxing View Controller-->
         <scene sceneID="kZP-5Y-85J">
@@ -703,7 +710,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oHs-eD-LTj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1828" y="-189"/>
+            <point key="canvasLocation" x="1828" y="-479"/>
         </scene>
     </scenes>
     <resources>
@@ -718,4 +725,7 @@
             <color red="0.89800000190734863" green="0.89800000190734863" blue="0.89800000190734863" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Fqi-LZ-f4K"/>
+    </inferredMetricsTieBreakers>
 </document>

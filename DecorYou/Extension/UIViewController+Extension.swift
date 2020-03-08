@@ -14,9 +14,7 @@ extension UIViewController {
         
         let loadingVC = LoadingViewController()
         
-        loadingVC.modalPresentationStyle = .overFullScreen
-        
-//        loadingVC.modalTransitionStyle = .crossDissolve
+        loadingVC.modalPresentationStyle = .overCurrentContext
         
         present(loadingVC, animated: false, completion: nil)
         

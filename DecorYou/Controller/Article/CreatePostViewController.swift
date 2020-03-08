@@ -287,8 +287,10 @@ extension CreatePostViewController: UnboxingViewControllerDelegate {
 
 extension CreatePostViewController: TextViewControllerDelegate {
     
-    func passToCreateVC(_ textViewController: TextViewController) {
+    func passToParentVC(_ textViewController: TextViewController) {
+        
         articleContent = textViewController.content
+        
     }
     
 }

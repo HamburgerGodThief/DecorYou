@@ -29,7 +29,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" white="0.0" alpha="0.3145333904109589" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="XGy-5M-dNL" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="0Gn-QL-PS8"/>
                 <constraint firstItem="XGy-5M-dNL" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.5" id="DiF-ls-aEJ"/>

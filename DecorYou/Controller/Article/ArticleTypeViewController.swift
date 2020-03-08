@@ -24,7 +24,7 @@ class ArticleTypeViewController: UIViewController {
     }
     var parentVC: CreatePostViewController!
     
-    let typeAry: [String] = ["房地產相關", "居家修繕", "設計與裝潢", "開箱", "廣告宣傳"]
+    let typeAry: [String] = ["房產相關", "居家修繕", "設計裝潢", "開箱", "廣告宣傳"]
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()

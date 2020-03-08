@@ -51,6 +51,8 @@ class CommentViewController: UIViewController {
     
     var isInitialArticle: Bool = false
     
+    var initialCommentCount: Int = 0
+    
     func getAuthorInfoInComments() {
                 
         let group = DispatchGroup()
@@ -217,13 +219,17 @@ class CommentViewController: UIViewController {
     
     @objc func dismissCommentVC(_ sender: UIButton) {
         
-        guard let tab = presentingViewController as? STTabBarViewController else { return }
+        if initialCommentCount < comments.count {
         
-        guard let nav = tab.selectedViewController as? UINavigationController else { return }
-        
-        guard let readVC = nav.viewControllers[1] as? ReadPostViewController else { return }
-        
-        readVC.getReplys()
+            guard let tab = presentingViewController as? STTabBarViewController else { return }
+            
+            guard let nav = tab.selectedViewController as? UINavigationController else { return }
+            
+            guard let readVC = nav.viewControllers[1] as? ReadPostViewController else { return }
+            
+            readVC.getReplys()
+            
+        }
         
         dismiss(animated: true, completion: nil)
         
@@ -239,6 +245,8 @@ class CommentViewController: UIViewController {
         tableView.layer.cornerRadius = 30
         
         tableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        
+        initialCommentCount = comments.count
 
     }
     
