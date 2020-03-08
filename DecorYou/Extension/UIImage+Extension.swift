@@ -87,7 +87,7 @@ enum ImageAsset: String {
     
     //Sign In
     case Icons_24px_Google
-    
+    case Icons_24px_Close
 }
 
 // swiftlint:enable identifier_name

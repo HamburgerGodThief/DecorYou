@@ -609,22 +609,15 @@ class ReadPostViewController: UIViewController {
             SwiftMes.shared.showSuccessMessage(title: "已成功檢舉該用戶", body: "我們會將此用戶放入觀察名單", seconds: 1.5)
         }
         
-        //先判斷按鈕是來自文章的旗子還是留言區的旗子，再拿取user現有封鎖清單，把被封鎖人的uid append進去再上傳
+        //先拿取user現有封鎖清單，把被封鎖人的uid append進去再上傳
         let blockUserAction = UIAlertAction(title: "封鎖", style: .default) { [weak self] (Void) in
             
             guard let strongSelf = self else { return }
             
-            if let cell = sender.superview?.superview as? ReadPostTableViewCell {
-                guard let indexPath = strongSelf.tableView.indexPath(for: cell) else { return }
-                user.blockUser.append(strongSelf.replys[indexPath.section].comments[indexPath.row].authorObject!.uid)
-                UserManager.shared.updateBlockUser(blockUser: user.blockUser)
-            } else {
+            user.blockUser.append(strongSelf.replys[sender.tag].authorObject!.uid)
+        
+            UserManager.shared.updateBlockUser(blockUser: user.blockUser)
                 
-                user.blockUser.append(strongSelf.replys[sender.tag].authorObject!.uid)
-                UserManager.shared.updateBlockUser(blockUser: user.blockUser)
-                
-            }
-            
             SwiftMes.shared.showSuccessMessage(title: "已成功封鎖該用戶", body: "以後都看不到該用戶發布的內容囉", seconds: 1.5)
             
         }
@@ -644,6 +637,22 @@ class ReadPostViewController: UIViewController {
     
     @objc func presentCommentVC(_ sender: UIButton) {
         
+        let storyboard = UIStoryboard.init(name: "Article", bundle: nil)
+        
+        guard let commentVC = storyboard.instantiateViewController(identifier: "CommentViewController") as? CommentViewController else { return }
+        
+        commentVC.comments = replys[sender.tag].comments
+        
+        commentVC.mainArticleID = replys[sender.tag].replyID
+        
+        commentVC.replyID = replys[sender.tag].replyID
+        
+        if sender.tag == 0 {
+            
+            commentVC.isInitialArticle = true
+        }
+                
+        present(commentVC, animated: true, completion: nil)
         
     }
     
@@ -701,6 +710,7 @@ extension ReadPostViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
         let headerView = UINib(nibName: "ReadPostTableViewHeaderView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! ReadPostTableViewHeaderView
         
         if section == 0 {
@@ -738,7 +748,18 @@ extension ReadPostViewController: UITableViewDelegate, UITableViewDataSource {
         
         footerView.moreCommentBtn.addTarget(self, action: #selector(presentCommentVC), for: .touchUpInside)
         
-        footerView.moreCommentBtn.setTitle("還有\(replys[section].comments.count)則留言", for: .normal)
+        if replys[section].comments.count == 0 {
+            
+            footerView.moreCommentBtn.setTitle("發表留言", for: .normal)
+            
+        } else {
+            
+            footerView.moreCommentBtn.setTitle("還有\(replys[section].comments.count)則留言", for: .normal)
+            
+        }
+        
+        
+        footerView.moreCommentBtn.tag = section
                         
         return footerView
     }

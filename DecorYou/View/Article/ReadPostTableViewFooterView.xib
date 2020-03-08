@@ -18,9 +18,9 @@
                     <rect key="frame" x="0.0" y="0.0" width="384" height="41"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qtD-x4-dQx">
-                            <rect key="frame" x="177" y="4.5" width="30" height="32"/>
+                            <rect key="frame" x="149.5" y="4.5" width="85" height="32"/>
                             <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
-                            <state key="normal">
+                            <state key="normal" title="還有xx則留言">
                                 <color key="titleColor" name="mainColor"/>
                             </state>
                         </button>

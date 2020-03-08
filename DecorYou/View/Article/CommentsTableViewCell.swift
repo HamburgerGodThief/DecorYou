@@ -1,5 +1,5 @@
 //
-//  ReadPostTableViewCell.swift
+//  CommentsTableViewCell.swift
 //  DecorYou
 //
 //  Created by Hamburger on 2020/2/10.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ReadPostTableViewCell: UITableViewCell {
+class CommentsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
