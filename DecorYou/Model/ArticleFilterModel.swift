@@ -1,5 +1,5 @@
 //
-//  FilterModel.swift
+//  ArticleFilterModel.swift
 //  DecorYou
 //
 //  Created by Hamburger on 2020/2/22.
