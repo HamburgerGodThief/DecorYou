@@ -55,13 +55,10 @@ extension CircularTransition: UIViewControllerAnimatedTransitioning {
             circle.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
             containerView.addSubview(circle)
             
-            
-            
             toVC.view.center = startingPoint
             toVC.view.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
             toVC.view.alpha = 0
             containerView.addSubview(toVC.view)
-            
             
             UIView.animate(withDuration: duration, delay: 0, options: .curveEaseInOut, animations: {
                 self.circle.transform = CGAffineTransform.identity
@@ -72,7 +69,9 @@ extension CircularTransition: UIViewControllerAnimatedTransitioning {
             }, completion: { success in
                 transitionContext.completeTransition(success)
             })
+            
         } else {
+            
             guard let returningVC = transitionContext.viewController(forKey: .from) else {
                 transitionContext.completeTransition(false)
                 return

@@ -38,6 +38,7 @@ struct LocationCondition: ConditionDelegate {
 }
 
 struct SizeMinCondition: ConditionDelegate {
+    
     var conditionType: String = "SizeMinCondition"
 
     var conditionValue: Int
@@ -49,9 +50,9 @@ struct SizeMinCondition: ConditionDelegate {
 }
 
 struct SizeMaxCondition: ConditionDelegate {
+    
     var conditionType: String = "SizeMaxCondition"
     
-
     var conditionValue: Int
     
     func filter(data: [Article]) -> [Article] {
@@ -61,9 +62,9 @@ struct SizeMaxCondition: ConditionDelegate {
 }
 
 struct ReplyMinCondition: ConditionDelegate {
+    
     var conditionType: String = "ReplyMinCondition"
     
-
     var conditionValue: Int
     
     func filter(data: [Article]) -> [Article] {
@@ -73,8 +74,8 @@ struct ReplyMinCondition: ConditionDelegate {
 }
 
 struct ReplyMaxCondition: ConditionDelegate {
-    var conditionType: String = "ReplyMaxCondition"
     
+    var conditionType: String = "ReplyMaxCondition"
 
     var conditionValue: Int
     
@@ -85,9 +86,9 @@ struct ReplyMaxCondition: ConditionDelegate {
 }
 
 struct LoveMinCondition: ConditionDelegate {
+    
     var conditionType: String = "LoveMinCondition"
     
-
     var conditionValue: Int
     
     func filter(data: [Article]) -> [Article] {
@@ -98,9 +99,8 @@ struct LoveMinCondition: ConditionDelegate {
 }
 
 struct LoveMaxCondition: ConditionDelegate {
-    var conditionType: String = "LoveMaxCondition"
     
-
+    var conditionType: String = "LoveMaxCondition"
     var conditionValue: Int
     
     func filter(data: [Article]) -> [Article] {

@@ -86,6 +86,7 @@ class UserManager {
             print("Error writing city to Firestore: \(error)")
         }
     }
+    
     //創建Profolio
     func addProfolio(profolio: Profolio) {
         guard let uid = UserDefaults.standard.string(forKey: "UserToken") else { return }
@@ -298,4 +299,5 @@ class UserManager {
             }
         }
     }
+    
 }

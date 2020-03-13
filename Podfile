@@ -17,4 +17,15 @@ target 'DecorYou' do
   pod 'Kingfisher', '~> 5.0'
   pod 'lottie-ios'
   pod 'SwiftMessages'
+
+  target 'DecorYouTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'DecorYouUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
 end

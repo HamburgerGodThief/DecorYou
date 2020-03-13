@@ -10,7 +10,23 @@ import FirebaseCore
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
-struct Article: Codable {
+struct Article: Codable, Equatable {
+    
+    static func == (lhs: Article, rhs: Article) -> Bool {
+        if lhs.title == rhs.title,
+            lhs.type == rhs.type,
+            lhs.author == rhs.author,
+            lhs.content == rhs.content,
+            lhs.decorateStyle == rhs.decorateStyle,
+            lhs.location == rhs.location,
+            lhs.loveCount == rhs.loveCount,
+            lhs.postID == rhs.postID
+             {
+            return true
+        } else {
+            return false
+        }
+    }
     
     let title: String
     let type: String

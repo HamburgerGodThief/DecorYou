@@ -38,6 +38,16 @@
                ReferencedContainer = "container:DecorYou.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "642697622416237400799A42"
+               BuildableName = "DecorYouUITests.xctest"
+               BlueprintName = "DecorYouUITests"
+               ReferencedContainer = "container:DecorYou.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

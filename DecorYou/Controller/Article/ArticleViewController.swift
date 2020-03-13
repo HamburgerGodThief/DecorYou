@@ -335,10 +335,12 @@ extension ArticleViewController: UITableViewDelegate, UITableViewDataSource {
         guard let authorObject = article.authorObject else { return UITableViewCell() }
         if isChangeLayout == false {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ArticleTableViewCell.self), for: indexPath) as? ArticleTableViewCell else { return UITableViewCell() }
+                        
             cell.fillData(authorImgURLString: authorObject.img,
                           titleLabel: article.title,
                           nameTimeLabel: "\(authorObject.name)・\(article.intervalString)",
                           contentLabel: article.content[0])
+            
             cell.collectionView.delegate = self
             cell.collectionView.dataSource = self
             cell.collectionView.lk_registerCellWithNib(identifier: "FilterCollectionViewCell", bundle: nil)

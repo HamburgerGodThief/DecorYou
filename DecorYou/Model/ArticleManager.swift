@@ -16,6 +16,8 @@ class ArticleManager {
     
     private init() {}
     
+//    let db: Firestore
+
     lazy var db = Firestore.firestore()
     
     //創建貼文
@@ -94,7 +96,7 @@ class ArticleManager {
     //剔除文章作者是當前user的黑名單
     func hideBlockUserPost(nonBlock: [Article]) -> [Article] {
         
-        guard let user = UserManager.shared.user else { return [] }
+        guard let user = UserManager.shared.user else { return nonBlock }
         
         var articles: [Article] = []
                 
@@ -124,7 +126,7 @@ class ArticleManager {
     //若回文作者是當前user的黑名單，則替換文字
     func hideBlockUserReplys(allReply: [Reply]) -> [Reply] {
         
-        guard let user = UserManager.shared.user else { return [] }
+        guard let user = UserManager.shared.user else { return allReply }
         
         var replys: [Reply] = []
         
@@ -149,7 +151,7 @@ class ArticleManager {
     //若留言作者是當前user的黑名單，則替換文字
     func hideBlockUserComments(allComments: [Comment]) -> [Comment] {
         
-        guard let user = UserManager.shared.user else { return [] }
+        guard let user = UserManager.shared.user else { return allComments }
         
         var comments: [Comment] = []
         
