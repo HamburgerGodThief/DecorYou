@@ -61,7 +61,7 @@ class CommentViewController: UIViewController {
             
             group.enter()
             
-            comments[index].author.getDocument(completion: { [weak self] (document, err) in
+            comments[index].author.getDocument(completion: { [weak self] (document, _) in
                 
                 guard let strongSelf = self else { return }
                 
@@ -115,20 +115,19 @@ class CommentViewController: UIViewController {
             //拿到currentUser ref，作為authorRef
             guard let uid = UserDefaults.standard.string(forKey: "UserToken") else { return }
             
-            let authorRef = UserManager.shared.db.collection("users").document("\(uid)")
+            let authorRef = UserManager.shared.dbF.collection("users").document("\(uid)")
             
             var newCommentRef: DocumentReference?
             
             //先判斷現在commentVC是樓主的還是其他樓層的，才能將留言放入正確位置
             if isInitialArticle {
                 
-                newCommentRef = ArticleManager.shared.db.collection("article").document(mainArticleID).collection("comments").document()
+                newCommentRef = ArticleManager.shared.dbF.collection("article").document(mainArticleID).collection("comments").document()
                 
                 let comment = Comment(author: authorRef,
                                       content: textField.text!,
                                       createTime: Date(),
                                       commentID: newCommentRef!.documentID)
-                
                 
                 ArticleManager.shared.commentMainPost(postID: mainArticleID,
                                                       newCommentID: newCommentRef!.documentID,
@@ -140,7 +139,7 @@ class CommentViewController: UIViewController {
                 
             } else {
                 
-                newCommentRef = ArticleManager.shared.db.collection("article").document(mainArticleID).collection("replys").document(replyID).collection("comments").document()
+                newCommentRef = ArticleManager.shared.dbF.collection("article").document(mainArticleID).collection("replys").document(replyID).collection("comments").document()
                 
                 let comment = Comment(author: authorRef,
                                       content: textField.text!,
@@ -186,13 +185,13 @@ class CommentViewController: UIViewController {
         
         // 建立3個 UIAlertAction 的實體，在 UIAlertController actionSheet 的 動作 (action) 與標題
 
-        let reportUserAction = UIAlertAction(title: "檢舉", style: .default) { (Void) in
+        let reportUserAction = UIAlertAction(title: "檢舉", style: .default) { (_) in
             
             SwiftMes.shared.showSuccessMessage(title: "已成功檢舉該用戶", body: "我們會將此用戶放入觀察名單", seconds: 1.5)
         }
         
         //拿取user現有封鎖清單，把被封鎖人的uid append進去再上傳
-        let blockUserAction = UIAlertAction(title: "封鎖", style: .default) { [weak self] (Void) in
+        let blockUserAction = UIAlertAction(title: "封鎖", style: .default) { [weak self] (_) in
             
             guard let strongSelf = self else { return }
             
@@ -204,7 +203,7 @@ class CommentViewController: UIViewController {
             
         }
         
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel) { (Void) in
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel) { (_) in
             reportAlertController.dismiss(animated: true, completion: nil)
         }
 
@@ -331,4 +330,3 @@ extension CommentViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
 }
-

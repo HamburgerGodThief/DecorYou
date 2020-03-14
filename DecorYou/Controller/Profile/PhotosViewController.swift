@@ -11,7 +11,6 @@ import Photos
 
 class PhotosViewController: UIViewController {
     
-    
     @IBOutlet weak var closeBtn: UIButton!
     @IBOutlet weak var photoCollectionView: UICollectionView!
     var photoArray: [UIImage] = []
@@ -51,7 +50,7 @@ class PhotosViewController: UIViewController {
                                         targetSize: CGSize(width: 500, height: 500),
                                         contentMode: .aspectFill,
                                         options: imgRequestOption,
-                                        resultHandler: { [weak self] (img, err) in
+                                        resultHandler: { [weak self] (img, _) in
                                             guard let strongSelf = self else { return }
                                             guard let img = img else { return }
                                             strongSelf.photoArray.append(img)
@@ -160,4 +159,3 @@ extension PhotosViewController: UICollectionViewDelegate {
     }
     
 }
-

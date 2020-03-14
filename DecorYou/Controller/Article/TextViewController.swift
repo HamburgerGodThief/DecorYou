@@ -137,7 +137,6 @@ extension TextViewController: UITableViewDelegate, UITableViewDataSource {
         return global
     }
     
-    
 }
 
 extension TextViewController: UITextViewDelegate {
@@ -147,7 +146,7 @@ extension TextViewController: UITextViewDelegate {
         //改變textView高度
         let frame = textView.frame
         
-        let constrainSize = CGSize(width:frame.size.width, height: CGFloat(MAXFLOAT))
+        let constrainSize = CGSize(width: frame.size.width, height: CGFloat(MAXFLOAT))
         
         let size = textView.sizeThatFits(constrainSize)
         
@@ -214,7 +213,7 @@ extension TextViewController: UITextViewDelegate {
 
 extension TextViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
                 
         // 取得從 UIImagePickerController 選擇的檔案
         if let pickedImage = info[.originalImage] as? UIImage {

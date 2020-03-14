@@ -13,8 +13,9 @@ import GoogleSignIn
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
-    
+    // swiftlint:disable force_cast
     static let shared = UIApplication.shared.delegate as! AppDelegate
+    // swiftlint:enable force_cast
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -40,11 +41,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
       // ...
     }
     
-    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any])
+    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any])
       -> Bool {
       return GIDSignIn.sharedInstance().handle(url)
     }
     
-    
 }
-

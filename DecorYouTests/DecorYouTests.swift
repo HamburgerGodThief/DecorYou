@@ -9,7 +9,7 @@
 import XCTest
 @testable import DecorYou
 import Firebase
-
+// swiftlint:disable all
 class SizeMinConditionTests: XCTestCase {
     
     var sut: SizeMinCondition!
@@ -41,7 +41,7 @@ class SizeMinConditionTests: XCTestCase {
                                    postID: "",
                                    size: 10,
                                    collaborator: [],
-                                   author: UserManager.shared.db.collection("users").document(),
+                                   author: UserManager.shared.dbF.collection("users").document(),
                                    authorObject: nil)
         
         let secondArticle = Article(title: "",
@@ -55,7 +55,7 @@ class SizeMinConditionTests: XCTestCase {
                                     postID: "",
                                     size: 15,
                                     collaborator: [],
-                                    author: UserManager.shared.db.collection("users").document(),
+                                    author: UserManager.shared.dbF.collection("users").document(),
                                     authorObject: nil)
         
         let thirdArticle = Article(title: "",
@@ -69,7 +69,7 @@ class SizeMinConditionTests: XCTestCase {
                                    postID: "",
                                    size: 30,
                                    collaborator: [],
-                                   author: UserManager.shared.db.collection("users").document(),
+                                   author: UserManager.shared.dbF.collection("users").document(),
                                    authorObject: nil)
         
         let fourAricle = Article(title: "",
@@ -83,7 +83,7 @@ class SizeMinConditionTests: XCTestCase {
                                  postID: "",
                                  size: 30,
                                  collaborator: [],
-                                 author: UserManager.shared.db.collection("users").document(),
+                                 author: UserManager.shared.dbF.collection("users").document(),
                                  authorObject: nil)
         
         let data = [firstArticle, secondArticle, thirdArticle, fourAricle]
@@ -97,5 +97,5 @@ class SizeMinConditionTests: XCTestCase {
         XCTAssertEqual(testResult, expectedValue2)
     }
     
-    
 }
+// swiftlint:enable all

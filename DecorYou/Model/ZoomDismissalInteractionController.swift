@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+// swiftlint:disable all
 class ZoomDismissalInteractionController: NSObject {
     
     var transitionContext: UIViewControllerContextTransitioning?
@@ -30,12 +30,11 @@ class ZoomDismissalInteractionController: NSObject {
                 return
         }
         
-        
         fromReferenceImageView.isHidden = true
         
         let anchorPoint = CGPoint(x: fromReferenceImageViewFrame.midX, y: fromReferenceImageViewFrame.midY)
         let translatedPoint = gestureRecognizer.translation(in: fromReferenceImageView)
-        let verticalDelta : CGFloat = translatedPoint.y < 0 ? 0 : translatedPoint.y
+        let verticalDelta: CGFloat = translatedPoint.y < 0 ? 0 : translatedPoint.y
 
         let backgroundAlpha = backgroundAlphaFor(view: fromVC.view, withPanningVerticalDelta: verticalDelta)
         let scale = scaleFor(view: fromVC.view, withPanningVerticalDelta: verticalDelta)
@@ -69,7 +68,7 @@ class ZoomDismissalInteractionController: NSObject {
                         fromVC.view.alpha = 1.0
                         toVC.tabBarController?.tabBar.alpha = 0
                 },
-                    completion: { completed in
+                    completion: { _ in
                         
                         toReferenceImageView.isHidden = false
                         fromReferenceImageView.isHidden = false
@@ -95,7 +94,7 @@ class ZoomDismissalInteractionController: NSObject {
                             transitionImageView.frame = finalTransitionSize
                             toVC.tabBarController?.tabBar.alpha = 1
                             
-            }, completion: { completed in
+            }, completion: { _ in
                 
                 transitionImageView.removeFromSuperview()
                 toReferenceImageView.isHidden = false
@@ -111,7 +110,7 @@ class ZoomDismissalInteractionController: NSObject {
     }
     
     func backgroundAlphaFor(view: UIView, withPanningVerticalDelta verticalDelta: CGFloat) -> CGFloat {
-        let startingAlpha:CGFloat = 1.0
+        let startingAlpha: CGFloat = 1.0
         let finalAlpha: CGFloat = 0.0
         let totalAvailableAlpha = startingAlpha - finalAlpha
         
@@ -122,7 +121,7 @@ class ZoomDismissalInteractionController: NSObject {
     }
     
     func scaleFor(view: UIView, withPanningVerticalDelta verticalDelta: CGFloat) -> CGFloat {
-        let startingScale:CGFloat = 1.0
+        let startingScale: CGFloat = 1.0
         let finalScale: CGFloat = 0.5
         let totalAvailableScale = startingScale - finalScale
         
@@ -168,3 +167,4 @@ extension ZoomDismissalInteractionController: UIViewControllerInteractiveTransit
         }
     }
 }
+// swiftlint:enable all

@@ -5,7 +5,7 @@
 //  Created by Hamburger on 2020/2/22.
 //  Copyright © 2020 Hamburger. All rights reserved.
 //
-protocol ConditionDelegate {
+protocol ConditionProtocol {
     
     var conditionType: String { get set }
     
@@ -13,7 +13,7 @@ protocol ConditionDelegate {
     
 }
 
-struct StyleCondition: ConditionDelegate {
+struct StyleCondition: ConditionProtocol {
     
     var conditionType: String = "StyleCondition"
     
@@ -25,7 +25,7 @@ struct StyleCondition: ConditionDelegate {
     }
 }
 
-struct LocationCondition: ConditionDelegate {
+struct LocationCondition: ConditionProtocol {
     
     var conditionType: String = "LocationCondition"
     
@@ -37,7 +37,7 @@ struct LocationCondition: ConditionDelegate {
     }
 }
 
-struct SizeMinCondition: ConditionDelegate {
+struct SizeMinCondition: ConditionProtocol {
     
     var conditionType: String = "SizeMinCondition"
 
@@ -49,7 +49,7 @@ struct SizeMinCondition: ConditionDelegate {
     }
 }
 
-struct SizeMaxCondition: ConditionDelegate {
+struct SizeMaxCondition: ConditionProtocol {
     
     var conditionType: String = "SizeMaxCondition"
     
@@ -61,7 +61,7 @@ struct SizeMaxCondition: ConditionDelegate {
     }
 }
 
-struct ReplyMinCondition: ConditionDelegate {
+struct ReplyMinCondition: ConditionProtocol {
     
     var conditionType: String = "ReplyMinCondition"
     
@@ -73,7 +73,7 @@ struct ReplyMinCondition: ConditionDelegate {
     }
 }
 
-struct ReplyMaxCondition: ConditionDelegate {
+struct ReplyMaxCondition: ConditionProtocol {
     
     var conditionType: String = "ReplyMaxCondition"
 
@@ -85,7 +85,7 @@ struct ReplyMaxCondition: ConditionDelegate {
     }
 }
 
-struct LoveMinCondition: ConditionDelegate {
+struct LoveMinCondition: ConditionProtocol {
     
     var conditionType: String = "LoveMinCondition"
     
@@ -98,7 +98,7 @@ struct LoveMinCondition: ConditionDelegate {
     
 }
 
-struct LoveMaxCondition: ConditionDelegate {
+struct LoveMaxCondition: ConditionProtocol {
     
     var conditionType: String = "LoveMaxCondition"
     var conditionValue: Int

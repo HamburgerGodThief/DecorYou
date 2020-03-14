@@ -49,6 +49,7 @@ class ArticleViewController: UIViewController {
         
         allArticle = []
         finalArticles = []
+        
         var loadingVC: LoadingViewController?
         if shouldShowLoadingVC {
             loadingVC = presentLoadingVC()
@@ -74,8 +75,7 @@ class ArticleViewController: UIViewController {
             guard let strongSelf = self else { return }
             for order in 0..<strongSelf.allArticle.count {
                 group1.enter()
-                ArticleManager.shared.fetchPostAuthorRef(authorRef: strongSelf.allArticle[order].author, completion: {
-                    result in
+                ArticleManager.shared.fetchPostAuthorRef(authorRef: strongSelf.allArticle[order].author, completion: { result in
                     switch result {
                     case .success(let authorOBJ):
                         strongSelf.allArticle[order].authorObject = authorOBJ

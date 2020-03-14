@@ -28,18 +28,18 @@ class ProfolioTestViewController: UIViewController {
     //after the device rotates are pushed to this ViewController. This is required
     //to ensure the collectionView.convert() function calculates the proper
     //frame result inside referenceImageViewFrameInTransitioningView()
-    var currentLeftSafeAreaInset  : CGFloat = 0.0
-    var currentRightSafeAreaInset : CGFloat = 0.0
+    var currentLeftSafeAreaInset: CGFloat = 0.0
+    var currentRightSafeAreaInset: CGFloat = 0.0
     
     func reOrderProfolio() {
         guard let profolio = profolio else { return }
         photoSet = profolio.dataSet
         var finalSet: [PhotoSet] = []
         
-        for set in photoSet {
-            if set.images.isEmpty != true {
-                finalSet.append(set)
-            }
+        for set in photoSet where set.images.isEmpty != true {
+            
+            finalSet.append(set)
+            
         }
         
         photoSet = finalSet
@@ -78,45 +78,12 @@ class ProfolioTestViewController: UIViewController {
         
     }
     
-    override func viewWillLayoutSubviews() {
-        
-        //Only perform these changes for devices running iOS 11 and later. This is called
-        //inside viewWillLayoutSubviews() instead of viewWillTransition() because when the
-        //device rotates, the navBarHeight and statusBarHeight will be calculated inside
-        //viewWillTransition() using the current orientation, and not the orientation
-        //that the device will be at the end of the transition.
-        
-        //By the time that viewWillLayoutSubviews() is called, the views frames have been
-        //properly updated for the new orientation, so the navBar and statusBar height values
-        //can be calculated and applied directly as per the code below
-        
-//        if #available(iOS 11, *) {
-//            
-//            self.view.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: self.view.bounds.size)
-//            self.collectionView.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: self.view.bounds.size)
-//            
-//            self.collectionView.contentInsetAdjustmentBehavior = .never
-////            let statusBarHeight : CGFloat = UIApplication.shared.statusBarFrame.height
-//            let navBarHeight : CGFloat = navigationController?.navigationBar.frame.height ?? 0
-//            self.edgesForExtendedLayout = .all
-//            let tabBarHeight = self.tabBarController?.tabBar.frame.height ?? 0
-//            
-//            if UIDevice.current.orientation.isLandscape {
-//                self.collectionView.contentInset = UIEdgeInsets(top: (navBarHeight) + statusBarHeight, left: self.currentLeftSafeAreaInset, bottom: tabBarHeight, right: self.currentRightSafeAreaInset)
-//            }
-//            else {
-//                self.collectionView.contentInset = UIEdgeInsets(top: (navBarHeight) + statusBarHeight, left: 0.0, bottom: tabBarHeight, right: 0.0)
-//            }
-//        }
-    }
-    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         
         if #available(iOS 11, *) {
             //Do nothing
-        }
-        else {
+        } else {
             
             //Support for devices running iOS 10 and below
             
@@ -158,13 +125,13 @@ class ProfolioTestViewController: UIViewController {
         
         if segue.identifier == "ShowPhotoPageView" {
             let nav = self.navigationController
-            let vc = segue.destination as! PhotoPageContainerViewController
-            nav?.delegate = vc.transitionController
-            vc.transitionController.fromDelegate = self
-            vc.transitionController.toDelegate = vc
-            vc.delegate = self
-            vc.currentIndex = self.selectedIndexPath.row
-            vc.photos = self.photoSet[selectedIndexPath.section].images
+            guard let photoPageVC = segue.destination as? PhotoPageContainerViewController else { return }
+            nav?.delegate = photoPageVC.transitionController
+            photoPageVC.transitionController.fromDelegate = self
+            photoPageVC.transitionController.toDelegate = photoPageVC
+            photoPageVC.delegate = self
+            photoPageVC.currentIndex = self.selectedIndexPath.row
+            photoPageVC.photos = self.photoSet[selectedIndexPath.section].images
         }
     }
     
@@ -205,7 +172,7 @@ extension ProfolioTestViewController: UICollectionViewDataSource, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(ResumeCollectionViewCell.self)", for: indexPath) as! ResumeCollectionViewCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(ResumeCollectionViewCell.self)", for: indexPath) as? ResumeCollectionViewCell else { return UICollectionViewCell() }
         cell.profolioImg.loadImage(photoSet[indexPath.section].images[indexPath.item], placeHolder: UIImage(systemName: "person.crop.circle"))
         cell.profolioImg.tintColor = .lightGray
         return cell
@@ -258,8 +225,7 @@ extension ProfolioTestViewController: UICollectionViewDataSource, UICollectionVi
             }
             //The PhotoCollectionViewCell was found in the collectionView, return the image
             return guardedCell.profolioImg
-        }
-        else {
+        } else {
             
             //Guard against nil return values
             guard let guardedCell = self.collectionView.cellForItem(at: self.selectedIndexPath) as? ResumeCollectionViewCell else {
@@ -310,7 +276,6 @@ extension ProfolioTestViewController: UICollectionViewDataSource, UICollectionVi
     
 }
 
-
 extension ProfolioTestViewController: PhotoPageContainerViewControllerDelegate {
  
     func containerViewController(_ containerViewController: PhotoPageContainerViewController, indexDidUpdate currentIndex: Int) {
@@ -326,7 +291,8 @@ extension ProfolioTestViewController: ZoomAnimatorDelegate {
     }
     
     func transitionDidEndWith(zoomAnimator: ZoomAnimator) {
-        let cell = self.collectionView.cellForItem(at: self.selectedIndexPath) as! ResumeCollectionViewCell
+        
+        guard let cell = self.collectionView.cellForItem(at: self.selectedIndexPath) as? ResumeCollectionViewCell else { return }
         
         let cellFrame = self.collectionView.convert(cell.frame, to: self.view)
         

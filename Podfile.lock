@@ -308,6 +308,7 @@ PODS:
     - nanopb/encode (= 0.3.9011)
   - nanopb/decode (0.3.9011)
   - nanopb/encode (0.3.9011)
+  - SwiftLint (0.39.1)
   - SwiftMessages (7.0.1):
     - SwiftMessages/App (= 7.0.1)
   - SwiftMessages/App (7.0.1)
@@ -323,6 +324,7 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift
   - Kingfisher (~> 5.0)
   - lottie-ios
+  - SwiftLint
   - SwiftMessages
 
 SPEC REPOS:
@@ -356,6 +358,7 @@ SPEC REPOS:
     - leveldb-library
     - lottie-ios
     - nanopb
+    - SwiftLint
     - SwiftMessages
 
 SPEC CHECKSUMS:
@@ -388,8 +391,9 @@ SPEC CHECKSUMS:
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   lottie-ios: 85ce835dd8c53e02509f20729fc7d6a4e6645a0a
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
+  SwiftLint: 55e96a4a4d537d4a3156859fc1c54bd24851a046
   SwiftMessages: b577dc7043be8b299857ab35bb663dbff6483bd0
 
-PODFILE CHECKSUM: 346c5b2f7267a5e763979997570763738c06a1a7
+PODFILE CHECKSUM: 1c103bea2c57d8cf9b4dc8a15da680b68d9db0af
 
 COCOAPODS: 1.9.0

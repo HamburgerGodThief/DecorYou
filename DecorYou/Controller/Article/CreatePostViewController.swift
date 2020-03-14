@@ -95,7 +95,7 @@ class CreatePostViewController: UIViewController {
 
         if let uploadData = img.jpegData(compressionQuality: 0.5) {
             // 這行就是 FirebaseStorage 關鍵的存取方法。
-            storageRef.putData(uploadData, metadata: nil, completion: { (data, error) in
+            storageRef.putData(uploadData, metadata: nil, completion: { (_, error) in
 
                 if error != nil {
 
@@ -105,14 +105,14 @@ class CreatePostViewController: UIViewController {
                 }
                 
                 //將圖片的URL傳出去
-                storageRef.downloadURL(completion: {(url, error) in
+                storageRef.downloadURL(completion: {(url, _) in
                     guard let imgURL = url?.absoluteString else { return }
                     completion(.success(imgURL))
                 })
             })
         }
     }
-    
+        
     @objc func createPost() {
         //檢查貼文標題有無值
         guard let title = titleTextField.text else {
@@ -143,9 +143,9 @@ class CreatePostViewController: UIViewController {
         }
         
         //建立新貼文
-        let newPost = ArticleManager.shared.db.collection("article").document()
+        let newPost = ArticleManager.shared.dbF.collection("article").document()
         guard let uid = UserDefaults.standard.string(forKey: "UserToken") else { return }
-        let author = UserManager.shared.db.collection("users").document(uid)
+        let author = UserManager.shared.dbF.collection("users").document(uid)
         
         var content: [String] = []
         
@@ -235,7 +235,7 @@ class CreatePostViewController: UIViewController {
             //先讀取User現有的selfPost，再更新User的selfPost
             guard let user = UserManager.shared.user else { return }
             let currentSelfPost = user.selfPost
-            let newPostRef = ArticleManager.shared.db.collection("article").document(newPost.documentID)
+            let newPostRef = ArticleManager.shared.dbF.collection("article").document(newPost.documentID)
             var updateSelfPost = currentSelfPost
             updateSelfPost.append(newPostRef)
             UserManager.shared.updateUserSelfPost(uid: uid, selfPost: updateSelfPost)
@@ -243,6 +243,44 @@ class CreatePostViewController: UIViewController {
             strongSelf.tabBarController?.tabBar.isHidden = false
         }
         
+    }
+    
+    func putURLIntoArray(articleContent: [NewPostData], content: [String], newPostID: String, completion: @escaping ([String]) -> Void) {
+        
+        var content = content
+        
+        let group = DispatchGroup()
+        
+        for order in 0..<articleContent.count {
+            
+            //檢查articleContent的element是屬於圖片還是文字資料
+            guard let newPostImage = articleContent[order] as? NewPostImage else {
+                
+                continue
+                
+            }
+            
+            //上傳圖片至firebase Storage，並取回網址
+            group.enter()
+            uploadImgStorage(postID: newPostID,
+                             img: newPostImage.image,
+                             index: order,
+                             completion: { result in
+                                switch result {
+                                case.success(let url):
+                                    content[order] = url
+                                    group.leave()
+                                case.failure(let error):
+                                    print(error)
+                                    group.leave()
+                                }
+            })
+            
+        }
+        
+        group.notify(queue: .main) {
+            completion(content)
+        }
         
     }
     
@@ -294,5 +332,3 @@ extension CreatePostViewController: TextViewControllerDelegate {
     }
     
 }
-
-

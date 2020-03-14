@@ -76,7 +76,7 @@ class CraftsmenResumeViewController: UIViewController {
         
         fetchProfolio()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(fetchProfolio), name: NSNotification.Name("UpdateProfolio") , object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(fetchProfolio), name: NSNotification.Name("UpdateProfolio"), object: nil)
     
     }
     

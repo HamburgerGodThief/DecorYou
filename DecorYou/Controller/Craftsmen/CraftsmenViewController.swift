@@ -131,7 +131,7 @@ class CraftsmenViewController: UIViewController {
     @objc func configureSlideInFilter() {
         searchResultLabel.isHidden = true
         guard let tabBarController = tabBarController as? STTabBarViewController else { return }
-        present(tabBarController.craftsmenFilterVC , animated: false, completion: nil)
+        present(tabBarController.craftsmenFilterVC, animated: false, completion: nil)
     }
     
     override func viewDidLoad() {

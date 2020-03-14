@@ -25,7 +25,6 @@ class CircularTransition: NSObject {
     var transitionMode: PresentMode = .present
 }
 
-
 extension CircularTransition: UIViewControllerAnimatedTransitioning {
  
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {

@@ -25,8 +25,8 @@ class ResumeViewController: UIViewController {
     let columnCount: CGFloat = 3
     
     @IBAction func startConversation(_ sender: Any) {
-        guard let chatViewController = UIStoryboard.chat.instantiateInitialViewController() as? ChatViewController else { return }
-        navigationController?.pushViewController(chatViewController, animated: true)
+        //guard let chatViewController = UIStoryboard.chat.instantiateInitialViewController() as? ChatViewController else { return }
+        //navigationController?.pushViewController(chatViewController, animated: true)
     }
     
     func setNavigationBar() {

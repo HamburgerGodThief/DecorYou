@@ -16,20 +16,18 @@ class ArticleManager {
     
     private init() {}
     
-//    let db: Firestore
-
-    lazy var db = Firestore.firestore()
+    lazy var dbF = Firestore.firestore()
     
     //創建貼文
     func addPost(newPostID: String, article: Article) {
         do {
-            try db.collection("article").document(newPostID).setData(from: article)
+            try dbF.collection("article").document(newPostID).setData(from: article)
         } catch {
             print("Error writing city to Firestore: \(error)")
         }
     }
     
-    func fetchPostRef(postRef: DocumentReference ,completion: @escaping (Result<Article, Error>) -> Void) {
+    func fetchPostRef(postRef: DocumentReference, completion: @escaping (Result<Article, Error>) -> Void) {
         postRef.getDocument(completion: { (document, err) in
             
             if let err = err {
@@ -51,7 +49,7 @@ class ArticleManager {
     //fetch所有文章
     func fetchAllPost(completion: @escaping (Result<[Article], Error>) -> Void) {
         
-        db.collection("article").order(by: "createTime", descending: true).getDocuments() { (querySnapshot, err) in
+        dbF.collection("article").order(by: "createTime", descending: true).getDocuments { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
@@ -62,7 +60,7 @@ class ArticleManager {
                         if let article = try document.data(as: Article.self, decoder: Firestore.Decoder()) {
                             articles.append(article)
                         }
-                    } catch{
+                    } catch {
                         completion(.failure(error))
                         return
                     }
@@ -147,7 +145,6 @@ class ArticleManager {
         return replys
     }
     
-    
     //若留言作者是當前user的黑名單，則替換文字
     func hideBlockUserComments(allComments: [Comment]) -> [Comment] {
         
@@ -175,7 +172,7 @@ class ArticleManager {
     //收藏文章
     func addLovePostCount(postID: String, loveCount: Int) {
         
-        db.collection("article").document(postID).setData(["loveCount": loveCount], merge: true) { err in
+        dbF.collection("article").document(postID).setData(["loveCount": loveCount], merge: true) { err in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
@@ -186,10 +183,10 @@ class ArticleManager {
     }
     
     //回覆文章
-    func replyPost(postID: String, replyCount: Int ,newReplyID: String, reply: Reply) {
+    func replyPost(postID: String, replyCount: Int, newReplyID: String, reply: Reply) {
         
-        do { try db.collection("article").document("\(postID)").collection("replys").document(newReplyID).setData(from: reply)
-            db.collection("article").document(postID).setData(["replyCount": replyCount], merge: true) { err in
+        do { try dbF.collection("article").document("\(postID)").collection("replys").document(newReplyID).setData(from: reply)
+            dbF.collection("article").document(postID).setData(["replyCount": replyCount], merge: true) { err in
                 if let err = err {
                     print("Error getting documents: \(err)")
                 } else {
@@ -203,7 +200,7 @@ class ArticleManager {
     
     //樓主文章的留言
     func commentMainPost(postID: String, newCommentID: String, comment: Comment) {
-        do { try db.collection("article").document("\(postID)").collection("comments").document(newCommentID).setData(from: comment)
+        do { try dbF.collection("article").document("\(postID)").collection("comments").document(newCommentID).setData(from: comment)
         } catch {
             print("Error writing city to Firestore: \(error)")
         }
@@ -211,7 +208,7 @@ class ArticleManager {
     
     //回文的留言
     func commentReplyPost(postID: String, replyID: String, newCommentID: String, comment: Comment) {
-        do { try db.collection("article").document("\(postID)").collection("replys").document(replyID).collection("comments").document(newCommentID).setData(from: comment)
+        do { try dbF.collection("article").document("\(postID)").collection("replys").document(replyID).collection("comments").document(newCommentID).setData(from: comment)
         } catch {
             print("Error writing city to Firestore: \(error)")
         }

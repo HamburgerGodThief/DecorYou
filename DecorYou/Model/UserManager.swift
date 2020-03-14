@@ -76,12 +76,12 @@ class UserManager {
     
     private init() {}
     
-    lazy var db = Firestore.firestore()
+    lazy var dbF = Firestore.firestore()
     
     //創建用戶
     func addUserData(uid: String, user: User) {
         do {
-            try db.collection("users").document(uid).setData(from: user)
+            try dbF.collection("users").document(uid).setData(from: user)
         } catch {
             print("Error writing city to Firestore: \(error)")
         }
@@ -91,7 +91,7 @@ class UserManager {
     func addProfolio(profolio: Profolio) {
         guard let uid = UserDefaults.standard.string(forKey: "UserToken") else { return }
         do {
-            try db.collection("users").document(uid).collection("Profolio").document().setData(from: profolio)
+            try dbF.collection("users").document(uid).collection("Profolio").document().setData(from: profolio)
         } catch {
             print("Error writing city to Firestore: \(error)")
         }
@@ -99,7 +99,7 @@ class UserManager {
     
     //讀取所有User
     func fetchAllUser(completion: @escaping (Result<[User], Error>) -> Void) {
-        db.collection("users").getDocuments() {(querySnapshot, err) in
+        dbF.collection("users").getDocuments {(querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
@@ -110,7 +110,7 @@ class UserManager {
                         if let user = try document.data(as: User.self, decoder: Firestore.Decoder()) {
                             allUser.append(user)
                         }
-                    } catch{
+                    } catch {
                         completion(.failure(error))
                         return
                     }
@@ -122,7 +122,7 @@ class UserManager {
     
     //讀取所有匠人
     func fetchAllCraftsmen(completion: @escaping (Result<[User], Error>) -> Void) {
-        db.collection("users").whereField("character", isEqualTo: "craftsmen").getDocuments() {(querySnapshot, err) in
+        dbF.collection("users").whereField("character", isEqualTo: "craftsmen").getDocuments {(querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
@@ -133,7 +133,7 @@ class UserManager {
                         if let craftsmen = try document.data(as: User.self, decoder: Firestore.Decoder()) {
                             allCraftsmen.append(craftsmen)
                         }
-                    } catch{
+                    } catch {
                         completion(.failure(error))
                         return
                     }
@@ -144,7 +144,7 @@ class UserManager {
     }
     
     func fetchCurrentUser(uid: String) {
-        db.collection("users").document(uid).getDocument() { (document, err) in
+        dbF.collection("users").document(uid).getDocument { (document, err) in
             
             if let err = err {
                 print("Error getting documents: \(err)")
@@ -167,7 +167,7 @@ class UserManager {
     }
     
     func fetchCurrentUser(uid: String, completion: @escaping (Result<User, Error>) -> Void) {
-        db.collection("users").document(uid).getDocument() { (document, err) in
+        dbF.collection("users").document(uid).getDocument { (document, err) in
             
             if let err = err {
                 print("Error getting documents: \(err)")
@@ -187,7 +187,7 @@ class UserManager {
     }
      
     func fetchSpecificCraftsmanProfolio(uid: String, completion: @escaping (Result<[Profolio], Error>) -> Void) {
-        db.collection("users").document(uid).collection("Profolio").getDocuments() { (querySnapshot, err) in
+        dbF.collection("users").document(uid).collection("Profolio").getDocuments { (querySnapshot, err) in
             
             if let err = err {
                 print("Error getting documents: \(err)")
@@ -199,7 +199,7 @@ class UserManager {
                         if let portfolio = try document.data(as: Profolio.self, decoder: Firestore.Decoder()) {
                             allPortfolio.append(portfolio)
                         }
-                    } catch{
+                    } catch {
                         completion(.failure(error))
                         return
                     }
@@ -211,7 +211,7 @@ class UserManager {
     
     //更新用戶大頭貼
     func updateUserImage(uid: String, img: String, completion: @escaping (() -> Void)) {
-        db.collection("users").document(uid).setData(["img": img], merge: true) { err in
+        dbF.collection("users").document(uid).setData(["img": img], merge: true) { err in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
@@ -223,7 +223,7 @@ class UserManager {
     
     //更新用戶背景照片
     func updateUserbackgroundImg(uid: String, backgroundImg: String, completion: @escaping (() -> Void) ) {
-        db.collection("users").document(uid).setData(["backgroundImg": backgroundImg], merge: true) { err in
+        dbF.collection("users").document(uid).setData(["backgroundImg": backgroundImg], merge: true) { err in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
@@ -235,7 +235,7 @@ class UserManager {
     
     //更新用戶自己貼文
     func updateUserSelfPost(uid: String, selfPost: [DocumentReference]) {
-        db.collection("users").document(uid).updateData([
+        dbF.collection("users").document(uid).updateData([
             "selfPost": selfPost
         ]) { err in
             if let err = err {
@@ -248,7 +248,7 @@ class UserManager {
     
     //更新用戶收藏貼文
     func updateUserLovePost(uid: String, lovePost: [DocumentReference]) {
-        db.collection("users").document(uid).updateData([
+        dbF.collection("users").document(uid).updateData([
             "lovePost": lovePost
         ]) { err in
             if let err = err {
@@ -261,7 +261,7 @@ class UserManager {
     
     //更新用戶名稱
     func updateUserName(uid: String, name: String) {
-        db.collection("users").document(uid).updateData([
+        dbF.collection("users").document(uid).updateData([
             "name": name
         ]) { err in
             if let err = err {
@@ -274,7 +274,7 @@ class UserManager {
     
     //更新用戶信箱
     func updateUserEmail(uid: String, email: String) {
-        db.collection("users").document(uid).updateData([
+        dbF.collection("users").document(uid).updateData([
             "email": email
         ]) { err in
             if let err = err {
@@ -288,7 +288,7 @@ class UserManager {
     //更新用戶封鎖者名單
     func updateBlockUser(blockUser: [String]) {
         guard let user = UserManager.shared.user else { return }
-        db.collection("users").document(user.uid).updateData([
+        dbF.collection("users").document(user.uid).updateData([
             "blockUser": blockUser
         ]) { err in
             if let err = err {

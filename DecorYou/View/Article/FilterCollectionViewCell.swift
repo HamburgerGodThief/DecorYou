@@ -13,14 +13,11 @@ class FilterCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var optionLabel: UILabel!
     var select: Bool = false {
         willSet {
-            if newValue == true
-            {
+            if newValue == true {
                 self.layer.borderWidth = 1.0
                 self.layer.borderColor = UIColor.assetColor(.mainColor)?.cgColor
                 self.backgroundColor = .white
-            }
-            else
-            {
+            } else {
                 self.layer.borderWidth = 0.0
                 self.backgroundColor = UIColor.assetColor(.shadowLightGray)
             }

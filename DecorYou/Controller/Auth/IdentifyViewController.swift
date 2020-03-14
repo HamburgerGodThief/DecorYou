@@ -26,7 +26,7 @@ class IdentifyViewController: UIViewController {
     
     func customerViewAddTapGesture() {
         
-        let singleFinger = UITapGestureRecognizer(target:self, action:#selector(popToCustomer))
+        let singleFinger = UITapGestureRecognizer(target: self, action: #selector(popToCustomer))
 
         singleFinger.numberOfTapsRequired = 1
 
@@ -37,7 +37,7 @@ class IdentifyViewController: UIViewController {
     
     func craftsmenViewAddTapGesture() {
         
-        let singleFinger = UITapGestureRecognizer(target:self, action:#selector(popToCraftsmen))
+        let singleFinger = UITapGestureRecognizer(target: self, action: #selector(popToCraftsmen))
 
         singleFinger.numberOfTapsRequired = 1
 
@@ -87,7 +87,6 @@ class IdentifyViewController: UIViewController {
         UserManager.shared.fetchCurrentUser(uid: appleUID)
         
     }
-    
     
     @objc func popToCustomer() {
         

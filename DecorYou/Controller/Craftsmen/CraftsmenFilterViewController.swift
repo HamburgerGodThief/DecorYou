@@ -15,7 +15,7 @@ class CraftsmenFilterViewController: UIViewController {
     @IBOutlet weak var resetBtn: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var dismissView: UIView!
-    var conditionsArray: [CraftsmenConditionDelegate] = []
+    var conditionsArray: [CraftsmenConditionProtocol] = []
     var firstConditionCell: [FilterCollectionViewCell] = []
     var secondConditionCell: [FilterCollectionViewCell] = []
     let itemSpace: CGFloat = 18
@@ -68,7 +68,7 @@ class CraftsmenFilterViewController: UIViewController {
     }
     
     func viewAddTapGesture() {
-        let singleFinger = UITapGestureRecognizer(target:self, action:#selector(singleTap))
+        let singleFinger = UITapGestureRecognizer(target: self, action: #selector(singleTap))
 
         singleFinger.numberOfTapsRequired = 1
 

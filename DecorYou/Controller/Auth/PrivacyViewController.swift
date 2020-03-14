@@ -20,5 +20,4 @@ class PrivacyViewController: UIViewController {
         wkWebView.load(urlRequest)
     }
     
-
 }

@@ -50,8 +50,7 @@ class FavoriteViewController: UIViewController {
             guard let strongSelf = self else { return }
             for order in 0..<strongSelf.lovePost.count {
                 group1.enter()
-                ArticleManager.shared.fetchPostAuthorRef(authorRef: strongSelf.lovePost[order].author, completion: {
-                    result in
+                ArticleManager.shared.fetchPostAuthorRef(authorRef: strongSelf.lovePost[order].author, completion: { result in
                     switch result {
                     case.success(let author):
                         strongSelf.lovePost[order].authorObject = author
@@ -80,7 +79,7 @@ class FavoriteViewController: UIViewController {
         setTableView()
         noArticleLabel.isHidden = true
         
-        NotificationCenter.default.addObserver(self, selector: #selector(getLovePost), name: NSNotification.Name("UpdateUserManager") , object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(getLovePost), name: NSNotification.Name("UpdateUserManager"), object: nil)
     }
 }
 

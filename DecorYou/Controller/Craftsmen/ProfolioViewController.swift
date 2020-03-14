@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfolioViewController: UIViewController{
+class ProfolioViewController: UIViewController {
     
     @IBOutlet weak var profolioTableView: UITableView!
     var profolio: Profolio?
@@ -33,10 +33,10 @@ class ProfolioViewController: UIViewController{
         photoSet = profolio.dataSet
         var finalSet: [PhotoSet] = []
         
-        for set in photoSet {
-            if set.images.isEmpty != true {
-                finalSet.append(set)
-            }
+        for set in photoSet where set.images.isEmpty != true {
+            
+            finalSet.append(set)
+            
         }
         
         photoSet = finalSet

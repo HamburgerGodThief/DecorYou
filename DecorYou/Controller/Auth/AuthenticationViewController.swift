@@ -23,7 +23,6 @@ enum AuthViewControllers: String {
     case categoryViewController = "CategoryViewController"
 }
 
-
 class AuthenticationViewController: UIViewController {
     
     @IBOutlet weak var googleSignInBtn: UIView!
@@ -46,7 +45,7 @@ class AuthenticationViewController: UIViewController {
     
     func googleSignInTapGesture() {
         
-        let singleFinger = UITapGestureRecognizer(target:self, action:#selector(googleSignIn))
+        let singleFinger = UITapGestureRecognizer(target: self, action: #selector(googleSignIn))
 
         singleFinger.numberOfTapsRequired = 1
 
@@ -237,7 +236,7 @@ extension AuthenticationViewController: ASAuthorizationControllerDelegate, ASAut
             let userEmail = appleIDCredential.email
             
             let appleIDProvider = ASAuthorizationAppleIDProvider()
-            appleIDProvider.getCredentialState(forUserID: userIdentifier) { [weak self] (credentialState, error) in
+            appleIDProvider.getCredentialState(forUserID: userIdentifier) { [weak self] (credentialState, _) in
                 
                 guard let strongSelf = self else { return }
                 

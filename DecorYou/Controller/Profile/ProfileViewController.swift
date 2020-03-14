@@ -54,7 +54,7 @@ class ProfileViewController: UIViewController {
         // 建立四個 UIAlertAction 的實體
         // 新增 UIAlertAction 在 UIAlertController actionSheet 的 動作 (action) 與標題
 
-        let editNameAction = UIAlertAction(title: "用戶名稱", style: .default) { [weak self] (Void) in
+        let editNameAction = UIAlertAction(title: "用戶名稱", style: .default) { [weak self] (_) in
             
             guard let strongSelf = self else { return }
             
@@ -68,7 +68,7 @@ class ProfileViewController: UIViewController {
             
         }
         
-        let editEmailAction = UIAlertAction(title: "用戶信箱", style: .default) { [weak self] (Void) in
+        let editEmailAction = UIAlertAction(title: "用戶信箱", style: .default) { [weak self] (_) in
 
             guard let strongSelf = self else { return }
             
@@ -82,7 +82,7 @@ class ProfileViewController: UIViewController {
             
         }
         
-        let imageForProfileImgAction = UIAlertAction(title: "個人大頭貼", style: .default) { [weak self] (Void) in
+        let imageForProfileImgAction = UIAlertAction(title: "個人大頭貼", style: .default) { [weak self] (_) in
 
             // 判斷是否可以從照片圖庫取得照片來源
             if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
@@ -94,7 +94,7 @@ class ProfileViewController: UIViewController {
             }
         }
         
-        let imageForBackImgAction = UIAlertAction(title: "背景照片", style: .default) { [weak self] (Void) in
+        let imageForBackImgAction = UIAlertAction(title: "背景照片", style: .default) { [weak self] (_) in
 
             // 判斷是否可以從照片圖庫取得照片來源
             if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
@@ -105,7 +105,7 @@ class ProfileViewController: UIViewController {
         }
         
         // 新增一個取消動作，讓使用者可以跳出 UIAlertController
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel) { (Void) in
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel) { (_) in
             editPickerAlertController.dismiss(animated: true, completion: nil)
         }
 
@@ -130,8 +130,7 @@ class ProfileViewController: UIViewController {
         alertController.addAction(cancelAction)
 
         // 建立[送出]按鈕
-        let okAction = UIAlertAction(title: "確定", style: .default, handler: {
-            [weak self] (action: UIAlertAction!) -> Void in
+        let okAction = UIAlertAction(title: "確定", style: .default, handler: { [weak self] (_: UIAlertAction!) -> Void in
             guard let strongSelf = self else { return }
             UserDefaults.standard.set(nil, forKey: "UserToken")
             UserDefaults.standard.set(nil, forKey: "UserCharacter")
@@ -195,7 +194,6 @@ class ProfileViewController: UIViewController {
         indicatorSizeConstraint = NSLayoutConstraint(item: indicator, attribute: .width, relatedBy: .equal, toItem: collectionView, attribute: .width, multiplier: 1 / CGFloat(selectStatus.count), constant: 0)
         indicatorSizeConstraint.isActive = true
         
-        
         whichVCShouldShow(index: 0)
         collectionView.reloadData()
     }
@@ -247,7 +245,7 @@ class ProfileViewController: UIViewController {
         
         navigationController?.navigationBar.barStyle = .black
                 
-        NotificationCenter.default.addObserver(self, selector: #selector(getUserInfo), name: NSNotification.Name("UpdateUserManager") , object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(getUserInfo), name: NSNotification.Name("UpdateUserManager"), object: nil)
         
         indicatorUnderCollection()
     }
@@ -314,7 +312,7 @@ extension ProfileViewController: UICollectionViewDataSource, UICollectionViewDel
 
 extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         
         var loadingVC: LoadingViewController?
         
@@ -335,7 +333,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
 
             if let uploadData = selectedImage.jpegData(compressionQuality: 1) {
                 // 這行就是 FirebaseStorage 關鍵的存取方法。
-                storageRef.putData(uploadData, metadata: nil, completion: { (data, error) in
+                storageRef.putData(uploadData, metadata: nil, completion: { (_, error) in
 
                     if error != nil {
 
@@ -345,7 +343,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
                     }
 
                     //將圖片的URL放到Cloud Firestore
-                    storageRef.downloadURL(completion: { [weak self] (url, error) in
+                    storageRef.downloadURL(completion: { [weak self] (url, _) in
                         guard let strongSelf = self else { return }
                         guard let imgURL = url?.absoluteString else { return }
                         guard let user = UserManager.shared.user else { return }

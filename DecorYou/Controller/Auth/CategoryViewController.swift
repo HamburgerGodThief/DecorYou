@@ -124,7 +124,6 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
         cell.backView.backgroundColor = cell.select ? UIColor.assetColor(.mainColor) : .white
         cell.backView.layer.borderColor = cell.select ? UIColor.assetColor(.shadowLightGray)?.cgColor : UIColor.assetColor(.mainColor)?.cgColor
         
-        
         if selectedCell.contains(cell) {
             selectedCell.removeAll()
         } else {

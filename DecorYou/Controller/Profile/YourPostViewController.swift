@@ -54,7 +54,7 @@ class YourPostViewController: UIViewController {
         noArticleLabel.isHidden = true
         setTableView()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(getSelfPost), name: NSNotification.Name("UpdateUserManager") , object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(getSelfPost), name: NSNotification.Name("UpdateUserManager"), object: nil)
     }
 }
 

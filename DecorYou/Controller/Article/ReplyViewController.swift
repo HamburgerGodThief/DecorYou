@@ -49,7 +49,7 @@ class ReplyViewController: UIViewController {
 
         if let uploadData = img.jpegData(compressionQuality: 0.5) {
             // 這行就是 FirebaseStorage 關鍵的存取方法。
-            storageRef.putData(uploadData, metadata: nil, completion: { (data, error) in
+            storageRef.putData(uploadData, metadata: nil, completion: { (_, error) in
 
                 if error != nil {
 
@@ -59,7 +59,7 @@ class ReplyViewController: UIViewController {
                 }
                 
                 //將圖片的URL傳出去
-                storageRef.downloadURL(completion: {(url, error) in
+                storageRef.downloadURL(completion: {(url, _) in
                     guard let imgURL = url?.absoluteString else { return }
                     completion(.success(imgURL))
                 })
@@ -72,11 +72,11 @@ class ReplyViewController: UIViewController {
         //建立reply物件所需資料
         guard let mainArticle = thisMainArticle else { return }
         
-        let newReply = ArticleManager.shared.db.collection("article").document("\(mainArticle.postID)").collection("replys").document()
+        let newReply = ArticleManager.shared.dbF.collection("article").document("\(mainArticle.postID)").collection("replys").document()
         
         guard let uid = UserDefaults.standard.string(forKey: "UserToken") else { return }
         
-        let authorRef = UserManager.shared.db.collection("users").document("\(uid)")
+        let authorRef = UserManager.shared.dbF.collection("users").document("\(uid)")
         
         //將文字與圖片依序放入content array，若遇到圖片則先插入空白文字
         var content: [String] = []

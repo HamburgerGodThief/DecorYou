@@ -20,8 +20,7 @@ struct Article: Codable, Equatable {
             lhs.decorateStyle == rhs.decorateStyle,
             lhs.location == rhs.location,
             lhs.loveCount == rhs.loveCount,
-            lhs.postID == rhs.postID
-             {
+            lhs.postID == rhs.postID {
             return true
         } else {
             return false

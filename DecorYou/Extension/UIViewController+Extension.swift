@@ -9,16 +9,16 @@
 import UIKit
 
 extension UIViewController {
-    
+
     func presentLoadingVC() -> LoadingViewController {
-        
+
         let loadingVC = LoadingViewController()
-        
+
         loadingVC.modalPresentationStyle = .overCurrentContext
-        
+
         present(loadingVC, animated: false, completion: nil)
-        
+
         return loadingVC
-        
+
     }
 }

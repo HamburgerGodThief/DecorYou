@@ -150,7 +150,7 @@ class UploadProfolioViewController: UIViewController {
 
             if let uploadData = selectedImage.pngData() {
                 areaGroup.enter()
-                storageRef.putData(uploadData, metadata: nil, completion: { (data, error) in
+                storageRef.putData(uploadData, metadata: nil, completion: { (_, error) in
 
                     if error != nil {
 
@@ -158,7 +158,7 @@ class UploadProfolioViewController: UIViewController {
                         return
                     }
 
-                    storageRef.downloadURL(completion: { [weak self] (url, error) in
+                    storageRef.downloadURL(completion: { [weak self] (url, _) in
                         guard let strongSelf = self else { return }
                         guard let imgURL = url?.absoluteString else { return }
                         strongSelf.profolio.coverImg = imgURL
@@ -179,7 +179,7 @@ class UploadProfolioViewController: UIViewController {
                     let storageRef = Storage.storage().reference().child("Profile").child("\(uniqueString).png")
                     // 這行就是 FirebaseStorage 關鍵的存取方法。
                     group.enter()
-                    storageRef.putData(uploadImg, metadata: nil, completion: { (data, error) in
+                    storageRef.putData(uploadImg, metadata: nil, completion: { (_, error) in
                         
                         if error != nil {
                             
@@ -189,7 +189,7 @@ class UploadProfolioViewController: UIViewController {
                         }
                         
                         //將圖片的URL放到Cloud Firestore
-                        storageRef.downloadURL(completion: {(url, error) in
+                        storageRef.downloadURL(completion: {(url, _) in
                             guard let imgURL = url?.absoluteString else { return }
                             urlAry.append(imgURL)
                             group.leave()
@@ -303,7 +303,7 @@ extension UploadProfolioViewController: UITableViewDelegate, UITableViewDataSour
 
 extension UploadProfolioViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         
         var selectedImageFromPicker: UIImage?
         

@@ -99,7 +99,7 @@ class ReadPostViewController: UIViewController {
         
         guard var user = UserManager.shared.user else { return }
         guard let thisMainArticle = article else { return }
-        let thisArticleRef = ArticleManager.shared.db.collection("article").document(thisMainArticle.postID)
+        let thisArticleRef = ArticleManager.shared.dbF.collection("article").document(thisMainArticle.postID)
                     
         user.lovePost = user.lovePost.filter({ lovePostRef -> Bool in
             
@@ -126,7 +126,7 @@ class ReadPostViewController: UIViewController {
         
         guard var user = UserManager.shared.user else { return }
         guard let thisMainArticle = article else { return }
-        let thisArticleRef = ArticleManager.shared.db.collection("article").document(thisMainArticle.postID)
+        let thisArticleRef = ArticleManager.shared.dbF.collection("article").document(thisMainArticle.postID)
         
         if isLovePost {
             
@@ -185,7 +185,7 @@ class ReadPostViewController: UIViewController {
         
         //拿樓主的留言
         group0.enter()
-        ArticleManager.shared.db.collection("article").document(article.postID).collection("comments").order(by: "createTime", descending: true).getDocuments(completion: { [weak self] (querySnapshot, err) in
+        ArticleManager.shared.dbF.collection("article").document(article.postID).collection("comments").order(by: "createTime", descending: true).getDocuments(completion: { [weak self] (querySnapshot, err) in
             guard let strongSelf = self else { return }
             if let err = err {
                 print("Error getting documents: \(err)")
@@ -205,10 +205,10 @@ class ReadPostViewController: UIViewController {
             group0.leave()
         })
         
-        //MARK: -- 拿樓主個人資訊
+        // MARK: - 拿樓主個人資訊
         group1.enter()
         group0.notify(queue: queue0) {
-            article.author.getDocument(completion: { [weak self] (document, err) in
+            article.author.getDocument(completion: { [weak self] (document, _) in
                 guard let strongSelf = self else { return }
                 guard let document = document else { return }
                 do {
@@ -223,10 +223,10 @@ class ReadPostViewController: UIViewController {
             })
         }
         
-        //MARK: -- 拿全部回覆
+        // MARK: - 拿全部回覆
         group2.enter()
         group1.notify(queue: queue1) {
-            ArticleManager.shared.db.collection("article").document(article.postID).collection("replys").order(by: "createTime", descending: false).getDocuments(completion: { [weak self] (querySnapshot, err) in
+            ArticleManager.shared.dbF.collection("article").document(article.postID).collection("replys").order(by: "createTime", descending: false).getDocuments(completion: { [weak self] (querySnapshot, err) in
                 guard let strongSelf = self else { return }
                 if let err = err {
                     print("Error getting documents: \(err)")
@@ -249,13 +249,13 @@ class ReadPostViewController: UIViewController {
             })
         }
         
-        //MARK: -- 拿每一個回覆的作者資訊
+        // MARK: - 拿每一個回覆的作者資訊
         group3.enter()
         group2.notify(queue: queue2) {
             if self.replys.count > 1 {
                 for count in 1..<self.replys.count {
                     group3.enter()
-                    self.replys[count].author.getDocument(completion: { [weak self] (document, err) in
+                    self.replys[count].author.getDocument(completion: { [weak self] (document, _) in
                         guard let strongSelf = self else { return }
                         guard let document = document else { return }
                         do {
@@ -273,7 +273,7 @@ class ReadPostViewController: UIViewController {
             group3.leave()
         }
         
-        //MARK: -- 拿回覆的留言
+        // MARK: - 拿回覆的留言
         group4.enter()
         group3.notify(queue: queue3) { [weak self] in
             guard let strongSelf = self else { return }
@@ -281,7 +281,7 @@ class ReadPostViewController: UIViewController {
             if strongSelf.replys.count > 1 {
                 for order in 1..<strongSelf.replys.count {
                     group4.enter()
-                    ArticleManager.shared.db.collection("article").document(article.postID).collection("replys").document(strongSelf.replys[order].replyID).collection("comments").order(by: "createTime", descending: true).getDocuments(completion: { (querySnapShot, err) in
+                    ArticleManager.shared.dbF.collection("article").document(article.postID).collection("replys").document(strongSelf.replys[order].replyID).collection("comments").order(by: "createTime", descending: true).getDocuments(completion: { (querySnapShot, err) in
                         if let err = err {
                             print("Error getting documents: \(err)")
                         } else {
@@ -360,12 +360,12 @@ class ReadPostViewController: UIViewController {
         // 建立3個 UIAlertAction 的實體
         // 新增 UIAlertAction 在 UIAlertController actionSheet 的 動作 (action) 與標題
 
-        let reportUserAction = UIAlertAction(title: "檢舉", style: .default) { (Void) in
+        let reportUserAction = UIAlertAction(title: "檢舉", style: .default) { (_) in
             SwiftMes.shared.showSuccessMessage(title: "已成功檢舉該用戶", body: "我們會將此用戶放入觀察名單", seconds: 1.5)
         }
         
         //先拿取user現有封鎖清單，把被封鎖人的uid append進去再上傳
-        let blockUserAction = UIAlertAction(title: "封鎖", style: .default) { [weak self] (Void) in
+        let blockUserAction = UIAlertAction(title: "封鎖", style: .default) { [weak self] (_) in
             
             guard let strongSelf = self else { return }
             
@@ -377,7 +377,7 @@ class ReadPostViewController: UIViewController {
             
         }
         
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel) { (Void) in
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel) { (_) in
             reportAlertController.dismiss(animated: true, completion: nil)
         }
 
@@ -419,7 +419,6 @@ class ReadPostViewController: UIViewController {
         checkLovePost()
     }
 }
-
 
 extension ReadPostViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -465,7 +464,7 @@ extension ReadPostViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let headerView = UINib(nibName: "ReadPostTableViewHeaderView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! ReadPostTableViewHeaderView
+        guard let headerView = UINib(nibName: "ReadPostTableViewHeaderView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? ReadPostTableViewHeaderView else { return nil }
         
         if section == 0 {
             
@@ -498,7 +497,7 @@ extension ReadPostViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         
-        let footerView = UINib(nibName: "ReadPostTableViewFooterView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! ReadPostTableViewFooterView
+        guard let footerView = UINib(nibName: "ReadPostTableViewFooterView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? ReadPostTableViewFooterView else { return nil }
         
         footerView.moreCommentBtn.addTarget(self, action: #selector(presentCommentVC), for: .touchUpInside)
         
@@ -511,7 +510,6 @@ extension ReadPostViewController: UITableViewDelegate, UITableViewDataSource {
             footerView.moreCommentBtn.setTitle("還有\(replys[section].comments.count)則留言", for: .normal)
             
         }
-        
         
         footerView.moreCommentBtn.tag = section
                         

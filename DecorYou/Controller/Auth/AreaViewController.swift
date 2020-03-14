@@ -97,7 +97,7 @@ class AreaViewController: UIViewController {
     
     @IBAction func touchConfirm(_ sender: Any) {
         
-        if selectedCell.isEmpty  {
+        if selectedCell.isEmpty {
             
             let alertController = UIAlertController(title: "錯誤", message: "服務範圍為必選", preferredStyle: .alert)
             

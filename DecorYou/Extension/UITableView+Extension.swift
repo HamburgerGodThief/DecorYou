@@ -17,4 +17,3 @@ extension UITableView {
         register(nib, forCellReuseIdentifier: identifier)
     }
 }
-

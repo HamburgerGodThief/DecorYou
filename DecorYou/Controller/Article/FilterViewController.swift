@@ -16,7 +16,7 @@ class FilterViewController: UIViewController {
     @IBOutlet weak var setBtn: UIButton!
     @IBOutlet weak var resetBtn: UIButton!
     @IBOutlet weak var contentViewLeading: NSLayoutConstraint!
-    var conditionsArray: [ConditionDelegate] = []
+    var conditionsArray: [ConditionProtocol] = []
     var decorateStyleCell: FilterCollectionTableViewCell?
     
     let sectionHeaderTitle: [String] = ["裝潢風格", "房屋地區", "房屋坪數", "回覆文章數量", "被收藏次數"]
@@ -25,7 +25,7 @@ class FilterViewController: UIViewController {
                               "輕工業", "木質調", "奢華",
                               "北歐", "古典", "鄉村",
                               "地中海", "美式", "東方", "無特定"]
-    let area_data = ["臺北市", "新北市", "基隆市", "桃園市", "新竹縣",
+    let areaData = ["臺北市", "新北市", "基隆市", "桃園市", "新竹縣",
                      "新竹市", "苗栗縣", "臺中市", "南投縣", "彰化縣",
                      "雲林縣", "嘉義縣", "嘉義市", "臺南市", "高雄市",
                      "屏東縣", "宜蘭縣", "花蓮縣", "臺東縣", "澎湖縣",
@@ -33,7 +33,7 @@ class FilterViewController: UIViewController {
     var firstSelected: String = ""
     
     func viewAddTapGesture() {
-        let singleFinger = UITapGestureRecognizer(target:self, action:#selector(singleTap))
+        let singleFinger = UITapGestureRecognizer(target: self, action: #selector(singleTap))
 
         singleFinger.numberOfTapsRequired = 1
 
@@ -92,7 +92,6 @@ class FilterViewController: UIViewController {
         
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewAddTapGesture()
@@ -130,7 +129,7 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UINib(nibName: "FilterTableViewHeaderView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! FilterTableViewHeaderView
+        guard let headerView = UINib(nibName: "FilterTableViewHeaderView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? FilterTableViewHeaderView else { return nil }
         headerView.sectionTitleLabel.text = sectionHeaderTitle[section]
         return headerView
         
@@ -152,7 +151,7 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
             cell.collectionView.lk_registerCellWithNib(identifier: "FilterCollectionViewCell", bundle: nil)
             decorateStyleCell = cell
             return cell
-        } else if indexPath.section == 1{
+        } else if indexPath.section == 1 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "FilterPickerTableViewCell", for: indexPath) as? FilterPickerTableViewCell else { return UITableViewCell() }
             cell.locationTextField.delegate = self
             cell.locationTextField.inputView = cell.pickerView
@@ -229,6 +228,7 @@ extension FilterViewController: UICollectionViewDataSource, UICollectionViewDele
 }
 
 extension FilterViewController: UITextFieldDelegate {
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let cell = textField.superview?.superview?.superview as? FilterTableViewCell else { return }
         guard let indexPath = tableView.indexPath(for: cell) else { return }
@@ -327,12 +327,12 @@ extension FilterViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
-        return area_data.count
+        return areaData.count
         
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        firstSelected = area_data[row]
+        firstSelected = areaData[row]
         let locationString = firstSelected
         let location = LocationCondition(conditionValue: locationString)
         conditionsArray =  conditionsArray.filter { element in
@@ -348,7 +348,7 @@ extension FilterViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
-        return area_data[row]
+        return areaData[row]
         
     }
 }

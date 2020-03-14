@@ -37,12 +37,12 @@ class UnboxingViewController: UIViewController {
     weak var delegate: UnboxingViewControllerDelegate?
     let locationPickerView = UIPickerView()
     let stylePickerView = UIPickerView()
-    let area_data = ["臺北市", "新北市", "基隆市", "桃園市", "新竹縣",
+    let areaData = ["臺北市", "新北市", "基隆市", "桃園市", "新竹縣",
                      "新竹市", "苗栗縣", "臺中市", "南投縣", "彰化縣",
                      "雲林縣", "嘉義縣", "嘉義市", "臺南市", "高雄市",
                      "屏東縣", "宜蘭縣", "花蓮縣", "臺東縣", "澎湖縣",
                      "金門縣", "連江縣"]
-    let style_data = ["工業", "後現代", "日系",
+    let styleData = ["工業", "後現代", "日系",
                       "黑白色調", "森林", "清新",
                       "輕工業", "木質調", "奢華",
                       "北歐", "古典", "鄉村",
@@ -73,29 +73,29 @@ extension UnboxingViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView == locationPickerView {
-            return area_data.count
+            return areaData.count
         } else {
-            return style_data.count
+            return styleData.count
         }
         
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == locationPickerView {
-            locationSelected = area_data[row]
-            locationTextView.text = area_data[row]
+            locationSelected = areaData[row]
+            locationTextView.text = areaData[row]
         } else {
-            styleSelected = style_data[row]
-            styleTextView.text = style_data[row]
+            styleSelected = styleData[row]
+            styleTextView.text = styleData[row]
         }
         
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView == locationPickerView {
-            return area_data[row]
+            return areaData[row]
         } else {
-            return style_data[row]
+            return styleData[row]
         }
     }
     

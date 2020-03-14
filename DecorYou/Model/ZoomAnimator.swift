@@ -68,7 +68,7 @@ class ZoomAnimator: NSObject {
                         toVC.view.alpha = 1.0
                         fromVC.tabBarController?.tabBar.alpha = 0
         },
-                       completion: { completed in
+                       completion: { _ in
                     
                         self.transitionImageView?.removeFromSuperview()
                         toReferenceImageView.isHidden = false
@@ -123,7 +123,7 @@ class ZoomAnimator: NSObject {
                         fromVC.view.alpha = 0
                         self.transitionImageView?.frame = finalTransitionSize
                         toVC.tabBarController?.tabBar.alpha = 1
-        }, completion: { completed in
+        }, completion: { _ in
             
             self.transitionImageView?.removeFromSuperview()
             toReferenceImageView.isHidden = false

@@ -6,13 +6,13 @@
 //  Copyright © 2020 Hamburger. All rights reserved.
 //
 
-protocol CraftsmenConditionDelegate {
+protocol CraftsmenConditionProtocol {
     
     func filter(data: [User]) -> [User]
     
 }
 
-struct ServiceCategoryCondition: CraftsmenConditionDelegate {
+struct ServiceCategoryCondition: CraftsmenConditionProtocol {
         
     var conditionValue: String
     
@@ -22,7 +22,7 @@ struct ServiceCategoryCondition: CraftsmenConditionDelegate {
     }
 }
 
-struct ServiceLocationCondition: CraftsmenConditionDelegate {
+struct ServiceLocationCondition: CraftsmenConditionProtocol {
         
     var conditionValue: String
     

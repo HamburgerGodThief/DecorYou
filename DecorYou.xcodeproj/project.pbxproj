@@ -46,7 +46,6 @@
 		64B7078E24147AE3001248B6 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B7078C24147AE3001248B6 /* ImageTableViewCell.swift */; };
 		64B7078F24147AE3001248B6 /* ImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64B7078D24147AE3001248B6 /* ImageTableViewCell.xib */; };
 		64B7079124149038001248B6 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B7079024149038001248B6 /* CommentViewController.swift */; };
-		64F81E58240695B20020566C /* forestmorning.json in Resources */ = {isa = PBXBuildFile; fileRef = 64F81E57240695B20020566C /* forestmorning.json */; };
 		64F81E5F240783FE0020566C /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F81E5E240783FE0020566C /* EditProfileViewController.swift */; };
 		64F9D89823F9239D00F28186 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F9D89723F9239D00F28186 /* PhotosViewController.swift */; };
 		64F9D89B23F9379400F28186 /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F9D89923F9379400F28186 /* PhotosCollectionViewCell.swift */; };
@@ -138,7 +137,6 @@
 		64FE4EC823E83E9400A5D3EC /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FE4EC723E83E9400A5D3EC /* UITextField+Extension.swift */; };
 		64FE4ECB23E918EA00A5D3EC /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FE4EC923E918EA00A5D3EC /* ProfileTableViewCell.swift */; };
 		64FE4ECC23E918EA00A5D3EC /* ProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FE4ECA23E918EA00A5D3EC /* ProfileTableViewCell.xib */; };
-		64FE4ED023E95CB200A5D3EC /* RoundCorner+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FE4ECF23E95CB200A5D3EC /* RoundCorner+Shadow.swift */; };
 		64FE4ED423E983B200A5D3EC /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FE4ED323E983B200A5D3EC /* FavoriteViewController.swift */; };
 		64FE4ED623E983D500A5D3EC /* YourPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FE4ED523E983D500A5D3EC /* YourPostViewController.swift */; };
 		64FE4EE123EA55CB00A5D3EC /* YourPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FE4EDF23EA55CB00A5D3EC /* YourPostTableViewCell.swift */; };
@@ -210,7 +208,6 @@
 		64B7078C24147AE3001248B6 /* ImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
 		64B7078D24147AE3001248B6 /* ImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageTableViewCell.xib; sourceTree = "<group>"; };
 		64B7079024149038001248B6 /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
-		64F81E57240695B20020566C /* forestmorning.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = forestmorning.json; path = ../../../forestmorning.json; sourceTree = "<group>"; };
 		64F81E5D2406A40C0020566C /* DecorYou.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DecorYou.entitlements; sourceTree = "<group>"; };
 		64F81E5E240783FE0020566C /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		64F9D89723F9239D00F28186 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
@@ -303,7 +300,6 @@
 		64FE4EC723E83E9400A5D3EC /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		64FE4EC923E918EA00A5D3EC /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		64FE4ECA23E918EA00A5D3EC /* ProfileTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileTableViewCell.xib; sourceTree = "<group>"; };
-		64FE4ECF23E95CB200A5D3EC /* RoundCorner+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoundCorner+Shadow.swift"; sourceTree = "<group>"; };
 		64FE4ED323E983B200A5D3EC /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		64FE4ED523E983D500A5D3EC /* YourPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourPostViewController.swift; sourceTree = "<group>"; };
 		64FE4EDF23EA55CB00A5D3EC /* YourPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourPostTableViewCell.swift; sourceTree = "<group>"; };
@@ -457,14 +453,12 @@
 			isa = PBXGroup;
 			children = (
 				64FBDA7B24050EA80089D9EA /* loadingAnimate.json */,
-				64F81E57240695B20020566C /* forestmorning.json */,
 				647A7CCD23D83C61005D1946 /* UIImage+Extension.swift */,
 				647A7CCB23D83BCE005D1946 /* UIStoryboard+Extension.swift */,
 				64FA42AD23E3A7990065DCEF /* UICollectionView+Extension.swift */,
 				64FA42AF23E3A7C80065DCEF /* UITableView+Extension.swift */,
 				64FE4EC723E83E9400A5D3EC /* UITextField+Extension.swift */,
 				64FAB13023ED640A0073235C /* UIColor+Extension.swift */,
-				64FE4ECF23E95CB200A5D3EC /* RoundCorner+Shadow.swift */,
 				64FA429C23E347060065DCEF /* KingFisherWrapper.swift */,
 				64FBDA7524050B590089D9EA /* UIViewController+Extension.swift */,
 				64FBDA7724050C340089D9EA /* LoadingViewController.swift */,
@@ -719,6 +713,7 @@
 				647A7CA623D83376005D1946 /* Resources */,
 				8F45C7CA5CC3F96C50562D4B /* [CP] Embed Pods Frameworks */,
 				DE550DE1A5D90E22666E4BA4 /* [CP] Copy Pods Resources */,
+				64CF78BD241B669000F6475E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -829,7 +824,6 @@
 				64FC819E23E7FC190027DDEE /* ChatRoomBottomView.xib in Resources */,
 				64FA42AB23E393280065DCEF /* CraftsmenCollectionViewCell.xib in Resources */,
 				647A7CB323D83376005D1946 /* Main.storyboard in Resources */,
-				64F81E58240695B20020566C /* forestmorning.json in Resources */,
 				64FC818E23E7C26E0027DDEE /* ProfolioTableViewCell.xib in Resources */,
 				64FA7CC223F2365800975B03 /* ReadPostTableViewFooterView.xib in Resources */,
 				64FA58C723FE852A003D7353 /* FilterTableViewCell.xib in Resources */,
@@ -882,6 +876,23 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		64CF78BD241B669000F6475E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\n\n";
 		};
 		8C906B328BE8B7848B35CA53 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1040,7 +1051,6 @@
 				64FC72EE23FD2975004F2A07 /* ZoomTransitionController.swift in Sources */,
 				64FC72F323FD3BD6004F2A07 /* ArticleListTableViewCell.swift in Sources */,
 				64FA8E442400F479000A1334 /* ArticleFilterModel.swift in Sources */,
-				64FE4ED023E95CB200A5D3EC /* RoundCorner+Shadow.swift in Sources */,
 				64FC818923E7BF3F0027DDEE /* ProfolioCollectionViewCell.swift in Sources */,
 				64B7079124149038001248B6 /* CommentViewController.swift in Sources */,
 				64FC72EA23FD2962004F2A07 /* ZoomAnimator.swift in Sources */,

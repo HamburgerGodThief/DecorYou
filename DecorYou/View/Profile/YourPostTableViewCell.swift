@@ -10,7 +10,6 @@ import UIKit
 
 class YourPostTableViewCell: UITableViewCell {
     
-    
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!

@@ -18,7 +18,6 @@ class ArticleTypeTableViewCell: UITableViewCell {
         backView.layer.cornerRadius = backView.frame.height / 2
     }
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
