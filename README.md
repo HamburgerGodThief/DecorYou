@@ -1,7 +1,7 @@
 # DecorYou
 To help people get info about interior design, DecorYou provides you a platform to collect info, ask question or share you opinion. Also, if you are professional, you can upload your portfolio and contact to promote yourself on DecorYou.
 
-
+[<img src="https://github.com/nick1ee/Shalk/raw/master/screenshot/DownloadAppStoreBadge.png" width="160" height="50" align=center>](https://apps.apple.com/app/id1501134737)
 
 ```
 If you need to build the project, please create new project on 
@@ -38,4 +38,20 @@ Google Firebase and download GoogleService-Info.plist from it.
   * Edit user's name, email, photo and background image
 
 <img src="https://github.com/HamburgerGodThief/DecorYou/blob/develop/DecorYouDemo/IMG_7476.PNG" width="200"/> <img src="https://github.com/HamburgerGodThief/DecorYou/blob/develop/DecorYouDemo/IMG_7477.PNG" width="200"/> <img src="https://github.com/HamburgerGodThief/DecorYou/blob/develop/DecorYouDemo/IMG_7478.PNG" width="200"/>
-  
+
+# Library
+* Lottie
+* Crashlytics
+* IQKeyboardManagerSwift
+* SwiftLint
+* Firebase
+* SwiftMessage
+* Kingfisher
+* GoogleSignIn
+
+# Requirements
+* iOS 13.0+
+* Xcode 11.0+
+
+# Contacts
+Hamburger_god_thief [jou54001@gmail.com](jou54001@gmail.com)
