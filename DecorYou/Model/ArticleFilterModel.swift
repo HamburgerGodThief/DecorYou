@@ -5,7 +5,9 @@
 //  Created by Hamburger on 2020/2/22.
 //  Copyright © 2020 Hamburger. All rights reserved.
 //
-protocol ConditionProtocol {
+import UIKit
+
+protocol ConditionProtocol: UITextFieldDelegate {
     
     var conditionType: String { get set }
     
@@ -13,99 +15,184 @@ protocol ConditionProtocol {
     
 }
 
-struct StyleCondition: ConditionProtocol {
+class StyleCondition: NSObject, ConditionProtocol {
     
     var conditionType: String = "StyleCondition"
     
     var conditionValue: String
     
+    init(conditionValue: String) {
+        self.conditionValue = conditionValue
+    }
+    
     func filter(data: [Article]) -> [Article] {
+        if conditionValue == "" {
+            return data
+        }
         let filterData = data.filter({ $0.decorateStyle == conditionValue })
         return filterData
     }
 }
 
-struct LocationCondition: ConditionProtocol {
+class LocationCondition: NSObject, ConditionProtocol {
     
     var conditionType: String = "LocationCondition"
     
     var conditionValue: String
     
+    init(conditionValue: String) {
+        self.conditionValue = conditionValue
+    }
+    
     func filter(data: [Article]) -> [Article] {
+        if conditionValue == "" {
+            return data
+        }
         let filterData = data.filter({ $0.location == conditionValue })
         return filterData
     }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.conditionValue = textField.text!
+    }
 }
 
-struct SizeMinCondition: ConditionProtocol {
+class SizeMinCondition: NSObject, ConditionProtocol {
     
     var conditionType: String = "SizeMinCondition"
 
     var conditionValue: Int
     
+    init(conditionValue: Int) {
+        self.conditionValue = conditionValue
+    }
+    
     func filter(data: [Article]) -> [Article] {
+        if conditionValue == 0 {
+            return data
+        }
         let filterData = data.filter({ $0.size ?? 0 > conditionValue })
         return filterData
     }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.conditionValue = Int(textField.text!) ?? 0
+    }
 }
 
-struct SizeMaxCondition: ConditionProtocol {
+class SizeMaxCondition: NSObject, ConditionProtocol {
     
     var conditionType: String = "SizeMaxCondition"
     
     var conditionValue: Int
     
+    init(conditionValue: Int) {
+        self.conditionValue = conditionValue
+    }
+    
     func filter(data: [Article]) -> [Article] {
+        if conditionValue == 0 {
+            return data
+        }
         let filterData = data.filter({ $0.size ?? 0 < conditionValue })
         return filterData
     }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.conditionValue = Int(textField.text!) ?? 0
+    }
 }
 
-struct ReplyMinCondition: ConditionProtocol {
+class ReplyMinCondition: NSObject, ConditionProtocol {
     
     var conditionType: String = "ReplyMinCondition"
     
     var conditionValue: Int
     
+    init(conditionValue: Int) {
+        self.conditionValue = conditionValue
+    }
+    
     func filter(data: [Article]) -> [Article] {
-        let filterData = data.filter({ $0.size ?? 0 > conditionValue })
+        if conditionValue == 0 {
+            return data
+        }
+        let filterData = data.filter({ $0.replyCount > conditionValue })
         return filterData
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.conditionValue = Int(textField.text!) ?? 0
     }
 }
 
-struct ReplyMaxCondition: ConditionProtocol {
+class ReplyMaxCondition: NSObject, ConditionProtocol {
     
     var conditionType: String = "ReplyMaxCondition"
 
     var conditionValue: Int
     
+    init(conditionValue: Int) {
+        self.conditionValue = conditionValue
+    }
+    
     func filter(data: [Article]) -> [Article] {
-        let filterData = data.filter({ $0.size ?? 0 < conditionValue })
+        if conditionValue == 0 {
+            return data
+        }
+        let filterData = data.filter({ $0.replyCount < conditionValue })
         return filterData
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.conditionValue = Int(textField.text!) ?? 0
     }
 }
 
-struct LoveMinCondition: ConditionProtocol {
+class LoveMinCondition: NSObject, ConditionProtocol {
     
     var conditionType: String = "LoveMinCondition"
     
     var conditionValue: Int
     
+    init(conditionValue: Int) {
+        self.conditionValue = conditionValue
+    }
+    
     func filter(data: [Article]) -> [Article] {
+        if conditionValue == 0 {
+            return data
+        }
         let filterData = data.filter({ $0.loveCount > conditionValue })
         return filterData
     }
     
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.conditionValue = Int(textField.text!) ?? 0
+    }
+    
 }
 
-struct LoveMaxCondition: ConditionProtocol {
+class LoveMaxCondition: NSObject, ConditionProtocol {
     
     var conditionType: String = "LoveMaxCondition"
+    
     var conditionValue: Int
     
+    init(conditionValue: Int) {
+        self.conditionValue = conditionValue
+    }
+    
     func filter(data: [Article]) -> [Article] {
+        if conditionValue == 0 {
+            return data
+        }
         let filterData = data.filter({ $0.loveCount < conditionValue })
         return filterData
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.conditionValue = Int(textField.text!) ?? 0
     }
     
 }

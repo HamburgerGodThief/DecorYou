@@ -120,7 +120,7 @@ class UploadProfolioViewController: UIViewController {
         
         newProfolioTableView.tableFooterView?.alpha = 0
     }
-    
+    // swiftlint:disable all
     @objc func createProfolio() {
         
         var uploadDatas: [UploadData] = []
@@ -228,7 +228,7 @@ class UploadProfolioViewController: UIViewController {
             strongSelf.dismiss(animated: true, completion: nil)
         }
     }
-    
+    // swiftlint:enable all
     @objc func cancel() {
         dismiss(animated: true, completion: nil)
     }

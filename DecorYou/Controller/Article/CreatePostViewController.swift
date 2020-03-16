@@ -112,7 +112,7 @@ class CreatePostViewController: UIViewController {
             })
         }
     }
-        
+    // swiftlint:disable all
     @objc func createPost() {
         //檢查貼文標題有無值
         guard let title = titleTextField.text else {
@@ -134,12 +134,10 @@ class CreatePostViewController: UIViewController {
         
         //檢查tag是不是空的
         if type == "開箱" {
-        
             guard unboxTag != nil else {
                 configureAlertController(title: "錯誤", message: "坪數/地區/風格不可空白")
                 return
             }
-            
         }
         
         //建立新貼文
@@ -244,6 +242,7 @@ class CreatePostViewController: UIViewController {
         }
         
     }
+    // swiftlint:enable all
     
     func putURLIntoArray(articleContent: [NewPostData], content: [String], newPostID: String, completion: @escaping ([String]) -> Void) {
         

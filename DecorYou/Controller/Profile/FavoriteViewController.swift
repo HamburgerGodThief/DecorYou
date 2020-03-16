@@ -24,7 +24,7 @@ class FavoriteViewController: UIViewController {
         favoriteTableView.estimatedRowHeight = 180
         favoriteTableView.rowHeight = UITableView.automaticDimension
     }
-    
+    // swiftlint:disable all
     @objc func getLovePost() {
         lovePost = []
         let group0 = DispatchGroup()
@@ -73,7 +73,7 @@ class FavoriteViewController: UIViewController {
             strongSelf.favoriteTableView.reloadData()
         }
     }
-    
+    // swiftlint:enable all
     override func viewDidLoad() {
         super.viewDidLoad()
         setTableView()

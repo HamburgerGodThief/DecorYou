@@ -12,7 +12,7 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 class ReadPostViewController: UIViewController {
-    
+    // swiftlint:disable force_cast
     @IBOutlet weak var tableView: UITableView! {
         
         didSet {
@@ -44,9 +44,10 @@ class ReadPostViewController: UIViewController {
     var userLovePost: [Article] = []
     var isLovePost: Bool = false
     let bottomView = UINib(nibName: "ReadPostBottomView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! ReadPostBottomView
+    // swiftlint:enable force_cast
     
     func setBottomView() {
-        
+                
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(bottomView)
@@ -155,7 +156,7 @@ class ReadPostViewController: UIViewController {
         isLovePost = !isLovePost
         
     }
-    
+    // swiftlint:disable all
     func getReplys() {
         
         let loadingVC = presentLoadingVC()
@@ -317,6 +318,7 @@ class ReadPostViewController: UIViewController {
             
         }
     }
+    // swiftlint:enable all
     
     @objc func backToArticle() {
         guard let articleVC = navigationController?.viewControllers[0] as? ArticleViewController else { return }

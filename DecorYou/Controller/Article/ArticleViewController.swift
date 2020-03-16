@@ -42,21 +42,23 @@ class ArticleViewController: UIViewController {
     var filterResults: [Article] = []
     var finalArticles: [Article] = []
     let itemSpace: CGFloat = 12
-    let columnCount: CGFloat = 4
+    let columnCount: CGFloat = 3
     var collectionItem: [[String]] = []
+    var loadingVC: LoadingViewController?
     
     func getData(shouldShowLoadingVC: Bool) {
         
         allArticle = []
         finalArticles = []
         
-        var loadingVC: LoadingViewController?
         if shouldShowLoadingVC {
             loadingVC = presentLoadingVC()
         }
+        
         let group0 = DispatchGroup()
         let group1 = DispatchGroup()
         let queue0 = DispatchQueue(label: "queue0")
+        
         //抓全部文章
         group0.enter()
         ArticleManager.shared.fetchAllPost(completion: { [weak self] result in
@@ -89,11 +91,10 @@ class ArticleViewController: UIViewController {
             }
             group1.leave()
         }
-        
         //剔除文章作者是當前user的黑名單
         group1.notify(queue: .main) { [weak self] in
             if shouldShowLoadingVC {
-                loadingVC!.dismiss(animated: false, completion: nil)
+                self?.loadingVC!.dismiss(animated: false, completion: nil)
             }
             guard let strongSelf = self else { return }
             strongSelf.allArticle = ArticleManager.shared.hideBlockUserPost(nonBlock: strongSelf.allArticle)
@@ -357,6 +358,7 @@ extension ArticleViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.backView.layer.borderColor = nil
                 cell.backView.layer.borderWidth = 0
             }
+            cell.collectionView.reloadData()
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ArticleListTableViewCell.self), for: indexPath) as? ArticleListTableViewCell else { return UITableViewCell() }
@@ -367,6 +369,8 @@ extension ArticleViewController: UITableViewDelegate, UITableViewDataSource {
             cell.typeLabel.text = "[\(article.type)]"
             if article.type == "廣告宣傳" {
                 cell.typeLabel.textColor = UIColor.assetColor(.advertise)
+            } else {
+                cell.typeLabel.backgroundColor = UIColor.assetColor(.darkMainColor)
             }
             return cell
         }

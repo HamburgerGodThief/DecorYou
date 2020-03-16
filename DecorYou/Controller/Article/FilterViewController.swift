@@ -16,7 +16,21 @@ class FilterViewController: UIViewController {
     @IBOutlet weak var setBtn: UIButton!
     @IBOutlet weak var resetBtn: UIButton!
     @IBOutlet weak var contentViewLeading: NSLayoutConstraint!
-    var conditionsArray: [ConditionProtocol] = []
+    var conditionsArray: [ConditionProtocol] = [StyleCondition(conditionValue: ""),
+                                                LocationCondition(conditionValue: ""),
+                                                SizeMinCondition(conditionValue: 0),
+                                                SizeMaxCondition(conditionValue: 0),
+                                                ReplyMinCondition(conditionValue: 0),
+                                                ReplyMaxCondition(conditionValue: 0),
+                                                LoveMinCondition(conditionValue: 0),
+                                                LoveMaxCondition(conditionValue: 0)]
+//    var locationCondition: LocationCondition = LocationCondition(conditionValue: "")
+//    var sizeMinCondition: SizeMinCondition = SizeMinCondition(conditionValue: 0)
+//    var sizeMaxCondition: SizeMaxCondition = SizeMaxCondition(conditionValue: 9999)
+//    var replyMinCondition: ReplyMinCondition = ReplyMinCondition(conditionValue: 0)
+//    var replyMaxCondition: ReplyMaxCondition = ReplyMaxCondition(conditionValue: 9999)
+//    var loveMinCondition: LoveMinCondition = LoveMinCondition(conditionValue: 0)
+//    var loveMaxCondition: LoveMaxCondition = LoveMaxCondition(conditionValue: 9999)
     var decorateStyleCell: FilterCollectionTableViewCell?
     
     let sectionHeaderTitle: [String] = ["裝潢風格", "房屋地區", "房屋坪數", "回覆文章數量", "被收藏次數"]
@@ -52,16 +66,20 @@ class FilterViewController: UIViewController {
             filterArticles = condition.filter(data: filterArticles)
         }
         
-        articleVC.filterResults = filterArticles
-        articleVC.finalArticles = filterArticles
-        if conditionsArray.isEmpty {
+        if articleVC.finalArticles.count == filterArticles.count {
             articleVC.isFilter = false
         } else {
             articleVC.isFilter = true
         }
+        
+        articleVC.filterResults = filterArticles
+        articleVC.finalArticles = filterArticles
+        
         if articleVC.finalArticles.isEmpty {
             articleVC.searchResultLabel.isHidden = false
         }
+        
+        articleVC.combineDataForCollectionItem()
         articleVC.showNavRightButton(shouldShow: true)
         articleVC.articleTableView.reloadData()
         
@@ -76,8 +94,16 @@ class FilterViewController: UIViewController {
         articleVC.isFilter = false
         articleVC.showNavRightButton(shouldShow: true)
         articleVC.finalArticles = articleVC.allArticle
-        conditionsArray = []
+        conditionsArray = [StyleCondition(conditionValue: ""),
+                           LocationCondition(conditionValue: ""),
+                           SizeMinCondition(conditionValue: 0),
+                           SizeMaxCondition(conditionValue: 9999),
+                           ReplyMinCondition(conditionValue: 0),
+                           ReplyMaxCondition(conditionValue: 9999),
+                           LoveMinCondition(conditionValue: 0),
+                           LoveMaxCondition(conditionValue: 9999)]
         firstSelected = ""
+        articleVC.combineDataForCollectionItem()
         tableView.reloadData()
         decorateStyleCell?.collectionView.reloadData()
         articleVC.searchResultLabel.isHidden = true
@@ -85,9 +111,7 @@ class FilterViewController: UIViewController {
     }
     
     @objc func singleTap() {
-//        UIView.animate(withDuration: 5, delay: 1, options: .curveEaseInOut, animations: {
-//            self.contentViewLeading.constant = 0
-//        }, completion: nil)
+        
         dismiss(animated: false, completion: nil)
         
     }
@@ -107,15 +131,6 @@ class FilterViewController: UIViewController {
         resetBtn.layer.borderColor = UIColor.assetColor(.mainColor)?.cgColor
         resetBtn.layer.borderWidth = 1
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
 }
 
 extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
@@ -153,15 +168,23 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         } else if indexPath.section == 1 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "FilterPickerTableViewCell", for: indexPath) as? FilterPickerTableViewCell else { return UITableViewCell() }
-            cell.locationTextField.delegate = self
+            cell.locationTextField.delegate = conditionsArray[1]
             cell.locationTextField.inputView = cell.pickerView
             cell.locationTextField.text = firstSelected
             cell.pickerView.delegate = self
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "FilterTableViewCell", for: indexPath) as? FilterTableViewCell else { return UITableViewCell() }
-            cell.minValueTextField.delegate = self
-            cell.maxValueTextField.delegate = self
+            if indexPath.section == 2 {
+                cell.minValueTextField.delegate = conditionsArray[2]
+                cell.maxValueTextField.delegate = conditionsArray[3]
+            } else if indexPath.section == 3 {
+                cell.minValueTextField.delegate = conditionsArray[4]
+                cell.maxValueTextField.delegate = conditionsArray[5]
+            } else {
+                cell.minValueTextField.delegate = conditionsArray[6]
+                cell.maxValueTextField.delegate = conditionsArray[7]
+            }
             cell.minValueTextField.placeholder = "最小值"
             cell.maxValueTextField.placeholder = "最大值"
             cell.minValueTextField.text = ""
@@ -209,15 +232,17 @@ extension FilterViewController: UICollectionViewDataSource, UICollectionViewDele
         cell.layer.borderWidth = 1
         cell.layer.borderColor = UIColor.assetColor(.mainColor)?.cgColor
         guard let styleText = cell.optionLabel.text else { return }
-        let style = StyleCondition(conditionValue: styleText)
-        conditionsArray =  conditionsArray.filter { element in
-            
-            if element as? StyleCondition == nil {
-                return true
-            }
-            return false
-        }
-        conditionsArray.append(style)
+        conditionsArray[0] = StyleCondition(conditionValue: styleText)
+        
+//        let style = StyleCondition(conditionValue: styleText)
+//        conditionsArray =  conditionsArray.filter { element in
+//
+//            if element as? StyleCondition == nil {
+//                return true
+//            }
+//            return false
+//        }
+//        conditionsArray.append(style)
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
@@ -228,7 +253,7 @@ extension FilterViewController: UICollectionViewDataSource, UICollectionViewDele
 }
 
 extension FilterViewController: UITextFieldDelegate {
-    
+    /*
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let cell = textField.superview?.superview?.superview as? FilterTableViewCell else { return }
         guard let indexPath = tableView.indexPath(for: cell) else { return }
@@ -317,6 +342,7 @@ extension FilterViewController: UITextFieldDelegate {
             }
         }
     }
+ */
 }
 
 extension FilterViewController: UIPickerViewDelegate, UIPickerViewDataSource {
