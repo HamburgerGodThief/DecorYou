@@ -41,7 +41,6 @@ Google Firebase and download GoogleService-Info.plist from it.
 
 # Library
 * Lottie
-* Crashlytics
 * IQKeyboardManagerSwift
 * SwiftLint
 * Firebase
